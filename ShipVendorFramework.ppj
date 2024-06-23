@@ -1,0 +1,17 @@
+<?xml version='1.0'?>
+<PapyrusProject
+    xmlns="PapyrusProject.xsd"
+    Output=".\data\Scripts"
+    Flags="Starfield_Papyrus_Flags.flg"
+    Asm="Discard"
+    Optimize="false"
+    Release="false"
+    Final="false"
+>
+    <Imports>
+        <Import>.\support\papyrus-imports\vanilla\Source</Import>
+    </Imports>
+    <Folders>
+        <Folder>.\data\Scripts\Source</Folder>
+    </Folders>
+</PapyrusProject>
