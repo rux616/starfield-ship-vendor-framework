@@ -1,0 +1,72 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "shell": {
+      "executable": "pwsh.exe",
+      "args": ["-ExecutionPolicy", "Bypass", "-Command"]
+    }
+  },
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "Write-Host",
+      "args": ["-Foreground", "Green", "-Background", "Black", "Build complete!"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Update Versions",
+        "Sanitize FOMOD XML Files",
+        "Render Markdown to Nexus BBCode",
+        "Render Markdown to Plaintext",
+        "Serialize plugins",
+        "Compile Scripts",
+        "Create Archives"
+      ]
+    },
+    {
+      "label": "Update Versions",
+      "type": "shell",
+      "command": "./support/common/scripts/version-updater.ps1",
+      "args": ["-SkipBackup"]
+    },
+    {
+      "label": "Sanitize FOMOD XML Files",
+      "type": "shell",
+      "command": "./support/common/scripts/sanitize-fomod-xml.ps1"
+    },
+    {
+      "label": "Render Markdown to Nexus BBCode",
+      "type": "shell",
+      "command": "./support/common/scripts/markdown-to-nexusbbcode.ps1",
+      "args": ["./support/docs/README.md", "./support/docs/HOWTO.md"]
+    },
+    {
+      "label": "Render Markdown to Plaintext",
+      "type": "shell",
+      "command": "./support/common/scripts/markdown-to-plaintext.ps1",
+      "args": ["./support/docs/README.md", "./support/docs/CHANGELOG.md", "./support/docs/HOWTO.md"]
+    },
+    {
+      "label": "Serialize plugins",
+      "type": "shell",
+      "command": "./support/common/scripts/serialize-plugins.ps1",
+      "args": ["-Starfield", "-YAML"]
+    },
+    {
+      "label": "Compile Scripts",
+      "type": "shell",
+      "command": ".\\support\\papyrus-imports\\vanilla\\bin\\Papyrus Compiler\\PapyrusCompiler.exe",
+      "args": ["./ShipVendorFramework.ppj"]
+    },
+    {
+      "label": "Create Archives",
+      "type": "shell",
+      "command": "./support/common/scripts/build-archives.ps1",
+      "args": ["-ModName", "Ship Vendor Framework", "-Starfield"]
+    }
+  ]
+}

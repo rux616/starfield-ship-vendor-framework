@@ -1,0 +1,6 @@
+# This directory is meant to store build archives
+
+# Ignore everything in this directory
+*
+# Except this file
+!.gitignore

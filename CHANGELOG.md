@@ -1,0 +1,1 @@
+support/docs/CHANGELOG.md

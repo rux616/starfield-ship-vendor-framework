@@ -1,0 +1,8 @@
+[submodule "support/common"]
+	path = support/common
+	url = https://github.com/rux616/modding-build-release-scripts
+	branch = main
+[submodule "support/papyrus-imports/vanilla"]
+	path = support/papyrus-imports/vanilla
+	url = https://github.com/rux616/modding-sf1-scripts-vanilla
+	branch = main
