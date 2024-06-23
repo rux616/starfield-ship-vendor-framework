@@ -1,0 +1,25 @@
+{
+  "cSpell.words": [
+    "cognitions",
+    "Deepseeker",
+    "Elminster",
+    "FOMOD",
+    "hexabit",
+    "Hmmss",
+    "jmpz",
+    "Mandalorian",
+    "Mantisorian",
+    "nexusbbcode",
+    "Noggog",
+    "retextured",
+    "SFSE",
+    "Skope",
+    "Spriggit",
+    "Starborn",
+    "steamapps"
+  ],
+  "markdownlint.config": {
+    "MD034": false,
+    "MD041": false
+  }
+}
