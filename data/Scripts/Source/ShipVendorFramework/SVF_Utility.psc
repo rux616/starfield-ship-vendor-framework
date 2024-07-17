@@ -42,7 +42,7 @@ EndFunction
 ; local opinionated log function
 ; aiSeverity values: 0 = info, 1 = warning, 2 = error, 3 = debug
 Function _Log(string asFunctionName, string asLogMessage, int aiSeverity = 0) Global
-    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiSeverity, 0)
+    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiSeverity, 2)
 EndFunction
 
 
@@ -198,4 +198,28 @@ var[] Function ShuffleArray(var[] avArray, int aiSteps = -1, int aiIndexStart = 
 
     _Log(fnName, "end", LL_DEBUG)
     Return avArray
+EndFunction
+
+
+; append the second array to the first array
+var[] Function AppendToArray(var[] avAppendTo, var[] avAppendFrom) Global
+    string fnName = "AppendToArray" Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    int LL_DEBUG = 3 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If avAppendTo.Length + avAppendFrom.Length > 128
+        _Log(fnName, "array length will exceed maximum", LL_ERROR)
+    EndIf
+
+    int i = 0
+    While i < avAppendFrom.Length
+        avAppendTo.Add(avAppendFrom[i])
+        i += 1
+    EndWhile
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return avAppendTo
 EndFunction
