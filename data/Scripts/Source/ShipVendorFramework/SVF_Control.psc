@@ -1,3 +1,22 @@
+; Copyright 2024 Dan Cassidy
+
+; This program is free software: you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation, either version 3 of the License, or
+; (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+; SPDX-License-Identifier: GPL-3.0-or-later
+
+
+
 ScriptName ShipVendorFramework:SVF_Control Extends Quest
 
 int Property SVFControlVersion = 1 Auto Const Hidden
@@ -41,8 +60,7 @@ EndFunction
 Event OnInit()
     string fnName = "OnInit" Const
     _Log(fnName, "begin", LL_DEBUG)
-    PlayerRef = Game.GetPlayer()  ; temporary until the CK can save Actor properties to scripts
-    VersionInfo()
+    VersionInfo(false)
     _Log(fnName, "end", LL_DEBUG)
 EndEvent
 
@@ -72,6 +90,7 @@ Function Initialize()
     If SVFControlVersionCurrent != SVFControlVersion
         If SVFControlVersionCurrent == 0
             _Log(fnName, "SVF_Control initializing")
+            PlayerRef = Game.GetPlayer()  ; temporary until the CK can save Actor properties to scripts
             RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
             SVFControlVersionCurrent = SVFControlVersion
             _Log(fnName, "SVF_Control initialized")
@@ -83,10 +102,8 @@ EndFunction
 
 
 ; print version and misc debug into to the log
-Function VersionInfo()
+Function VersionInfo(bool abFull = true)
     ShipVendorFramework:SVF_Utility.Log("", 0, "", "Log level: " + LogLevel, -1)
     ShipVendorFramework:SVF_Utility.Log("", 0, "", "Starfield version: " + Debug.GetVersionNumber(), -1)
     ShipVendorFramework:SVF_Utility.Log("", 0, "", "Ship Vendor Framework version: " + SVFVersion, -1)
-    ShipVendorFramework:SVF_Utility.Log("", 0, "", "Player: level " + PlayerRef.GetLevel() + ", " + PlayerRef.GetValue(PlayerUnityTimesEntered) as int + " Unity traversals", -1)
-    ShipVendorFramework:SVF_Utility.Log("", 0, "", "Universe: " + Utility.GetCurrentGameTime() + " days old, variant " + UniverseVariant.GetValueInt(), -1)
 EndFunction

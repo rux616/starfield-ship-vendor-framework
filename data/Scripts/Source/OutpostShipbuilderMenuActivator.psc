@@ -8,6 +8,7 @@ ActorBase property OutpostShipbuilderVendor auto const mandatory
 
 ShipVendorScript property myVendor auto hidden
 
+
 ; override parent function
 Function HandleOnWorkshopObjectPlaced(ObjectReference akReference)
     debug.trace(self + " OnWorkshopObjectPlaced")
@@ -19,6 +20,7 @@ Function HandleOnWorkshopObjectPlaced(ObjectReference akReference)
     myVendor.Initialize(myLandingMarker)
 EndFunction
 
+
 ; override parent function
 Function HandleOnWorkshopObjectRemoved(ObjectReference akReference)
     debug.trace(self + " OnWorkshopObjectRemoved")
@@ -27,6 +29,7 @@ Function HandleOnWorkshopObjectRemoved(ObjectReference akReference)
         myVendor = NONE
     EndIf
 EndFunction
+
 
 Event OnActivate(ObjectReference akActionRef)
     debug.trace(self + " OnActivate " + akActionRef)

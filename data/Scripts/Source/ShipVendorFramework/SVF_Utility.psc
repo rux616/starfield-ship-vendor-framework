@@ -1,3 +1,22 @@
+; Copyright 2024 Dan Cassidy
+
+; This program is free software: you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation, either version 3 of the License, or
+; (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+; SPDX-License-Identifier: GPL-3.0-or-later
+
+
+
 ScriptName ShipVendorFramework:SVF_Utility
 
 
@@ -123,7 +142,7 @@ EndFunction
 ; returns:
 ; - the shuffled array
 var[] Function ShuffleArray(var[] avArray, int aiSteps = -1, int aiIndexStart = 0) Global
-    string fnName = "ShuffleArrayFront" Const
+    string fnName = "ShuffleArray" Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
@@ -211,7 +230,11 @@ var[] Function AppendToArray(var[] avAppendTo, var[] avAppendFrom) Global
     _Log(fnName, "begin", LL_DEBUG)
 
     If avAppendTo.Length + avAppendFrom.Length > 128
-        _Log(fnName, "array length will exceed maximum", LL_ERROR)
+        _Log(fnName, "array length will exceed maximum", LL_WARNING)
+    EndIf
+
+    If avAppendTo.Length == 0
+        avAppendTo = new var[0]
     EndIf
 
     int i = 0
@@ -222,4 +245,121 @@ var[] Function AppendToArray(var[] avAppendTo, var[] avAppendFrom) Global
 
     _Log(fnName, "end", LL_DEBUG)
     Return avAppendTo
+EndFunction
+
+
+; wrapper function to check if two arrays are equal. supports arrays of LeveledSpaceshipBase and
+; ShipVendorListScript:ShipToSell structs, and can optionally consider order
+bool Function ArraysEqual(var[] avArray1, var[] avArray2, bool abConsiderOrder = false) Global
+    string fnName = "ArraysEqual" Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    int LL_DEBUG = 3 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    ; check for length differences. by definition, if the lengths are different, the arrays cannot be equal, regardless
+    ; of order or type
+    If avArray1.Length != avArray2.Length
+        _Log(fnName, "arrays differ in length: " + avArray1.Length + " != " + avArray2.Length, LL_DEBUG)
+        Return false
+    EndIf
+
+    ; farm out the actual checking of the arrays to the appropriate function based on the type of the arrays
+    If avArray1 is LeveledSpaceshipBase[] && avArray2 is LeveledSpaceshipBase[]
+        Return ArraysEqualLVLB(avArray1 as LeveledSpaceshipBase[], avArray2 as LeveledSpaceshipBase[], abConsiderOrder)
+    ElseIf avArray1 is ShipVendorListScript:ShipToSell[] && avArray2 is ShipVendorListScript:ShipToSell[]
+        Return ArraysEqualShipToSell(avArray1 as ShipVendorListScript:ShipToSell[], avArray2 as ShipVendorListScript:ShipToSell[], abConsiderOrder)
+    Else
+        _Log(fnName, "unsupported array type or arrays are not of the same type", LL_ERROR)
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return false
+EndFunction
+
+
+; check if two arrays of LeveledSpaceshipBase structs are equal
+bool Function ArraysEqualLVLB(LeveledSpaceshipBase[] avArray1, LeveledSpaceshipBase[] avArray2, bool abConsiderOrder) Global
+    string fnName = "ArraysEqualLVLB" Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    int LL_DEBUG = 3 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    int i = 0
+    If abConsiderOrder == true
+        While i < avArray1.Length
+            If avArray1[i] != avArray2[i]
+                _Log(fnName, "arrays differ at index " + i + ": " + avArray1[i] + " != " + avArray2[i], LL_DEBUG)
+                Return false
+            EndIf
+            i += 1
+        EndWhile
+    Else
+        int findResult = 0
+        While i < avArray1.Length
+            findResult = avArray2.Find(avArray1[i])
+            If findResult == -1
+                _Log(fnName, avArray1[i] + " of array 1 not found in array 2", LL_DEBUG)
+                Return false
+            Else
+                avArray2.Remove(findResult)
+            EndIf
+            i += 1
+        EndWhile
+    EndIf
+    _Log(fnName, "arrays are equal", LL_DEBUG)
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return true
+EndFunction
+
+
+; check if two arrays of ShipVendorListScript:ShipToSell structs are equal
+bool Function ArraysEqualShipToSell(ShipVendorListScript:ShipToSell[] avArray1, ShipVendorListScript:ShipToSell[] avArray2, bool abConsiderOrder) Global
+    string fnName = "ArraysEqualShipToSell" Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    int LL_DEBUG = 3 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    int i = 0
+    If abConsiderOrder == true
+        While i < avArray1.Length
+            If avArray1[i].leveledShip != avArray2[i].leveledShip || avArray1[i].minLevel != avArray2[i].minLevel
+                _Log(fnName, "arrays differ at index " + i + ": " + avArray1[i] + " != " + avArray2[i], LL_DEBUG)
+                Return false
+            EndIf
+            i += 1
+        EndWhile
+    Else
+        bool matchFound = false
+        int findResult = 0
+        While i < avArray1.Length
+            matchFound = false
+            findResult = avArray2.FindStruct("leveledShip", avArray1[i].leveledShip)
+            While findResult > -1 && matchFound == false
+                If avArray1[i].minLevel == avArray2[findResult].minLevel  ; check minLevel
+                    matchFound = true
+                    avArray2.Remove(findResult)
+                ElseIf findResult < avArray2.Length - 1  ; make sure the starting index is not the last index
+                    findResult = avArray2.FindStruct("leveledShip", avArray1[i].leveledShip, findResult + 1)
+                Else  ; if the starting index is the last index, break out of the loop
+                    findResult = -1
+                EndIf
+            EndWhile
+            If matchFound == false
+                _Log(fnName, avArray1[i] + " of array 1 not found in array 2", LL_DEBUG)
+                Return false
+            EndIf
+            i += 1
+        EndWhile
+    EndIf
+    _Log(fnName, "arrays are equal", LL_DEBUG)
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return true
 EndFunction
