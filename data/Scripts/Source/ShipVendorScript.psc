@@ -253,13 +253,14 @@ Function InitializeSVFEnhancements()
             _Log(fnName, "Ship Vendor Framework enhancements initialized")
 
             ; if the vendor itself is already initialized, force refresh the inventory
-            If initialized
+            If initialized == true
+                _Log(fnName, "vendor already initialized, deleting existing ships and resetting timestamp to trigger inventory refresh")
                 ; manually delete the ship references first
                 LockGuard shipsForSaleGuard
                     DeleteShips(shipsForSale)
                 EndLockGuard
-                _Log(fnName, "main vendor already initialized - forcing inventory refresh")
-                CheckForInventoryRefresh(true)
+                ; reset timestamp so that the inventory refresh happens immediately
+                lastInventoryRefreshTimestamp = 0.0
             EndIf
         EndIf
     EndIf
@@ -275,6 +276,7 @@ EndFunction
 Function Initialize(ObjectReference landingMarkerRef)
     string fnName = "Initialize" Const
     _Log(fnName, "begin (" + landingMarkerRef + ")", LL_DEBUG)
+
     If initialized == false
         ; Initialize arrays.
         ShipsToSellRandom = new ShipVendorListScript:ShipToSell[0]
@@ -289,6 +291,7 @@ Function Initialize(ObjectReference landingMarkerRef)
         EndLockGuard
         CheckForInventoryRefresh()
     EndIf
+
     _Log(fnName, "end (" + landingMarkerRef + ")", LL_DEBUG)
 EndFunction
 
@@ -414,7 +417,7 @@ Function CheckForInventoryRefresh(bool bForceRefresh = false)
 
         ; if the inventory has never been refreshed, or it's time to refresh, or it's being forced
         If bForceRefresh || lastInventoryRefreshTimestamp == 0 || (currentGameTime >= nextRefreshTime)
-            _Log(fnName, "time to refresh inventory (force=" + bForceRefresh + ")")
+            _Log(fnName, "refreshing inventory (force=" + bForceRefresh + ")")
 
             RefreshShipsToSellArrays()
             LockGuard shipsForSaleGuard
@@ -512,7 +515,7 @@ Function CheckForNewShips()
 EndFunction
 
 
-; check to see if the spaceship references are in the for sale list and that it matches the to sell list
+; check to see if the spaceship references are in the "for sale" list and that it matches the "to sell" list
 bool Function ForSaleMatchesToSell(SpaceshipReference[] akShipsForSaleList, var[] akShipsToSellList, ShipRefToSpaceshipLeveledListMapping[] akMappingList)
     string fnName = "ForSaleMatchesToSell" Const
     _Log(fnName, "begin", LL_DEBUG)
@@ -721,12 +724,12 @@ Function DeleteShips(SpaceshipReference[] akShipList)
     While i > -1
         SpaceshipReference theShip = akShipList[i]
         ; unlink the ship from the landing marker
-        _Log(fnName, "unlinking " + theShip + " from its landing marker")
+        _Log(fnName, "unlinking " + theShip + " from its landing marker", LL_DEBUG)
         theShip.SetLinkedRef(None, SpaceshipStoredLink)
         ; attempting to use Delete() on a ship reference throws an error in the papyrus log stating that spaceships
         ; cannot be deleted and the reference will be disabled instead. in the probably unfounded hope that this will
         ; eventually be fixed, make a note before the error is thrown.
-        _Log(fnName, "attempting to delete " + theShip)
+        _Log(fnName, "attempting to delete " + theShip, LL_DEBUG)
         debug.trace(self + ".DeleteShips(): Attempting to delete " + theShip + ". This may throw an error, please ignore it.")
         theShip.Delete()
         i += -1
@@ -780,7 +783,7 @@ Function RefreshInventoryList(ObjectReference createMarker, SpaceshipReference[]
             _Log(fnName, "clearing priority ships and ship ref to leveled ship mapping list")
             DeleteShips(shipListAlways)
             ShipsForSaleMappingAlways.Clear()
-            _Log(fnName, "creating " + vShipsToSellAlways.Length + " (max) priority ships")
+            _Log(fnName, "attempting to create " + vShipsToSellAlways.Length + " priority ships")
             CreateShipsForSale(vShipsToSellAlways, createMarker, shipListAlways, ShipsForSaleMappingAlways)
         EndIf
 
@@ -790,8 +793,7 @@ Function RefreshInventoryList(ObjectReference createMarker, SpaceshipReference[]
             DeleteShips(shipListRandom)
             ShipsForSaleMappingRandom.Clear()
             int randomShipsToCreateCount = ShipVendorFramework:SVF_Utility.MinInt(vShipsToSellRandom.Length, Utility.RandomInt(ShipsForSaleMin, ShipsForSaleMax))
-            _Log(fnName, "creating " + randomShipsToCreateCount + " (max) random ships")
-            _Log(fnName, "    random settings: min=" + ShipsForSaleMin + ", max=" + ShipsForSaleMax + ", possible=" + vShipsToSellRandom.Length)
+            _Log(fnName, "attempting to create " + randomShipsToCreateCount + " random ships (min=" + ShipsForSaleMin + ", max=" + ShipsForSaleMax + ", possible=" + vShipsToSellRandom.Length + ")")
             CreateShipsForSale(vShipsToSellRandom, createMarker, shipListRandom, ShipsForSaleMappingRandom, randomShipsToCreateCount, true)
         EndIf
 
@@ -800,7 +802,7 @@ Function RefreshInventoryList(ObjectReference createMarker, SpaceshipReference[]
             _Log(fnName, "clearing unique ships and ship ref to leveled ship mapping list")
             DeleteShips(shipListUnique)
             ShipsForSaleMappingUnique.Clear()
-            _Log(fnName, "creating " + vShipsToSellUnique.Length + " (max) unique ships")
+            _Log(fnName, "attempting to create " + vShipsToSellUnique.Length + " unique ships")
             CreateShipsForSale(vShipsToSellUnique, createMarker, shipListUnique, ShipsForSaleMappingUnique)
         EndIf
 
