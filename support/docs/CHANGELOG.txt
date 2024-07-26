@@ -6,11 +6,16 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.0.1
     - v1.0.0
 
 
 Changelog
 =========
+
+v1.0.1
+------
+- Updated documentation
 
 v1.0.0
 ------
