@@ -67,6 +67,11 @@
       "type": "shell",
       "command": "./support/common/scripts/build-archives.ps1",
       "args": ["-ModName", "Ship Vendor Framework", "-Starfield"]
+    },
+    {
+      "label": "Remove All Compiled Scripts",
+      "type": "shell",
+      "command": "Get-ChildItem ./data/Scripts/*.pex -Recurse -File | Remove-Item -Force"
     }
   ]
 }

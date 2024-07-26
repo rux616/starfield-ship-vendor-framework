@@ -46,3 +46,12 @@ $text_files.Add(@{
                 replace = "`${1}" + $version.ToString() + "`${2}"
             })
     })
+$text_files.Add(@{
+        # .\data\Scripts\Source\ShipVendorFramework\SVF_Control.psc
+        # string Property SVFVersion = "..." Auto Const Hidden
+        file               = ".\data\Scripts\Source\ShipVendorFramework\SVF_Control.psc"
+        search_and_replace = @(@{
+                search  = "(string Property SVFVersion = `").*(`" Auto Const Hidden)"
+                replace = "`${1}" + $version.ToString() + "`${2}"
+            })
+    })

@@ -1,0 +1,24 @@
+FormKey: 1EAA0D:Starfield.esm
+EditorID: LShip_Vendor_Generic_A_Combat_Raptor
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 20
+  Unused: 19903
+  Reference: 3A2E7D:Starfield.esm
+  Count: 1
+- Level: 30
+  Unused: 19903
+  Reference: 3A2E7B:Starfield.esm
+  Count: 1
+- Level: 46
+  Unused: 19903
+  Reference: 3A2E79:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

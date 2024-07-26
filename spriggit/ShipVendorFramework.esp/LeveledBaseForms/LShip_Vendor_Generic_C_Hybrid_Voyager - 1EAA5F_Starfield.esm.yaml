@@ -1,0 +1,24 @@
+FormKey: 1EAA5F:Starfield.esm
+EditorID: LShip_Vendor_Generic_C_Hybrid_Voyager
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 34
+  Unused: 19903
+  Reference: 38D662:Starfield.esm
+  Count: 1
+- Level: 54
+  Unused: 19903
+  Reference: 38D660:Starfield.esm
+  Count: 1
+- Level: 72
+  Unused: 19903
+  Reference: 38D65E:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

@@ -1,0 +1,24 @@
+FormKey: 1EAA17:Starfield.esm
+EditorID: LShip_Vendor_Generic_B_Cargo_Wagontrain
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 18
+  Unused: 19903
+  Reference: 3A2E47:Starfield.esm
+  Count: 1
+- Level: 32
+  Unused: 19903
+  Reference: 3A2E45:Starfield.esm
+  Count: 1
+- Level: 46
+  Unused: 19903
+  Reference: 3A2E43:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

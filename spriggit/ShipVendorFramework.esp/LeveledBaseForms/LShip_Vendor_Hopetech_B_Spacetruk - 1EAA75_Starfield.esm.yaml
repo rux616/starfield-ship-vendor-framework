@@ -1,0 +1,24 @@
+FormKey: 1EAA75:Starfield.esm
+EditorID: LShip_Vendor_Hopetech_B_Spacetruk
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 18
+  Unused: 19903
+  Reference: 0D05A1:Starfield.esm
+  Count: 1
+- Level: 36
+  Unused: 19903
+  Reference: 3E60E7:Starfield.esm
+  Count: 1
+- Level: 62
+  Unused: 19903
+  Reference: 02C249:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

@@ -1,0 +1,55 @@
+FormKey: 1EAA8B:Starfield.esm
+EditorID: LShip_Vendor_Taiyo_B_Falcon
+FormVersion: 559
+Version2: 5
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 1
+  Unused: 19903
+  Reference: 1A7F6A:Starfield.esm
+  Count: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Unknown1: 0x368589
+    Unknown2: 16610
+    Data:
+      MutagenObjectType: GetInCellConditionData
+      RunOnType: Reference
+      Reference: 000014:Starfield.esm
+      FirstParameter: 27A9A4:Starfield.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Unknown1: 0x368589
+    Unknown2: 16610
+    Data:
+      MutagenObjectType: GetInWorldspaceConditionData
+      RunOnType: Reference
+      Reference: 000014:Starfield.esm
+      FirstParameter: 27CF9E:Starfield.esm
+    ComparisonValue: 1
+- Level: 14
+  Unused: 19903
+  Reference: 1A7F6A:Starfield.esm
+  Count: 1
+- Level: 24
+  Unused: 19903
+  Reference: 3EC025:Starfield.esm
+  Count: 1
+- Level: 48
+  Unused: 19903
+  Reference: 3EC027:Starfield.esm
+  Count: 1
+- Level: 76
+  Unused: 19903
+  Reference: 3EC029:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

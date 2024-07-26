@@ -1,25 +1,50 @@
 {
   "cSpell.words": [
+    "Akila",
+    "Anderssen",
     "cognitions",
+    "Cydonia",
     "Deepseeker",
+    "Durand",
+    "Eklund",
+    "Eleos",
     "Elminster",
     "FOMOD",
+    "formlist",
+    "Freestar",
+    "giveth",
+    "GTEMP",
+    "Havershaw",
     "hexabit",
     "Hmmss",
+    "HOWTO",
+    "Inaya",
+    "Ints",
     "jmpz",
+    "LVLB",
     "Mandalorian",
     "Mantisorian",
     "nexusbbcode",
+    "Nikau",
     "Noggog",
+    "Paradiso",
+    "Rehman",
+    "respawns",
     "retextured",
+    "Scriptname",
     "SFSE",
     "Skope",
     "Spriggit",
     "Starborn",
-    "steamapps"
+    "Staryard",
+    "steamapps",
+    "Struct",
+    "structs",
+    "Taiyo"
   ],
   "markdownlint.config": {
     "MD034": false,
     "MD041": false
-  }
+  },
+  "papyrus.version": "starfield"
 }

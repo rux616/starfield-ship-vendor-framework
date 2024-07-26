@@ -1,0 +1,24 @@
+FormKey: 1EAA5B:Starfield.esm
+EditorID: LShip_Vendor_Generic_C_Hybrid_Highlander
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 34
+  Unused: 19903
+  Reference: 3A2DF9:Starfield.esm
+  Count: 1
+- Level: 54
+  Unused: 19903
+  Reference: 3A2DF7:Starfield.esm
+  Count: 1
+- Level: 72
+  Unused: 19903
+  Reference: 3A2DF5:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

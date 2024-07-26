@@ -1,0 +1,24 @@
+FormKey: 175DD3:Starfield.esm
+EditorID: LShip_Vendor_Generic_B_Combat_Naginata_CrimsonFleet_Banshee
+FormVersion: 559
+Version2: 2
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 18
+  Unused: 19903
+  Reference: 322BE9:Starfield.esm
+  Count: 1
+- Level: 38
+  Unused: 19903
+  Reference: 1B86F1:Starfield.esm
+  Count: 1
+- Level: 62
+  Unused: 19903
+  Reference: 2543AA:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

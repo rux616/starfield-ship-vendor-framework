@@ -1,0 +1,38 @@
+FormKey: 1EAA7F:Starfield.esm
+EditorID: LShip_Vendor_Stroud_A_Galileo
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 1
+  Unused: 19903
+  Reference: 2EF772:Starfield.esm
+  Count: 1
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Unknown1: 0x038589
+    Unknown2: 16610
+    Data:
+      MutagenObjectType: GetInWorldspaceConditionData
+      RunOnType: Reference
+      Reference: 000014:Starfield.esm
+      FirstParameter: 01251B:Starfield.esm
+    ComparisonValue: 1
+- Level: 14
+  Unused: 19903
+  Reference: 2EF772:Starfield.esm
+  Count: 1
+- Level: 26
+  Unused: 19903
+  Reference: 04239D:Starfield.esm
+  Count: 1
+- Level: 38
+  Unused: 19903
+  Reference: 04239F:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000
