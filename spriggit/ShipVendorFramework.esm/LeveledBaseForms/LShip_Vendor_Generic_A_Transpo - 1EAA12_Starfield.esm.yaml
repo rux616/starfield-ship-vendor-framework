@@ -1,0 +1,24 @@
+FormKey: 1EAA12:Starfield.esm
+EditorID: LShip_Vendor_Generic_A_Transpo
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 10
+  Unused: 19903
+  Reference: 3A2E5F:Starfield.esm
+  Count: 1
+- Level: 28
+  Unused: 19903
+  Reference: 3A2E5D:Starfield.esm
+  Count: 1
+- Level: 46
+  Unused: 19903
+  Reference: 3A2E5B:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

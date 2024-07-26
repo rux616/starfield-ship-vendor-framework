@@ -1,0 +1,24 @@
+FormKey: 175DD5:Starfield.esm
+EditorID: LShip_Vendor_Taiyo_B_Hammerhead_CrimsonFleet_Reaper
+FormVersion: 559
+Version2: 2
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 16
+  Unused: 19903
+  Reference: 322BEB:Starfield.esm
+  Count: 1
+- Level: 32
+  Unused: 19903
+  Reference: 388945:Starfield.esm
+  Count: 1
+- Level: 56
+  Unused: 19903
+  Reference: 388947:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

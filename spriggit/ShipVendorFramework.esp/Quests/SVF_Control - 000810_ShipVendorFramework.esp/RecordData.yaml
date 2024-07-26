@@ -1,0 +1,25 @@
+FormKey: 000810:ShipVendorFramework.esp
+EditorID: SVF_Control
+FormVersion: 559
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ShipVendorFramework:SVF_Control
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: UniverseVariant
+      Object: 1D5AC7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerUnityTimesEntered
+      Object: 219529:Starfield.esm
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  Script:
+    Name: ''
+Data:
+  Flags:
+  - StartGameEnabled
+  - StartsEnabled
+  Unused: 0x000000
+UnusedConditions: []
+Aliases: []

@@ -1,0 +1,20 @@
+FormKey: 1EAA1D:Starfield.esm
+EditorID: LShip_Vendor_Generic_B_Personnel_Slipstream
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 16
+  Unused: 19903
+  Reference: 3A2E23:Starfield.esm
+  Count: 1
+- Level: 36
+  Unused: 19903
+  Reference: 3A2E21:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

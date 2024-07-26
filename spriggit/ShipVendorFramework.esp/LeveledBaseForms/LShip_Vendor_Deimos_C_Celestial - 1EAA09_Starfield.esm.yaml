@@ -1,0 +1,20 @@
+FormKey: 1EAA09:Starfield.esm
+EditorID: LShip_Vendor_Deimos_C_Celestial
+FormVersion: 559
+Version2: 4
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 36
+  Unused: 19903
+  Reference: 0D5580:Starfield.esm
+  Count: 1
+- Level: 60
+  Unused: 19903
+  Reference: 02C224:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000

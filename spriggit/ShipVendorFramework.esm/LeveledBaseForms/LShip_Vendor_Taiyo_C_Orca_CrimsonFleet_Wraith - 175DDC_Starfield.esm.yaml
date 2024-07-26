@@ -1,0 +1,24 @@
+FormKey: 175DDC:Starfield.esm
+EditorID: LShip_Vendor_Taiyo_C_Orca_CrimsonFleet_Wraith
+FormVersion: 559
+Version2: 3
+ODTY: 0
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 22
+  Unused: 19903
+  Reference: 322BEF:Starfield.esm
+  Count: 1
+- Level: 46
+  Unused: 19903
+  Reference: 388951:Starfield.esm
+  Count: 1
+- Level: 64
+  Unused: 19903
+  Reference: 388953:Starfield.esm
+  Count: 1
+Model:
+  FLLD: 0x01000000
