@@ -1,0 +1,76 @@
+Ship Vendor Framework How To
+============================
+
+Table Of Contents
+-----------------
+- Ship Vendor Framework How To
+    - Table Of Contents
+- Steps
+    - Step 1: Load the Starfield Creation Kit
+    - Step 2: Create Spaceship
+    - Step 3: Create Leveled Base Form
+    - Step 4: Create Form List
+- NPC Ship Lists
+
+
+Steps
+=====
+
+Step 1: Load the Starfield Creation Kit
+---------------------------------------
+Load up the Starfield Creation Kit, making sure that you have ShipVendorFramework.esm active in your mod manager, then double click to make sure that ShipVendorFramework.esm has an "X" next to it.
+
+Click the "OK" button to load up the plugins.
+
+
+Step 2: Create Spaceship
+------------------------
+Go to "Generic Forms" => "Base Forms" => "Spaceship" in the Object Window, right click, and select "New". From there, create your spaceship. Use the existing spaceships as references if you need to.
+
+Note: Unique spaceships generally go in the "Aspirational" category under "Spaceship".
+
+
+Step 3: Create Leveled Base Form
+--------------------------------
+Go to "Generic Forms" => "Leveled Base Forms" in the Object Window, right click, and select "New".
+
+From there, add your ship to the lower left pane. Note that you can also add conditions to each entry, just like a normal leveled list. For example, you can require that the player be level 50 or higher before the ship will show.
+
+
+Step 4: Create Form List
+------------------------
+Before getting into the details of this step, there's some important information you need to know about the way that ship vendors work. A ship vendor sells a number of ships composed from up to 3 different lists: an "always" list, a "random" list, and a "unique" list, in that order. So when generating ships for sale, the script attempts to generate all of the "always" ships, a random number of the "random" ships, and all of the "unique" ships. You should consider this when determining which form list you wish to add your ship to. Please see the NPC Ship Lists section for a full breakdown as to what vendor uses which lists.
+
+Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
+
+Add the new Leveled Base Form you just created to the list.
+
+Set the "Add To List" target of your form list. All of the lists added by Ship Vendor Framework have a prefix of "SVF_ShipVendorList_", and from there are broken down into things like location, manufacturer, faction, etc.
+
+
+NPC Ship Lists
+==============
+Note: All form list editor IDs start with "SVF_ShipVendorList_". This prefix has been removed from the lists as presented in the following table for sake of brevity.
+
+| NPC                                             | Always List                    | Random List                      | Unique List                    |
+|-------------------------------------------------|--------------------------------|----------------------------------|--------------------------------|
+| Havershaw (Stroud-Eklund Staryard)              | Location_StroudStaryard_Always | Manufacturer_Stroud              | Location_StroudStaryard_Unique |
+| Inaya Rehman (HopeTech HQ)                      | Location_HopeTechHQ_Always     | Manufacturer_HopeTech            | Location_HopeTechHQ_Unique     |
+| Jasmine Durand (The Key)                        | Location_KeyThe_Always         | Faction_CrimsonFleet             | Location_KeyThe_Unique         |
+| Lon Anderssen (Red Mile)                        | Location_RedMile_Always        | Faction_Unaffiliated_BlackMarket | Location_RedMile_Unique        |
+| Nikau Henderson (Deimos Staryard)               | Location_DeimosStaryard_Always | Manufacturer_Deimos              | Location_DeimosStaryard_Unique |
+| Player Outpost Shipbuilder                      | Location_PlayerOutpost_Always  | Collection_Generic               | Location_PlayerOutpost_Unique  |
+| Ship Services Technician (Akila City)           | Location_AkilaCity_Always      | Faction_FreestarCollective       | Location_AkilaCity_Unique      |
+| Ship Services Technician (Cydonia)              | Location_Cydonia_Always        | Faction_UnitedColonies_Limited   | Location_Cydonia_Unique        |
+| Ship Services Technician (Eleos Retreat)        | Location_EleosRetreat_Always   | Faction_Unaffiliated_Limited     | Location_EleosRetreat_Unique   |
+| Ship Services Technician (Gagarin)              | Location_Gagarin_Always        | Faction_UnitedColonies_Limited   | Location_Gagarin_Unique        |
+| Ship Services Technician (HopeTown)             | Location_HopeTown_Always       | Faction_FreestarCollective       | Location_HopeTown_Unique       |
+| Ship Services Technician (Neon)                 | Location_Neon_Always           | Faction_Unaffiliated_Full        | Location_Neon_Unique           |
+| Ship Services Technician (New Atlantis)         | Location_NewAtlantis_Always    | Faction_UnitedColonies_Full      | Location_NewAtlantis_Unique    |
+| Ship Services Technician (New Homestead)        | Location_NewHomestead_Always   | Faction_UnitedColonies_Limited   | Location_NewHomestead_Unique   |
+| Ship Services Technician (Paradiso)             | Location_Paradiso_Always       | Faction_Unaffiliated_Full        | Location_Paradiso_Unique       |
+| Ship Services Technician (Red Devils HQ)        | Location_RedDevilsHQ_Always    | Faction_UnitedColonies_Limited   | Location_RedDevilsHQ_Unique    |
+| Ship Services Technician (The Clinic)           | Location_ClinicThe_Always      | Faction_FreestarCollective       | Location_ClinicThe_Unique      |
+| Ship Services Technician (The Den)              | Location_DenThe_Always         | Faction_UnitedColonies_Limited   | Location_DenThe_Unique         |
+| Stroud Kiosk Vendor (Stroud-Eklund Store, Neon) | Location_StroudStore_Always    | Manufacturer_Stroud              | Location_StroudStore_Unique    |
+| Veronica Young (Taiyo Store, Neon)              | Location_TaiyoStore_Always     | Manufacturer_Taiyo               | Location_TaiyoStore_Unique     |

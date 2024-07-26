@@ -19,7 +19,7 @@
 # define the version of the project
 
 # version info
-$version_major = 0
+$version_major = 1
 $version_minor = 0
 $version_patch = 0
 
@@ -28,8 +28,8 @@ $version_prerelease = 0
 $is_pre = $false
 $is_rc = $false
 $is_beta = $false
-$is_alpha = $true
+$is_alpha = $false
 
 # build info
-$build_number = 0
+$build_number = 13
 $include_build_in_version = $false
