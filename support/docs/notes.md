@@ -53,6 +53,30 @@ List of vanilla ship vendors:
 | Staryard_NikauHenderson     | `NPC_:0027A992` | Mars, Orbit, Deimos Staryard                 |
 | Staryard_VeronicaYoung      | `NPC_:0027A98C` | Neon, Ryujin Enterprises, Taiyo Astroneering |
 
+NPC Form List
+| NPC                                             | Always List                    | Random List                      | Unique List                    |
+|-------------------------------------------------|--------------------------------|----------------------------------|--------------------------------|
+| Havershaw (Stroud-Eklund Staryard)              | Location_StroudStaryard_Always | Manufacturer_Stroud              | Location_StroudStaryard_Unique |
+| Inaya Rehman (HopeTech HQ)                      | Location_HopeTechHQ_Always     | Manufacturer_HopeTech            | Location_HopeTechHQ_Unique     |
+| Jasmine Durand (The Key)                        | Location_KeyThe_Always         | Faction_CrimsonFleet             | Location_KeyThe_Unique         |
+| Lon Anderssen (Red Mile)                        | Location_RedMile_Always        | Faction_Unaffiliated_BlackMarket | Location_RedMile_Unique        |
+| Nikau Henderson (Deimos Staryard)               | Location_DeimosStaryard_Always | Manufacturer_Deimos              | Location_DeimosStaryard_Unique |
+| Player Outpost Shipbuilder                      | Location_PlayerOutpost_Always  | Collection_Generic               | Location_PlayerOutpost_Unique  |
+| Ship Services Technician (Akila City)           | Location_AkilaCity_Always      | Faction_FreestarCollective       | Location_AkilaCity_Unique      |
+| Ship Services Technician (Cydonia)              | Location_Cydonia_Always        | Faction_UnitedColonies_Limited   | Location_Cydonia_Unique        |
+| Ship Services Technician (Eleos Retreat)        | Location_EleosRetreat_Always   | Faction_Unaffiliated_Limited     | Location_EleosRetreat_Unique   |
+| Ship Services Technician (Gagarin)              | Location_Gagarin_Always        | Faction_UnitedColonies_Limited   | Location_Gagarin_Unique        |
+| Ship Services Technician (HopeTown)             | Location_HopeTown_Always       | Faction_FreestarCollective       | Location_HopeTown_Unique       |
+| Ship Services Technician (Neon)                 | Location_Neon_Always           | Faction_Unaffiliated_Full        | Location_Neon_Unique           |
+| Ship Services Technician (New Atlantis)         | Location_NewAtlantis_Always    | Faction_UnitedColonies_Full      | Location_NewAtlantis_Unique    |
+| Ship Services Technician (New Homestead)        | Location_NewHomestead_Always   | Faction_UnitedColonies_Limited   | Location_NewHomestead_Unique   |
+| Ship Services Technician (Paradiso)             | Location_Paradiso_Always       | Faction_Unaffiliated_Full        | Location_Paradiso_Unique       |
+| Ship Services Technician (Red Devils HQ)        | Location_RedDevilsHQ_Always    | Faction_UnitedColonies_Limited   | Location_RedDevilsHQ_Unique    |
+| Ship Services Technician (The Clinic)           | Location_ClinicThe_Always      | Faction_FreestarCollective       | Location_ClinicThe_Unique      |
+| Ship Services Technician (The Den)              | Location_DenThe_Always         | Faction_UnitedColonies_Limited   | Location_DenThe_Unique         |
+| Stroud Kiosk Vendor (Stroud-Eklund Store, Neon) | Location_StroudStore_Always    | Manufacturer_Stroud              | Location_StroudStore_Unique    |
+| Veronica Young (Taiyo Store, Neon)              | Location_TaiyoStore_Always     | Manufacturer_Taiyo               | Location_TaiyoStore_Unique     |
+
 
 ## starting script states
 ship services actors can have a number of starting states when SVF is installed, consisting of "origin", "state", and "override"
