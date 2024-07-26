@@ -2,3 +2,5 @@
 meta.ini
 # exclude log files
 *.log
+# exclude papyrus assembly files
+data/scripts/**/*.pas
