@@ -4,3 +4,5 @@ meta.ini
 *.log
 # exclude papyrus assembly files
 data/scripts/**/*.pas
+# ignore GTEMP.pas file in the .vscode directory
+.vscode/GTEMP.pas
