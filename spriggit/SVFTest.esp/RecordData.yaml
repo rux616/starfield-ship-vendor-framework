@@ -10,7 +10,7 @@ ModHeader:
     Supplemental test data for the Ship Vendor Framework mod.
 
 
-    Version: 1.0.0
+    Version: 1.0.1
   MasterReferences:
   - Master: Starfield.esm
   BNAM: 0x4D61696E00
