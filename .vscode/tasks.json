@@ -55,7 +55,12 @@
       "label": "Render Markdown to Plaintext",
       "type": "shell",
       "command": "./support/common/scripts/markdown-to-plaintext.ps1",
-      "args": ["./support/docs/README.md", "./support/docs/CHANGELOG.md", "./support/docs/HOWTO.md"]
+      "args": [
+        "./support/docs/CHANGELOG.md",
+        "./support/docs/HOWTO.md",
+        "./support/docs/README.md",
+        "./support/docs/README.patches.md"
+      ]
     },
     {
       "label": "Serialize plugins",
