@@ -25,7 +25,7 @@
         "Serialize plugins",
         "Compile Scripts (Starvival Patch)",
         "Compile Scripts (Main)",
-        "Create Archives (Main 7z)",
+        "Create Archives",
         "Clean Up BA2 Archives"
       ]
     },
@@ -110,7 +110,7 @@
       "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-Skip7z", "-SkipBA2Cleanup"]
     },
     {
-      "label": "Create Archives (Main 7z)",
+      "label": "Create Archives",
       "type": "shell",
       "command": "./support/common/scripts/build-archives.ps1",
       "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-SkipBA2", "-SkipBA2Cleanup"],
