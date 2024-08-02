@@ -2,7 +2,7 @@ Ship Vendor Framework
 =====================
 by rux616
 
-Version: 1.0.1
+Version: 1.1.0
 
 Table Of Contents
 -----------------
@@ -15,6 +15,7 @@ Table Of Contents
     - Known Issues
     - NPC Ship Lists
 - Installation
+    - Load Order
     - Requirements
     - Recommendations
     - Upgrading
@@ -37,6 +38,8 @@ The system that Bethesda designed for selling ships is interesting, but it lacks
 
 That's where this mod comes in. I've designed a system such that mod authors can easily add ships for sale to the various ship vendors without either conflicting with other mods that do the same or requiring the set up of a script. It will also refresh the vendor's list of ships if a change is detected in the vendor's "always" or "unique" lists. (A ship vendor's inventory is composed of three lists: always a.k.a. priority, random, and unique.)
 
+As with Ship Builder Categories, this mod is intended to be a community resource and so will always have manual donations disabled and remain opted out of the Nexus Donation Point system.
+
 NOTE: The "random" ships are only regenerated every 7 days (by default).
 
 How To (Lite)
@@ -53,6 +56,11 @@ Compatibility
 -------------
 This mod alters NPCs that offer ship services, as well as some of the leveled lists for spaceships that vendors use. Any other mods that also alter those objects may conflict without patches.
 
+Additionally, this mod alters 2 vanilla scripts, "ShipVendorScript" and "OutpostShipbuilderMenuActivator". As a result, any other mod that alters either of (or both) those scripts by definition will conflict. This also means that when the game is updated, script changes by Bethesda will not be present in this mod until it is updated.
+
+Mods that are known to conflict:
+- [Creation] Iconic Ships (nighthawk.esm) by Ship Technician: Regardless of load order, Iconic Ships' changes to the ships sold at the New Atlantis and Akila City Ship Services Technicians won't be in effect. If SVF is below Iconic Ships in the load order, Iconic Ships' changes to the Player Outpost Shipbuilder vendor will not take effect. If Iconic Ships is below SVF in the load order, SVF's changes to to the Player Outpost Shipbuilder vendor will not take effect.
+
 Known Issues
 ------------
 None
@@ -66,6 +74,16 @@ Note: All form list editor IDs start with "SVF_ShipVendorList_". This prefix has
 
 Installation
 ============
+
+Load Order
+----------
+For best results, put this mod last in your load order, followed by other mods that have it as a master.
+
+For patches, the load order should be as follows:
+- ShipVendorFramework.esm
+- (SVF Capability Patches, if any)
+- (SVF Generic Patches, if any)
+- (SVF Compatibility Patches, if any)
 
 Requirements
 ------------
@@ -94,7 +112,7 @@ Download and install the archive with either Mod Organizer 2 (https://github.com
 
 Manual
 ------
-Unsupported.
+Unsupported. I want nothing to do with your hand-crafted artisanal potential dumpster fire of an install.
 
 Archive Invalidation
 --------------------
@@ -117,6 +135,7 @@ ElminsterAU: For xEdit and BSArch
 Mod Organizer 2 team: For Mod Organizer 2
 Nexus Mods: For mod hosting and for the Vortex Mod Manager
 Noggog: For Spriggit
+Scrivener07: For some advice and clarification on papyrus matters
 
 
 Contact

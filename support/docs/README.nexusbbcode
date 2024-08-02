@@ -1,7 +1,7 @@
 [size=5][b]Ship Vendor Framework[/b][/size]
 by rux616
 
-Version: 1.0.1
+Version: 1.1.0
 
 [size=4][b][u]Table Of Contents:[/u][/b][/size]
 - Ship Vendor Framework
@@ -13,6 +13,7 @@ Version: 1.0.1
     - Known Issues
     - NPC Ship Lists
 - Installation
+    - Load Order
     - Requirements
     - Recommendations
     - Upgrading
@@ -33,6 +34,8 @@ The system that Bethesda designed for selling ships is interesting, but it lacks
 
 That's where this mod comes in. I've designed a system such that mod authors can easily add ships for sale to the various ship vendors without either conflicting with other mods that do the same or requiring the set up of a script. It will also refresh the vendor's list of ships if a change is detected in the vendor's "always" or "unique" lists. (A ship vendor's inventory is composed of three lists: always a.k.a. priority, random, and unique.)
 
+As with Ship Builder Categories, this mod is intended to be a community resource and so will always have manual donations disabled and remain opted out of the Nexus Donation Point system.
+
 NOTE: The "random" ships are only regenerated every 7 days (by default).
 
 [size=4][b][u]How To (Lite):[/u][/b][/size]
@@ -47,6 +50,11 @@ More detailed instructions are included in the HOWTO.txt document, and in the [u
 [size=4][b][u]Compatibility:[/u][/b][/size]
 This mod alters NPCs that offer ship services, as well as some of the leveled lists for spaceships that vendors use. Any other mods that also alter those objects may conflict without patches.
 
+Additionally, this mod alters 2 vanilla scripts, "ShipVendorScript" and "OutpostShipbuilderMenuActivator". As a result, any other mod that alters either of (or both) those scripts by definition will conflict. This also means that when the game is updated, script changes by Bethesda will not be present in this mod until it is updated.
+
+Mods that are known to conflict:
+- [Creation] Iconic Ships (nighthawk.esm) by Ship Technician: Regardless of load order, Iconic Ships' changes to the ships sold at the New Atlantis and Akila City Ship Services Technicians won't be in effect. If SVF is below Iconic Ships in the load order, Iconic Ships' changes to the Player Outpost Shipbuilder vendor will not take effect. If Iconic Ships is below SVF in the load order, SVF's changes to to the Player Outpost Shipbuilder vendor will not take effect.
+
 [size=4][b][u]Known Issues:[/u][/b][/size]
 None
 
@@ -57,6 +65,15 @@ Note: All form list editor IDs start with "SVF_ShipVendorList_". This prefix has
 
 
 [size=5][b]Installation[/b][/size]
+
+[size=4][b][u]Load Order:[/u][/b][/size]
+For best results, put this mod last in your load order, followed by other mods that have it as a master.
+
+For patches, the load order should be as follows:
+- ShipVendorFramework.esm
+- (SVF Capability Patches, if any)
+- (SVF Generic Patches, if any)
+- (SVF Compatibility Patches, if any)
 
 [size=4][b][u]Requirements:[/u][/b][/size]
 None
@@ -80,7 +97,7 @@ When upgrading major versions (for example v1.whatever to v2.whatever), you need
 Download and install the archive with either [url=https://github.com/ModOrganizer2/modorganizer/releases]Mod Organizer 2[/url] (version 2.5.0 or later) or [url=https://www.nexusmods.com/site/mods/1]Vortex[/url]. I personally recommend Mod Organizer 2 (with the optional [url=https://kezyma.github.io/?p=rootbuilder]Root Builder[/url] plugin to use with SFSE or any other mod that requires files be put directly in the game's installation folder).
 
 [size=4][b][u]Manual:[/u][/b][/size]
-Unsupported.
+Unsupported. I want nothing to do with your hand-crafted artisanal potential dumpster fire of an install.
 
 [size=4][b][u]Archive Invalidation:[/u][/b][/size]
 Make sure your [font=Courier New][color=#b2b2b2]StarfieldCustom.ini[/color][/font] file in the "Documents\My Games\Starfield" folder (or your profile folder if using a mod manager and profiles) contains the following:
@@ -100,6 +117,7 @@ ElminsterAU: For xEdit and BSArch
 Mod Organizer 2 team: For Mod Organizer 2
 Nexus Mods: For mod hosting and for the Vortex Mod Manager
 Noggog: For Spriggit
+Scrivener07: For some advice and clarification on papyrus matters
 
 
 [size=5][b]Contact[/b][/size]
