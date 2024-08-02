@@ -1,0 +1,9 @@
+FormKey: 000810:shipvendorframework.esm
+EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_DeimosStaryard_Always
+FormVersion: 559
+Items:
+- 000B13:L-K_Ships.esm
+- 000B10:L-K_Ships.esm
+- 000A91:L-K_Ships.esm
+- 000B0D:L-K_Ships.esm
+ANAM: 000803:SVF-LKShips-Patch.esp
