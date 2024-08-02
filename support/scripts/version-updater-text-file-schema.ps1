@@ -38,6 +38,15 @@ $text_files.Add(@{
             })
     })
 $text_files.Add(@{
+        # .\support\docs\README.creations.md
+        # Version: ...
+        file               = ".\support\docs\README.creations.md"
+        search_and_replace = @(@{
+                search  = "(Version: ).*"
+                replace = "`${1}" + $version.ToString()
+            })
+    })
+$text_files.Add(@{
         # .\data\fomod\info.xml
         # <Version>...</Version>
         file               = ".\data\fomod\info.xml"

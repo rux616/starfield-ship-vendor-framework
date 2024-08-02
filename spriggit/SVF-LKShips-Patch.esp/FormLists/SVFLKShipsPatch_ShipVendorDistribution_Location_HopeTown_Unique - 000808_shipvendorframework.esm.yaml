@@ -1,0 +1,6 @@
+FormKey: 000808:shipvendorframework.esm
+EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_HopeTown_Unique
+FormVersion: 559
+Items:
+- 000B10:L-K_Ships.esm
+ANAM: 00081E:SVF-LKShips-Patch.esp

@@ -23,15 +23,22 @@
         "Render Markdown to Nexus BBCode",
         "Render Markdown to Plaintext",
         "Serialize plugins",
-        "Compile Scripts",
-        "Create Archives"
+        "Compile Scripts (Starvival Patch)",
+        "Compile Scripts (Main)",
+        "Create Archives",
+        "Clean Up BA2 Archives"
       ]
     },
     {
       "label": "Update Versions",
       "type": "shell",
       "command": "./support/common/scripts/version-updater.ps1",
-      "args": ["-SkipBackup"]
+      "args": [
+        "-SkipBackup",
+        "-PluginFiles",
+        "./data/ShipVendorFramework.esp,./data/ShipVendorFramework.esm",
+        "-SkipBuildIncrement"
+      ]
     },
     {
       "label": "Sanitize FOMOD XML Files",
@@ -48,7 +55,12 @@
       "label": "Render Markdown to Plaintext",
       "type": "shell",
       "command": "./support/common/scripts/markdown-to-plaintext.ps1",
-      "args": ["./support/docs/README.md", "./support/docs/CHANGELOG.md", "./support/docs/HOWTO.md"]
+      "args": [
+        "./support/docs/CHANGELOG.md",
+        "./support/docs/HOWTO.md",
+        "./support/docs/README.md",
+        "./support/docs/README.patches.md"
+      ]
     },
     {
       "label": "Serialize plugins",
@@ -57,16 +69,68 @@
       "args": ["-Starfield", "-YAML"]
     },
     {
-      "label": "Compile Scripts",
+      "label": "Compile Scripts (Starvival Patch)",
       "type": "shell",
-      "command": ".\\support\\papyrus-imports\\vanilla\\bin\\Papyrus Compiler\\PapyrusCompiler.exe",
-      "args": ["./ShipVendorFramework.ppj"]
+      "command": "./support/papyrus-imports/vanilla/bin/Papyrus Compiler/PapyrusCompiler.exe",
+      "args": ["./support/scripts/SVFStarvivalPatch.ppj"]
+    },
+    {
+      "label": "Compile Scripts (Main)",
+      "type": "shell",
+      "command": "./support/papyrus-imports/vanilla/bin/Papyrus Compiler/PapyrusCompiler.exe",
+      "args": ["./support/scripts/ShipVendorFramework.ppj"]
+    },
+    {
+      "label": "Create Archives (Starvival Patch 1 BA2)",
+      "type": "shell",
+      "command": "./support/common/scripts/build-archives.ps1",
+      "args": [
+        "-DataDir",
+        "./data-starvival-patch",
+        "-PluginName",
+        "SVF-StarvivalSpaceshipSystems-Patch",
+        "-Starfield",
+        "-Skip7z",
+        "-SkipBA2Cleanup"
+      ]
+    },
+    {
+      "label": "Create Archives (Starvival Patch 2 BA2)",
+      "type": "shell",
+      "command": "./support/common/scripts/build-archives.ps1",
+      "args": [
+        "-DataDir",
+        "./data-starvival-patch",
+        "-PluginName",
+        "SVF-StarvivalSpaceshipSystems-AllShipModulesUnlocked-OutpostOnly-Patch",
+        "-Starfield",
+        "-Skip7z",
+        "-SkipBA2Cleanup"
+      ]
+    },
+    {
+      "label": "Create Archives (Main BA2)",
+      "type": "shell",
+      "command": "./support/common/scripts/build-archives.ps1",
+      "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-Skip7z", "-SkipBA2Cleanup"]
     },
     {
       "label": "Create Archives",
       "type": "shell",
       "command": "./support/common/scripts/build-archives.ps1",
-      "args": ["-ModName", "Ship Vendor Framework", "-Starfield"]
+      "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-SkipBA2", "-SkipBA2Cleanup"],
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Create Archives (Starvival Patch 1 BA2)",
+        "Create Archives (Starvival Patch 2 BA2)",
+        "Create Archives (Main BA2)"
+      ]
+    },
+    {
+      "label": "Clean Up BA2 Archives",
+      "type": "shell",
+      "command": "Remove-Item",
+      "args": ["-Path", "./data/*.ba2", "-Force"]
     },
     {
       "label": "Remove All Compiled Scripts",

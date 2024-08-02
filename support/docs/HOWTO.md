@@ -42,11 +42,11 @@ Step 3: Create Leveled Base Form
 --------------------------------
 Go to "Generic Forms" => "Leveled Base Forms" in the Object Window, right click, and select "New".
 
-![Create Leveled Base Form 1](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942614-1863277166.jpeg)
+![Create Leveled Base Form 1](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1722316034-46029659.jpeg)
 
 From there, add your ship to the lower left pane. Note that you can also add conditions to each entry, just like a normal leveled list. For example, you can require that the player be level 50 or higher before the ship will show.
 
-![Create Leveled Base Form 2](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942654-663547038.jpeg)
+![Create Leveled Base Form 2](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1722316054-838272.jpeg)
 
 ([TOC](#table-of-contents))
 

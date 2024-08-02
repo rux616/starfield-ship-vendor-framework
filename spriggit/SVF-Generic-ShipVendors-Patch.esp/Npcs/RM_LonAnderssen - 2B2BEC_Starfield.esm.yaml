@@ -1,0 +1,278 @@
+FormKey: 2B2BEC:Starfield.esm
+EditorID: RM_LonAnderssen
+FormVersion: 559
+Version2: 2
+VirtualMachineAdapter:
+  Scripts:
+  - Name: sq_shipservicesactorscript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListUniqueDataset
+      Object: 00082A:SVF-Generic-ShipVendors-Patch.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipsToSellListAlwaysDataset
+      Object: 003BB7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListAlwaysDataset
+      Object: 000829:SVF-Generic-ShipVendors-Patch.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LinkShipLandingMarker01
+      Object: 2CFDEB:Starfield.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SVFUseNewDatasets
+      Data: True
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipsToSellListRandomDataset
+      Object: 086ECD:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListRandomDataset
+      Object: 000836:SVF-Generic-ShipVendors-Patch.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipVendorLocation
+      Object: 209AC7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerShips
+      Object: 0174A2:Starfield.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SQ_PlayerShip
+      Object: 0174A2:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpaceshipStoredLink
+      Object: 1DF5BF:Starfield.esm
+ObjectBounds:
+  First: -0.591797, -0.3623047, 0
+  Second: 0.59179676, 1.0341797, 1.2373047
+ODTY: 0
+Flags:
+- Essential
+- Unique
+Level:
+  MutagenObjectType: NpcLevel
+  Level: 1
+DispositionBase: 35
+UseTemplateActors: 19482
+Factions:
+- Faction: 003BB6:Starfield.esm
+- Faction: 2A0EA2:Starfield.esm
+- Faction: 2B209D:Starfield.esm
+- Faction: 2B2BF5:Starfield.esm
+Voice: 2B2BF2:Starfield.esm
+DefaultTemplate: 2B2120:Starfield.esm
+TemplateActors:
+  StatsTemplate: 2B2120:Starfield.esm
+  SpellListTemplate: 2B2120:Starfield.esm
+  AiDataTemplate: 2B2120:Starfield.esm
+  DefPackListTemplate: 2B2120:Starfield.esm
+  AttackDataTemplate: 2B2120:Starfield.esm
+  Unknown2: 2B2120:Starfield.esm
+Race: 00347D:Starfield.esm
+CombatOverridePackageList: 0102ED:Starfield.esm
+Properties:
+- ActorValue: 0002C2:Starfield.esm
+- ActorValue: 0002C3:Starfield.esm
+  Value: 5
+- ActorValue: 0002C4:Starfield.esm
+- ActorValue: 0002C5:Starfield.esm
+  Value: 5
+- ActorValue: 0002C6:Starfield.esm
+- ActorValue: 0002C7:Starfield.esm
+  Value: 5
+- ActorValue: 0002C8:Starfield.esm
+- ActorValue: 0002D4:Starfield.esm
+  Value: 50
+- ActorValue: 0002D5:Starfield.esm
+  Value: 50
+- ActorValue: 0002DA:Starfield.esm
+  Value: 100
+- ActorValue: 0002CC:Starfield.esm
+  Value: 15
+- ActorValue: 0002CD:Starfield.esm
+  Value: 45
+Items:
+- Item:
+    Item: 2B1A22:Starfield.esm
+    Count: 1
+EnergyLevel: 50
+Responsibility: NoCrime
+Assistance: HelpsAllies
+Packages:
+- 13E5C5:Starfield.esm
+- 003641:Starfield.esm
+Keywords:
+- 10C4AB:Starfield.esm
+- 1453B2:Starfield.esm
+- 1453B3:Starfield.esm
+- 1453A5:Starfield.esm
+- 14539B:Starfield.esm
+- 14539D:Starfield.esm
+- 14539C:Starfield.esm
+- 14539E:Starfield.esm
+- 1453AF:Starfield.esm
+- 1453B1:Starfield.esm
+- 1453B0:Starfield.esm
+- 1453A7:Starfield.esm
+- 145395:Starfield.esm
+- 145394:Starfield.esm
+- 145393:Starfield.esm
+- 1453AB:Starfield.esm
+- 1453AD:Starfield.esm
+- 1453A0:Starfield.esm
+- 143C9E:Starfield.esm
+- 1453B5:Starfield.esm
+- 1453B6:Starfield.esm
+- 1453A3:Starfield.esm
+- 14538F:Starfield.esm
+- 145391:Starfield.esm
+- 1453A8:Starfield.esm
+- 145390:Starfield.esm
+- 1453A9:Starfield.esm
+- 1453AA:Starfield.esm
+- 1453AE:Starfield.esm
+- 1453B4:Starfield.esm
+- 0271CE:Starfield.esm
+- 1453BE:Starfield.esm
+- 0271C1:Starfield.esm
+- 1453BD:Starfield.esm
+- 1453BC:Starfield.esm
+- 0271D0:Starfield.esm
+- 1453C4:Starfield.esm
+- 0271C5:Starfield.esm
+- 1453C3:Starfield.esm
+- 1453C2:Starfield.esm
+- 0271D1:Starfield.esm
+- 1453C1:Starfield.esm
+- 1453C0:Starfield.esm
+- 1453BF:Starfield.esm
+- 143CA0:Starfield.esm
+Class: 010B2F:Starfield.esm
+Name:
+  TargetLanguage: English
+  Value: Lon Anderssen
+ShortName:
+  TargetLanguage: English
+  Value: Lon
+GearedUpWeapons: 1
+HeadParts:
+- 062F07:Starfield.esm
+- 064D88:Starfield.esm
+- 12F121:Starfield.esm
+- 160C2E:Starfield.esm
+- 24A022:Starfield.esm
+- 24A023:Starfield.esm
+- 24A03D:Starfield.esm
+- 253FA3:Starfield.esm
+- 253FA5:Starfield.esm
+- 3A681D:Starfield.esm
+- 3BE58D:Starfield.esm
+CombatStyle: 2C5F7D:Starfield.esm
+NAM5: 0xFF00
+HeightMin: 1
+HeightMax: 1
+Weight:
+  Fat: 0.68
+DefaultOutfit: 084DC4:Starfield.esm
+SpaceOutfit: 16D5E5:Starfield.esm
+DefaultPackageList: 2C55CA:Starfield.esm
+CrimeFaction: 2B209D:Starfield.esm
+Tints:
+- TintType: ComplexGroup
+  TintGroup: Accents1
+  TintName: Accents_NasoLabialFolds_Dark
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/accents/accents_nasolabialfolds_dark_color.dds
+  TintColor: '#00000000'
+  TintIntensity: 80
+- TintType: ComplexGroup
+  TintGroup: Accents2
+  TintName: Accents_UnderEyeBags_Small
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/accents/accents_undereyebagssmall_color.dds
+  TintColor: '#00000000'
+  TintIntensity: 37
+- TintType: SimpleGroup
+  TintGroup: EnvironmentMask
+  TintName: Dirt_Light
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/environmentmask/test_dirt_female_light_mask.dds
+  TintColor: '#00000000'
+  TintIntensity: 64
+BodyMorphRegionValues:
+  UpperTorso: 0.21
+FaceDialPositions:
+- Index: 71
+  Position: 0.39
+- Index: 58
+  Position: -1
+- Index: 31
+  Position: -1
+- Index: 83
+  Position: 0.22
+- Index: 88
+  Position: 0.09
+- Index: 78
+  Position: 0.11
+- Index: 69
+  Position: 1
+- Index: 35
+  Position: 0.32
+- Index: 67
+  Position: -1
+- Index: 74
+  Position: -0.84
+- Index: 77
+  Position: -1
+- Index: 80
+  Position: -0.42
+- Index: 36
+  Position: -0.41
+- Index: 68
+  Position: 0.41
+- Index: 79
+  Position: 0.31
+- Index: 24
+  Position: 1
+- Index: 63
+  Position: 0.09
+- Index: 73
+  Position: 0.27
+- Index: 32
+  Position: -1
+- Index: 75
+  Position: 0.32
+- Index: 76
+  Position: -0.42
+- Index: 86
+  Position: -0.34
+- Index: 85
+  Position: 0.45
+FaceMorphs:
+- Index: 14
+  MorphGroups:
+  - MorphGroup: Eyes
+    BlendIntensity: 0.58
+- Index: 1
+  MorphGroups:
+  - MorphGroup: Nose
+    BlendIntensity: 0.37
+- Index: 16
+  MorphGroups:
+  - MorphGroup: Nose
+    BlendIntensity: 0.27
+MorphBlends:
+- BlendName: male_as_md1_Nose
+  Intensity: 0.37
+- BlendName: male_eu_ol1_Ears
+  Intensity: 0.4
+- BlendName: male_eu_ol1_Eyes
+  Intensity: 0.58
+- BlendName: male_eu_ol1_Mouth
+  Intensity: 0.69
+- BlendName: male_eu_yo1_Neck
+  Intensity: 0.05
+- BlendName: male_eu_yo1_Nose
+  Intensity: 0.27
+SkinToneIndex: 0
+HairColor: Brown
+EyebrowColor: Brown
+Pronoun: Unspecified

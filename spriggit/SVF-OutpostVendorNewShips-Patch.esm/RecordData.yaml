@@ -1,0 +1,22 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.25.0
+ModKey: SVF-OutpostVendorNewShips-Patch.esm
+GameRelease: Starfield
+ModHeader:
+  Flags:
+  - Master
+  - Light
+  FormVersion: 559
+  Author: rux616
+  Description: >-
+    Patch for "Ship Vendor Framework" by rux616 and "Outpost Vendor New Ships" by nefurun.
+
+
+    Version: 1.0.0
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: shipvendorframework.esm
+  - Master: outpostvendorcustomships.esm
+  BNAM: 0x4D61696E00
+  INCC: 0

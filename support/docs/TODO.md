@@ -5,9 +5,32 @@
 - [-] remove [LShip_Vendor_Stroud_B_Privateer (LVLB:001EAA83)] from either [ShipVendorList_Staryard_Stroud_Random (ACTI:001F7679)] or [ShipVendorList_Staryard_Stroud_Always (ACTI:001F7680)]
     - no need, ShipVendorScript automatically removes duplicates during generation
 - [X] add unique dataset to [NeonStroudStore_KioskVendor (NPC_:00151488)]
-- [X] check that condition functions on Hammerhead/Falcon (Taiyo - Veronic Young) and Phalanx/Hoplite (Deimos - Nikau Henderson) work for low levels
+- [X] check that condition functions on Hammerhead/Falcon (Taiyo - Veronica Young) and Phalanx/Hoplite (Deimos - Nikau Henderson) work for low levels
 - [X] check stroud privateer leveled ship base to see if it needs special lvl1 handling
 - [X] clear out formlist 0x003 after testing
 - [X] add version in SVF_Control.psc to version updater schema
 - [X] add licensing to top of scripts
 - [X] make it so that purchased unique ships are removed from the uniques list BEFORE the random list is de-duped
+- [X] add patches
+    - [X] save as esm:
+        - [X] SVF-Deadalus-Patch.esp
+        - [X] SVF-Dominion-Patch.esp
+        - [X] SVF-IconicShips-Patch.esp
+        - [X] SVF-LKShips-Patch.esp
+        - [X] SVF-LowLandingPad-Patch.esp
+        - [X] SVF-LowLandingPadUnlocked-Patch.esp
+        - [X] SVF-OutpostVendorNewShips-Patch.esp
+        - [X] SVF-StarvivalSpaceshipSystems-AllShipModulesUnlocked-OutpostOnly-Patch.esp
+        - [X] SVF-StarvivalSpaceshipSystems-Patch.esp
+        - [X] SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esp
+        - [X] SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esp
+        - [X] SVF-Generic-ShipVendors-Patch.esp
+- [ ] add min and max limits to the number of "always" and "unique" ships? (default to -1, which means unlimited)
+- [ ] add howto document/article that shows how to add vendors that utilize SVF
+- [ ] add howto document/article that shows how to clean a plugin of dirty edits to ship vendor NPC_ records
+- [ ] Cache `GetFormID()` in ShipVendorScript (used in `_Log()`). (`GetFormID()` is a non-delayed native function, so it doesn't actually take much time, but i suspect there's possibly a tiny amount of time savings to be had by caching it)
+- [ ] add threaded creation of ships to help with large lists
+- [ ] investigate ways to break 128-element barrier for generated ships, just in case (form list is likely the only way, but would possible open up script to corruption if record is overwritten)
+- [ ] when deleting ships from the vendor, sometimes it's not deleting them all. try getting all the linked refs of the landing pad marker and iterating through that list?
+- [ ] add messaging to show when script is done processing. (block activation until done? how would this work when SVF hasn't been initialized yet?)
+- [ ] investigate issues with SVF after just coming out of unity

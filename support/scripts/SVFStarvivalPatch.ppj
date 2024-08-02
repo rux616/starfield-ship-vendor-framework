@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<PapyrusProject
+    xmlns="PapyrusProject.xsd"
+    Output="..\..\data-starvival-patch\Scripts"
+    Flags="Starfield_Papyrus_Flags.flg"
+    Asm="Keep"
+    Optimize="false"
+    Release="false"
+    Final="false"
+>
+    <Imports>
+        <Import>..\..\data\Scripts\Source</Import>
+        <Import>..\papyrus-imports\vanilla\Source</Import>
+    </Imports>
+    <Folders>
+        <Folder>..\..\data-starvival-patch\Scripts\Source</Folder>
+    </Folders>
+</PapyrusProject>
