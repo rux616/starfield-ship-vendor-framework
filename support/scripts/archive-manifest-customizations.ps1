@@ -18,4 +18,3 @@
 
 # customizations for the archive manifests
 $additional_exclude_7z = @("SVFTest.esm", "*.esp")
-$additional_include_7z = @("*.psc")
