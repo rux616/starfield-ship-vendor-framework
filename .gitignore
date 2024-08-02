@@ -6,3 +6,5 @@ meta.ini
 data/scripts/**/*.pas
 # ignore GTEMP.pas file in the .vscode directory
 .vscode/GTEMP.pas
+# exclude BA2 archives
+*.ba2
