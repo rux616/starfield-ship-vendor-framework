@@ -22,11 +22,11 @@
         "Sanitize FOMOD XML Files",
         "Render Markdown to Nexus BBCode",
         "Render Markdown to Plaintext",
-        "Serialize plugins",
+        "Serialize Plugins",
         "Compile Scripts (Starvival Patch)",
         "Compile Scripts (Main)",
-        "Create Archives",
-        "Clean Up BA2 Archives"
+        "Create Archives"
+        // "Clean Up BA2 Archives"
       ]
     },
     {
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "label": "Serialize plugins",
+      "label": "Serialize Plugins",
       "type": "shell",
       "command": "./support/common/scripts/serialize-plugins.ps1",
       "args": ["-Starfield", "-YAML"]
@@ -91,7 +91,10 @@
         "SVF-StarvivalSpaceshipSystems-Patch",
         "-Starfield",
         "-Skip7z",
-        "-SkipBA2Cleanup"
+        "-SkipBA2Cleanup",
+        "-BA2AlsoMakeXbox",
+        "-BA2ForceUncompressed",
+        "-BA2DisableSharing"
       ]
     },
     {
@@ -105,14 +108,26 @@
         "SVF-StarvivalSpaceshipSystems-AllShipModulesUnlocked-OutpostOnly-Patch",
         "-Starfield",
         "-Skip7z",
-        "-SkipBA2Cleanup"
+        "-SkipBA2Cleanup",
+        "-BA2AlsoMakeXbox",
+        "-BA2ForceUncompressed",
+        "-BA2DisableSharing"
       ]
     },
     {
       "label": "Create Archives (Main BA2)",
       "type": "shell",
       "command": "./support/common/scripts/build-archives.ps1",
-      "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-Skip7z", "-SkipBA2Cleanup"]
+      "args": [
+        "-ModName",
+        "Ship Vendor Framework",
+        "-Starfield",
+        "-Skip7z",
+        "-SkipBA2Cleanup",
+        "-BA2AlsoMakeXbox",
+        "-BA2ForceUncompressed",
+        "-BA2DisableSharing"
+      ]
     },
     {
       "label": "Create Archives",
