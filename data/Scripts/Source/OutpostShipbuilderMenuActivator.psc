@@ -40,11 +40,13 @@ Event OnActivate(ObjectReference akActionRef)
             if messageIndex == 0
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = false)
             elseif messageIndex == 1
-                ; calling HandleOnLoad() is a workaround for the fact that if the player loads a save where the vendor
-                ; is already loaded, the OnLoad event for the vendor does not fire again
+                ; calling OnLoad() is a workaround for the fact that if the player loads a save where the vendor is
+                ; already loaded, the OnLoad event for the vendor does not fire again
                 If theShipServicesActor.SVFEnhancementsInitialized() == false
-                    theShipServicesActor.HandleOnLoad()
+                    ; TODO this needs to have a "please wait, initializing" message
+                    theShipServicesActor.OnLoad()
                 EndIf
+                ; TODO this needs to have a "please wait, initializing" message
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = true)
             elseif messageIndex == 2
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(1, theShipServicesActor)
