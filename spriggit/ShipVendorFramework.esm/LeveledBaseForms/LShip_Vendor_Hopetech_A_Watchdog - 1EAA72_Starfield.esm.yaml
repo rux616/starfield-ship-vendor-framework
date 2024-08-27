@@ -1,6 +1,6 @@
 FormKey: 1EAA72:Starfield.esm
 EditorID: LShip_Vendor_Hopetech_A_Watchdog
-FormVersion: 559
+FormVersion: 575
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,13 +9,13 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 19903
+  Unused: 95
   Reference: 0D1864:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown1: 0xC78489
-    Unknown2: 16610
+    Unknown1: 0x2B0000
+    Unknown2: 4938
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
       RunOnType: Reference
@@ -23,15 +23,15 @@ Entries:
       FirstParameter: 27CFA2:Starfield.esm
     ComparisonValue: 1
 - Level: 14
-  Unused: 19903
+  Unused: 95
   Reference: 0B198A:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 19903
+  Unused: 95
   Reference: 0B1988:Starfield.esm
   Count: 1
 - Level: 58
-  Unused: 19903
+  Unused: 95
   Reference: 281F69:Starfield.esm
   Count: 1
 Model:

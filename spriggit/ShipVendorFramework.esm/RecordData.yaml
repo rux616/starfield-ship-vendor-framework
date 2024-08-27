@@ -7,13 +7,13 @@ ModHeader:
   Flags:
   - Master
   - Light
-  FormVersion: 559
+  FormVersion: 575
   Author: rux616
   Description: >-
     A framework to easily add ships for sale without conflicts.
 
 
-    Version: 1.1.0
+    Version: 1.1.1
   MasterReferences:
   - Master: Starfield.esm
   BNAM: 0x4D61696E00

@@ -1,6 +1,6 @@
 FormKey: 1EAA25:Starfield.esm
 EditorID: LShip_Vendor_Generic_C_Combat_Dullahan
-FormVersion: 559
+FormVersion: 575
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,13 +9,13 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E0B:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown1: 0x948489
-    Unknown2: 16610
+    Unknown1: 0x2B0000
+    Unknown2: 4938
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
       RunOnType: Reference
@@ -23,15 +23,15 @@ Entries:
       FirstParameter: 08DA69:Starfield.esm
     ComparisonValue: 1
 - Level: 24
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E0B:Starfield.esm
   Count: 1
 - Level: 44
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E09:Starfield.esm
   Count: 1
 - Level: 64
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E07:Starfield.esm
   Count: 1
 Model:

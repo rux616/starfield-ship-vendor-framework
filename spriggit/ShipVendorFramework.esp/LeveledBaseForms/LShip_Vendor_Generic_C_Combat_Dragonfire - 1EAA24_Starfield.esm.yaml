@@ -1,6 +1,6 @@
 FormKey: 1EAA24:Starfield.esm
 EditorID: LShip_Vendor_Generic_C_Combat_Dragonfire
-FormVersion: 559
+FormVersion: 575
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,13 +9,13 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E11:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown1: 0x908489
-    Unknown2: 16610
+    Unknown1: 0x2B0000
+    Unknown2: 4938
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
       RunOnType: Reference
@@ -23,11 +23,11 @@ Entries:
       FirstParameter: 17910E:Starfield.esm
     ComparisonValue: 1
 - Level: 20
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E11:Starfield.esm
   Count: 1
 - Level: 34
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E0F:Starfield.esm
   Count: 1
 Model:

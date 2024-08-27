@@ -1,6 +1,6 @@
 FormKey: 1EAA1E:Starfield.esm
 EditorID: LShip_Vendor_Generic_B_Personnel_Sunsail
-FormVersion: 559
+FormVersion: 575
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,13 +9,13 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E1D:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown1: 0x878489
-    Unknown2: 16610
+    Unknown1: 0x2B0000
+    Unknown2: 4938
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
       RunOnType: Reference
@@ -23,11 +23,11 @@ Entries:
       FirstParameter: 244CAA:Starfield.esm
     ComparisonValue: 1
 - Level: 16
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E1D:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E1B:Starfield.esm
   Count: 1
 Model:

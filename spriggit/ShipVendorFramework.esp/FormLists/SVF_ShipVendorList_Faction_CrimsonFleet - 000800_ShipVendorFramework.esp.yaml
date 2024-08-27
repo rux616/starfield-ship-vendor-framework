@@ -1,6 +1,6 @@
 FormKey: 000800:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Faction_CrimsonFleet
-FormVersion: 559
+FormVersion: 575
 Items:
 - 175DD1:Starfield.esm
 - 175DCE:Starfield.esm

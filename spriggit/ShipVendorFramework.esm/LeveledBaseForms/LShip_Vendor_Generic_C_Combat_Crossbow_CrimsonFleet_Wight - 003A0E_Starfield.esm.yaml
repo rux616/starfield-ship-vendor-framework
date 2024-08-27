@@ -1,6 +1,6 @@
 FormKey: 003A0E:Starfield.esm
 EditorID: LShip_Vendor_Generic_C_Combat_Crossbow_CrimsonFleet_Wight
-FormVersion: 559
+FormVersion: 575
 Version2: 2
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 26
-  Unused: 19903
+  Unused: 95
   Reference: 045B3C:Starfield.esm
   Count: 1
 - Level: 38
-  Unused: 19903
+  Unused: 95
   Reference: 045BA1:Starfield.esm
   Count: 1
 - Level: 72
-  Unused: 19903
+  Unused: 95
   Reference: 045C67:Starfield.esm
   Count: 1
 Model:

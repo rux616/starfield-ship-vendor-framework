@@ -1,6 +1,6 @@
 FormKey: 1EAA7C:Starfield.esm
 EditorID: LShip_Vendor_Nova_B_Ranger
-FormVersion: 559
+FormVersion: 575
 Version2: 5
 ODTY: 0
 MaxCount: 0
@@ -9,13 +9,13 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 19903
+  Unused: 95
   Reference: 0D1861:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown1: 0xF68489
-    Unknown2: 16610
+    Unknown1: 0x2B0000
+    Unknown2: 4938
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
       RunOnType: Reference
@@ -23,15 +23,15 @@ Entries:
       FirstParameter: 27CFA2:Starfield.esm
     ComparisonValue: 1
 - Level: 16
-  Unused: 19903
+  Unused: 95
   Reference: 0D1861:Starfield.esm
   Count: 1
 - Level: 36
-  Unused: 19903
+  Unused: 95
   Reference: 02C253:Starfield.esm
   Count: 1
 - Level: 46
-  Unused: 19903
+  Unused: 95
   Reference: 02C263:Starfield.esm
   Count: 1
 Model:
