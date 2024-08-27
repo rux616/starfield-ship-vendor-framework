@@ -21,12 +21,14 @@ ScriptName ShipVendorFramework:SVF_Utility
 
 
 ; log function
+; aiSeverity: severity of the log message
 ; aiSeverity values: 0 = info, 1 = warning, 2 = error, 3 = debug
-; aiSeverityThreshold values: 0 = info, 1 = warning, 2 = error, 3 = debug, -1 = none (suppress)
-Function Log(string asScriptName, int aiSource, string asFunctionName, string asLogMessage, int aiSeverity = 0, int aiSeverityThreshold = 0, string asLogName = "ShipVendorFramework") Global
-    aiSeverityThreshold = ClampInt(aiSeverityThreshold, -1, 3)
+; aiSeverityLimit: limits the level of severity that will be logged to the given level and below
+; aiSeverityLimit values: -1 = none (suppress), 0 = info, 1 = warning, 2 = error, 3 = debug
+Function Log(string asScriptName, int aiSource, string asFunctionName, string asLogMessage, int aiSeverity = 0, int aiSeverityLimit = 2, string asLogName = "ShipVendorFramework") Global
+    aiSeverityLimit = ClampInt(aiSeverityLimit, -1, 3)
     aiSeverity = ClampInt(aiSeverity, -1, 3)
-    If aiSeverity > aiSeverityThreshold
+    If aiSeverity > aiSeverityLimit
         Return
     EndIf
     If asScriptName != "" && aiSource != 0
