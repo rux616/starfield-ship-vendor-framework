@@ -1,6 +1,6 @@
 FormKey: 1EAA7D:Starfield.esm
 EditorID: LShip_Vendor_Nova_B_Zumwalt
-FormVersion: 559
+FormVersion: 575
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 20
-  Unused: 19903
+  Unused: 95
   Reference: 14A219:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 19903
+  Unused: 95
   Reference: 14A21B:Starfield.esm
   Count: 1
 - Level: 52
-  Unused: 19903
+  Unused: 95
   Reference: 14A21D:Starfield.esm
   Count: 1
 Model:

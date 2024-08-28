@@ -10,6 +10,7 @@ Table Of Contents
 - [SVF Capability Patch - Outpost Vendor New Ships](#svf-capability-patch---outpost-vendor-new-ships)
 - [SVF Compatibility Patch - Starvival (Spaceship Systems Module) + All Ship Modules Unlocked (Outpost Only)](#svf-compatibility-patch---starvival-spaceship-systems-module--all-ship-modules-unlocked-outpost-only)
 - [SVF Compatibility Patch - Starvival (Spaceship Systems Module)](#svf-compatibility-patch---starvival-spaceship-systems-module)
+- [SVF Compatibility Patch - The Den Astrodynamics](#svf-compatibility-patch---the-den-astrodynamics)
 - [SVF Generic Patch - All Ship Modules Unlocked (All Ship Vendors)](#svf-generic-patch---all-ship-modules-unlocked-all-ship-vendors)
 - [SVF Generic Patch - All Ship Modules Unlocked (Outpost Only)](#svf-generic-patch---all-ship-modules-unlocked-outpost-only)
 - [SVF Generic Patch - Ship Vendors](#svf-generic-patch---ship-vendors)
@@ -23,6 +24,7 @@ This patch should be paired with one of the SVF Generic Patches.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti
+
 Patch Type:
 - Capability
 
@@ -33,6 +35,7 @@ Patch for "Ship Vendor Framework" by rux616 and "Dominion" by rhart317.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/97f792d0-d078-4a50-aa32-f03cc054e241/Dominion
+
 Patch Type:
 - Capability
 
@@ -45,6 +48,7 @@ This patch should be paired with one of the SVF Generic Patches.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/569e938e-228c-42fb-91ba-c6967575bcf3/Iconic_Ships
+
 Patch Type:
 - Capability
 
@@ -56,6 +60,7 @@ Patch for "Ship Vendor Framework" by rux616 and "L-K Ships" by Lighthorse and Ke
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/f287801b-a863-48fb-b796-1eeaeda4eab3/L_K_Ships
 - Nexus: https://www.nexusmods.com/starfield/mods/7433
+
 Patch Type:
 - Capability
 
@@ -66,6 +71,7 @@ Patch for "Ship Vendor Framework" by rux616 and "Lower Landing Pad" by SenterPat
 
 Mod Source:
 - Nexus: https://www.nexusmods.com/starfield/mods/8363
+
 Patch Type:
 - Capability
 
@@ -76,6 +82,7 @@ Patch for "Ship Vendor Framework" by rux616 and "Lower Landing Pad" (unlocked) b
 
 Mod Source:
 - Nexus: https://www.nexusmods.com/starfield/mods/8363
+
 Patch Type:
 - Capability
 
@@ -88,6 +95,7 @@ This patch should be paired with one of the SVF Generic Patches.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships
+
 Patch Type:
 - Capability
 
@@ -101,6 +109,7 @@ This patch should be loaded after any SVF Generic Patches, if in use.
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/14319a44-d8bb-442e-b9ff-475ad4c32b7c/Starvival___Immersive_Survival_Addon__Spaceship_Sy
 - Nexus: https://www.nexusmods.com/starfield/mods/6890
+
 Patch Type:
 - Compatibility
 
@@ -114,6 +123,20 @@ This patch should be loaded after any SVF Generic Patches, if in use.
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/14319a44-d8bb-442e-b9ff-475ad4c32b7c/Starvival___Immersive_Survival_Addon__Spaceship_Sy
 - Nexus: https://www.nexusmods.com/starfield/mods/6890
+
+Patch Type:
+- Compatibility
+
+
+SVF Compatibility Patch - The Den Astrodynamics
+-----
+Patch for "Ship Vendor Framework" by rux616 and "The Den Astrodynamics" by VoodooChild.
+
+This patch should be loaded after any SVF Generic Patches, if in use.
+
+Mod Source:
+- Nexus: https://www.nexusmods.com/starfield/mods/8809
+
 Patch Type:
 - Compatibility
 
@@ -146,6 +169,3 @@ This patch should be loaded after any SVF Capability Patches in use, but before 
 
 Patch Type:
 - Generic Compatibility
-
-
-

@@ -21,7 +21,7 @@
 # version info
 $version_major = 1
 $version_minor = 1
-$version_patch = 0
+$version_patch = 1
 
 # prerelease info
 $version_prerelease = 0

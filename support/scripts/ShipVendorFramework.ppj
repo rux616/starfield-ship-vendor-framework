@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <PapyrusProject
     xmlns="PapyrusProject.xsd"
-    Output=".\data\Scripts"
+    Output="..\..\data\Scripts"
     Flags="Starfield_Papyrus_Flags.flg"
     Asm="Keep"
     Optimize="false"
@@ -9,9 +9,9 @@
     Final="false"
 >
     <Imports>
-        <Import>.\support\papyrus-imports\vanilla\Source</Import>
+        <Import>..\papyrus-imports\vanilla\Source</Import>
     </Imports>
     <Folders>
-        <Folder>.\data\Scripts\Source</Folder>
+        <Folder>..\..\data\Scripts\Source</Folder>
     </Folders>
 </PapyrusProject>

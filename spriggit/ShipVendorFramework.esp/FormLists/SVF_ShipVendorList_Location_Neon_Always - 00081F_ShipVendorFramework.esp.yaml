@@ -1,6 +1,6 @@
 FormKey: 00081F:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Location_Neon_Always
-FormVersion: 559
+FormVersion: 575
 Items:
 - 1EAA11:Starfield.esm
 - 1EAA8B:Starfield.esm

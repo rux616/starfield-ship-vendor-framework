@@ -50,11 +50,13 @@ Event OnActivate(ObjectReference akActionRef)
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = false)
             elseif messageIndex == 1
                 TechVendorCreditsRefresh()
-                ; calling HandleOnLoad() is a workaround for the fact that if the player loads a save where the vendor
-                ; is already loaded, the OnLoad event for the vendor does not fire again
+                ; calling OnLoad() is a workaround for the fact that if the player loads a save where the vendor is
+                ; already loaded, the OnLoad event for the vendor does not fire again
                 If theShipServicesActor.SVFEnhancementsInitialized() == false
-                    theShipServicesActor.HandleOnLoad()
+                    ; TODO this needs to have a "please wait, initializing" message
+                    theShipServicesActor.OnLoad()
                 EndIf
+                ; TODO this needs to have a "please wait, initializing" message
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = true)
             elseif messageIndex == 2
                 TechVendorCreditsRefresh()
@@ -68,7 +70,7 @@ EndEvent
 Function TechVendorCreditsRefresh()
     Int CreditsThreshold = GV_TechVendorCreditsRefresh.GetValue() As Int
     If TechVendorChest.GetItemCount(Credits) < CreditsThreshold
-        TechVendorChest.Removeitem(Credits, 999999999, True, None)
-        TechVendorChest.Additem(CreditsLeveledList, 1, True)
+        TechVendorChest.RemoveItem(Credits, 999999999, True, None)
+        TechVendorChest.AddItem(CreditsLeveledList, 1, True)
     EndIf
 EndFunction

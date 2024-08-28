@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.1.1](#v111)
     - [v1.1.0](#v110)
     - [v1.0.1](#v101)
     - [v1.0.0](#v100)
@@ -13,6 +14,16 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.1.1
+------
+- Fixed issue where internal array was getting populated by SpaceshipReference objects referencing None
+- Fixed issue where if the player purchased a ship from a vendor's "always" list, the vendor would always reset that list the next time it was loaded, instead of when the vendor was scheduled to reset
+- Fixed issue where vendor could remain registered for OnPlayerLoadGame event even if not actually loaded
+- Fixed issue where ships could be spuriously duplicated in the vendor menu by forcing a full (instead of partial) vendor refresh when a new ship is added to either of the vendor's "always" or "unique" lists
+- Mitigated a potential race condition when vendor gets loaded
+
+([TOC](#table-of-contents))
 
 v1.1.0
 ------

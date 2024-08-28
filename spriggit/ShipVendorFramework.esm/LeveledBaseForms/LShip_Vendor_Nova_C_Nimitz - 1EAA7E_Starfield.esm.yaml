@@ -1,6 +1,6 @@
 FormKey: 1EAA7E:Starfield.esm
 EditorID: LShip_Vendor_Nova_C_Nimitz
-FormVersion: 559
+FormVersion: 575
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 30
-  Unused: 19903
+  Unused: 95
   Reference: 0B1986:Starfield.esm
   Count: 1
 - Level: 44
-  Unused: 19903
+  Unused: 95
   Reference: 03CFAE:Starfield.esm
   Count: 1
 - Level: 62
-  Unused: 19903
+  Unused: 95
   Reference: 03CFAC:Starfield.esm
   Count: 1
 Model:

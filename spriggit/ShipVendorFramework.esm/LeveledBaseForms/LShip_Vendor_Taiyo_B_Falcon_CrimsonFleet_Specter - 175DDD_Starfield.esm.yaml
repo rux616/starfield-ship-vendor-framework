@@ -1,6 +1,6 @@
 FormKey: 175DDD:Starfield.esm
 EditorID: LShip_Vendor_Taiyo_B_Falcon_CrimsonFleet_Specter
-FormVersion: 559
+FormVersion: 575
 Version2: 2
 ODTY: 0
 MaxCount: 0
@@ -9,19 +9,19 @@ Flags:
 - 0x200
 Entries:
 - Level: 14
-  Unused: 19903
+  Unused: 95
   Reference: 322BED:Starfield.esm
   Count: 1
 - Level: 24
-  Unused: 19903
+  Unused: 95
   Reference: 38894B:Starfield.esm
   Count: 1
 - Level: 48
-  Unused: 19903
+  Unused: 95
   Reference: 38894D:Starfield.esm
   Count: 1
 - Level: 76
-  Unused: 19903
+  Unused: 95
   Reference: 38894F:Starfield.esm
   Count: 1
 Model:

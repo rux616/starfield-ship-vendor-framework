@@ -1,6 +1,6 @@
 FormKey: 1EAA8F:Starfield.esm
 EditorID: LShip_Vendor_Taiyo_C_Reef
-FormVersion: 559
+FormVersion: 575
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 34
-  Unused: 19903
+  Unused: 95
   Reference: 0B1964:Starfield.esm
   Count: 1
 - Level: 54
-  Unused: 19903
+  Unused: 95
   Reference: 03CFA0:Starfield.esm
   Count: 1
 - Level: 72
-  Unused: 19903
+  Unused: 95
   Reference: 03CF9E:Starfield.esm
   Count: 1
 Model:

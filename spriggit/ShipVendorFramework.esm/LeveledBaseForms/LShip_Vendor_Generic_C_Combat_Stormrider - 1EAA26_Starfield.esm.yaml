@@ -1,6 +1,6 @@
 FormKey: 1EAA26:Starfield.esm
 EditorID: LShip_Vendor_Generic_C_Combat_Stormrider
-FormVersion: 559
+FormVersion: 575
 Version2: 5
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 24
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E05:Starfield.esm
   Count: 1
 - Level: 54
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E03:Starfield.esm
   Count: 1
 - Level: 76
-  Unused: 19903
+  Unused: 95
   Reference: 3A2E01:Starfield.esm
   Count: 1
 Model:
