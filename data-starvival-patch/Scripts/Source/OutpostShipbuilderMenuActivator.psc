@@ -70,7 +70,7 @@ EndEvent
 Function TechVendorCreditsRefresh()
     Int CreditsThreshold = GV_TechVendorCreditsRefresh.GetValue() As Int
     If TechVendorChest.GetItemCount(Credits) < CreditsThreshold
-        TechVendorChest.Removeitem(Credits, 999999999, True, None)
-        TechVendorChest.Additem(CreditsLeveledList, 1, True)
+        TechVendorChest.RemoveItem(Credits, 999999999, True, None)
+        TechVendorChest.AddItem(CreditsLeveledList, 1, True)
     EndIf
 EndFunction
