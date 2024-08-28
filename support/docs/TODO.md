@@ -28,9 +28,24 @@
 - [ ] add min and max limits to the number of "always" and "unique" ships? (default to -1, which means unlimited)
 - [ ] add howto document/article that shows how to add vendors that utilize SVF
 - [ ] add howto document/article that shows how to clean a plugin of dirty edits to ship vendor NPC_ records
-- [ ] Cache `GetFormID()` in ShipVendorScript (used in `_Log()`). (`GetFormID()` is a non-delayed native function, so it doesn't actually take much time, but i suspect there's possibly a tiny amount of time savings to be had by caching it)
+- [-] Cache `GetFormID()` in ShipVendorScript (used in `_Log()`). (`GetFormID()` is a non-delayed native function, so it doesn't actually take much time, but i suspect there's possibly a tiny amount of time savings to be had by caching it)
+    - profiling shows that for 132 calls to `GetFormID()` (and accompanying calls to `IntToHex()`) took less than 2ms. not worth worrying about.
 - [ ] add threaded creation of ships to help with large lists
+    - not going to be possible in a sane way until/unless the `GetFormFromFile()` function is fixed
 - [ ] investigate ways to break 128-element barrier for generated ships, just in case (form list is likely the only way, but would possible open up script to corruption if record is overwritten)
-- [ ] when deleting ships from the vendor, sometimes it's not deleting them all. try getting all the linked refs of the landing pad marker and iterating through that list?
+- [X] when deleting ships from the vendor, sometimes it's not deleting them all. try getting all the linked refs of the landing pad marker and iterating through that list?
+    - [-] check taiyo ship vendor for duplicated inventory issue
+    - [-] xbox-only issue?
+    - [-] make a terminal data slate to manually diagnose issue?
 - [ ] add messaging to show when script is done processing. (block activation until done? how would this work when SVF hasn't been initialized yet?)
-- [ ] investigate issues with SVF after just coming out of unity
+- [X] investigate issues with SVF after just coming out of unity
+    - couldn't reproduce once i got around to testing - i suspect it was a symptom of another bug
+- [X] clear player-sold ships upon inventory refresh
+- [ ] change up terminology re capability vs compatibility. maybe "enhancement" instead of "capability"?
+- [X] fix bug where "always" and "unique" ships (or maybe only "always" ships?) will fully respawn on OnLoad (due to the function that matches existing ships with what "should" be there)
+- [X] fix mis-ordering of ships in list after partial refresh, probably going to have to remove linked ref and re-add
+    - partial refreshes never seemed to work properly, so i removed them entirely
+- [X] add patch for [The Den Astrodynamics](https://www.nexusmods.com/starfield/mods/8809)
+- [-] add patch for [Rich Outpost Shipbuilder](https://www.nexusmods.com/starfield/mods/5492)
+    - not going to support this for now - if `GetFormFromFile()` gets fixed for small/medium masters, will do this dynamically
+- [ ] if `GetFormFromFile()` is fixed for small/medium masters, add in options like dynamic keyword addition at outpost ship builders (maybe regular ship services technicians as well?), always rich ship techs (outpost/regular)
