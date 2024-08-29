@@ -14,7 +14,6 @@ Entries:
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown1: 0x2B0000
     Unknown2: 4938
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
