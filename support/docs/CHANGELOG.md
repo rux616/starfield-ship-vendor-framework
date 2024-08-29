@@ -22,6 +22,7 @@ v1.1.1
 - Fixed issue where vendor could remain registered for OnPlayerLoadGame event even if not actually loaded
 - Fixed issue where ships could be spuriously duplicated in the vendor menu by forcing a full (instead of partial) vendor refresh when a new ship is added to either of the vendor's "always" or "unique" lists
 - Mitigated a potential race condition when vendor gets loaded
+- Added patch for [Nexus] The Den Astrodynamics
 
 ([TOC](#table-of-contents))
 
