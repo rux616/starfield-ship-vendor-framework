@@ -63,7 +63,8 @@ EndFunction
 ; local opinionated log function
 ; aiSeverity values: 0 = info, 1 = warning, 2 = error, 3 = debug
 Function _Log(string asFunctionName, string asLogMessage, int aiSeverity = 0) Global
-    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiSeverity, 2)
+    int LOG_LEVEL = 2 const
+    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiSeverity, LOG_LEVEL)
 EndFunction
 
 

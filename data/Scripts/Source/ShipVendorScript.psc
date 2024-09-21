@@ -1260,7 +1260,7 @@ Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference 
     string fnName = "CreateShipForSale" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    _Log(fnName, "leveled ship: " + akShipToCreate, LL_DEBUG)
+    _Log(fnName, "attempting to create new ship reference from leveled ship " + akShipToCreate)
     SpaceshipReference newShip = akCreateMarker.PlaceShipAtMe(akShipToCreate, aiLevelMod = 2, abInitiallyDisabled = true, akEncLoc = akEncLoc)
     _Log(fnName, "new ship: " + newShip, LL_DEBUG)
     If newShip != None && newShip.IsBoundGameObjectAvailable()
@@ -1279,9 +1279,9 @@ Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference 
         shipRefMap.leveledShip = akShipToCreate
         akRefToLLMap.Add(shipRefMap)
 
-        _Log(fnName, "ship created: " + newShip)
+        _Log(fnName, "created ship " + newShip + " from leveled ship " + akShipToCreate)
     Else
-        _Log(fnName, "ship not created")
+        _Log(fnName, "no ship created")
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
