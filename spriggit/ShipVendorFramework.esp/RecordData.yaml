@@ -7,7 +7,7 @@ ModHeader:
   FormVersion: 575
   Author: rux616
   Description: >-
-    A framework to easily add ships for sale without conflicts.
+    A framework allowing mod authors to easily add ships for sale without conflicts.
 
 
     Version: 1.2.0

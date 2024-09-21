@@ -10,38 +10,38 @@ VirtualMachineAdapter:
       Name: SVFShipsToSellListUniqueDataset
       Object: 00082D:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
-      Name: SQ_PlayerShip
-      Object: 0174A2:Starfield.esm
+      Name: SpaceshipStoredLink
+      Object: 1DF5BF:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListRandomDataset
+      Object: 00081B:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
       Object: 00082C:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
-      Name: DialogueShipServices
-      Object: 22E153:Starfield.esm
+      Name: LinkShipLandingMarker01
+      Object: 2CFDEB:Starfield.esm
     - MutagenObjectType: ScriptBoolProperty
       Name: SVFUseNewDatasets
       Data: True
-    - MutagenObjectType: ScriptIntProperty
-      Name: ShipsForSaleMin
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SpaceshipStoredLink
-      Object: 1DF5BF:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: LinkShipLandingMarker01
-      Object: 2CFDEB:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SVFShipsToSellListRandomDataset
-      Object: 00081B:ShipVendorFramework.esp
-    - MutagenObjectType: ScriptIntProperty
-      Name: ShipsForSaleMax
-      Data: 1
     - MutagenObjectType: ScriptObjectProperty
       Name: PlayerShips
       Object: 0174A2:Starfield.esm
       Alias: 18
+    - MutagenObjectType: ScriptIntProperty
+      Name: ShipsForSaleMax
+      Data: 1
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipVendorLocation
       Object: 209AC7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SQ_PlayerShip
+      Object: 0174A2:Starfield.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: ShipsForSaleMin
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
@@ -235,65 +235,65 @@ FaceMorphs:
   MorphGroups:
   - MorphGroup: Ears
     BlendIntensity: 0.32
-- Index: 1
-  MorphGroups:
-  - MorphGroup: Neck
-    BlendIntensity: 0.81
-  - MorphGroup: Cheeks
-    BlendIntensity: 0.7
-  - MorphGroup: Eyes
-    BlendIntensity: 0.44
-  - MorphGroup: Forehead
-    BlendIntensity: 1
-  - MorphGroup: Mouth
-    BlendIntensity: 0.72
 - Index: 46
   MorphGroups:
   - MorphGroup: Neck
     BlendIntensity: 0.19
-  - MorphGroup: Eyes
-    BlendIntensity: 0.56
   - MorphGroup: Nose
     BlendIntensity: 0.38
+  - MorphGroup: Eyes
+    BlendIntensity: 0.56
+- Index: 1
+  MorphGroups:
+  - MorphGroup: Neck
+    BlendIntensity: 0.81
+  - MorphGroup: Mouth
+    BlendIntensity: 0.72
+  - MorphGroup: Forehead
+    BlendIntensity: 1
+  - MorphGroup: Eyes
+    BlendIntensity: 0.44
+  - MorphGroup: Cheeks
+    BlendIntensity: 0.7
 - Index: 44
   MorphGroups:
   - MorphGroup: Mouth
     BlendIntensity: 0.28
 - Index: 16
   MorphGroups:
-  - MorphGroup: Chin
+  - MorphGroup: Jaw
     BlendIntensity: 1
   - MorphGroup: Ears
     BlendIntensity: 0.68
-  - MorphGroup: Jaw
+  - MorphGroup: Chin
     BlendIntensity: 1
 MorphBlends:
+- BlendName: male_as_md1_Neck
+  Intensity: 0.81
+- BlendName: male_eu_yo1_Jaw
+  Intensity: 1
+- BlendName: male_eu_yo1_Ears
+  Intensity: 0.68
+- BlendName: male_as_yo1_Eyes
+  Intensity: 0.56
+- BlendName: male_as_md1_Eyes
+  Intensity: 0.44
+- BlendName: male_as_md1_Forehead
+  Intensity: 0.62
+- BlendName: male_as_md1_Mouth
+  Intensity: 0.59
 - BlendName: male_eu_md2_Ears
   Intensity: 0.32
 - BlendName: male_af_yo1_Mouth
   Intensity: 0.41
-- BlendName: male_eu_yo1_Ears
-  Intensity: 0.68
 - BlendName: male_as_md1_Cheeks
   Intensity: 0.518
 - BlendName: male_eu_yo1_Chin
   Intensity: 1
 - BlendName: male_as_ol1_Nose
   Intensity: 0.39
-- BlendName: male_as_md1_Neck
-  Intensity: 0.81
 - BlendName: male_as_yo1_Neck
   Intensity: 0.19
-- BlendName: male_eu_yo1_Jaw
-  Intensity: 1
-- BlendName: male_as_md1_Mouth
-  Intensity: 0.59
-- BlendName: male_as_md1_Forehead
-  Intensity: 0.62
-- BlendName: male_as_md1_Eyes
-  Intensity: 0.44
-- BlendName: male_as_yo1_Eyes
-  Intensity: 0.56
 SkinToneIndex: 3
 HairColor: BlackBrown
 EyebrowColor: BlackBrown

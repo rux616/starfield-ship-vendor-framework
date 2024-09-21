@@ -10,42 +10,42 @@ VirtualMachineAdapter:
       Name: SVFShipsToSellListUniqueDataset
       Object: 00080C:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: SQ_PlayerShip
-      Object: 0174A2:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SVFShipsToSellListAlwaysDataset
-      Object: 000807:ShipVendorFramework.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: DialogueShipServices
-      Object: 22E153:Starfield.esm
-    - MutagenObjectType: ScriptBoolProperty
-      Name: SVFUseNewDatasets
-      Data: True
-    - MutagenObjectType: ScriptObjectProperty
       Name: SpaceshipStoredLink
       Object: 1DF5BF:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListUniqueDataset
-      Object: 0C86E0:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: LinkShipLandingMarker01
-      Object: 2CFDEB:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
       Object: 000833:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListAlwaysDataset
-      Object: 1F7680:Starfield.esm
+      Name: ShipsToSellListRandomDataset
+      Object: 1F7679:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListAlwaysDataset
+      Object: 000807:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LinkShipLandingMarker01
+      Object: 2CFDEB:Starfield.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SVFUseNewDatasets
+      Data: True
     - MutagenObjectType: ScriptObjectProperty
       Name: PlayerShips
       Object: 0174A2:Starfield.esm
       Alias: 18
     - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListRandomDataset
-      Object: 1F7679:Starfield.esm
+      Name: ShipsToSellListAlwaysDataset
+      Object: 1F7680:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipVendorLocation
       Object: 209AC7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SQ_PlayerShip
+      Object: 0174A2:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipsToSellListUniqueDataset
+      Object: 0C86E0:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
 ObjectBounds:
   First: -0.591797, -0.3623047, 0
   Second: 0.59179676, 1.0341797, 1.2373047
@@ -232,12 +232,12 @@ FaceDialPositions:
   Position: 0.14
 - Index: 24
   Position: -0.36
+- Index: 85
+  Position: -0.65
 - Index: 73
   Position: -0.41
-- Index: 63
-  Position: 0.2
-- Index: 32
-  Position: -0.34
+- Index: 86
+  Position: 0.37
 - Index: 83
   Position: -0.16
 - Index: 76
@@ -248,10 +248,10 @@ FaceDialPositions:
   Position: 0.04
 - Index: 64
   Position: 0.22
-- Index: 86
-  Position: 0.37
-- Index: 85
-  Position: -0.65
+- Index: 32
+  Position: -0.34
+- Index: 63
+  Position: 0.2
 FaceMorphs:
 - Index: 12
   MorphGroups:
@@ -259,10 +259,10 @@ FaceMorphs:
     BlendIntensity: 0.44
 - Index: 14
   MorphGroups:
-  - MorphGroup: Cheeks
-    BlendIntensity: 0.68
   - MorphGroup: Mouth
     BlendIntensity: 0.58
+  - MorphGroup: Cheeks
+    BlendIntensity: 0.68
 - Index: 1
   MorphGroups:
   - MorphGroup: Nose
@@ -271,69 +271,69 @@ FaceMorphs:
   MorphGroups:
   - MorphGroup: Neck
     BlendIntensity: 0.46
+  - MorphGroup: Chin
+    BlendIntensity: 0.17
+  - MorphGroup: Forehead
+    BlendIntensity: 0.53
+  - MorphGroup: Mouth
+    BlendIntensity: 0.19
   - MorphGroup: Jaw
     BlendIntensity: 0.63
   - MorphGroup: Eyes
     BlendIntensity: 0.79
   - MorphGroup: Ears
     BlendIntensity: 0.73
-  - MorphGroup: Forehead
-    BlendIntensity: 0.53
   - MorphGroup: Cheeks
     BlendIntensity: 0.08
-  - MorphGroup: Chin
-    BlendIntensity: 0.17
   - MorphGroup: Nose
     BlendIntensity: 0.4
-  - MorphGroup: Mouth
-    BlendIntensity: 0.19
 - Index: 46
   MorphGroups:
   - MorphGroup: Eyes
     BlendIntensity: 0.21
 MorphBlends:
-- BlendName: male_eu_ol1_Chin
-  Intensity: 0.5
+- BlendName: male_af_yo1_Jaw
+  Intensity: 0.13
+- BlendName: male_as_ol1_Ears
+  Intensity: 0.04
+- BlendName: male_eu_ol1_Mouth
+  Intensity: 0.26105726
+- BlendName: male_eu_ol1_Neck
+  Intensity: 0.19
+- BlendName: male_eu_yo1_Eyes
+  Intensity: 0.84
+- BlendName: male_af_ol1_Nose
+  Intensity: 0.45
+- BlendName: male_eu_yo1_Mouth
+  Intensity: 0.28
+- BlendName: male_af_yo1_Chin
+  Intensity: 0.23
+- BlendName: male_as_ol1_Eyes
+  Intensity: 0.1264
+- BlendName: male_eu_ol1_Cheeks
+  Intensity: 0.3
+- BlendName: male_eu_md2_Mouth
+  Intensity: 0.29690722
+- BlendName: male_eu_md2_Ears
+  Intensity: 0.76
+- BlendName: male_as_yo1_Eyes
+  Intensity: 0.0336
+- BlendName: male_as_ol1_Nose
+  Intensity: 0.09
+- BlendName: male_as_ol1_Neck
+  Intensity: 0.23
+- BlendName: male_af_yo1_Cheeks
+  Intensity: 0.49
+- BlendName: male_as_md1_Nose
+  Intensity: 0.42
 - BlendName: male_as_ol1_Forehead
   Intensity: 0.53
 - BlendName: male_as_ol1_Jaw
   Intensity: 0.56
-- BlendName: male_as_ol1_Ears
-  Intensity: 0.04
 - BlendName: male_as_ol1_Mouth
   Intensity: 0.16203554
-- BlendName: male_as_md1_Nose
-  Intensity: 0.42
-- BlendName: male_eu_ol1_Mouth
-  Intensity: 0.26105726
-- BlendName: male_eu_yo1_Eyes
-  Intensity: 0.84
-- BlendName: male_af_yo1_Cheeks
-  Intensity: 0.49
-- BlendName: male_as_ol1_Neck
-  Intensity: 0.23
-- BlendName: male_as_ol1_Nose
-  Intensity: 0.09
-- BlendName: male_as_yo1_Eyes
-  Intensity: 0.0336
-- BlendName: male_af_yo1_Jaw
-  Intensity: 0.13
-- BlendName: male_eu_md2_Ears
-  Intensity: 0.76
-- BlendName: male_eu_md2_Mouth
-  Intensity: 0.29690722
-- BlendName: male_eu_ol1_Cheeks
-  Intensity: 0.3
-- BlendName: male_as_ol1_Eyes
-  Intensity: 0.1264
-- BlendName: male_af_yo1_Chin
-  Intensity: 0.23
-- BlendName: male_eu_yo1_Mouth
-  Intensity: 0.28
-- BlendName: male_af_ol1_Nose
-  Intensity: 0.45
-- BlendName: male_eu_ol1_Neck
-  Intensity: 0.19
+- BlendName: male_eu_ol1_Chin
+  Intensity: 0.5
 SkinToneIndex: 2
 HairColor: Black
 FacialHairColor: SaltAndPepper
