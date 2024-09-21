@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.2.0](#v120)
     - [v1.1.1](#v111)
     - [v1.1.0](#v110)
     - [v1.0.1](#v101)
@@ -14,6 +15,12 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.2.0
+------
+- Small update to make troubleshooting Ship Vendor Framework a bit easier
+
+([TOC](#table-of-contents))
 
 v1.1.1
 ------
