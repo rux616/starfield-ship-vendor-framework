@@ -66,7 +66,14 @@
       "label": "Serialize Plugins",
       "type": "shell",
       "command": "./support/common/scripts/serialize-plugins.ps1",
-      "args": ["-Starfield", "-YAML", "-PluginNames", "ShipVendorFramework.esp,ShipVendorFramework.esm"]
+      "args": [
+        "-Starfield",
+        "-YAML",
+        "-PluginNames",
+        "ShipVendorFramework.esp,ShipVendorFramework.esm",
+        "-PackageVersion",
+        "0.26.0"
+      ]
     },
     {
       "label": "Compile Scripts (Starvival Patch)",
