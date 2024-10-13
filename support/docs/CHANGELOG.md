@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.3.0](#v130)
     - [v1.2.0](#v120)
     - [v1.1.1](#v111)
     - [v1.1.0](#v110)
@@ -15,6 +16,13 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.3.0
+------
+- Updated Starvival compatibility patch for Starvival v8
+- Updated some backend stuff (spriggit, helper scripts, etc.)
+
+([TOC](#table-of-contents))
 
 v1.2.0
 ------

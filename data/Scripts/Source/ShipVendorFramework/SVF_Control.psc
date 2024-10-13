@@ -25,7 +25,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 ; The current version of the SVF_Control script.
 int SVFControlVersionCurrent = 0
 
-string Property SVFVersion = "1.2.0" Auto Const Hidden
+string Property SVFVersion = "1.3.0" Auto Const Hidden
 { The Ship Vendor Framework version. }
 
 Actor Property PlayerRef Auto

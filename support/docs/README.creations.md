@@ -1,4 +1,4 @@
-Version: 1.2.0
+Version: 1.3.0
 
 Summary
 -----
@@ -37,7 +37,7 @@ Mods that are known to conflict:
 - "Outpost Vendor New Ships" by nefurun [Creations (https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships)]: Use SVF Capability Patch - Outpost Vendor New Ships, and one of the SVF Generic Patches that fits what you need.
 - "Outpost Shipbuilder Unlocked ESM" by goldenchrome [Nexus (https://www.nexusmods.com/starfield/mods/5667)]: Use SVF Generic Patch - All Ship Modules Unlocked (Outpost Only).
 - "Rich Outpost Shipbuilder" by LilithMotherOfAll [Nexus (https://www.nexusmods.com/starfield/mods/5492)]: No patch. If you loaded a save at an outpost after installing SVF, go to another world (one of the big cities is best), then back to your outpost.
-- "Starvival" ("Spaceship Systems" module) by lKocMoHaBTl [Creations (https://creations.bethesda.net/en/starfield/details/14319a44-d8bb-442e-b9ff-475ad4c32b7c/Starvival___Immersive_Survival_Addon__Spaceship_Sy) / Nexus (https://www.nexusmods.com/starfield/mods/6890)]: Use whichever Starvival SVF Compatibility Patch best fits your needs.
+- "Starvival" by lKocMoHaBTl [Creations (https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon) / Nexus (https://www.nexusmods.com/starfield/mods/6890)]: Use SVF Compatibility Patch - Starvival.
 - "The Den Astrodynamics" by VoodooChild [Nexus (https://www.nexusmods.com/starfield/mods/8809)]: Use SVF Compatibility Patch - The Den Astrodynamics.
 - "Ultimate Shipyards Unlocked" by JustAnOrdinaryGuy [Nexus (https://www.nexusmods.com/starfield/mods/4723)]: Use one of the "All Ship Modules Unlocked" SVF Generic Patches.
 

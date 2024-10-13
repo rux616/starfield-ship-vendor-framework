@@ -13,7 +13,7 @@ ModHeader:
     A framework allowing mod authors to easily add ships for sale without conflicts.
 
 
-    Version: 1.2.0
+    Version: 1.3.0
   MasterReferences:
   - Master: Starfield.esm
   BNAM: 0x4D61696E00

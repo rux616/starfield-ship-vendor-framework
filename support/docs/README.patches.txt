@@ -8,8 +8,7 @@ Table Of Contents
 - SVF Capability Patch - Lower Landing Pad
 - SVF Capability Patch - Lower Landing Pad Unlocked
 - SVF Capability Patch - Outpost Vendor New Ships
-- SVF Compatibility Patch - Starvival (Spaceship Systems Module) + All Ship Modules Unlocked (Outpost Only)
-- SVF Compatibility Patch - Starvival (Spaceship Systems Module)
+- SVF Compatibility Patch - Starvival
 - SVF Compatibility Patch - The Den Astrodynamics
 - SVF Generic Patch - All Ship Modules Unlocked (All Ship Vendors)
 - SVF Generic Patch - All Ship Modules Unlocked (Outpost Only)
@@ -100,28 +99,14 @@ Patch Type:
 - Capability
 
 
-SVF Compatibility Patch - Starvival (Spaceship Systems Module) + All Ship Modules Unlocked (Outpost Only)
+SVF Compatibility Patch - Starvival
 -----
-Patch for "Ship Vendor Framework" by rux616 and the "Spaceship Systems" module of "Starvival" by lKocMoHaBTl. Also unlocks all ship modules at the outpost ship vendor.
+Patch for "Ship Vendor Framework" by rux616 and "Starvival" by lKocMoHaBTl.
 
 This patch should be loaded after any SVF Generic Patches, if in use.
 
 Mod Source:
-- Creations: https://creations.bethesda.net/en/starfield/details/14319a44-d8bb-442e-b9ff-475ad4c32b7c/Starvival___Immersive_Survival_Addon__Spaceship_Sy
-- Nexus: https://www.nexusmods.com/starfield/mods/6890
-
-Patch Type:
-- Compatibility
-
-
-SVF Compatibility Patch - Starvival (Spaceship Systems Module)
------
-Patch for "Ship Vendor Framework" by rux616 and the "Spaceship Systems" module of "Starvival" by lKocMoHaBTl.
-
-This patch should be loaded after any SVF Generic Patches, if in use.
-
-Mod Source:
-- Creations: https://creations.bethesda.net/en/starfield/details/14319a44-d8bb-442e-b9ff-475ad4c32b7c/Starvival___Immersive_Survival_Addon__Spaceship_Sy
+- Creations: https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon
 - Nexus: https://www.nexusmods.com/starfield/mods/6890
 
 Patch Type:
