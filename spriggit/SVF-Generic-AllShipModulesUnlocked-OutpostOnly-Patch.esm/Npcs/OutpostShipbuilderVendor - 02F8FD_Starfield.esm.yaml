@@ -15,13 +15,13 @@ VirtualMachineAdapter:
       Data: True
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
-      Object: 00081C:SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esm
+      Object: 00081C:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SQ_PlayerShip
       Object: 0174A2:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
-      Object: 000826:SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esm
+      Object: 000826:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: DialogueShipServices
       Object: 22E153:Starfield.esm
@@ -39,10 +39,10 @@ VirtualMachineAdapter:
       Object: 1F7676:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
-      Object: 000828:SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esm
+      Object: 000828:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFExternalUniquesSoldList
-      Object: 000802:SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esm
+      Object: 000802:shipvendorframework.esm
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004

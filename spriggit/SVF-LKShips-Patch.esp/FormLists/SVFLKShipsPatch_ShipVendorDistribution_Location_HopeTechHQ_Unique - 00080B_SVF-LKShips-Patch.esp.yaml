@@ -1,0 +1,8 @@
+FormKey: 00080B:SVF-LKShips-Patch.esp
+EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_HopeTechHQ_Unique
+FormVersion: 559
+Items:
+- 112141:Starfield.esm
+- 112142:Starfield.esm
+- 0200D9:Starfield.esm
+ANAM: 000806:shipvendorframework.esm

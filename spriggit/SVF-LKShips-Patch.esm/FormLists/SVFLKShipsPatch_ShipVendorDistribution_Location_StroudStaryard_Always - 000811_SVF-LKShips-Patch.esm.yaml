@@ -1,0 +1,9 @@
+FormKey: 000811:SVF-LKShips-Patch.esm
+EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_StroudStaryard_Always
+FormVersion: 559
+Items:
+- 000B11:L-K_Ships.esm
+- 000B0E:L-K_Ships.esm
+- 000A8F:L-K_Ships.esm
+- 000B0B:L-K_Ships.esm
+ANAM: 000807:shipvendorframework.esm

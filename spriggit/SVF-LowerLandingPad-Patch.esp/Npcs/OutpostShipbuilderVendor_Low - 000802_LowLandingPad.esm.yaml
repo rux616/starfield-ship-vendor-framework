@@ -7,16 +7,16 @@ VirtualMachineAdapter:
     Properties:
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
-      Object: 00081C:SVF-LowerLandingPad-Patch.esp
+      Object: 00081C:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFExternalUniquesSoldList
-      Object: 000802:SVF-LowerLandingPad-Patch.esp
+      Object: 000802:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
-      Object: 000826:SVF-LowerLandingPad-Patch.esp
+      Object: 000826:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
-      Object: 000828:SVF-LowerLandingPad-Patch.esp
+      Object: 000828:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipVendorLocation
       Object: 209AC7:Starfield.esm

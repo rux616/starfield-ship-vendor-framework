@@ -7,13 +7,13 @@ VirtualMachineAdapter:
     Properties:
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
-      Object: 00082B:SVF-TheDenAstrodynamics-Patch.esm
+      Object: 00082B:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SQ_PlayerShip
       Object: 0174A2:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
-      Object: 00082E:SVF-TheDenAstrodynamics-Patch.esm
+      Object: 00082E:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipVendorLocation
       Object: 209AC7:Starfield.esm
@@ -32,7 +32,7 @@ VirtualMachineAdapter:
       Alias: 18
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
-      Object: 000811:SVF-TheDenAstrodynamics-Patch.esm
+      Object: 000811:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: DialogueShipServices
       Object: 22E153:Starfield.esm

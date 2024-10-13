@@ -7,10 +7,10 @@ VirtualMachineAdapter:
     Properties:
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
-      Object: 000826:SVF-StarvivalSpaceshipSystems-Patch.esm
+      Object: 000826:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
-      Object: 000828:SVF-StarvivalSpaceshipSystems-Patch.esm
+      Object: 000828:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: DialogueShipServices
       Object: 22E153:Starfield.esm
@@ -22,14 +22,14 @@ VirtualMachineAdapter:
       Object: 1DF5BF:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFExternalUniquesSoldList
-      Object: 000802:SVF-StarvivalSpaceshipSystems-Patch.esm
+      Object: 000802:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: PlayerShips
       Object: 0174A2:Starfield.esm
       Alias: 18
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
-      Object: 00081C:SVF-StarvivalSpaceshipSystems-Patch.esm
+      Object: 00081C:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipsToSellListRandomDataset
       Object: 1F7676:Starfield.esm
