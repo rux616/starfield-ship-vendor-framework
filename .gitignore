@@ -9,3 +9,5 @@ data*/scripts/**/*.pex
 .vscode/GTEMP.pas
 # exclude BA2 archives
 *.ba2
+# exclude .spriggit file as it's dynamically generated for this project
+spriggit/.spriggit
