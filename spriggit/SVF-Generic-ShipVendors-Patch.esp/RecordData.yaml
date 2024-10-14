@@ -1,6 +1,6 @@
 SpriggitSource:
   PackageName: Spriggit.Yaml.Starfield
-  Version: 0.25.0
+  Version: 0.34.0
 ModKey: SVF-Generic-ShipVendors-Patch.esp
 GameRelease: Starfield
 ModHeader:

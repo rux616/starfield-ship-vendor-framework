@@ -1,4 +1,4 @@
-; this script is modified to maintain compatibility between SVF and the "Ship Systems" module of Starvival
+; this script is modified to maintain compatibility between Ship Vendor Framework and Starvival
 
 Scriptname OutpostShipbuilderMenuActivator extends OutpostEventHandlerParent
 

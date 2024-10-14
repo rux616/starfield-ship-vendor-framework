@@ -16,7 +16,7 @@ Entries:
   - MutagenObjectType: ConditionFloat
     Flags:
     - OR
-    Unknown2: 4938
+    Unknown2: 5607
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
       RunOnType: Reference
@@ -26,7 +26,7 @@ Entries:
   - MutagenObjectType: ConditionFloat
     Flags:
     - OR
-    Unknown2: 4938
+    Unknown2: 5607
     Data:
       MutagenObjectType: GetInCellConditionData
       RunOnType: Reference

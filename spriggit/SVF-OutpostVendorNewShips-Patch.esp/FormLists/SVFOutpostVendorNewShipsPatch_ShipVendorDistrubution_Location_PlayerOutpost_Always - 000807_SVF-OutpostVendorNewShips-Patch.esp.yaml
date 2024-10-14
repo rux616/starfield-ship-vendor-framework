@@ -1,0 +1,10 @@
+FormKey: 000807:SVF-OutpostVendorNewShips-Patch.esp
+EditorID: SVFOutpostVendorNewShipsPatch_ShipVendorDistrubution_Location_PlayerOutpost_Always
+FormVersion: 559
+Items:
+- 004DD7:outpostvendorcustomships.esm
+- 000818:outpostvendorcustomships.esm
+- 00081B:outpostvendorcustomships.esm
+- 003093:outpostvendorcustomships.esm
+- 000819:outpostvendorcustomships.esm
+ANAM: 000828:shipvendorframework.esm

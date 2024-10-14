@@ -49,3 +49,5 @@
 - [-] add patch for [Rich Outpost Shipbuilder](https://www.nexusmods.com/starfield/mods/5492)
     - not going to support this for now - if `GetFormFromFile()` gets fixed for small/medium masters, will do this dynamically
 - [ ] if `GetFormFromFile()` is fixed for small/medium masters, add in options like dynamic keyword addition at outpost ship builders (maybe regular ship services technicians as well?), always rich ship techs (outpost/regular)
+- [ ] bug: ship services kiosk in stroud eklund showroom in neon doesn't have any ships for sale
+- [ ] bug: vendors (at least New Atlantis) seem to be regenerating their inventory every time

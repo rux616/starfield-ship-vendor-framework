@@ -63,17 +63,32 @@
       ]
     },
     {
+      "label": "Populate Known Masters",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "./support/common/scripts/populate-known-masters.py",
+        "--full-masters",
+        "L-K_Ships.esm",
+        "LowLandingPad.esm",
+        "Starvival - Immersive Survival Addon.esm",
+        "vcDenAstrodynamics.esm",
+        "--medium-masters",
+        "outpostvendorcustomships.esm",
+        "--small-masters",
+        "deadalus1.esm",
+        "dominion.esm",
+        "nighthawk.esm",
+        "ShipVendorFramework.esm",
+        "Starvival - ModuleSpaceshipSystems.esm"
+      ]
+    },
+    {
       "label": "Serialize Plugins",
       "type": "shell",
       "command": "./support/common/scripts/serialize-plugins.ps1",
-      "args": [
-        "-Starfield",
-        "-YAML",
-        "-PluginNames",
-        "ShipVendorFramework.esp,ShipVendorFramework.esm",
-        "-PackageVersion",
-        "0.26.0"
-      ]
+      "args": ["-Starfield", "-YAML"],
+      "dependsOn": ["Populate Known Masters"]
     },
     {
       "label": "Compile Scripts (Starvival Patch)",
@@ -88,31 +103,14 @@
       "args": ["./support/scripts/ShipVendorFramework.ppj"]
     },
     {
-      "label": "Create Archives (Starvival Patch 1 BA2)",
+      "label": "Create Archives (Starvival Patch BA2)",
       "type": "shell",
       "command": "./support/common/scripts/build-archives.ps1",
       "args": [
         "-DataDir",
         "./data-starvival-patch",
         "-PluginName",
-        "SVF-StarvivalSpaceshipSystems-Patch",
-        "-Starfield",
-        "-Skip7z",
-        "-SkipBA2Cleanup",
-        "-BA2AlsoMakeXbox",
-        "-BA2ForceUncompressed",
-        "-BA2DisableSharing"
-      ]
-    },
-    {
-      "label": "Create Archives (Starvival Patch 2 BA2)",
-      "type": "shell",
-      "command": "./support/common/scripts/build-archives.ps1",
-      "args": [
-        "-DataDir",
-        "./data-starvival-patch",
-        "-PluginName",
-        "SVF-StarvivalSpaceshipSystems-AllShipModulesUnlocked-OutpostOnly-Patch",
+        "SVF-Starvival-Patch",
         "-Starfield",
         "-Skip7z",
         "-SkipBA2Cleanup",
@@ -142,11 +140,7 @@
       "command": "./support/common/scripts/build-archives.ps1",
       "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-SkipBA2", "-SkipBA2Cleanup"],
       "dependsOrder": "parallel",
-      "dependsOn": [
-        "Create Archives (Starvival Patch 1 BA2)",
-        "Create Archives (Starvival Patch 2 BA2)",
-        "Create Archives (Main BA2)"
-      ]
+      "dependsOn": ["Create Archives (Starvival Patch BA2)", "Create Archives (Main BA2)"]
     },
     {
       "label": "Clean Up BA2 Archives",

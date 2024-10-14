@@ -8,13 +8,13 @@ VirtualMachineAdapter:
     Properties:
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
-      Object: 000809:SVF-Generic-ShipVendors-Patch.esp
+      Object: 000809:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipsToSellListAlwaysDataset
       Object: 1F7681:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
-      Object: 00080A:SVF-Generic-ShipVendors-Patch.esp
+      Object: 00080A:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: LinkShipLandingMarker01
       Object: 2CFDEB:Starfield.esm
@@ -32,7 +32,7 @@ VirtualMachineAdapter:
       Object: 22E153:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
-      Object: 000834:SVF-Generic-ShipVendors-Patch.esp
+      Object: 000834:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipVendorLocation
       Object: 209AC7:Starfield.esm

@@ -10,42 +10,42 @@ VirtualMachineAdapter:
       Name: SVFShipsToSellListUniqueDataset
       Object: 000804:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
-      Name: SQ_PlayerShip
-      Object: 0174A2:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SVFShipsToSellListAlwaysDataset
-      Object: 000803:ShipVendorFramework.esp
-    - MutagenObjectType: ScriptObjectProperty
-      Name: DialogueShipServices
-      Object: 22E153:Starfield.esm
-    - MutagenObjectType: ScriptBoolProperty
-      Name: SVFUseNewDatasets
-      Data: True
-    - MutagenObjectType: ScriptObjectProperty
       Name: SpaceshipStoredLink
       Object: 1DF5BF:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListUniqueDataset
-      Object: 0C86DE:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: LinkShipLandingMarker01
-      Object: 2CFDEB:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
       Object: 000831:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListAlwaysDataset
-      Object: 1F767E:Starfield.esm
+      Name: ShipsToSellListRandomDataset
+      Object: 1F7677:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListAlwaysDataset
+      Object: 000803:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LinkShipLandingMarker01
+      Object: 2CFDEB:Starfield.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SVFUseNewDatasets
+      Data: True
     - MutagenObjectType: ScriptObjectProperty
       Name: PlayerShips
       Object: 0174A2:Starfield.esm
       Alias: 18
     - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListRandomDataset
-      Object: 1F7677:Starfield.esm
+      Name: ShipsToSellListAlwaysDataset
+      Object: 1F767E:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipVendorLocation
       Object: 209AC7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SQ_PlayerShip
+      Object: 0174A2:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipsToSellListUniqueDataset
+      Object: 0C86DE:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
 ObjectBounds:
   First: -0.591797, -0.3623047, 0
   Second: 0.59179676, 1.0341797, 1.2373047
@@ -283,119 +283,119 @@ FaceMorphs:
   MorphGroups:
   - MorphGroup: Neck
     BlendIntensity: 0.030899592
+  - MorphGroup: Chin
+    BlendIntensity: 0.2431579
+  - MorphGroup: Forehead
+    BlendIntensity: 0.29473096
+  - MorphGroup: Mouth
+    BlendIntensity: 0.024784517
   - MorphGroup: Jaw
     BlendIntensity: 0.24488127
   - MorphGroup: Eyes
     BlendIntensity: 0.14273766
   - MorphGroup: Ears
     BlendIntensity: 0.21375608
-  - MorphGroup: Forehead
-    BlendIntensity: 0.29473096
   - MorphGroup: Cheeks
     BlendIntensity: 0.10087713
-  - MorphGroup: Chin
-    BlendIntensity: 0.2431579
   - MorphGroup: Nose
     BlendIntensity: 0.22211272
-  - MorphGroup: Mouth
-    BlendIntensity: 0.024784517
 - Index: 14
   MorphGroups:
   - MorphGroup: Neck
     BlendIntensity: 0.1501673
+  - MorphGroup: Chin
+    BlendIntensity: 0.27
+  - MorphGroup: Forehead
+    BlendIntensity: 0.16302703
+  - MorphGroup: Mouth
+    BlendIntensity: 0.24235007
   - MorphGroup: Jaw
     BlendIntensity: 0.3277775
   - MorphGroup: Eyes
     BlendIntensity: 0.112757996
   - MorphGroup: Ears
     BlendIntensity: 0.096019834
-  - MorphGroup: Forehead
-    BlendIntensity: 0.16302703
   - MorphGroup: Cheeks
     BlendIntensity: 0.28500372
-  - MorphGroup: Chin
-    BlendIntensity: 0.27
   - MorphGroup: Nose
     BlendIntensity: 0.10355011
-  - MorphGroup: Mouth
-    BlendIntensity: 0.24235007
 - Index: 46
   MorphGroups:
   - MorphGroup: Chin
     BlendIntensity: 0.086842105
 - Index: 44
   MorphGroups:
-  - MorphGroup: Cheeks
-    BlendIntensity: 0.3
-  - MorphGroup: Neck
-    BlendIntensity: 0.17007188
-  - MorphGroup: Ears
-    BlendIntensity: 0.26953894
-  - MorphGroup: Eyes
-    BlendIntensity: 0.33040917
-  - MorphGroup: Forehead
-    BlendIntensity: 0.09804299
-  - MorphGroup: Jaw
-    BlendIntensity: 0.19081089
-  - MorphGroup: Mouth
-    BlendIntensity: 0.13809699
   - MorphGroup: Nose
     BlendIntensity: 0.19275096
+  - MorphGroup: Neck
+    BlendIntensity: 0.17007188
+  - MorphGroup: Mouth
+    BlendIntensity: 0.13809699
+  - MorphGroup: Jaw
+    BlendIntensity: 0.19081089
+  - MorphGroup: Forehead
+    BlendIntensity: 0.09804299
+  - MorphGroup: Eyes
+    BlendIntensity: 0.33040917
+  - MorphGroup: Ears
+    BlendIntensity: 0.26953894
+  - MorphGroup: Cheeks
+    BlendIntensity: 0.3
 MorphBlends:
-- BlendName: male_eu_ol1_Jaw
-  Intensity: 0.3277775
-- BlendName: male_af_yo1_Ears
-  Intensity: 0.21375608
-- BlendName: male_af_yo1_Mouth
-  Intensity: 0.024784517
-- BlendName: male_as_ol1_Jaw
-  Intensity: 0.19081089
-- BlendName: male_as_ol1_Ears
-  Intensity: 0.26953894
-- BlendName: male_af_yo1_Nose
-  Intensity: 0.22211272
-- BlendName: male_eu_ol1_Forehead
-  Intensity: 0.16302703
-- BlendName: male_eu_ol1_Cheeks
-  Intensity: 0.28500372
-- BlendName: male_af_yo1_Cheeks
-  Intensity: 0.10087713
-- BlendName: male_eu_ol1_Chin
-  Intensity: 0.27
-- BlendName: male_eu_ol1_Mouth
-  Intensity: 0.24235007
-- BlendName: male_eu_ol1_Ears
-  Intensity: 0.096019834
-- BlendName: male_af_yo1_Neck
-  Intensity: 0.030899592
 - BlendName: male_af_yo1_Jaw
   Intensity: 0.24488127
-- BlendName: male_as_yo1_Chin
-  Intensity: 0.086842105
-- BlendName: male_as_ol1_Forehead
-  Intensity: 0.09804299
-- BlendName: male_as_ol1_Eyes
-  Intensity: 0.33040917
-- BlendName: male_as_ol1_Mouth
-  Intensity: 0.13809699
-- BlendName: male_as_ol1_Neck
-  Intensity: 0.17007188
-- BlendName: male_as_ol1_Nose
-  Intensity: 0.19275096
-- BlendName: male_eu_ol1_Neck
-  Intensity: 0.1501673
-- BlendName: male_as_ol1_Cheeks
-  Intensity: 0.58
-- BlendName: male_af_yo1_Forehead
-  Intensity: 0.29473096
-- BlendName: male_eu_ol1_Eyes
-  Intensity: 0.112757996
-- BlendName: male_af_yo1_Eyes
-  Intensity: 0.14273766
-- BlendName: male_eu_ol1_Nose
-  Intensity: 0.10355011
+- BlendName: male_eu_ol1_Forehead
+  Intensity: 0.16302703
+- BlendName: male_as_ol1_Jaw
+  Intensity: 0.19081089
 - BlendName: male_af_yo1_Chin
   Intensity: 0.2431579
+- BlendName: male_eu_ol1_Nose
+  Intensity: 0.10355011
+- BlendName: male_af_yo1_Eyes
+  Intensity: 0.14273766
+- BlendName: male_eu_ol1_Eyes
+  Intensity: 0.112757996
+- BlendName: male_af_yo1_Forehead
+  Intensity: 0.29473096
+- BlendName: male_as_ol1_Cheeks
+  Intensity: 0.58
+- BlendName: male_eu_ol1_Neck
+  Intensity: 0.1501673
+- BlendName: male_eu_ol1_Cheeks
+  Intensity: 0.28500372
+- BlendName: male_as_ol1_Nose
+  Intensity: 0.19275096
+- BlendName: male_as_ol1_Neck
+  Intensity: 0.17007188
+- BlendName: male_as_ol1_Mouth
+  Intensity: 0.13809699
+- BlendName: male_as_ol1_Eyes
+  Intensity: 0.33040917
+- BlendName: male_as_ol1_Forehead
+  Intensity: 0.09804299
+- BlendName: male_as_yo1_Chin
+  Intensity: 0.086842105
+- BlendName: male_af_yo1_Neck
+  Intensity: 0.030899592
+- BlendName: male_eu_ol1_Ears
+  Intensity: 0.096019834
+- BlendName: male_eu_ol1_Mouth
+  Intensity: 0.24235007
+- BlendName: male_eu_ol1_Chin
+  Intensity: 0.27
+- BlendName: male_af_yo1_Cheeks
+  Intensity: 0.10087713
+- BlendName: male_eu_ol1_Jaw
+  Intensity: 0.3277775
+- BlendName: male_af_yo1_Nose
+  Intensity: 0.22211272
+- BlendName: male_af_yo1_Mouth
+  Intensity: 0.024784517
+- BlendName: male_as_ol1_Ears
+  Intensity: 0.26953894
+- BlendName: male_af_yo1_Ears
+  Intensity: 0.21375608
 SkinToneIndex: 3
 HairColor: Black
 FacialHairColor: Brown

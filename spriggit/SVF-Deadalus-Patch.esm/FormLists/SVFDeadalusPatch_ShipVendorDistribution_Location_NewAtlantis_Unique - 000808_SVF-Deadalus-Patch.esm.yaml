@@ -1,0 +1,9 @@
+FormKey: 000808:SVF-Deadalus-Patch.esm
+EditorID: SVFDeadalusPatch_ShipVendorDistribution_Location_NewAtlantis_Unique
+FormVersion: 559
+Items:
+- 000811:deadalus1.esm
+- 000806:deadalus1.esm
+- 000812:deadalus1.esm
+- 000813:deadalus1.esm
+ANAM: 000822:shipvendorframework.esm

@@ -14,7 +14,7 @@ Entries:
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown2: 4938
+    Unknown2: 5607
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
       RunOnType: Reference

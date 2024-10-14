@@ -8,10 +8,10 @@ VirtualMachineAdapter:
     Properties:
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
-      Object: 000815:SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esm
+      Object: 000815:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
-      Object: 000811:SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esm
+      Object: 000811:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: PlayerShips
       Object: 0174A2:Starfield.esm
@@ -21,7 +21,7 @@ VirtualMachineAdapter:
       Object: 1F7672:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
-      Object: 000816:SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esm
+      Object: 000816:shipvendorframework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SQ_PlayerShip
       Object: 0174A2:Starfield.esm
