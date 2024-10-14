@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.3.1](#v131)
     - [v1.3.0](#v130)
     - [v1.2.0](#v120)
     - [v1.1.1](#v111)
@@ -16,6 +17,12 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.3.1
+------
+- Update verbiage in FOMOD files to match readme
+
+([TOC](#table-of-contents))
 
 v1.3.0
 ------
