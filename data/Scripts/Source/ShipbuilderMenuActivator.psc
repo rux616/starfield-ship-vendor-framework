@@ -1,5 +1,5 @@
 Scriptname ShipbuilderMenuActivator extends ObjectReference
-{ script for buying ships via a kiosk activator 
+{ script for buying ships via a kiosk activator
     NOTE: kiosk should either be linked to a landing marker, OR be linked to another kiosk which is linked to the landing marker.ShipVendorScript
     So, if you have multiple kiosks, only link one to the landing marker, link the others to that kiosk.
 }
@@ -49,13 +49,20 @@ Event OnActivate(ObjectReference akActionRef)
         endif
         debug.trace(self + " theShipServicesActor=" + theShipServicesActor)
         if theShipServicesActor
-	     int messageIndex = ShipBuilderVendorMessage.Show()
+            int messageIndex = ShipBuilderVendorMessage.Show()
             if messageIndex == 0
-			 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = false)
-	     elseif messageIndex == 1
-            		theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = true)
+                theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = false)
+	        elseif messageIndex == 1
+                If theShipServicesActor.SVFEnhancementsInitialized() == false
+                    ; TODO add a "please wait, initializing" message
+                    ; calling Initialize() again is a workaround for the fact that if the player loads a save where the
+                    ; vendor is already loaded, the OnLoad event for the vendor does not fire again and thus the SVF
+                    ; enhancements do not get initialized automatically
+                    theShipServicesActor.Initialize(theShipServicesActor.myLandingMarker)
+                EndIf
+                ; TODO add a "please wait, initializing" message
+                theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = true)
 	     endif
         endif
     endif
 EndEvent
-

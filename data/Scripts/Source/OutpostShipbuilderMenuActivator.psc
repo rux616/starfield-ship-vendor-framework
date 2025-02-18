@@ -36,17 +36,23 @@ Event OnActivate(ObjectReference akActionRef)
     if akActionRef == Game.GetPlayer()
         ShipVendorScript theShipServicesActor = myVendor as ShipVendorScript
         if theShipServicesActor
+            ; fix if the landing marker is not set
+            If theShipServicesActor.myLandingMarker == NONE
+                theShipServicesActor.myLandingMarker = GetLinkedRef()
+            EndIf
+
             int messageIndex = OutpostShipbuilderMessage.Show()
             if messageIndex == 0
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = false)
             elseif messageIndex == 1
-                ; calling OnLoad() is a workaround for the fact that if the player loads a save where the vendor is
-                ; already loaded, the OnLoad event for the vendor does not fire again
                 If theShipServicesActor.SVFEnhancementsInitialized() == false
-                    ; TODO this needs to have a "please wait, initializing" message
-                    theShipServicesActor.OnLoad()
+                    ; TODO add a "please wait, initializing" message
+                    ; calling Initialize() again is a workaround for the fact that if the player loads a save where the
+                    ; vendor is already loaded, the OnLoad event for the vendor does not fire again and thus the SVF
+                    ; enhancements do not get initialized automatically
+                    theShipServicesActor.Initialize(theShipServicesActor.myLandingMarker)
                 EndIf
-                ; TODO this needs to have a "please wait, initializing" message
+                ; TODO add a "please wait, initializing" message
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab = true)
             elseif messageIndex == 2
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(1, theShipServicesActor)

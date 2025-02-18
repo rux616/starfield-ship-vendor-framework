@@ -203,12 +203,12 @@ Event Actor.OnPlayerLoadGame(Actor akPlayer)
     If loaded3D == false
         _Log(fnName, "3D not loaded, unregistering for OnPlayerLoadGame event", LL_WARNING)
         UnregisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
-        Return
+    Else
+    _Log(fnName, "3D loaded; continuing", LL_DEBUG)
+        LockGuard LoadGuard
+            HandleOnLoad()
+        EndLockGuard
     EndIf
-
-    LockGuard LoadGuard
-        HandleOnLoad()
-    EndLockGuard
 
     _Log(fnName, "end", LL_DEBUG)
 EndEvent
@@ -227,19 +227,32 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         DebugDumpData()
     EndIf
 
-    ; initialize Ship Vendor Framework enhancements if not already done
-    ; needed here instead of in Initialize() for backwards compatibility
-    InitializeSVFEnhancements()
-    ; sync the uniques sold list with the external list if provided
-    SyncUniquesSoldList()
     ; register for ship sell events
+    _Log(fnName, "registering for ship sell events", LL_DEBUG)
     RegisterForRemoteEvent(PlayerShips, "OnShipSold")
-    If initialized == false
-        If InitializeOnLoad
-            myLandingMarker = GetLinkedRef(LinkShipLandingMarker01)
+
+    ; register for load game events - automatically unregistered when the vendor is unloaded
+    _Log(fnName, "registering for player load game events", LL_DEBUG)
+    RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
+
+    If initialized == false || SVFEnhancementsInitialized() == false
+        ; if initialized == true, the vendor has already been initialized, but because of the prior logic statement,
+        ; SVFEnhancementsInitialized() _must_ have returned false, which means the SVF enhancements still need to be
+        ; initialized
+        If initialized == true
+            _Log(fnName, "initializing SVF enhancements on load", LL_DEBUG)
+            Initialize(myLandingMarker)
+        ElseIf InitializeOnLoad == true
+            If myLandingMarker == None
+                myLandingMarker = GetLinkedRef(LinkShipLandingMarker01)
+            EndIf
+            _Log(fnName, "initializing on load, landing marker is " + myLandingMarker, LL_DEBUG)
             Initialize(myLandingMarker)
         EndIf
     Else
+        ; sync the uniques sold list with the external list if provided
+        SyncUniquesSoldList()
+
         CheckForInventoryRefresh()
     EndIf
 
@@ -250,6 +263,70 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+Function Initialize(ObjectReference landingMarkerRef)
+    string fnName = "Initialize" Const
+    _Log(fnName, "begin (" + landingMarkerRef + ")", LL_DEBUG)
+
+    bool doRefreshCheck = false
+
+    _Log(fnName, "Log level: " + LogLevel)
+    _Log(fnName, "Primary initialization done: " + initialized)
+    _Log(fnName, "SVF Enhancements version: current=" + SVFEnhancementsVersionCurrent + ", desired=" + SVFEnhancementsVersion)
+    _Log(fnName, "Using new datasets: " + SVFUseNewDatasets)
+
+    If landingMarkerRef != None
+        myLandingMarker = landingMarkerRef
+        _Log(fnName, "setting myLandingMarker to " + myLandingMarker)
+    Else
+        _Log(fnName, "CRITICAL: no landing marker provided; aborting", LL_ERROR)
+        Return
+    EndIf
+
+    If initialized == false
+        ; Initialize arrays.
+        ShipsToSellRandom = new ShipVendorListScript:ShipToSell[0]
+        ShipsToSellAlways = new ShipVendorListScript:ShipToSell[0]
+        ShipsToSellUnique = new ShipVendorListScript:ShipToSell[0]
+
+        LockGuard shipsForSaleGuard
+            shipsForSale = new SpaceshipReference[0]
+        EndLockGuard
+
+        doRefreshCheck = true
+    EndIf
+
+    ; SVF initial setup
+    If SVFEnhancementsVersionCurrent < 1
+        InitializeSVFEnhancementsVersion1()
+
+        doRefreshCheck = true
+    EndIf
+
+    ; SVF version 1 to 2 update tasks
+    If SVFEnhancementsVersionCurrent < 2
+        InitializeSVFEnhancementsVersion2()
+
+        doRefreshCheck = true
+    EndIf
+
+    ; register for ship sell events
+    _Log(fnName, "registering for ship sell events", LL_DEBUG)
+    RegisterForRemoteEvent(PlayerShips, "OnShipSold")
+
+    ; register for load game events - automatically unregistered when the vendor is unloaded
+    _Log(fnName, "registering for player load game events", LL_DEBUG)
+    RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
+
+    initialized = true
+
+    If doRefreshCheck == true
+        CheckForInventoryRefresh()
+    EndIf
+
+    _Log(fnName, "end (" + landingMarkerRef + ")", LL_DEBUG)
 EndFunction
 
 
@@ -266,40 +343,12 @@ bool Function SVFEnhancementsInitialized()
 EndFunction
 
 
-; initialize the Ship Vendor Framework enhancements
-Function InitializeSVFEnhancements()
-    string fnName = "InitializeSVFEnhancements" Const
+Function InitializeSVFEnhancementsVersion1()
+    int updatingToVersion = 1
+    string fnName = "InitializeSVFEnhancementsVersion" + updatingToVersion Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    _Log(fnName, "Log level: " + LogLevel)
-    _Log(fnName, "SVF Enhancements version: current=" + SVFEnhancementsVersionCurrent + ", desired=" + SVFEnhancementsVersion)
-    _Log(fnName, "Using new datasets: " + SVFUseNewDatasets)
-
-    If SVFEnhancementsVersionCurrent < SVFEnhancementsVersion
-        ; initial setup
-        If SVFEnhancementsVersionCurrent < 1
-            SVFEnhancementsVersion1()
-        EndIf
-
-        ; version 1 to 2 update tasks
-        If SVFEnhancementsVersionCurrent < 2
-            SVFEnhancementsVersion2()
-        EndIf
-    EndIf
-
-    ; register for load game events - automatically unregistered when the vendor is unloaded
-    _Log(fnName, "registering for player load game events", LL_DEBUG)
-    RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
-
-    _Log(fnName, "end", LL_DEBUG)
-EndFunction
-
-
-Function SVFEnhancementsVersion1()
-    string fnName = "SVFEnhancementsVersion1" Const
-    _Log(fnName, "begin", LL_DEBUG)
-
-    _Log(fnName, "Ship Vendor Framework enhancements initializing to version 1")
+    _Log(fnName, "Ship Vendor Framework enhancements initializing to version " + updatingToVersion)
 
     ; variable initialization
     SVFShipsToSellRandom = new LeveledSpaceshipBase[0]
@@ -329,18 +378,19 @@ Function SVFEnhancementsVersion1()
         lastInventoryRefreshTimestamp = 0.0
     EndIf
 
-    SVFEnhancementsVersionCurrent = 1
-    _Log(fnName, "Ship Vendor Framework enhancements initialized to version 1")
+    SVFEnhancementsVersionCurrent = updatingToVersion
+    _Log(fnName, "Ship Vendor Framework enhancements updated to version " + updatingToVersion)
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
-Function SVFEnhancementsVersion2()
-    string fnName = "SVFEnhancementsVersion2" Const
+Function InitializeSVFEnhancementsVersion2()
+    int updatingToVersion = 2
+    string fnName = "InitializeSVFEnhancementsVersion" + updatingToVersion Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    _Log(fnName, "Ship Vendor Framework enhancements updating to version 2")
+    _Log(fnName, "Ship Vendor Framework enhancements updating to version " + updatingToVersion)
     int i = 0
 
     ; variable initialization
@@ -471,33 +521,10 @@ Function SVFEnhancementsVersion2()
         lastInventoryRefreshTimestamp = 0.0
     EndIf
 
-    SVFEnhancementsVersionCurrent = 2
-    _Log(fnName, "Ship Vendor Framework enhancements updated to version 2")
+    SVFEnhancementsVersionCurrent = updatingToVersion
+    _Log(fnName, "Ship Vendor Framework enhancements updated to version " + updatingToVersion)
 
     _Log(fnName, "end", LL_DEBUG)
-EndFunction
-
-
-Function Initialize(ObjectReference landingMarkerRef)
-    string fnName = "Initialize" Const
-    _Log(fnName, "begin (" + landingMarkerRef + ")", LL_DEBUG)
-
-    If initialized == false
-        ; Initialize arrays.
-        ShipsToSellRandom = new ShipVendorListScript:ShipToSell[0]
-        ShipsToSellAlways = new ShipVendorListScript:ShipToSell[0]
-        ShipsToSellUnique = new ShipVendorListScript:ShipToSell[0]
-
-        LockGuard shipsForSaleGuard
-            myLandingMarker = landingMarkerRef
-            _Log(fnName, "setting myLandingMarker=" + myLandingMarker)
-            shipsForSale = new SpaceshipReference[0]
-            initialized = true
-        EndLockGuard
-        CheckForInventoryRefresh()
-    EndIf
-
-    _Log(fnName, "end (" + landingMarkerRef + ")", LL_DEBUG)
 EndFunction
 
 
@@ -594,6 +621,7 @@ Event RefCollectionAlias.OnShipSold(RefCollectionAlias akSender, ObjectReference
             ShipsForSaleSoldByPlayer.Add(soldShip)
         EndLockGuard
     EndIf
+    ; TODO add support for taking uniques off the unique purchased list if sold by the player
 
     _Log(fnName, "end", LL_DEBUG)
 EndEvent
@@ -608,11 +636,14 @@ Event SpaceshipReference.OnShipBought(SpaceshipReference akSenderRef)
         LeveledSpaceshipBase clearedLeveledShip = None
 
         ; clear the ship reference from the vendor's lists
+        _Log(fnName, "clearing ship reference from shipsForSale list", LL_DEBUG)
         ClearShipReference(akSenderRef, shipsForSale, ShipsForSaleMapping)
+        _Log(fnName, "clearing ship reference from shipsForSaleRandom list", LL_DEBUG)
         clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleRandom, ShipsForSaleMappingRandom)
 
         If clearedLeveledShip == None
             ; ships in the "always" list are added to a local list of sold ships that resets when the vendor does
+            _Log(fnName, "clearing ship reference from shipsForSaleAlways list", LL_DEBUG)
             clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleAlways, ShipsForSaleMappingAlways)
             If clearedLeveledShip != None
                 _Log(fnName, "'always' ship was bought, adding " + clearedLeveledShip + " to 'always' sold list")
@@ -622,6 +653,7 @@ Event SpaceshipReference.OnShipBought(SpaceshipReference akSenderRef)
 
         If clearedLeveledShip == None
             ; ships in the "unique" list are added to a list of uniques sold, either local or external
+            _Log(fnName, "clearing ship reference from shipsForSaleUnique list", LL_DEBUG)
             clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleUnique, ShipsForSaleMappingUnique)
             If clearedLeveledShip != None
                 _Log(fnName, "'unique' ship was bought, adding " + clearedLeveledShip + " to 'unique' sold list")
