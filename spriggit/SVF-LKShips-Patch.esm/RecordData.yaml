@@ -1,22 +1,22 @@
 SpriggitSource:
   PackageName: Spriggit.Yaml.Starfield
-  Version: 0.34.0
+  Version: 0.35.1
 ModKey: SVF-LKShips-Patch.esm
 GameRelease: Starfield
 ModHeader:
   Flags:
   - Master
   - Light
-  FormVersion: 559
+  FormVersion: 576
   Author: rux616
   Description: >-
     Patch for "Ship Vendor Framework" by rux616 and "L-K Ships" by Lighthorse and KeithVSmith1977.
 
 
-    Version: 1.0.0
+    Version: 1.1.0
   MasterReferences:
   - Master: Starfield.esm
   - Master: L-K_Ships.esm
-  - Master: shipvendorframework.esm
+  - Master: ShipVendorFramework.esm
   BNAM: 0x4D61696E00
   INCC: 0

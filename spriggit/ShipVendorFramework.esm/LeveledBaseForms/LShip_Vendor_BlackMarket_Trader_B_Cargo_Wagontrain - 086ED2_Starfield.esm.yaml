@@ -1,6 +1,6 @@
 FormKey: 086ED2:Starfield.esm
 EditorID: LShip_Vendor_BlackMarket_Trader_B_Cargo_Wagontrain
-FormVersion: 575
+FormVersion: 576
 Version2: 1
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 18
-  Unused: 95
+  Unused: 19924
   Reference: 347145:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 95
+  Unused: 19924
   Reference: 34B5C4:Starfield.esm
   Count: 1
 - Level: 46
-  Unused: 95
+  Unused: 19924
   Reference: 34B5C7:Starfield.esm
   Count: 1
 Model:

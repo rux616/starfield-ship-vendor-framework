@@ -1,6 +1,6 @@
 FormKey: 1EAA83:Starfield.esm
 EditorID: LShip_Vendor_Stroud_B_Privateer
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,14 +9,14 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 95
+  Unused: 19924
   Reference: 0D0597:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
     Flags:
     - OR
-    Unknown2: 5607
+    Unknown2: 16615
     Data:
       MutagenObjectType: GetInCellConditionData
       RunOnType: Reference
@@ -26,7 +26,7 @@ Entries:
   - MutagenObjectType: ConditionFloat
     Flags:
     - OR
-    Unknown2: 5607
+    Unknown2: 16615
     Data:
       MutagenObjectType: GetInCellConditionData
       RunOnType: Reference
@@ -34,15 +34,15 @@ Entries:
       FirstParameter: 117814:Starfield.esm
     ComparisonValue: 1
 - Level: 20
-  Unused: 95
+  Unused: 19924
   Reference: 0D0597:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 95
+  Unused: 19924
   Reference: 0B197B:Starfield.esm
   Count: 1
 - Level: 52
-  Unused: 95
+  Unused: 19924
   Reference: 02C33A:Starfield.esm
   Count: 1
 Model:

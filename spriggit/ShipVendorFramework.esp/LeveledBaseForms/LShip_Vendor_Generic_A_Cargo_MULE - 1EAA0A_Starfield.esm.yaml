@@ -1,6 +1,6 @@
 FormKey: 1EAA0A:Starfield.esm
 EditorID: LShip_Vendor_Generic_A_Cargo_MULE
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 16
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E8F:Starfield.esm
   Count: 1
 - Level: 30
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E8D:Starfield.esm
   Count: 1
 - Level: 48
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E8B:Starfield.esm
   Count: 1
 Model:

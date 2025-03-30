@@ -1,6 +1,6 @@
 FormKey: 1EAA1C:Starfield.esm
 EditorID: LShip_Vendor_Generic_B_Personnel_Caravan
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 18
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E29:Starfield.esm
   Count: 1
 - Level: 38
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E27:Starfield.esm
   Count: 1
 - Level: 60
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E25:Starfield.esm
   Count: 1
 Model:

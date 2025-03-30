@@ -1,0 +1,24 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.35.1
+ModKey: SVF-Generic-ShipVendors-ShatteredSpace-Patch.esm
+GameRelease: Starfield
+ModHeader:
+  Flags:
+  - Master
+  - Light
+  FormVersion: 576
+  Author: rux616
+  Description: >-
+    Generic patch for "Ship Vendor Framework" by rux616, the Shattered Space expansion, and other mods that change ship vendors.
+
+
+    Version: 1.0.0
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: ShatteredSpace.esm
+  - Master: ShipVendorFramework.esm
+  - Master: ShipVendorFramework-ShatteredSpace.esm
+  - Master: SVF-Generic-ShipVendors-Patch.esm
+  BNAM: 0x4D61696E00
+  INCC: 0

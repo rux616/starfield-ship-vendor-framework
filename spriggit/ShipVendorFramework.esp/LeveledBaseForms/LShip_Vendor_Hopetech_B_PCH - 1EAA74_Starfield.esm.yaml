@@ -1,6 +1,6 @@
 FormKey: 1EAA74:Starfield.esm
 EditorID: LShip_Vendor_Hopetech_B_PCH
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,11 +9,11 @@ Flags:
 - 0x200
 Entries:
 - Level: 32
-  Unused: 95
+  Unused: 19924
   Reference: 0D05A3:Starfield.esm
   Count: 1
 - Level: 48
-  Unused: 95
+  Unused: 19924
   Reference: 02C247:Starfield.esm
   Count: 1
 Model:

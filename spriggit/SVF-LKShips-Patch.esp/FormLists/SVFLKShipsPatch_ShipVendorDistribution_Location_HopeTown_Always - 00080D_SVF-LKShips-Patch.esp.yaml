@@ -1,9 +1,9 @@
 FormKey: 00080D:SVF-LKShips-Patch.esp
 EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_HopeTown_Always
-FormVersion: 559
+FormVersion: 576
 Items:
 - 112141:Starfield.esm
 - 112142:Starfield.esm
 - 000B0E:L-K_Ships.esm
 - 000B0F:L-K_Ships.esm
-ANAM: 00081D:shipvendorframework.esm
+ANAM: 00081D:ShipVendorFramework.esm

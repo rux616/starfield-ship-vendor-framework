@@ -1,6 +1,6 @@
 FormKey: 1EAA66:Starfield.esm
 EditorID: LShip_Vendor_Generic_C_Personnel_CivShuttle
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 20
-  Unused: 95
+  Unused: 19924
   Reference: 38D656:Starfield.esm
   Count: 1
 - Level: 34
-  Unused: 95
+  Unused: 19924
   Reference: 38D654:Starfield.esm
   Count: 1
 - Level: 54
-  Unused: 95
+  Unused: 19924
   Reference: 38D652:Starfield.esm
   Count: 1
 Model:

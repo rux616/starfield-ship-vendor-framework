@@ -1,6 +1,6 @@
 FormKey: 1EAA86:Starfield.esm
 EditorID: LShip_Vendor_Stroud_C_Vindicator
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 24
-  Unused: 95
+  Unused: 19924
   Reference: 0D5575:Starfield.esm
   Count: 1
 - Level: 44
-  Unused: 95
+  Unused: 19924
   Reference: 03CFA4:Starfield.esm
   Count: 1
 - Level: 62
-  Unused: 95
+  Unused: 19924
   Reference: 03CFA2:Starfield.esm
   Count: 1
 Model:

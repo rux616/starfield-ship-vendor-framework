@@ -1,6 +1,6 @@
 FormKey: 1EAA8E:Starfield.esm
 EditorID: LShip_Vendor_Taiyo_C_Orca
-FormVersion: 575
+FormVersion: 576
 Version2: 5
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 22
-  Unused: 95
+  Unused: 19924
   Reference: 1BE883:Starfield.esm
   Count: 1
 - Level: 46
-  Unused: 95
+  Unused: 19924
   Reference: 1BE885:Starfield.esm
   Count: 1
 - Level: 64
-  Unused: 95
+  Unused: 19924
   Reference: 1BE887:Starfield.esm
   Count: 1
 Model:

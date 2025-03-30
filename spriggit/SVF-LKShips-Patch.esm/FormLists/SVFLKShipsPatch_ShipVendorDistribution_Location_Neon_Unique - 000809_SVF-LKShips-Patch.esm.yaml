@@ -1,6 +1,6 @@
 FormKey: 000809:SVF-LKShips-Patch.esm
 EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_Neon_Unique
-FormVersion: 559
+FormVersion: 576
 Items:
 - 000B0D:L-K_Ships.esm
-ANAM: 000820:shipvendorframework.esm
+ANAM: 000820:ShipVendorFramework.esm

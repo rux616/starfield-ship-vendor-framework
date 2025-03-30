@@ -1,6 +1,6 @@
 FormKey: 1EAA1B:Starfield.esm
 EditorID: LShip_Vendor_Generic_B_Combat_Warhammer
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 14
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E2F:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E2D:Starfield.esm
   Count: 1
 - Level: 66
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E2B:Starfield.esm
   Count: 1
 Model:

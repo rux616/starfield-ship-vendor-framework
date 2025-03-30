@@ -1,6 +1,6 @@
 FormKey: 02F8FD:Starfield.esm
 EditorID: OutpostShipbuilderVendor
-FormVersion: 559
+FormVersion: 576
 Version2: 4
 VirtualMachineAdapter:
   Scripts:
@@ -10,21 +10,9 @@ VirtualMachineAdapter:
       Name: PlayerShips
       Object: 0174A2:Starfield.esm
       Alias: 18
-    - MutagenObjectType: ScriptBoolProperty
-      Name: SVFUseNewDatasets
-      Data: True
     - MutagenObjectType: ScriptObjectProperty
-      Name: SVFShipsToSellListRandomDataset
-      Object: 00081C:shipvendorframework.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SQ_PlayerShip
-      Object: 0174A2:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SVFShipsToSellListUniqueDataset
-      Object: 000826:shipvendorframework.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: DialogueShipServices
-      Object: 22E153:Starfield.esm
+      Name: SVFShipsToSellListAlwaysDataset
+      Object: 000828:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SpaceshipStoredLink
       Object: 1DF5BF:Starfield.esm
@@ -32,17 +20,29 @@ VirtualMachineAdapter:
       Name: ShipVendorLocation
       Object: 209AC7:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListRandomDataset
+      Object: 00081C:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: LinkShipLandingMarker01
       Object: 2CFDEB:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListUniqueDataset
+      Object: 000826:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SVFUseNewDatasets
+      Data: True
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFExternalUniquesSoldList
+      Object: 000802:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipsToSellListRandomDataset
       Object: 1F7676:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: SVFShipsToSellListAlwaysDataset
-      Object: 000828:shipvendorframework.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SVFExternalUniquesSoldList
-      Object: 000802:shipvendorframework.esm
+      Name: SQ_PlayerShip
+      Object: 0174A2:Starfield.esm
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
@@ -350,12 +350,12 @@ FaceMorphs:
     BlendIntensity: 0.04
 - Index: 14
   MorphGroups:
+  - MorphGroup: Forehead
+    BlendIntensity: 0.69
   - MorphGroup: Chin
     BlendIntensity: 0.14
   - MorphGroup: Ears
     BlendIntensity: 0.35
-  - MorphGroup: Forehead
-    BlendIntensity: 0.69
 - Index: 42
   MorphGroups:
   - MorphGroup: Eyes
@@ -377,38 +377,38 @@ FaceMorphs:
   - MorphGroup: Eyes
     BlendIntensity: 0.252
 MorphBlends:
+- BlendName: male_af_md1_Mouth
+  Intensity: 1
 - BlendName: male_af_md1_Jaw
   Intensity: 1
-- BlendName: male_eu_ol1_Ears
-  Intensity: 0.35
-- BlendName: male_af_md1_Ears
-  Intensity: 0.49
-- BlendName: male_af_md1_Nose
-  Intensity: 0.04
-- BlendName: male_eu_ol1_Chin
-  Intensity: 0.14
-- BlendName: male_as_yo1_Eyes
-  Intensity: 0.28
-- BlendName: male_as_ol1_Eyes
-  Intensity: 0.35338777
-- BlendName: male_eu_ol1_Forehead
-  Intensity: 0.69
+- BlendName: male_af_md1_Chin
+  Intensity: 0.23
 - BlendName: male_eu_md2_Cheeks
   Intensity: 0.22
+- BlendName: male_af_md1_Ears
+  Intensity: 0.49
+- BlendName: male_eu_ol1_Forehead
+  Intensity: 0.69
+- BlendName: male_as_yo1_Eyes
+  Intensity: 0.28
+- BlendName: male_eu_ol1_Chin
+  Intensity: 0.14
+- BlendName: male_as_ol1_Neck
+  Intensity: 0.43
 - BlendName: male_eu_yo1_Ears
   Intensity: 0.008973817
 - BlendName: male_af_yo1_Eyes
   Intensity: 0.114612244
+- BlendName: male_af_md1_Nose
+  Intensity: 0.04
 - BlendName: male_as_md1_Eyes
   Intensity: 0.252
-- BlendName: male_af_md1_Chin
-  Intensity: 0.23
-- BlendName: male_as_ol1_Neck
-  Intensity: 0.43
-- BlendName: male_af_md1_Mouth
-  Intensity: 1
 - BlendName: male_af_ol1_Nose
   Intensity: 0.96
+- BlendName: male_eu_ol1_Ears
+  Intensity: 0.35
+- BlendName: male_as_ol1_Eyes
+  Intensity: 0.35338777
 SkinToneIndex: 5
 HairColor: Black
 FacialHairColor: Black
