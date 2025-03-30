@@ -26,9 +26,6 @@ things to investigate:
 - how do custom outpost ship vendors work?
 
 List of vanilla ship vendors:
-- Neon [ShipServices_Neon (NPC_:002A0EA3)]
-- Taiyo [Staryard_VeronicaYoung (NPC_:0027A98C)]
-- Akila City [ShipServices_AkilaCity (NPC_:002A0EA1)]
 
 | EditorID                    |     FormID      | Location                                     |
 |-----------------------------|:---------------:|----------------------------------------------|
@@ -37,6 +34,7 @@ List of vanilla ship vendors:
 | NeonStroudStore_KioskVendor | `NPC_:00151488` | Neon, Stroud-Ecklund Showroom                |
 | OutpostShipbuilderVendor    | `NPC_:0002F8FD` | Player Outpost (Dynamic)                     |
 | RM_LonAnderssen             | `NPC_:002B2BEC` | Red Mile, Main Building                      |
+| SFBGS001_HV_DumarHasadi     | `NPC_:xx0470E4` | Dazra [Shattered Space]                      |
 | ShipServices_AkilaCity      | `NPC_:002A0EA1` | Akila City, Spaceport                        |
 | ShipServices_Cydonia        | `NPC_:00206704` | Mars, Cydonia Spaceport                      |
 | ShipServices_EleosRetreat   | `NPC_:000D87A4` | Eleos Retreat                                |
@@ -54,8 +52,10 @@ List of vanilla ship vendors:
 | Staryard_VeronicaYoung      | `NPC_:0027A98C` | Neon, Ryujin Enterprises, Taiyo Astroneering |
 
 NPC Form List
+
 | NPC                                             | Always List                    | Random List                      | Unique List                    |
 |-------------------------------------------------|--------------------------------|----------------------------------|--------------------------------|
+| Dumar Hasadi (Dazra) \*                         | Location_Dazra_Always          | Collection_Generic2              | Location_Dazra_Unique          |
 | Havershaw (Stroud-Eklund Staryard)              | Location_StroudStaryard_Always | Manufacturer_Stroud              | Location_StroudStaryard_Unique |
 | Inaya Rehman (HopeTech HQ)                      | Location_HopeTechHQ_Always     | Manufacturer_HopeTech            | Location_HopeTechHQ_Unique     |
 | Jasmine Durand (The Key)                        | Location_KeyThe_Always         | Faction_CrimsonFleet             | Location_KeyThe_Unique         |
@@ -74,8 +74,10 @@ NPC Form List
 | Ship Services Technician (Red Devils HQ)        | Location_RedDevilsHQ_Always    | Faction_UnitedColonies_Limited   | Location_RedDevilsHQ_Unique    |
 | Ship Services Technician (The Clinic)           | Location_ClinicThe_Always      | Faction_FreestarCollective       | Location_ClinicThe_Unique      |
 | Ship Services Technician (The Den)              | Location_DenThe_Always         | Faction_UnitedColonies_Limited   | Location_DenThe_Unique         |
-| Stroud Kiosk Vendor (Stroud-Eklund Store, Neon) | Location_StroudStore_Always    | Manufacturer_Stroud              | Location_StroudStore_Unique    |
-| Veronica Young (Taiyo Store, Neon)              | Location_TaiyoStore_Always     | Manufacturer_Taiyo               | Location_TaiyoStore_Unique     |
+| Stroud Kiosk Vendor (Neon, Stroud-Eklund Store) | Location_StroudStore_Always    | Manufacturer_Stroud              | Location_StroudStore_Unique    |
+| Veronica Young (Neon, Taiyo Store)              | Location_TaiyoStore_Always     | Manufacturer_Taiyo               | Location_TaiyoStore_Unique     |
+
+\* Shattered Space
 
 
 ## starting script states
@@ -88,3 +90,15 @@ ship services actors can have a number of starting states when SVF is installed,
 "origin" doesn't really matter, since a mod is a mod is a mod
 "state" matters a _lot_
 "override status" also matters a lot. if SVF changes are overridden and not forwarded (effectively removed), then the new formlists aren't going to be used. for vanilla records, can probably have a call back to the quest script for them to populate the properties. probably also for dlc-added records too. mod-added isn't practical. can probably use a const struct (actor, always_list, random_list, never_list)
+
+
+## scenarios to test when SVF installed
+kiosk vendor not initialized at all
+kiosk vendor already initialized
+kiosk vendor already initialized and loaded
+outpost vendor created
+outpost vendor already initialized
+outpost vendor already initialized and loaded
+standard vendor not initialized at all
+standard vendor already initialized
+standard vendor already initialized and loaded

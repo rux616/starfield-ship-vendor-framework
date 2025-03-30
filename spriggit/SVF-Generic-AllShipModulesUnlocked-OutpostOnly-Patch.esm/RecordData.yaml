@@ -1,21 +1,21 @@
 SpriggitSource:
   PackageName: Spriggit.Yaml.Starfield
-  Version: 0.34.0
+  Version: 0.35.1
 ModKey: SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esm
 GameRelease: Starfield
 ModHeader:
   Flags:
   - Master
   - Light
-  FormVersion: 559
+  FormVersion: 576
   Author: rux616
   Description: >-
     Generic patch for "Ship Vendor Framework" by rux616 and other mods that unlock all ship modules at the outpost ship vendor.
 
 
-    Version: 1.0.0
+    Version: 1.1.0
   MasterReferences:
   - Master: Starfield.esm
-  - Master: shipvendorframework.esm
+  - Master: ShipVendorFramework.esm
   BNAM: 0x4D61696E00
   INCC: 0

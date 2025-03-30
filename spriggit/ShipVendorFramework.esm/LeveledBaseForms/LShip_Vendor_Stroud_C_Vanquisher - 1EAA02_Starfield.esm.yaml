@@ -1,6 +1,6 @@
 FormKey: 1EAA02:Starfield.esm
 EditorID: LShip_Vendor_Stroud_C_Vanquisher
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 24
-  Unused: 95
+  Unused: 19924
   Reference: 001E9F:Starfield.esm
   Count: 1
 - Level: 44
-  Unused: 95
+  Unused: 19924
   Reference: 001EA1:Starfield.esm
   Count: 1
 - Level: 64
-  Unused: 95
+  Unused: 19924
   Reference: 001EA6:Starfield.esm
   Count: 1
 Model:

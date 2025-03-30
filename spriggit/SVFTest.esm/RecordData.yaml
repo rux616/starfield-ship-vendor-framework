@@ -1,12 +1,12 @@
 SpriggitSource:
   PackageName: Spriggit.Yaml.Starfield
-  Version: 0.34.0
+  Version: 0.35.1
 ModKey: SVFTest.esm
 GameRelease: Starfield
 ModHeader:
   Flags:
   - Master
-  FormVersion: 559
+  FormVersion: 576
   Author: rux616
   Description: Supplemental test data for the Ship Vendor Framework mod.
   MasterReferences:

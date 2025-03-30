@@ -1,6 +1,6 @@
 FormKey: 00080A:SVF-LKShips-Patch.esp
 EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_NewHomestead_Unique
-FormVersion: 559
+FormVersion: 576
 Items:
 - 000A91:L-K_Ships.esm
-ANAM: 000824:shipvendorframework.esm
+ANAM: 000824:ShipVendorFramework.esm

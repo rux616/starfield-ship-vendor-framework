@@ -1,0 +1,2 @@
+*.esp binary diff=hex
+*.esm binary diff=hex

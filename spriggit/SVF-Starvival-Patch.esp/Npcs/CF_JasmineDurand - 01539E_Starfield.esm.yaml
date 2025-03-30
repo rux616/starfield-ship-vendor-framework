@@ -1,0 +1,370 @@
+FormKey: 01539E:Starfield.esm
+EditorID: CF_JasmineDurand
+FormVersion: 576
+Version2: 4
+VirtualMachineAdapter:
+  Scripts:
+  - Name: sq_shipservicesactorscript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpaceshipStoredLink
+      Object: 1DF5BF:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SQ_PlayerShip
+      Object: 0174A2:Starfield.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SVFUseNewDatasets
+      Data: True
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListAlwaysDataset
+      Object: 00082F:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LinkShipLandingMarker01
+      Object: 2CFDEB:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipsToSellListUniqueDataset
+      Object: 055FC8:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListRandomDataset
+      Object: 000800:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerShips
+      Object: 0174A2:Starfield.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListUniqueDataset
+      Object: 000830:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipsToSellListRandomDataset
+      Object: 175DE2:Starfield.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: ShipsForSaleMax
+      Data: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipVendorLocation
+      Object: 209AC7:Starfield.esm
+ObjectBounds:
+  First: -0.591797, -0.3623047, 0
+  Second: 0.59179676, 1.0341797, 1.2373047
+ODTY: 0
+Flags:
+- Female
+- Essential
+- Unique
+XpValueOffset: 5
+Level:
+  MutagenObjectType: NpcLevel
+  Level: 2
+DispositionBase: 35
+UseTemplateActors: 16386
+Factions:
+- Faction: 010B30:Starfield.esm
+- Faction: 175DE3:Starfield.esm
+Voice: 015396:Starfield.esm
+TemplateActors:
+  StatsTemplate: 010B3A:Starfield.esm
+  Unknown2: 010B3A:Starfield.esm
+Race: 00347D:Starfield.esm
+CombatOverridePackageList: 0102ED:Starfield.esm
+Properties:
+- ActorValue: 0002C2:Starfield.esm
+- ActorValue: 0002C3:Starfield.esm
+  Value: 5
+- ActorValue: 0002C4:Starfield.esm
+- ActorValue: 0002C5:Starfield.esm
+  Value: 5
+- ActorValue: 0002C6:Starfield.esm
+- ActorValue: 0002C7:Starfield.esm
+  Value: 5
+- ActorValue: 0002C8:Starfield.esm
+- ActorValue: 0002D5:Starfield.esm
+  Value: 50
+- ActorValue: 0002DA:Starfield.esm
+  Value: 100
+- ActorValue: 0002CC:Starfield.esm
+  Value: 15
+- ActorValue: 0002CD:Starfield.esm
+  Value: 45
+- ActorValue: 0002D4:Starfield.esm
+  Value: 25
+Items:
+- Item:
+    Item: 11F109:Starfield.esm
+    Count: 1
+- Item:
+    Item: 3E865A:Starfield.esm
+    Count: 1
+Aggression: Aggressive
+Confidence: Average
+EnergyLevel: 50
+Responsibility: NoCrime
+Assistance: HelpsFriendsAndAllies
+Packages:
+- 132C40:Starfield.esm
+Keywords:
+- 03D290:Starfield.esm
+- 0F55DC:Starfield.esm
+- 21B1FC:Starfield.esm
+- 10C4AB:Starfield.esm
+- 143CA0:Starfield.esm
+- 1453B3:Starfield.esm
+- 1453A5:Starfield.esm
+- 14539B:Starfield.esm
+- 14539D:Starfield.esm
+- 14539C:Starfield.esm
+- 14539E:Starfield.esm
+- 1453AF:Starfield.esm
+- 1453B0:Starfield.esm
+- 1453A7:Starfield.esm
+- 145395:Starfield.esm
+- 145394:Starfield.esm
+- 1453AB:Starfield.esm
+- 143C9E:Starfield.esm
+- 1453B5:Starfield.esm
+- 1453B6:Starfield.esm
+- 1453A3:Starfield.esm
+- 1453AE:Starfield.esm
+- 0271CF:Starfield.esm
+- 1453B9:Starfield.esm
+- 0271C2:Starfield.esm
+- 1453B8:Starfield.esm
+- 1453BA:Starfield.esm
+- 0271CE:Starfield.esm
+- 1453BE:Starfield.esm
+- 0271C1:Starfield.esm
+- 1453BD:Starfield.esm
+- 1453BC:Starfield.esm
+- 0271D0:Starfield.esm
+- 1453C4:Starfield.esm
+- 0271C5:Starfield.esm
+- 1453C3:Starfield.esm
+- 1453C2:Starfield.esm
+- 000D5E:Starvival - Immersive Survival Addon.esm
+ObjectTemplates:
+- Includes:
+  - Mod: 044DC7:Starfield.esm
+    Optional: True
+    DontUseAll: True
+Class: 010B2F:Starfield.esm
+Name:
+  TargetLanguage: English
+  Value: Jasmine Durand
+ShortName:
+  TargetLanguage: English
+  Value: Jazz
+GearedUpWeapons: 1
+Unused: 5
+HeadParts:
+- 012201:Starfield.esm
+- 012202:Starfield.esm
+- 012203:Starfield.esm
+- 0317AE:Starfield.esm
+- 0317AF:Starfield.esm
+- 0640B8:Starfield.esm
+- 078273:Starfield.esm
+- 10A34D:Starfield.esm
+- 10A34E:Starfield.esm
+- 1F7EF8:Starfield.esm
+- 3A4B31:Starfield.esm
+- 3BE58F:Starfield.esm
+CombatStyle: 178CA4:Starfield.esm
+NAM5: 0xFF00
+HeightMin: 1
+HeightMax: 1
+Weight:
+  Thin: 0.28
+  Muscular: 0.06
+DefaultOutfit: 141173:Starfield.esm
+DefaultPackageList: 2C55CA:Starfield.esm
+CrimeFaction: 010B30:Starfield.esm
+Tints:
+- TintType: SimpleGroup
+  TintGroup: Dermaesthetic
+  TintName: European_Female_yo1_Sk1
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/dermaesthetic/female_eu_yo1_sk1_derm_color.dds
+  TintColor: '#00000000'
+  TintIntensity: 56
+- TintType: SimpleGroup
+  TintGroup: ComplexionMask1
+  TintName: Moles_Cheek_L
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/complexion/moles_cheek_l_mask.dds
+  TintColor: '#47960418'
+  TintIntensity: 64
+- TintType: SimpleGroup
+  TintGroup: Complexion1
+  TintName: Crevice_Complexion_Cool
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/complexion/complexioncool_color.dds
+  TintColor: '#00000000'
+  TintIntensity: 44
+- TintType: SimpleGroup
+  TintGroup: Complexion2
+  TintName: Color_Temperature_Pink
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/complexion/complexion_colortemperature_pink_color.dds
+  TintColor: '#00000000'
+  TintIntensity: 24
+- TintType: SimpleGroup
+  TintGroup: ComplexionMask2
+  TintName: Freckles_MidFace
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/complexion/freckles_midface_mask.dds
+  TintColor: '#A6822846'
+  TintIntensity: 31
+- TintType: ComplexGroup
+  TintGroup: Scars
+  TintName: Burn_LeftCheekManySmall
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/scars/burn_leftcheekmanysmall_color.dds
+  TintColor: '#00000000'
+  TintIntensity: 17
+- TintType: ComplexGroup
+  TintGroup: Accents1
+  TintName: Accents_CrowsFeet
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/accents/accents_crowsfeet_color.dds
+  TintColor: '#00000000'
+  TintIntensity: 5
+- TintType: SimpleGroup
+  TintGroup: Eyeshadow1
+  TintName: EyeShadow_Upper_03
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/eyeshadow1/subtleeyeshadowupper_mask.dds
+  TintColor: '#0BFF0B0B'
+  TintIntensity: 101
+- TintType: SimpleGroup
+  TintGroup: Eyeliner1
+  TintName: Eyeliner_Upper03
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/eyeliner1/testeyelinerupper03_mask.dds
+  TintColor: '#0BFF0B0B'
+  TintIntensity: 64
+- TintType: SimpleGroup
+  TintGroup: Eyeliner2
+  TintName: Eyeliner_Lower_01
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/eyeliner2/testeyelinerlower01_mask.dds
+  TintColor: '#0BFF0B0B'
+  TintIntensity: 37
+- TintType: SimpleGroup
+  TintGroup: EnvironmentMask
+  TintName: Dirt_Heavy_02
+  TintTexture: textures/actors/human/faces/chargen/postblenddetails/environmentmask/test_dirt_female_heavy_02_mask.dds
+  TintColor: '#00000000'
+  TintIntensity: 44
+FaceDialPositions:
+- Index: 39
+  Position: -0.42
+- Index: 31
+  Position: -0.33
+- Index: 78
+  Position: -0.52
+- Index: 51
+  Position: 0.46
+- Index: 40
+  Position: 0.03
+- Index: 62
+  Position: -0.37
+- Index: 53
+  Position: -0.31
+- Index: 55
+  Position: -0.44
+- Index: 59
+  Position: -0.34
+- Index: 48
+  Position: -0.17
+- Index: 38
+  Position: -0.27
+- Index: 45
+  Position: 0.32
+- Index: 47
+  Position: -0.5
+- Index: 36
+  Position: 0.27
+- Index: 79
+  Position: -0.43
+- Index: 52
+  Position: 0.59
+- Index: 63
+  Position: -0.27
+- Index: 26
+  Position: 0.17
+- Index: 73
+  Position: -0.26
+- Index: 54
+  Position: -0.05
+- Index: 67
+  Position: -0.56
+- Index: 65
+  Position: -0.55
+FaceMorphs:
+- Index: 5
+  MorphGroups:
+  - MorphGroup: Cheeks
+    BlendIntensity: 0.51
+  - MorphGroup: Mouth
+    BlendIntensity: 0.5
+- Index: 1
+  MorphGroups:
+  - MorphGroup: Neck
+    BlendIntensity: 1
+  - MorphGroup: Mouth
+    BlendIntensity: 0.5
+  - MorphGroup: Nose
+    BlendIntensity: 1
+  - MorphGroup: Forehead
+    BlendIntensity: 1
+  - MorphGroup: Eyes
+    BlendIntensity: 0.55
+  - MorphGroup: Ears
+    BlendIntensity: 1
+  - MorphGroup: Chin
+    BlendIntensity: 0.56
+- Index: 9
+  MorphGroups:
+  - MorphGroup: Jaw
+    BlendIntensity: 1
+  - MorphGroup: Chin
+    BlendIntensity: 0.44
+  - MorphGroup: Cheeks
+    BlendIntensity: 0.49
+MorphBlends:
+- BlendName: female_eu_md2_Ears
+  Intensity: 0.4
+- BlendName: female_eu_md2_Chin
+  Intensity: 0.56
+- BlendName: female_as_md1_Ears
+  Intensity: 0.6
+- BlendName: female_eu_md2_Mouth
+  Intensity: 0.079657145
+- BlendName: female_af_md1_Chin
+  Intensity: 0.44
+- BlendName: female_eu_yo1_Mouth
+  Intensity: 0.027389394
+- BlendName: female_af_md1_Jaw
+  Intensity: 1
+- BlendName: female_as_ol1_Eyes
+  Intensity: 0.3
+- BlendName: female_eu_md2_Nose
+  Intensity: 0.21
+- BlendName: female_eu_md2_Neck
+  Intensity: 1
+- BlendName: female_af_md1_Mouth
+  Intensity: 0.2
+- BlendName: female_eu_ol1_Nose
+  Intensity: 0.43
+- BlendName: female_as_yo1_Eyes
+  Intensity: 0.1282909
+- BlendName: female_af_yo1_Eyes
+  Intensity: 0.12370909
+- BlendName: female_eu_md2_Forehead
+  Intensity: 1
+- BlendName: female_eu_md2_Eyes
+  Intensity: 0.448
+- BlendName: female_af_md1_Cheeks
+  Intensity: 0.49
+- BlendName: female_as_md1_Cheeks
+  Intensity: 0.51
+- BlendName: female_as_md1_Mouth
+  Intensity: 0.27
+SkinToneIndex: 0
+HairColor: DirtyBlonde
+EyebrowColor: BlackBrown
+EyeColor: Brown
+JewelryColor: Copper
+Pronoun: Unspecified

@@ -13,6 +13,7 @@
 - [X] make it so that purchased unique ships are removed from the uniques list BEFORE the random list is de-duped
 - [X] add patches
     - [X] save as esm:
+        - [X] ShipVendorFramework-ShatteredSpace.esp
         - [X] SVF-Deadalus-Patch.esp
         - [X] SVF-Dominion-Patch.esp
         - [X] SVF-IconicShips-Patch.esp
@@ -23,8 +24,10 @@
         - [X] SVF-StarvivalSpaceshipSystems-AllShipModulesUnlocked-OutpostOnly-Patch.esp
         - [X] SVF-StarvivalSpaceshipSystems-Patch.esp
         - [X] SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esp
+        - [X] SVF-Generic-AllShipModulesUnlocked-AllShipVendors-ShatteredSpace-Patch.esp
         - [X] SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esp
         - [X] SVF-Generic-ShipVendors-Patch.esp
+        - [X] SVF-Generic-ShipVendors-ShatteredSpace-Patch.esp
 - [ ] add min and max limits to the number of "always" and "unique" ships? (default to -1, which means unlimited)
 - [ ] add howto document/article that shows how to add vendors that utilize SVF
 - [ ] add howto document/article that shows how to clean a plugin of dirty edits to ship vendor NPC_ records
@@ -49,5 +52,5 @@
 - [-] add patch for [Rich Outpost Shipbuilder](https://www.nexusmods.com/starfield/mods/5492)
     - not going to support this for now - if `GetFormFromFile()` gets fixed for small/medium masters, will do this dynamically
 - [ ] if `GetFormFromFile()` is fixed for small/medium masters, add in options like dynamic keyword addition at outpost ship builders (maybe regular ship services technicians as well?), always rich ship techs (outpost/regular)
-- [ ] bug: ship services kiosk in stroud eklund showroom in neon doesn't have any ships for sale
-- [ ] bug: vendors (at least New Atlantis) seem to be regenerating their inventory every time
+- [X] bug: ship services kiosk in stroud eklund showroom in neon doesn't have any ships for sale
+- [X] bug: vendors (at least New Atlantis) seem to be regenerating their inventory every time

@@ -1,6 +1,6 @@
 SpriggitSource:
   PackageName: Spriggit.Yaml.Starfield
-  Version: 0.34.0
+  Version: 0.35.1
 ModKey: SVF-Starvival-Patch.esm
 GameRelease: Starfield
 ModHeader:
@@ -13,11 +13,12 @@ ModHeader:
     Patch for "Ship Vendor Framework" by rux616 and "Starvival" by lKocMoHaBTl.
 
 
-    Version: 1.0.0
+    Version: 1.1.0
   MasterReferences:
   - Master: Starfield.esm
+  - Master: ShatteredSpace.esm
   - Master: Starvival - Immersive Survival Addon.esm
-  - Master: BlueprintShips-Starfield.esm
   - Master: ShipVendorFramework.esm
+  - Master: ShipVendorFramework-ShatteredSpace.esm
   BNAM: 0x4D61696E00
   INCC: 0

@@ -1,14 +1,33 @@
 FormKey: 01539E:Starfield.esm
 EditorID: CF_JasmineDurand
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: LinkShipLandingMarker01
+      Object: 2CFDEB:Starfield.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: ShipsForSaleMax
+      Data: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerShips
+      Object: 0174A2:Starfield.esm
+      Alias: 18
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SVFUseNewDatasets
+      Data: True
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipVendorLocation
+      Object: 209AC7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
       Object: 000830:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SpaceshipStoredLink
       Object: 1DF5BF:Starfield.esm
@@ -16,36 +35,17 @@ VirtualMachineAdapter:
       Name: SVFShipsToSellListRandomDataset
       Object: 000800:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListRandomDataset
-      Object: 175DE2:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SVFShipsToSellListAlwaysDataset
-      Object: 00082F:ShipVendorFramework.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: LinkShipLandingMarker01
-      Object: 2CFDEB:Starfield.esm
-    - MutagenObjectType: ScriptBoolProperty
-      Name: SVFUseNewDatasets
-      Data: True
-    - MutagenObjectType: ScriptObjectProperty
-      Name: PlayerShips
-      Object: 0174A2:Starfield.esm
-      Alias: 18
-    - MutagenObjectType: ScriptIntProperty
-      Name: ShipsForSaleMax
-      Data: 6
-    - MutagenObjectType: ScriptObjectProperty
-      Name: ShipVendorLocation
-      Object: 209AC7:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
       Name: SQ_PlayerShip
       Object: 0174A2:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: ShipsToSellListUniqueDataset
       Object: 055FC8:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: DialogueShipServices
-      Object: 22E153:Starfield.esm
+      Name: ShipsToSellListRandomDataset
+      Object: 175DE2:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SVFShipsToSellListAlwaysDataset
+      Object: 00082F:ShipVendorFramework.esm
 ObjectBounds:
   First: -0.591797, -0.3623047, 0
   Second: 0.59179676, 1.0341797, 1.2373047
@@ -294,18 +294,18 @@ FaceDialPositions:
 FaceMorphs:
 - Index: 5
   MorphGroups:
-  - MorphGroup: Mouth
-    BlendIntensity: 0.5
   - MorphGroup: Cheeks
     BlendIntensity: 0.51
+  - MorphGroup: Mouth
+    BlendIntensity: 0.5
 - Index: 1
   MorphGroups:
   - MorphGroup: Neck
     BlendIntensity: 1
-  - MorphGroup: Nose
-    BlendIntensity: 1
   - MorphGroup: Mouth
     BlendIntensity: 0.5
+  - MorphGroup: Nose
+    BlendIntensity: 1
   - MorphGroup: Forehead
     BlendIntensity: 1
   - MorphGroup: Eyes
@@ -323,44 +323,44 @@ FaceMorphs:
   - MorphGroup: Cheeks
     BlendIntensity: 0.49
 MorphBlends:
-- BlendName: female_eu_md2_Mouth
-  Intensity: 0.079657145
+- BlendName: female_eu_md2_Forehead
+  Intensity: 1
 - BlendName: female_eu_md2_Neck
   Intensity: 1
-- BlendName: female_as_md1_Mouth
-  Intensity: 0.27
-- BlendName: female_as_md1_Cheeks
-  Intensity: 0.51
 - BlendName: female_eu_ol1_Nose
   Intensity: 0.43
-- BlendName: female_as_ol1_Eyes
-  Intensity: 0.3
-- BlendName: female_af_md1_Chin
-  Intensity: 0.44
 - BlendName: female_eu_yo1_Mouth
   Intensity: 0.027389394
+- BlendName: female_af_md1_Chin
+  Intensity: 0.44
+- BlendName: female_as_md1_Cheeks
+  Intensity: 0.51
+- BlendName: female_as_md1_Mouth
+  Intensity: 0.27
 - BlendName: female_af_md1_Mouth
   Intensity: 0.2
 - BlendName: female_eu_md2_Eyes
   Intensity: 0.448
 - BlendName: female_eu_md2_Ears
   Intensity: 0.4
+- BlendName: female_as_ol1_Eyes
+  Intensity: 0.3
 - BlendName: female_eu_md2_Chin
   Intensity: 0.56
+- BlendName: female_eu_md2_Nose
+  Intensity: 0.21
 - BlendName: female_as_yo1_Eyes
   Intensity: 0.1282909
 - BlendName: female_af_yo1_Eyes
   Intensity: 0.12370909
-- BlendName: female_eu_md2_Nose
-  Intensity: 0.21
-- BlendName: female_as_md1_Ears
-  Intensity: 0.6
-- BlendName: female_af_md1_Jaw
-  Intensity: 1
-- BlendName: female_eu_md2_Forehead
-  Intensity: 1
+- BlendName: female_eu_md2_Mouth
+  Intensity: 0.079657145
 - BlendName: female_af_md1_Cheeks
   Intensity: 0.49
+- BlendName: female_af_md1_Jaw
+  Intensity: 1
+- BlendName: female_as_md1_Ears
+  Intensity: 0.6
 SkinToneIndex: 0
 HairColor: DirtyBlonde
 EyebrowColor: BlackBrown

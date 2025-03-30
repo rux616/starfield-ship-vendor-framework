@@ -1,6 +1,6 @@
 FormKey: 000806:SVF-LKShips-Patch.esp
 EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_Cydonia_Unique
-FormVersion: 559
+FormVersion: 576
 Items:
 - 000B13:L-K_Ships.esm
-ANAM: 000816:shipvendorframework.esm
+ANAM: 000816:ShipVendorFramework.esm

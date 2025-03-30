@@ -1,6 +1,6 @@
 FormKey: 1EAA05:Starfield.esm
 EditorID: LShip_Vendor_Deimos_A_Longsword
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,12 +9,12 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 95
+  Unused: 19924
   Reference: 0D5586:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown2: 5607
+    Unknown2: 16615
     Data:
       MutagenObjectType: GetInCellConditionData
       RunOnType: Reference
@@ -22,19 +22,19 @@ Entries:
       FirstParameter: 214665:Starfield.esm
     ComparisonValue: 1
 - Level: 10
-  Unused: 95
+  Unused: 19924
   Reference: 0D5586:Starfield.esm
   Count: 1
 - Level: 30
-  Unused: 95
+  Unused: 19924
   Reference: 0B19A3:Starfield.esm
   Count: 1
 - Level: 52
-  Unused: 95
+  Unused: 19924
   Reference: 0B19A1:Starfield.esm
   Count: 1
 - Level: 58
-  Unused: 95
+  Unused: 19924
   Reference: 0B199F:Starfield.esm
   Count: 1
 Model:

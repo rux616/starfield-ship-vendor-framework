@@ -1,19 +1,19 @@
 SpriggitSource:
   PackageName: Spriggit.Yaml.Starfield
-  Version: 0.34.0
+  Version: 0.35.1
 ModKey: ShipVendorFramework.esm
 GameRelease: Starfield
 ModHeader:
   Flags:
   - Master
   - Light
-  FormVersion: 575
+  FormVersion: 576
   Author: rux616
   Description: >-
     A framework allowing mod authors to easily add ships for sale without conflicts.
 
 
-    Version: 1.3.1
+    Version: 1.4.0
   MasterReferences:
   - Master: Starfield.esm
   BNAM: 0x4D61696E00

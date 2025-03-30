@@ -1,6 +1,6 @@
 FormKey: 1EAA84:Starfield.esm
 EditorID: LShip_Vendor_Stroud_B_Roanoke
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 16
-  Unused: 95
+  Unused: 19924
   Reference: 0D0593:Starfield.esm
   Count: 1
 - Level: 38
-  Unused: 95
+  Unused: 19924
   Reference: 02C3A8:Starfield.esm
   Count: 1
 - Level: 60
-  Unused: 95
+  Unused: 19924
   Reference: 02C3AC:Starfield.esm
   Count: 1
 Model:

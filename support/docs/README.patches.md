@@ -1,6 +1,7 @@
 Table Of Contents
 -----
 - [Table Of Contents](#table-of-contents)
+- [SVF Expansion Patch - Shattered Space](#svf-expansion-patch---shattered-space)
 - [SVF Capability Patch - Deadalus and Battlestar](#svf-capability-patch---deadalus-and-battlestar)
 - [SVF Capability Patch - Dominion](#svf-capability-patch---dominion)
 - [SVF Capability Patch - Iconic Ships](#svf-capability-patch---iconic-ships)
@@ -8,11 +9,24 @@ Table Of Contents
 - [SVF Capability Patch - Lower Landing Pad](#svf-capability-patch---lower-landing-pad)
 - [SVF Capability Patch - Lower Landing Pad Unlocked](#svf-capability-patch---lower-landing-pad-unlocked)
 - [SVF Capability Patch - Outpost Vendor New Ships](#svf-capability-patch---outpost-vendor-new-ships)
-- [SVF Compatibility Patch - Starvival](#svf-compatibility-patch---starvival)
+- [SVF Compatibility Patch - Starvival v10](#svf-compatibility-patch---starvival-v10)
 - [SVF Compatibility Patch - The Den Astrodynamics](#svf-compatibility-patch---the-den-astrodynamics)
 - [SVF Generic Patch - All Ship Modules Unlocked (All Ship Vendors)](#svf-generic-patch---all-ship-modules-unlocked-all-ship-vendors)
+- [SVF Generic Patch - All Ship Modules Unlocked (All Ship Vendors) - Shattered Space](#svf-generic-patch---all-ship-modules-unlocked-all-ship-vendors---shattered-space)
 - [SVF Generic Patch - All Ship Modules Unlocked (Outpost Only)](#svf-generic-patch---all-ship-modules-unlocked-outpost-only)
 - [SVF Generic Patch - Ship Vendors](#svf-generic-patch---ship-vendors)
+- [SVF Generic Patch - Ship Vendors - Shattered Space](#svf-generic-patch---ship-vendors---shattered-space)
+
+
+SVF Expansion Patch - Shattered Space
+-----
+Patch for "Ship Vendor Framework" by rux616 and the Shattered Space expansion.
+
+Mod Source:
+- Bethesda Game Studios
+
+Patch Type:
+- Expansion
 
 
 SVF Capability Patch - Deadalus and Battlestar
@@ -99,9 +113,9 @@ Patch Type:
 - Capability
 
 
-SVF Compatibility Patch - Starvival
+SVF Compatibility Patch - Starvival v10
 -----
-Patch for "Ship Vendor Framework" by rux616 and "Starvival" by lKocMoHaBTl.
+Patch for "Ship Vendor Framework" by rux616 and "Starvival" v10 by lKocMoHaBTl.
 
 This patch should be loaded after any SVF Generic Patches, if in use.
 
@@ -136,6 +150,16 @@ Patch Type:
 - Generic Compatibility
 
 
+SVF Generic Patch - All Ship Modules Unlocked (All Ship Vendors) - Shattered Space
+-----
+Generic patch for "Ship Vendor Framework" by rux616, the Shattered Space expansion, and other mods that unlock all ship modules at all ship vendors.
+
+This patch should be loaded after any SVF Capability Patches in use, but before any SVF Compatibility Patches.
+
+Patch Type:
+- Generic Compatibility
+
+
 SVF Generic Patch - All Ship Modules Unlocked (Outpost Only)
 -----
 Generic patch for "Ship Vendor Framework" by rux616 and other mods that unlock all ship modules at the outpost ship vendor.
@@ -149,6 +173,16 @@ Patch Type:
 SVF Generic Patch - Ship Vendors
 -----
 Generic patch for "Ship Vendor Framework" by rux616 and other mods that change ship vendors.
+
+This patch should be loaded after any SVF Capability Patches in use, but before any SVF Compatibility Patches.
+
+Patch Type:
+- Generic Compatibility
+
+
+SVF Generic Patch - Ship Vendors - Shattered Space
+-----
+Generic patch for "Ship Vendor Framework" by rux616, the Shattered Space expansion, and other mods that change ship vendors.
 
 This patch should be loaded after any SVF Capability Patches in use, but before any SVF Compatibility Patches.
 

@@ -33,12 +33,7 @@
       "label": "Update Versions",
       "type": "shell",
       "command": "./support/common/scripts/version-updater.ps1",
-      "args": [
-        "-SkipBackup",
-        "-PluginFiles",
-        "./data/ShipVendorFramework.esp,./data/ShipVendorFramework.esm",
-        "-SkipBuildIncrement"
-      ]
+      "args": ["-SkipBackup", "-PluginFiles", "./data/ShipVendorFramework.esp,./data/ShipVendorFramework.esm"]
     },
     {
       "label": "Sanitize FOMOD XML Files",
@@ -79,8 +74,11 @@
         "deadalus1.esm",
         "dominion.esm",
         "nighthawk.esm",
+        "ShipVendorFramework-ShatteredSpace.esm",
         "ShipVendorFramework.esm",
-        "Starvival - ModuleSpaceshipSystems.esm"
+        "Starvival - ModuleSpaceshipSystems.esm",
+        "SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esm",
+        "SVF-Generic-ShipVendors-Patch.esm"
       ]
     },
     {
@@ -93,13 +91,13 @@
     {
       "label": "Compile Scripts (Starvival Patch)",
       "type": "shell",
-      "command": "./support/papyrus-imports/vanilla/bin/Papyrus Compiler/PapyrusCompiler.exe",
+      "command": "./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe",
       "args": ["./support/scripts/SVFStarvivalPatch.ppj"]
     },
     {
       "label": "Compile Scripts (Main)",
       "type": "shell",
-      "command": "./support/papyrus-imports/vanilla/bin/Papyrus Compiler/PapyrusCompiler.exe",
+      "command": "./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe",
       "args": ["./support/scripts/ShipVendorFramework.ppj"]
     },
     {

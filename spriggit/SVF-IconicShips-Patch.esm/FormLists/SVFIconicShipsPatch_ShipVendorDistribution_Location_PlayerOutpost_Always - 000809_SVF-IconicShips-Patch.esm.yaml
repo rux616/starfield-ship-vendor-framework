@@ -1,6 +1,6 @@
 FormKey: 000809:SVF-IconicShips-Patch.esm
 EditorID: SVFIconicShipsPatch_ShipVendorDistribution_Location_PlayerOutpost_Always
-FormVersion: 559
+FormVersion: 576
 Items:
 - 00082E:nighthawk.esm
 - 000007:nighthawk.esm
@@ -15,4 +15,4 @@ Items:
 - 000ED5:nighthawk.esm
 - 000EEA:nighthawk.esm
 - 000F3B:nighthawk.esm
-ANAM: 000828:shipvendorframework.esm
+ANAM: 000828:ShipVendorFramework.esm

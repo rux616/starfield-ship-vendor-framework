@@ -1,9 +1,9 @@
 FormKey: 000807:SVF-LKShips-Patch.esm
 EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_Cydonia_Always
-FormVersion: 559
+FormVersion: 576
 Items:
 - 112141:Starfield.esm
 - 000B11:L-K_Ships.esm
 - 000B12:L-K_Ships.esm
 - 112142:Starfield.esm
-ANAM: 000815:shipvendorframework.esm
+ANAM: 000815:ShipVendorFramework.esm

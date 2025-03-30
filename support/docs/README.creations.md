@@ -1,4 +1,4 @@
-Version: 1.3.1
+Version: 1.4.0
 
 Summary
 -----
@@ -26,7 +26,7 @@ Compatibility
 -----
 This mod alters NPCs that offer ship services, as well as some of the leveled lists for spaceships that vendors use. Any other mods that also alter those objects may conflict without patches.
 
-Additionally, this mod alters 2 vanilla scripts, "ShipVendorScript" and "OutpostShipbuilderMenuActivator". As a result, any other mod that alters either of (or both) those scripts by definition will conflict. This also means that when the game is updated, script changes by Bethesda will not be present in this mod until it is updated.
+Additionally, this mod alters 3 vanilla scripts, "OutpostShipbuilderMenuActivator", "ShipBuilderMenuActivator", and "ShipVendorScript". As a result, any other mod that alters any of those scripts by definition will conflict. This also means that when the game is updated, script changes by Bethesda will not be present in this mod until it is updated.
 
 Mods that are known to conflict:
 - "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 [Creations (https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti)]: Use SVF Capability Patch - Daedalus and Battlestar and one of the SVF Generic Patches that fits what you need.
@@ -52,10 +52,13 @@ None
 
 Credits and Acknowledgements
 -----
+Bethesda Game Studios: For Starfield itself and the Creation Kit
 ElminsterAU: For xEdit and BSArch
+Lively: For helping explain some of the odd nuances of an infrequently-used-by-me FOMOD feature
 Mod Organizer 2 team: For Mod Organizer 2
 Nexus Mods: For mod hosting and for the Vortex Mod Manager
 Noggog: For Spriggit
+perchik71: For Creation Kit Platform Extended
 Scrivener07: For some advice and clarification on papyrus matters
 
 

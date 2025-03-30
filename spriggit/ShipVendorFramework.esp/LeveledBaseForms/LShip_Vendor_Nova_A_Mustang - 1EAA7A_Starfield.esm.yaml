@@ -1,6 +1,6 @@
 FormKey: 1EAA7A:Starfield.esm
 EditorID: LShip_Vendor_Nova_A_Mustang
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 10
-  Unused: 95
+  Unused: 19924
   Reference: 2EF774:Starfield.esm
   Count: 1
 - Level: 30
-  Unused: 95
+  Unused: 19924
   Reference: 042397:Starfield.esm
   Count: 1
 - Level: 52
-  Unused: 95
+  Unused: 19924
   Reference: 042399:Starfield.esm
   Count: 1
 Model:

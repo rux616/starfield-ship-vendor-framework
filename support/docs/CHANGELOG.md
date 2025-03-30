@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.4.0](#v140)
     - [v1.3.1](#v131)
     - [v1.3.0](#v130)
     - [v1.2.0](#v120)
@@ -17,6 +18,16 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.4.0
+------
+- Added Shattered Space patches
+- Fixed some initialization bugs with kiosk vendors, including outpost vendors
+- Fixed some ship vendors constantly regenerating their ships
+- Updated Starvival compatibility patch to be compatible with Starvival v10.1.5
+- Re-saved all plugin files in newest CK to fix some potential internal file structure weirdness
+
+([TOC](#table-of-contents))
 
 v1.3.1
 ------

@@ -1,6 +1,6 @@
 FormKey: 1EAA19:Starfield.esm
 EditorID: LShip_Vendor_Generic_B_Combat_Pterosaur
-FormVersion: 575
+FormVersion: 576
 Version2: 4
 ODTY: 0
 MaxCount: 0
@@ -9,15 +9,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 14
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E3B:Starfield.esm
   Count: 1
 - Level: 22
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E39:Starfield.esm
   Count: 1
 - Level: 40
-  Unused: 95
+  Unused: 19924
   Reference: 3A2E37:Starfield.esm
   Count: 1
 Model:

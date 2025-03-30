@@ -2,7 +2,7 @@ Ship Vendor Framework
 =====================
 by rux616
 
-Version: 1.3.1
+Version: 1.4.0
 
 Table Of Contents
 -----------------
@@ -37,7 +37,7 @@ The system that Bethesda designed for selling ships is interesting, but it lacks
 
 That's where this mod comes in. I've designed a system such that mod authors can easily add ships for sale to the various ship vendors without either conflicting with other mods that do the same or requiring the set up of a script. It will also refresh the vendor's list of ships if a change is detected in the vendor's "always" or "unique" lists. (A ship vendor's inventory is composed of three lists: always a.k.a. priority, random, and unique.)
 
-As with Ship Builder Categories, this mod is intended to be a community resource and so will always have manual donations disabled and remain opted out of the Nexus Donation Point system.
+As with Ship Builder Categories, this mod is intended to be a community resource and so will always have manual donations disabled and remain opted out of the Nexus Mods Donation Point system.
 
 NOTE: The "random" ships are only regenerated every 7 days (by default).
 
@@ -59,7 +59,7 @@ Compatibility
 -------------
 This mod alters NPCs that offer ship services, as well as some of the leveled lists for spaceships that vendors use. Any other mods that also alter those objects may conflict without patches.
 
-Additionally, this mod alters 2 vanilla scripts, "ShipVendorScript" and "OutpostShipbuilderMenuActivator". As a result, any other mod that alters either of (or both) those scripts by definition will conflict. This also means that when the game is updated, script changes by Bethesda will not be present in this mod until it is updated.
+Additionally, this mod alters 3 vanilla scripts, "OutpostShipbuilderMenuActivator", "ShipBuilderMenuActivator", and "ShipVendorScript". As a result, any other mod that alters any of those scripts by definition will conflict. This also means that when the game is updated, script changes by Bethesda will not be present in this mod until it is updated.
 
 Mods that are known to conflict:
 - "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 [[Creations](https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti)]: Use SVF Capability Patch - Daedalus and Battlestar and one of the SVF Generic Patches that fits what you need.
@@ -86,7 +86,7 @@ NPC Ship Lists
 --------------
 Note: All form list editor IDs start with "SVF_ShipVendorList_". This prefix has been removed from the lists as presented in the following table for the sake of brevity.
 
-![NPC Ship List Table](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721963709-844221600.jpeg)
+![NPC Ship List Table](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1743126556-99326829.jpeg)
 
 ([TOC](#table-of-contents))
 
@@ -156,10 +156,13 @@ License
 
 Credits and Acknowledgements
 ============================
+Bethesda Game Studios: For Starfield itself and the Starfield Creation Kit
 ElminsterAU: For xEdit and BSArch
+Lively: For helping explain some of the odd nuances of an infrequently-used-by-me FOMOD feature
 Mod Organizer 2 team: For Mod Organizer 2
 Nexus Mods: For mod hosting and for the Vortex Mod Manager
 Noggog: For Spriggit
+perchik71: For Creation Kit Platform Extended
 Scrivener07: For some advice and clarification on papyrus matters
 
 ([TOC](#table-of-contents))
