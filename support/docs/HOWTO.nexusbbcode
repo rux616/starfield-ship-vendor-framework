@@ -10,6 +10,10 @@
     - Step 4: Create Form List
 - NPC Ship Lists
 
+Note: If you have a question about this document or need help with the process, please add a comment on the [url=https://www.nexusmods.com/starfield/mods/10057?tab=posts]"Posts" tab[/url] of the Ship Vendor Framework mod.
+
+Note 2: If you want this in video format, check out [url=https://www.youtube.com/watch?v=dfM2OqBzbxQ]this great tutorial video[/url] done by YouTuber "Art Toots"!
+
 
 [size=5][b]Steps[/b][/size]
 
@@ -58,4 +62,4 @@ Set the "Add To List" target of your form list. All of the lists added by Ship V
 [size=5][b]NPC Ship Lists[/b][/size]
 Note: All form list editor IDs start with "SVF_ShipVendorList_". This prefix has been removed from the lists as presented in the following table for the sake of brevity.
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721963709-844221600.jpeg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1743126556-99326829.jpeg[/img]
