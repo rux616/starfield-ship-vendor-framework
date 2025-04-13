@@ -10,7 +10,7 @@ ModHeader:
     Patch for "Ship Vendor Framework" by rux616 and "Starvival" by lKocMoHaBTl.
 
 
-    Version: 1.1.0
+    Version: 1.2.0
   MasterReferences:
   - Master: Starfield.esm
   - Master: ShatteredSpace.esm

@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.5.0
     - v1.4.0
     - v1.3.1
     - v1.3.0
@@ -18,6 +19,10 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.5.0
+------
+- Updated Starvival patch to be compatible with Starvival v10.5.0
 
 v1.4.0
 ------
