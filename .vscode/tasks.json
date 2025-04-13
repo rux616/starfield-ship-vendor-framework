@@ -112,7 +112,6 @@
         "-Starfield",
         "-Skip7z",
         "-SkipBA2Cleanup",
-        "-BA2AlsoMakeXbox",
         "-BA2ForceUncompressed",
         "-BA2DisableSharing"
       ]
