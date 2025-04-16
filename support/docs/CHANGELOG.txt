@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.5.1
     - v1.5.0
     - v1.4.0
     - v1.3.1
@@ -19,6 +20,10 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.5.1
+------
+- Fixed The Den Astrodynamics compatibility patch
 
 v1.5.0
 ------
