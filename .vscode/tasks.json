@@ -74,11 +74,11 @@
         "deadalus1.esm",
         "dominion.esm",
         "nighthawk.esm",
-        "ShipVendorFramework-ShatteredSpace.esm",
         "ShipVendorFramework.esm",
         "Starvival - ModuleSpaceshipSystems.esm",
         "SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esm",
-        "SVF-Generic-ShipVendors-Patch.esm"
+        "SVF-Generic-ShipVendors-Patch.esm",
+        "SVF-ShatteredSpace-Patch.esm"
       ]
     },
     {
