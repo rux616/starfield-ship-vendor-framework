@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.5.3
     - v1.5.2
     - v1.5.1
     - v1.5.0
@@ -21,6 +22,10 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.5.3
+------
+- Fixed misnamed plugin reference in FOMOD file
 
 v1.5.2
 ------
