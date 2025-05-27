@@ -1,7 +1,10 @@
 FormKey: 0D87A4:Starfield.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: ShipServices_EleosRetreat
-FormVersion: 576
 Version2: 9
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -49,7 +52,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
-ODTY: 0
 Flags:
 - Essential
 - Unique
@@ -395,3 +397,5 @@ EyeColor: Brown
 JewelryColor: Black
 TeethColor: Teeth_Clean
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

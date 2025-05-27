@@ -1,6 +1,5 @@
 FormKey: 000800:SVFTest.esp
 EditorID: SVF_Test
-FormVersion: 576
 Items:
 - 214D95:Starfield.esm
 - 214DA1:Starfield.esm
@@ -333,4 +332,4 @@ Items:
 - 0FFB34:Starfield.esm
 - 34275B:Starfield.esm
 - 1DD3D0:Starfield.esm
-ANAM: Null
+AddToList: Null

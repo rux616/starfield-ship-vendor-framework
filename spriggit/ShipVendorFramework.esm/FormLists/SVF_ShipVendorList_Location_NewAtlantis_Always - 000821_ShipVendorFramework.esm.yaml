@@ -1,7 +1,6 @@
 FormKey: 000821:ShipVendorFramework.esm
 EditorID: SVF_ShipVendorList_Location_NewAtlantis_Always
-FormVersion: 576
 Items:
 - 1EAA10:Starfield.esm
 - 1EAA7F:Starfield.esm
-ANAM: Null
+AddToList: Null

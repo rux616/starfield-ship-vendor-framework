@@ -1,6 +1,5 @@
 FormKey: 000832:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Manufacturer_HopeTech
-FormVersion: 576
 Items:
 - 1EAA72:Starfield.esm
 - 1EAA71:Starfield.esm
@@ -9,4 +8,4 @@ Items:
 - 1EAA75:Starfield.esm
 - 1EAA76:Starfield.esm
 - 1EAA74:Starfield.esm
-ANAM: Null
+AddToList: Null

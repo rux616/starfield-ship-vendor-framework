@@ -1,7 +1,10 @@
 FormKey: 27A98F:Starfield.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: Staryard_Havershaw
-FormVersion: 576
 Version2: 6
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -49,7 +52,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.591797, -0.3623047, 0
   Second: 0.59179676, 1.0341797, 1.2373047
-ODTY: 0
 Flags:
 - Essential
 - Unique
@@ -341,3 +343,5 @@ FacialHairColor: SaltAndPepper
 EyebrowColor: SaltAndPepper
 EyeColor: Brown
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

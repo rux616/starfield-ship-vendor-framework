@@ -1,8 +1,6 @@
 FormKey: 1EAA0F:Starfield.esm
 EditorID: LShip_Vendor_Generic_A_Combat_Wendigo
-FormVersion: 576
 Version2: 4
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -17,4 +15,4 @@ Entries:
   Reference: 3A2E6F:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

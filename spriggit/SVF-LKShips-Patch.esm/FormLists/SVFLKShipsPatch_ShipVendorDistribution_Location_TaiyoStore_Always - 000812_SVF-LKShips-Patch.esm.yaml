@@ -1,9 +1,8 @@
 FormKey: 000812:SVF-LKShips-Patch.esm
 EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_TaiyoStore_Always
-FormVersion: 576
 Items:
 - 000B12:L-K_Ships.esm
 - 000B0F:L-K_Ships.esm
 - 000A90:L-K_Ships.esm
 - 000B0C:L-K_Ships.esm
-ANAM: 00080A:ShipVendorFramework.esm
+AddToList: 00080A:ShipVendorFramework.esm

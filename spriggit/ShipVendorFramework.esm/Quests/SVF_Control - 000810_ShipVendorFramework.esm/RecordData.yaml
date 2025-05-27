@@ -1,6 +1,5 @@
 FormKey: 000810:ShipVendorFramework.esm
 EditorID: SVF_Control
-FormVersion: 576
 VirtualMachineAdapter:
   Scripts:
   - Name: ShipVendorFramework:SVF_Control

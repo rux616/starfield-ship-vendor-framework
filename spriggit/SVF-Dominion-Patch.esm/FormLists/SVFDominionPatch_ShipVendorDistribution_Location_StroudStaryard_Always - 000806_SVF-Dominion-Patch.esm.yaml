@@ -1,6 +1,5 @@
 FormKey: 000806:SVF-Dominion-Patch.esm
 EditorID: SVFDominionPatch_ShipVendorDistribution_Location_StroudStaryard_Always
-FormVersion: 576
 Items:
 - 00000A:dominion.esm
-ANAM: 000807:ShipVendorFramework.esm
+AddToList: 000807:ShipVendorFramework.esm

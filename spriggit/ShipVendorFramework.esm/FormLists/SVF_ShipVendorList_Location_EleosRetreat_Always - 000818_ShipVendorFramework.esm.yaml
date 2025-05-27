@@ -1,6 +1,5 @@
 FormKey: 000818:ShipVendorFramework.esm
 EditorID: SVF_ShipVendorList_Location_EleosRetreat_Always
-FormVersion: 576
 Items:
 - 1EAA24:Starfield.esm
-ANAM: Null
+AddToList: Null

@@ -1,8 +1,6 @@
 FormKey: 1EAA26:Starfield.esm
 EditorID: LShip_Vendor_Generic_C_Combat_Stormrider
-FormVersion: 576
 Version2: 5
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -21,4 +19,4 @@ Entries:
   Reference: 3A2E01:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

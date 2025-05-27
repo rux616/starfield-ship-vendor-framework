@@ -1,6 +1,5 @@
 FormKey: 00081B:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Faction_FreestarCollective
-FormVersion: 576
 Items:
 - 1EAA72:Starfield.esm
 - 1EAA0C:Starfield.esm
@@ -43,4 +42,4 @@ Items:
 - 1EAA5E:Starfield.esm
 - 1EAA7B:Starfield.esm
 - 1EAA58:Starfield.esm
-ANAM: Null
+AddToList: Null

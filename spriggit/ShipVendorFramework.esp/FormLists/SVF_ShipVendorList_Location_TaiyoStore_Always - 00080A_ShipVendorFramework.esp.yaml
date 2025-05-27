@@ -1,7 +1,6 @@
 FormKey: 00080A:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Location_TaiyoStore_Always
-FormVersion: 576
 Items:
 - 1EAA8C:Starfield.esm
 - 1EAA8B:Starfield.esm
-ANAM: Null
+AddToList: Null

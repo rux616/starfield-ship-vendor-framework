@@ -1,6 +1,5 @@
 FormKey: 000801:SVFTest.esm
 EditorID: SVF_ShipVendorList_All
-FormVersion: 576
 Items:
 - 055FBF:Starfield.esm
 - 055FBE:Starfield.esm
@@ -96,4 +95,4 @@ Items:
 - 1EAA8E:Starfield.esm
 - 175DDC:Starfield.esm
 - 1EAA8F:Starfield.esm
-ANAM: Null
+AddToList: Null

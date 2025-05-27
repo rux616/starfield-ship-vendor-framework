@@ -1,7 +1,10 @@
 FormKey: 2B2BEC:Starfield.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: RM_LonAnderssen
-FormVersion: 576
 Version2: 2
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -46,7 +49,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.591797, -0.3623047, 0
   Second: 0.59179676, 1.0341797, 1.2373047
-ODTY: 0
 Flags:
 - Essential
 - Unique
@@ -231,3 +233,5 @@ SkinToneIndex: 0
 HairColor: Brown
 EyebrowColor: Brown
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

@@ -1,6 +1,5 @@
 FormKey: 000807:SVF-TheDenAstrodynamics-Patch.esm
 EditorID: vcDen_SVF_ShipDistribution_Location_DenThe_Always
-FormVersion: 576
 Items:
 - 0008E4:vcDenAstrodynamics.esm
 - 0008F3:vcDenAstrodynamics.esm
@@ -87,4 +86,4 @@ Items:
 - 000A77:vcDenAstrodynamics.esm
 - 000A76:vcDenAstrodynamics.esm
 - 0008D9:vcDenAstrodynamics.esm
-ANAM: 00082E:ShipVendorFramework.esm
+AddToList: 00082E:ShipVendorFramework.esm

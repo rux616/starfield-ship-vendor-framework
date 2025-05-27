@@ -1,6 +1,9 @@
 FormKey: 000802:LowLandingPad.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: OutpostShipbuilderVendor_Low
-FormVersion: 576
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -48,7 +51,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
-ODTY: 0
 Flags:
 - Essential
 - DoesntAffectStealthMeter
@@ -404,3 +406,5 @@ HairColor: Black
 FacialHairColor: Black
 EyeColor: Brown
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

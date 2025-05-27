@@ -1,9 +1,8 @@
 FormKey: 00080C:SVF-LKShips-Patch.esm
 EditorID: SVFLKShipsPatch_ShipVendorDistribution_Location_Neon_Always
-FormVersion: 576
 Items:
 - 112141:Starfield.esm
 - 112142:Starfield.esm
 - 000B0B:L-K_Ships.esm
 - 000B0C:L-K_Ships.esm
-ANAM: 00081F:ShipVendorFramework.esm
+AddToList: 00081F:ShipVendorFramework.esm

@@ -1,7 +1,10 @@
 FormKey: 2A0E9F:Starfield.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: ShipServices_TheClinic
-FormVersion: 576
 Version2: 9
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -45,7 +48,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
-ODTY: 0
 Flags:
 - Essential
 - Unique
@@ -300,3 +302,5 @@ HairColor: BlackBrown
 EyebrowColor: BlackBrown
 EyeColor: BrownDark
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

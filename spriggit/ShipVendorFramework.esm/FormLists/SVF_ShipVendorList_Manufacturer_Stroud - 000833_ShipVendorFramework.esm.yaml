@@ -1,6 +1,5 @@
 FormKey: 000833:ShipVendorFramework.esm
 EditorID: SVF_ShipVendorList_Manufacturer_Stroud
-FormVersion: 576
 Items:
 - 1EAA80:Starfield.esm
 - 1EAA7F:Starfield.esm
@@ -11,4 +10,4 @@ Items:
 - 1EAA02:Starfield.esm
 - 1EAA86:Starfield.esm
 - 1EAA85:Starfield.esm
-ANAM: Null
+AddToList: Null

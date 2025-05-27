@@ -1,8 +1,6 @@
 FormKey: 1EAA72:Starfield.esm
 EditorID: LShip_Vendor_Hopetech_A_Watchdog
-FormVersion: 576
 Version2: 4
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -34,4 +32,4 @@ Entries:
   Reference: 281F69:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

@@ -1,8 +1,6 @@
 FormKey: 1EAA76:Starfield.esm
 EditorID: LShip_Vendor_Hopetech_C_StarSemi
-FormVersion: 576
 Version2: 5
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -28,4 +26,4 @@ Entries:
   Reference: 03CFB2:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

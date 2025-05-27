@@ -1,6 +1,5 @@
 FormKey: 000820:ShipVendorFramework.esm
 EditorID: SVF_ShipVendorList_Location_Neon_Unique
-FormVersion: 576
 Items:
 - 055FBD:Starfield.esm
-ANAM: Null
+AddToList: Null

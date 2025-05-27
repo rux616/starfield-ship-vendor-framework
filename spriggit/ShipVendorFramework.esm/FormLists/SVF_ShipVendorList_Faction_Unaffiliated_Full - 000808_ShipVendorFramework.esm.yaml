@@ -1,6 +1,5 @@
 FormKey: 000808:ShipVendorFramework.esm
 EditorID: SVF_ShipVendorList_Faction_Unaffiliated_Full
-FormVersion: 576
 Items:
 - 1EAA0C:Starfield.esm
 - 1EAA79:Starfield.esm
@@ -56,4 +55,4 @@ Items:
 - 1EAA8A:Starfield.esm
 - 1EAA58:Starfield.esm
 - 1EAA67:Starfield.esm
-ANAM: Null
+AddToList: Null

@@ -1,8 +1,6 @@
 FormKey: 175DD3:Starfield.esm
 EditorID: LShip_Vendor_Generic_B_Combat_Naginata_CrimsonFleet_Banshee
-FormVersion: 576
 Version2: 2
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -21,4 +19,4 @@ Entries:
   Reference: 2543AA:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1
