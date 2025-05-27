@@ -1,4 +1,4 @@
-Version: 1.5.1
+Version: 1.5.2
 
 Summary
 -----
@@ -18,6 +18,7 @@ For best results, put this mod last in your load order, followed by other mods t
 
 For patches, the load order should be as follows:
 - ShipVendorFramework.esm
+- (SVF Expansion Patches, if any)
 - (SVF Capability Patches, if any)
 - (SVF Generic Patches, if any)
 - (SVF Compatibility Patches, if any)
@@ -52,7 +53,7 @@ None
 
 Credits and Acknowledgements
 -----
-Bethesda Game Studios: For Starfield itself and the Creation Kit
+Bethesda Game Studios: For Starfield itself and the Starfield Creation Kit
 ElminsterAU: For xEdit and BSArch
 Lively: For helping explain some of the odd nuances of an infrequently-used-by-me FOMOD feature
 Mod Organizer 2 team: For Mod Organizer 2

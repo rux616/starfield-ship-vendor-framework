@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.5.2](#v152)
     - [v1.5.1](#v151)
     - [v1.5.0](#v150)
     - [v1.4.0](#v140)
@@ -20,6 +21,12 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.5.2
+------
+- Renamed the Shattered Space patch (plugins with filenames ending in "ShatteredSpace.esm" apparently get disappeared from the Creations Load Order screen as of patch 1.15.216)
+
+([TOC](#table-of-contents))
 
 v1.5.1
 ------
