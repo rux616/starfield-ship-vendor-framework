@@ -1,6 +1,5 @@
 FormKey: 000834:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Manufacturer_Taiyo
-FormVersion: 576
 Items:
 - 1EAA89:Starfield.esm
 - 1EAA87:Starfield.esm
@@ -10,4 +9,4 @@ Items:
 - 1EAA8E:Starfield.esm
 - 1EAA8F:Starfield.esm
 - 1EAA8A:Starfield.esm
-ANAM: Null
+AddToList: Null

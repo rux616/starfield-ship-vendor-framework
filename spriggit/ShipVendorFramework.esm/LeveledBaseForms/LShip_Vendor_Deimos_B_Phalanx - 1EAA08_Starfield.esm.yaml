@@ -1,8 +1,6 @@
 FormKey: 1EAA08:Starfield.esm
 EditorID: LShip_Vendor_Deimos_B_Phalanx
-FormVersion: 576
 Version2: 4
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -46,4 +44,4 @@ Entries:
   Reference: 02C222:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

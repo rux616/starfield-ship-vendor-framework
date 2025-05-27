@@ -1,7 +1,10 @@
 FormKey: 0470E4:ShatteredSpace.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: SFBGS001_HV_DumarHasadi
-FormVersion: 576
 Version2: 12
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -45,7 +48,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
-ODTY: 0
 Flags:
 - Essential
 - Unique
@@ -328,3 +330,5 @@ EyeColor: BrownDark
 JewelryColor: Black
 TeethColor: Teeth_Dirty
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

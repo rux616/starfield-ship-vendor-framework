@@ -1,8 +1,6 @@
 FormKey: 1EAA05:Starfield.esm
 EditorID: LShip_Vendor_Deimos_A_Longsword
-FormVersion: 576
 Version2: 4
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -38,4 +36,4 @@ Entries:
   Reference: 0B199F:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

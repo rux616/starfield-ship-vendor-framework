@@ -1,8 +1,6 @@
 FormKey: 175DDD:Starfield.esm
 EditorID: LShip_Vendor_Taiyo_B_Falcon_CrimsonFleet_Specter
-FormVersion: 576
 Version2: 2
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -25,4 +23,4 @@ Entries:
   Reference: 38894F:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

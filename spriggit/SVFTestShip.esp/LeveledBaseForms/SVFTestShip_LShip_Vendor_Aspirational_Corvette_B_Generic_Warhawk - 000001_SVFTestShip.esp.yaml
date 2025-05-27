@@ -1,0 +1,13 @@
+FormKey: 000001:SVFTestShip.esp
+EditorID: SVFTestShip_LShip_Vendor_Aspirational_Corvette_B_Generic_Warhawk
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 50
+  Unused: 19927
+  Reference: 000815:SVFTestShip.esp
+  Count: 1
+Model:
+  LightLayer: 1

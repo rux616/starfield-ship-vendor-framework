@@ -1,0 +1,68 @@
+FormKey: 000816:SVFTestShip.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 4456448
+EditorID: SVFTestShip_Asp_Corvette_B_Generic_Warhawk_Template_AutopilotAI
+StarfieldMajorRecordFlags:
+- Compressed
+- 0x400000
+Flags:
+- AutoCalcStats
+XpValueOffset: 130
+Level:
+  MutagenObjectType: NpcLevel
+  Level: 24
+DispositionBase: 35
+UseTemplateActors: 17597
+Voice: 013ADD:Starfield.esm
+TemplateActors:
+  TraitTemplate: 2E72D1:Starfield.esm
+  FactionsTemplate: 2E72D1:Starfield.esm
+  SpellListTemplate: 2E72D1:Starfield.esm
+  AiDataTemplate: 2E72D1:Starfield.esm
+  AiPackagesTemplate: 2E72D1:Starfield.esm
+  BaseDataTemplate: 2E72D1:Starfield.esm
+  DefPackListTemplate: 2E72D1:Starfield.esm
+  Unknown2: 2E72D1:Starfield.esm
+Race: 025739:Starfield.esm
+CombatOverridePackageList: 1B5600:Starfield.esm
+Properties:
+- ActorValue: 0002DA:Starfield.esm
+  Value: 100
+- ActorValue: 0002D5:Starfield.esm
+  Value: 50
+- ActorValue: 0002D4:Starfield.esm
+  Value: 100
+- ActorValue: 0002C8:Starfield.esm
+- ActorValue: 0002C7:Starfield.esm
+- ActorValue: 0002C6:Starfield.esm
+- ActorValue: 0002C5:Starfield.esm
+- ActorValue: 0002C4:Starfield.esm
+- ActorValue: 0002C3:Starfield.esm
+- ActorValue: 0002C2:Starfield.esm
+- ActorValue: 0002CC:Starfield.esm
+  Value: 15
+- ActorValue: 00039D:Starfield.esm
+  Value: 3
+Aggression: Aggressive
+Confidence: Foolhardy
+EnergyLevel: 50
+Responsibility: NoCrime
+Assistance: HelpsAllies
+Class: 01326B:Starfield.esm
+CalculatedHealth: 610
+CalculatedActionPoints: 50
+GearedUpWeapons: 1
+CombatStyle: 0A73FD:Starfield.esm
+NAM5: 0xFF00
+HeightMin: 1
+HeightMax: 1
+Weight: {}
+DefaultPackageList: 0110AA:Starfield.esm
+Tints: []
+BodyMorphRegionValues:
+  UpperTorso: 0.21
+SkinToneIndex: 0
+Pronoun: Unspecified
+MajorFlags:
+- 0x40000
+- 0x400000

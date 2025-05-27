@@ -1,0 +1,21 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.38.4
+ModKey: SVF-ShatteredSpace-Patch.esm
+GameRelease: Starfield
+ModHeader:
+  Flags:
+  - Master
+  - Light
+  Author: rux616
+  Description: >-
+    Patch for "Ship Vendor Framework" by rux616 and the Shattered Space expansion.
+
+
+    Version: 2.0.0
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: ShatteredSpace.esm
+  - Master: ShipVendorFramework.esm
+  Branch: Main
+  InteriorCellCount: 0

@@ -1,8 +1,6 @@
 FormKey: 1EAA7C:Starfield.esm
 EditorID: LShip_Vendor_Nova_B_Ranger
-FormVersion: 576
 Version2: 5
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -34,4 +32,4 @@ Entries:
   Reference: 02C263:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

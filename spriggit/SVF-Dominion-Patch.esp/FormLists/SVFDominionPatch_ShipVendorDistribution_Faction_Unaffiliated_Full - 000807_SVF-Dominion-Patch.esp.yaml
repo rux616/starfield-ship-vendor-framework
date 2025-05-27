@@ -1,6 +1,5 @@
 FormKey: 000807:SVF-Dominion-Patch.esp
 EditorID: SVFDominionPatch_ShipVendorDistribution_Faction_Unaffiliated_Full
-FormVersion: 576
 Items:
 - 00000A:dominion.esm
-ANAM: 000808:ShipVendorFramework.esm
+AddToList: 000808:ShipVendorFramework.esm

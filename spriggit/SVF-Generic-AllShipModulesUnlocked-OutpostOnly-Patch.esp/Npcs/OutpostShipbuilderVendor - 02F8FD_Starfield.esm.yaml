@@ -1,7 +1,10 @@
 FormKey: 02F8FD:Starfield.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: OutpostShipbuilderVendor
-FormVersion: 576
 Version2: 4
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -46,7 +49,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
-ODTY: 0
 Flags:
 - Essential
 - DoesntAffectStealthMeter
@@ -414,3 +416,5 @@ HairColor: Black
 FacialHairColor: Black
 EyeColor: Brown
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

@@ -1,7 +1,10 @@
 FormKey: 01539E:Starfield.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: CF_JasmineDurand
-FormVersion: 576
 Version2: 4
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -49,7 +52,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.591797, -0.3623047, 0
   Second: 0.59179676, 1.0341797, 1.2373047
-ODTY: 0
 Flags:
 - Female
 - Essential
@@ -368,3 +370,5 @@ EyebrowColor: BlackBrown
 EyeColor: Brown
 JewelryColor: Copper
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

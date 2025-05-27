@@ -1,6 +1,5 @@
 FormKey: 000804:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Location_DeimosStaryard_Unique
-FormVersion: 576
 Items:
 - 055FBB:Starfield.esm
-ANAM: Null
+AddToList: Null

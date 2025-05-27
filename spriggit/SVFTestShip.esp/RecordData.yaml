@@ -1,0 +1,14 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.38.4
+ModKey: SVFTestShip.esp
+GameRelease: Starfield
+ModHeader:
+  Author: rux616
+  Description: SVF Test Ship
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: ShatteredSpace.esm
+  - Master: ShipVendorFramework.esm
+  - Master: SVF-ShatteredSpace-Patch.esm
+  Branch: Main

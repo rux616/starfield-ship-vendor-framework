@@ -1,8 +1,6 @@
 FormKey: 1EAA7F:Starfield.esm
 EditorID: LShip_Vendor_Stroud_A_Galileo
-FormVersion: 576
 Version2: 4
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -34,4 +32,4 @@ Entries:
   Reference: 04239F:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

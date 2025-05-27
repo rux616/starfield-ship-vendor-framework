@@ -1,8 +1,6 @@
 FormKey: 1EAA8D:Starfield.esm
 EditorID: LShip_Vendor_Taiyo_B_Pelican
-FormVersion: 576
 Version2: 4
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -17,4 +15,4 @@ Entries:
   Reference: 02C74D:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

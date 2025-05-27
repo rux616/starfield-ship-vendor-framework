@@ -1,7 +1,10 @@
 FormKey: 0470E4:ShatteredSpace.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
 EditorID: SFBGS001_HV_DumarHasadi
-FormVersion: 576
 Version2: 12
+StarfieldMajorRecordFlags:
+- Compressed
 VirtualMachineAdapter:
   Scripts:
   - Name: sq_shipservicesactorscript
@@ -17,7 +20,7 @@ VirtualMachineAdapter:
       Object: 22E153:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListRandomDataset
-      Object: 00081D:ShipVendorFramework-ShatteredSpace.esm
+      Object: 00081D:SVF-ShatteredSpace-Patch.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SpaceshipStoredLink
       Object: 1DF5BF:Starfield.esm
@@ -29,10 +32,10 @@ VirtualMachineAdapter:
       Alias: 18
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
-      Object: 000817:ShipVendorFramework-ShatteredSpace.esm
+      Object: 000817:SVF-ShatteredSpace-Patch.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
-      Object: 000814:ShipVendorFramework-ShatteredSpace.esm
+      Object: 000814:SVF-ShatteredSpace-Patch.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: LinkShipLandingMarker01
       Object: 2CFDEB:Starfield.esm
@@ -45,7 +48,6 @@ VirtualMachineAdapter:
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
-ODTY: 0
 Flags:
 - Essential
 - Unique
@@ -326,3 +328,5 @@ EyeColor: BrownDark
 JewelryColor: Black
 TeethColor: Teeth_Dirty
 Pronoun: Unspecified
+MajorFlags:
+- 0x40000

@@ -1,6 +1,5 @@
 FormKey: 00080C:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Location_StroudStaryard_Unique
-FormVersion: 576
 Items:
 - 055FBA:Starfield.esm
-ANAM: Null
+AddToList: Null

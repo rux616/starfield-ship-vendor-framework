@@ -1,10 +1,9 @@
 SpriggitSource:
   PackageName: Spriggit.Yaml.Starfield
-  Version: 0.35.1
+  Version: 0.38.4
 ModKey: SVF-Generic-AllShipModulesUnlocked-AllShipVendors-ShatteredSpace-Patch.esp
 GameRelease: Starfield
 ModHeader:
-  FormVersion: 576
   Author: rux616
   Description: >-
     Generic patch for "Ship Vendor Framework" by rux616, the Shattered Space expansion, and other mods that unlock all ship modules at all ship vendors.
@@ -15,6 +14,6 @@ ModHeader:
   - Master: Starfield.esm
   - Master: ShatteredSpace.esm
   - Master: ShipVendorFramework.esm
-  - Master: ShipVendorFramework-ShatteredSpace.esm
+  - Master: SVF-ShatteredSpace-Patch.esm
   - Master: SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esm
-  BNAM: 0x4D61696E00
+  Branch: Main

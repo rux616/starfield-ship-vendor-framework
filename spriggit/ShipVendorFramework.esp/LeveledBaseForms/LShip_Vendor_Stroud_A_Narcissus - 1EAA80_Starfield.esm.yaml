@@ -1,8 +1,6 @@
 FormKey: 1EAA80:Starfield.esm
 EditorID: LShip_Vendor_Stroud_A_Narcissus
-FormVersion: 576
 Version2: 4
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -17,4 +15,4 @@ Entries:
   Reference: 0423A1:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1

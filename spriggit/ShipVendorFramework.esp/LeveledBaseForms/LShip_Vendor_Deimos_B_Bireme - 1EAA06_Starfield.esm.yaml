@@ -1,8 +1,6 @@
 FormKey: 1EAA06:Starfield.esm
 EditorID: LShip_Vendor_Deimos_B_Bireme
-FormVersion: 576
 Version2: 4
-ODTY: 0
 MaxCount: 0
 Flags:
 - CalculateForEachItemInCount
@@ -17,4 +15,4 @@ Entries:
   Reference: 3E60DB:Starfield.esm
   Count: 1
 Model:
-  FLLD: 0x01000000
+  LightLayer: 1
