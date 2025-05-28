@@ -2,7 +2,7 @@ Ship Vendor Framework
 =====================
 by rux616
 
-Version: 1.5.3
+Version: 1.5.4
 
 Table Of Contents
 -----------------
