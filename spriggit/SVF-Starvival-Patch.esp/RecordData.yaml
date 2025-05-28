@@ -15,5 +15,5 @@ ModHeader:
   - Master: ShatteredSpace.esm
   - Master: Starvival - Immersive Survival Addon.esm
   - Master: ShipVendorFramework.esm
-  - Master: ShipVendorFramework-ShatteredSpace.esm
+  - Master: SVF-ShatteredSpace-Patch.esm
   Branch: Main
