@@ -9,7 +9,7 @@ ModHeader:
     Generic patch for "Ship Vendor Framework" by rux616, the Shattered Space expansion, and other mods that change ship vendors.
 
 
-    Version: 1.0.0
+    Version: 1.1.0
   MasterReferences:
   - Master: Starfield.esm
   - Master: ShatteredSpace.esm

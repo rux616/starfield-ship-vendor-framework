@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.5.4](#v154)
     - [v1.5.3](#v153)
     - [v1.5.2](#v152)
     - [v1.5.1](#v151)
@@ -22,6 +23,12 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.5.4
+------
+- Fixed master file reference in the SVF Starvival Patch to the newly-renamed SVF Shattered Space patch
+
+([TOC](#table-of-contents))
 
 v1.5.3
 ------
