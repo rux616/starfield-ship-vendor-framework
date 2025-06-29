@@ -10,11 +10,30 @@ VirtualMachineAdapter:
   - Name: sq_shipservicesactorscript
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LinkShipLandingMarker01
+      Object: 2CFDEB:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerShips
+      Object: 0174A2:Starfield.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipsToSellListAlwaysDataset
+      Object: 003BB7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipsToSellListRandomDataset
+      Object: 086ECD:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipVendorLocation
+      Object: 209AC7:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: SpaceshipStoredLink
       Object: 1DF5BF:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: DialogueShipServices
-      Object: 22E153:Starfield.esm
+      Name: SQ_PlayerShip
+      Object: 0174A2:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListAlwaysDataset
       Object: 000829:ShipVendorFramework.esm
@@ -22,30 +41,11 @@ VirtualMachineAdapter:
       Name: SVFShipsToSellListRandomDataset
       Object: 000836:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
-      Name: LinkShipLandingMarker01
-      Object: 2CFDEB:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListAlwaysDataset
-      Object: 003BB7:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
       Name: SVFShipsToSellListUniqueDataset
       Object: 00082A:ShipVendorFramework.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: ShipVendorLocation
-      Object: 209AC7:Starfield.esm
     - MutagenObjectType: ScriptBoolProperty
       Name: SVFUseNewDatasets
       Data: True
-    - MutagenObjectType: ScriptObjectProperty
-      Name: SQ_PlayerShip
-      Object: 0174A2:Starfield.esm
-    - MutagenObjectType: ScriptObjectProperty
-      Name: PlayerShips
-      Object: 0174A2:Starfield.esm
-      Alias: 18
-    - MutagenObjectType: ScriptObjectProperty
-      Name: ShipsToSellListRandomDataset
-      Object: 086ECD:Starfield.esm
 ObjectBounds:
   First: -0.591797, -0.3623047, 0
   Second: 0.59179676, 1.0341797, 1.2373047
@@ -264,16 +264,16 @@ FaceMorphs:
 MorphBlends:
 - BlendName: male_as_md1_Nose
   Intensity: 0.37
-- BlendName: male_eu_yo1_Nose
-  Intensity: 0.27
-- BlendName: male_eu_yo1_Neck
-  Intensity: 0.05
-- BlendName: male_eu_ol1_Mouth
-  Intensity: 0.69
-- BlendName: male_eu_ol1_Eyes
-  Intensity: 0.58
 - BlendName: male_eu_ol1_Ears
   Intensity: 0.4
+- BlendName: male_eu_ol1_Eyes
+  Intensity: 0.58
+- BlendName: male_eu_ol1_Mouth
+  Intensity: 0.69
+- BlendName: male_eu_yo1_Neck
+  Intensity: 0.05
+- BlendName: male_eu_yo1_Nose
+  Intensity: 0.27
 SkinToneIndex: 0
 HairColor: Brown
 EyebrowColor: Brown
