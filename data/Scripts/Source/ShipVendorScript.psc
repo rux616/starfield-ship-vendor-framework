@@ -227,14 +227,6 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         DebugDumpData()
     EndIf
 
-    ; register for ship sell events
-    _Log(fnName, "registering for ship sell events", LL_DEBUG)
-    RegisterForRemoteEvent(PlayerShips, "OnShipSold")
-
-    ; register for load game events - automatically unregistered when the vendor is unloaded
-    _Log(fnName, "registering for player load game events", LL_DEBUG)
-    RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
-
     If initialized == false || SVFEnhancementsInitialized() == false
         ; if initialized == true, the vendor has already been initialized, but because of the prior logic statement,
         ; SVFEnhancementsInitialized() _must_ have returned false, which means the SVF enhancements still need to be
@@ -255,6 +247,14 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
 
         CheckForInventoryRefresh()
     EndIf
+
+    ; register for ship sell events
+    _Log(fnName, "registering for ship sell events", LL_DEBUG)
+    RegisterForRemoteEvent(PlayerShips, "OnShipSold")
+
+    ; register for load game events - automatically unregistered when the vendor is unloaded
+    _Log(fnName, "registering for player load game events", LL_DEBUG)
+    RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
 
     If LogLevel == LL_DEBUG
         DebugDumpData()
