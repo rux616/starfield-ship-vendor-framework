@@ -13,25 +13,19 @@ Location Property ShipVendorLocation Auto Const
 { OPTIONAL - The location used to spawn vendor ships at for leveling purposes.
     If not filled in, script will use vendor's current location }
 
-ShipVendorListScript Property ShipsToSellListAlwaysDataset Auto Const
-{ DEPRECATED - Use SVFShipsToSellListAlwaysDataset instead.
-    Remember to set SVFUseNewDatasets to true. }
+ShipVendorListScript property ShipsToSellListRandomDataset auto const
+{ DEPRECATED - Use SVFShipsToSellListRandomDataset or the vendor data map instead. }
 
-ShipVendorListScript Property ShipsToSellListRandomDataset Auto Const
-{ DEPRECATED - Use SVFShipsToSellListRandomDataset instead.
-    Remember to set SVFUseNewDatasets to true. }
+ShipVendorListScript property ShipsToSellListAlwaysDataset auto const
+{ DEPRECATED - Use SVFShipsToSellListAlwaysDataset or the vendor data map instead. }
 
-ShipVendorListScript Property ShipsToSellListUniqueDataset Auto Const
-{ DEPRECATED - Use SVFShipsToSellListUniqueDataset instead.
-    Remember to set SVFUseNewDatasets to true. }
+ShipVendorListScript property ShipsToSellListUniqueDataset auto const
+{ DEPRECATED - Use SVFShipsToSellListUniqueDataset or the vendor data map instead. }
 
 int Property ShipsForSaleMin = 4 Auto Const
-{ The minimum number of random ships that can be chosen to be put on sale at any given time.
-    NOTE - this does not include ships that are always for sale or unique ships.
-    NOTE - this number is not guaranteed to be met if the player does not qualify for enough ships. }
+{ NOTE: if these are 0, the only ships for sale will be from ShipsToSellListAlwaysDataset }
 
 int Property ShipsForSaleMax = 8 Auto Const
-{ The maximum number of random ships that can be for sale at any given time. }
 
 ObjectReference Property myLandingMarker Auto Hidden
 { landing marker, set by OnInit }
@@ -42,8 +36,8 @@ RefCollectionAlias Property PlayerShips Auto Const Mandatory
 float Property DaysUntilInventoryRefresh = 7.0 Auto Const
 { how many days until next inventory refresh? }
 
-bool Property BuysShips = true Auto Conditional Const
-bool Property SellsShips = true Auto Conditional Const
+bool Property BuysShips = true Auto Conditional
+bool Property SellsShips = true Auto Conditional
 
 bool Property InitializeOnLoad = true Auto Const
 { if false, Initialize() needs to be called manually (e.g. for outpost ship vendor) }
@@ -61,17 +55,30 @@ bool initialized = false
 
 ; additional variables and properties to support Ship Vendor Framework enhancements
 
-FormList Property SVFShipsToSellListRandomDataset Auto Const
-{ The list of random ships to sell.
-    Remember to set SVFUseNewDatasets to true. }
-FormList Property SVFShipsToSellListAlwaysDataset Auto Const
-{ The list of ships that should always be available for sale.
-    Remember to set SVFUseNewDatasets to true. }
-FormList Property SVFShipsToSellListUniqueDataset Auto Const
-{ The list of unique ships to make available for sale. (Never respawns.)
-    Remember to set SVFUseNewDatasets to true. }
+Group ShipVendorFramework
+    FormList Property SVFShipsToSellListRandomDataset Auto Const
+    { The list of random ships to sell. }
+    FormList Property SVFShipsToSellListAlwaysDataset Auto Const
+    { The list of ships that should always be available for sale. }
+    FormList Property SVFShipsToSellListUniqueDataset Auto Const
+    { The list of unique ships to make available for sale. (Never respawns.) }
 
-; local cache of the new FormList-based datasets
+    bool Property SVFUseNewDatasets = false Auto Const  ; DEPRECATED
+    { !!!DEPRECATED!!! Mark vendor as using the new Ship Vendor Framework datasets. !!!DEPRECATED!!! }
+
+    FormList Property SVFExternalUniquesSoldList Auto Const  ; DEPRECATED
+    { OPTIONAL - can be used to coordinate a list of unique ships that have been already sold between chosen vendors.
+        If not filled in, the vendor will use their own local list.}
+EndGroup
+
+; local clones of various properties
+FormList SVFShipsToSellListRandomDatasetLocal
+FormList SVFShipsToSellListAlwaysDatasetLocal
+FormList SVFShipsToSellListUniqueDatasetLocal
+int ShipsForSaleMinLocal
+int ShipsForSaleMaxLocal
+
+; local cache of the contents of the new FormList-based datasets
 LeveledSpaceshipBase[] SVFShipsToSellRandom
 LeveledSpaceshipBase[] SVFShipsToSellAlways
 LeveledSpaceshipBase[] SVFShipsToSellUnique
@@ -83,45 +90,47 @@ SpaceshipReference[] ShipsForSaleAlways RequiresGuard(shipsForSaleGuard)
 SpaceshipReference[] ShipsForSaleUnique RequiresGuard(shipsForSaleGuard)
 SpaceshipReference[] ShipsForSaleSoldByPlayer RequiresGuard(shipsForSaleGuard)
 
-bool Property SVFUseNewDatasets = false Auto Const
-{ Mark vendor as using the new Ship Vendor Framework datasets. }
-; this serves as an informal guard against the vendor record being overwritten by a non-SVF version
-; if this flag is false, the newer SVFShipsToSellList* properties will be ignored and the original
-; ShipsToSellList* properties will be used instead, albeit with some enhancements still active
+; flag to indicate whether the vendor should use SVF datasets; updated every load (replaces SVFUseNewDatasets property)
+bool useSVFDatasets = false
 
-FormList Property SVFExternalUniquesSoldList Auto Const
-{ OPTIONAL - can be used to coordinate a list of unique ships that have been already sold between chosen vendors.
-    If not filled in, the vendor will use their own local list.}
+; unique ships that have been sold to the player and thus should not be available for sale again
+; TODO determine whether to store the form list ref locally or whether to use svf_control directly
+FormList SVFUniqueShipsSoldToPlayerListLVLB
+FormList SVFUniqueShipsSoldToPlayerListREF
 ; local 'sold' lists
-LeveledSpaceshipBase[] UniquesSoldListLocal
+LeveledSpaceshipBase[] UniquesSoldListLocal ; TODO this is probably not needed in v3
 LeveledSpaceshipBase[] AlwaysSoldList
 
 ; struct to hold the mapping of a ship reference to its originating leveled list
 Struct ShipRefToSpaceshipLeveledListMapping
-    SpaceshipReference shipRef
     LeveledSpaceshipBase leveledShip
+    SpaceshipReference shipRef
 EndStruct
-; variables to hold the ship ref to leveled list mappings to support unique ship tracking
+; variables to hold the ship ref to leveled list mappings to support ship tracking
 ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMapping
 ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingRandom
 ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingAlways
 ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingUnique
 
-int Property SVFEnhancementsVersion = 2 Auto Const Hidden
-{ The desired version of the Ship Vendor Framework enhancements. }
+; the desired version of the Ship Vendor Framework enhancements
+int Property SVFEnhancementsVersion = 3 Auto Const Hidden
 
-; The current version of the Ship Vendor Framework enhancements active on the vendor.
+; the current version of the Ship Vendor Framework enhancements active on the vendor
 int SVFEnhancementsVersionCurrent = 0
 
-; The player reference.
+; the control script for the Ship Vendor Framework
+ShipVendorFramework:SVF_Control SVFControlScript
+
+; the player reference
 Actor PlayerRef
 
 ; guard (and dummy int) to protect against multiple initialization calls
 int DummyInt RequiresGuard(LoadGuard)
 guard LoadGuard
 
-int Property LogLevel = 2 Auto Const
-{ The log level for the script. -1=none, 0=info, 1=warning, 2=error, 3=debug. }
+; the log level for the script
+; -1=none, 0=info, 1=warning, 2=error, 3=debug
+int Property LogLevel = 3 Auto Const Hidden  ; DEPRECATED ; TODO convert log levels to new format
 
 ; log levels
 ; "info" log level
@@ -163,8 +172,9 @@ Event OnUnload()
 EndEvent
 
 
-; using OnActivate is a workaround for the fact that if the player loads a save where the vendor is already loaded,
-; the OnLoad event for the vendor doesn't fire again
+; using OnActivate is a workaround for the fact that if the player installs SVF for the first time and loads a save
+; where the vendor is already loaded, the OnPlayerLoadGame event hasn't yet been registered, so it won't fire, and
+; neither will the OnLoad event for the vendor
 Event OnActivate(ObjectReference akActionRef)
     string fnName = "OnActivate" Const
     _Log(fnName, "begin (" + akActionRef + ")", LL_DEBUG)
@@ -204,7 +214,7 @@ Event Actor.OnPlayerLoadGame(Actor akPlayer)
         _Log(fnName, "3D not loaded, unregistering for OnPlayerLoadGame event", LL_WARNING)
         UnregisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
     Else
-    _Log(fnName, "3D loaded; continuing", LL_DEBUG)
+        _Log(fnName, "3D loaded; continuing", LL_DEBUG)
         LockGuard LoadGuard
             HandleOnLoad()
         EndLockGuard
@@ -228,10 +238,10 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
     EndIf
 
     If initialized == false || SVFEnhancementsInitialized() == false
-        ; if initialized == true, the vendor has already been initialized, but because of the prior logic statement,
-        ; SVFEnhancementsInitialized() _must_ have returned false, which means the SVF enhancements still need to be
-        ; initialized
         If initialized == true
+            ; if initialized == true, the vendor has already been initialized, but because of the prior logic statement,
+            ; SVFEnhancementsInitialized() _must_ have returned false, which means the SVF enhancements still need to be
+            ; initialized
             _Log(fnName, "initializing SVF enhancements on load", LL_DEBUG)
             Initialize(myLandingMarker)
         ElseIf InitializeOnLoad == true
@@ -245,16 +255,13 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         ; sync the uniques sold list with the external list if provided
         SyncUniquesSoldList()
 
+        PopulateLocals()
+        UseSVFDatasetsCheck()
+
         CheckForInventoryRefresh()
     EndIf
 
-    ; register for ship sell events
-    _Log(fnName, "registering for ship sell events", LL_DEBUG)
-    RegisterForRemoteEvent(PlayerShips, "OnShipSold")
-
-    ; register for load game events - automatically unregistered when the vendor is unloaded
-    _Log(fnName, "registering for player load game events", LL_DEBUG)
-    RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
+    RegisterForPermanentRemoteEvents()
 
     If LogLevel == LL_DEBUG
         DebugDumpData()
@@ -275,7 +282,6 @@ Function Initialize(ObjectReference landingMarkerRef)
     _Log(fnName, "Log level: " + LogLevel)
     _Log(fnName, "Primary initialization done: " + initialized)
     _Log(fnName, "SVF Enhancements version: current=" + SVFEnhancementsVersionCurrent + ", desired=" + SVFEnhancementsVersion)
-    _Log(fnName, "Using new datasets: " + SVFUseNewDatasets)
 
     If landingMarkerRef != None
         myLandingMarker = landingMarkerRef
@@ -301,16 +307,37 @@ Function Initialize(ObjectReference landingMarkerRef)
     ; SVF initial setup
     If SVFEnhancementsVersionCurrent < 1
         InitializeSVFEnhancementsVersion1()
-
         doRefreshCheck = true
     EndIf
 
     ; SVF version 1 to 2 update tasks
     If SVFEnhancementsVersionCurrent < 2
         InitializeSVFEnhancementsVersion2()
-
         doRefreshCheck = true
     EndIf
+
+    ; SVF version 2 to 3 update tasks
+    If SVFEnhancementsVersionCurrent < 3
+        InitializeSVFEnhancementsVersion3()
+        doRefreshCheck = true
+    EndIf
+
+    RegisterForPermanentRemoteEvents()
+
+    initialized = true
+
+    If doRefreshCheck == true
+        CheckForInventoryRefresh()
+    EndIf
+
+    _Log(fnName, "end (" + landingMarkerRef + ")", LL_DEBUG)
+EndFunction
+
+
+; register for the permanent remote events that the vendor needs to listen to
+Function RegisterForPermanentRemoteEvents()
+    string fnName = "RegisterForPermanentRemoteEvents" Const
+    _Log(fnName, "begin", LL_DEBUG)
 
     ; register for ship sell events
     _Log(fnName, "registering for ship sell events", LL_DEBUG)
@@ -320,13 +347,7 @@ Function Initialize(ObjectReference landingMarkerRef)
     _Log(fnName, "registering for player load game events", LL_DEBUG)
     RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
 
-    initialized = true
-
-    If doRefreshCheck == true
-        CheckForInventoryRefresh()
-    EndIf
-
-    _Log(fnName, "end (" + landingMarkerRef + ")", LL_DEBUG)
+    _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
@@ -344,7 +365,7 @@ EndFunction
 
 
 Function InitializeSVFEnhancementsVersion1()
-    int updatingToVersion = 1
+    int updatingToVersion = 1 Const
     string fnName = "InitializeSVFEnhancementsVersion" + updatingToVersion Const
     _Log(fnName, "begin", LL_DEBUG)
 
@@ -386,7 +407,7 @@ EndFunction
 
 
 Function InitializeSVFEnhancementsVersion2()
-    int updatingToVersion = 2
+    int updatingToVersion = 2 Const
     string fnName = "InitializeSVFEnhancementsVersion" + updatingToVersion Const
     _Log(fnName, "begin", LL_DEBUG)
 
@@ -528,6 +549,31 @@ Function InitializeSVFEnhancementsVersion2()
 EndFunction
 
 
+Function InitializeSVFEnhancementsVersion3()
+    int updatingToVersion = 3 Const
+    string fnName = "InitializeSVFEnhancementsVersion" + updatingToVersion Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    _Log(fnName, "Ship Vendor Framework enhancements updating to version " + updatingToVersion)
+
+    ; init control script variable
+    SVFControlScript = Game.GetFormFromFile(0x000810, "ShipVendorFramework.esm") as ShipVendorFramework:SVF_Control
+
+    ; TODO convert uniques sold list
+
+    ; process vendor data map
+    PopulateLocals()
+
+    ; check whether to actually utilize the SVF datasets
+    UseSVFDatasetsCheck()
+
+    SVFEnhancementsVersionCurrent = updatingToVersion
+    _Log(fnName, "Ship Vendor Framework enhancements updated to version " + updatingToVersion)
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
 Function DebugDumpData()
     string fnName = "DebugDumpData" Const
     _Log(fnName, "begin", LL_DEBUG)
@@ -556,6 +602,11 @@ Function DebugDumpData()
         _Log(fnName, "ShipsForSaleMappingUnique=" + ShipsForSaleMappingUnique, LL_DEBUG)
         _Log(fnName, "AlwaysSoldList=" + AlwaysSoldList, LL_DEBUG)
         _Log(fnName, "UniquesSoldListLocal=" + UniquesSoldListLocal, LL_DEBUG)
+        _Log(fnName, "SVFShipsToSellListRandomDatasetLocal=" + SVFShipsToSellListRandomDatasetLocal, LL_DEBUG)
+        _Log(fnName, "SVFShipsToSellListAlwaysDatasetLocal=" + SVFShipsToSellListAlwaysDatasetLocal, LL_DEBUG)
+        _Log(fnName, "SVFShipsToSellListUniqueDatasetLocal=" + SVFShipsToSellListUniqueDatasetLocal, LL_DEBUG)
+        _Log(fnName, "ShipsForSaleMinLocal=" + ShipsForSaleMinLocal, LL_DEBUG)
+        _Log(fnName, "ShipsForSaleMaxLocal=" + ShipsForSaleMaxLocal, LL_DEBUG)
         LockGuard shipsForSaleGuard
             _Log(fnName, "shipsForSale=" + shipsForSale, LL_DEBUG)
             _Log(fnName, "ShipsForSaleRandom=" + ShipsForSaleRandom, LL_DEBUG)
@@ -564,6 +615,49 @@ Function DebugDumpData()
             _Log(fnName, "ShipsForSaleSoldByPlayer=" + ShipsForSaleSoldByPlayer, LL_DEBUG)
         EndLockGuard
     EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+; populate the local variables with data from the vendor data map or SVF dataset properties
+Function PopulateLocals()
+    string fnName = "PopulateLocals" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    Form baseSelf = self.GetBaseObject()
+    _Log(fnName, "getting vendor data map for " + self + " (base: " + (baseSelf as ActorBase) + ")")
+    ShipVendorFramework:SVF_DataStructures:ShipVendorDataMap vendorDataMap
+    vendorDataMap = SVFControlScript.GetShipVendorDataMap(baseSelf)
+    If vendorDataMap != None
+        _Log(fnName, "vendor data map found")
+        SVFShipsToSellListRandomDatasetLocal = vendorDataMap.ListRandom
+        SVFShipsToSellListAlwaysDatasetLocal = vendorDataMap.ListAlways
+        SVFShipsToSellListUniqueDatasetLocal = vendorDataMap.ListUnique
+        ShipsForSaleMinLocal = vendorDataMap.RandomShipsForSaleMin
+        ShipsForSaleMaxLocal = vendorDataMap.RandomShipsForSaleMax
+    Else
+        _Log(fnName, "vendor data map not found")
+        SVFShipsToSellListAlwaysDatasetLocal = SVFShipsToSellListAlwaysDataset
+        SVFShipsToSellListRandomDatasetLocal = SVFShipsToSellListRandomDataset
+        SVFShipsToSellListUniqueDatasetLocal = SVFShipsToSellListUniqueDataset
+        ShipsForSaleMinLocal = ShipsForSaleMin
+        ShipsForSaleMaxLocal = ShipsForSaleMax
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+; check to see if this script should use the SVF datasets (replacement for property SVFUseNewDatasets)
+Function UseSVFDatasetsCheck()
+    string fnName = "UseSVFDatasetsCheck" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    useSVFDatasets = SVFShipsToSellListAlwaysDatasetLocal != None \
+        && SVFShipsToSellListRandomDatasetLocal != None \
+        && SVFShipsToSellListUniqueDatasetLocal != None
+    _Log(fnName, "Using SVF datasets: " + useSVFDatasets)
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
@@ -711,7 +805,7 @@ Function CheckForInventoryRefresh(bool bForceRefresh = false)
     If SellsShips
         float currentGameTime = Utility.GetCurrentGameTime()
         float nextRefreshTime = lastInventoryRefreshTimestamp + DaysUntilInventoryRefresh
-        _Log(fnName, "currentGameTime=" + currentGameTime + " nextRefreshTime=" + nextRefreshTime, LL_DEBUG)
+        _Log(fnName, "currentGameTime=" + currentGameTime + " || nextRefreshTime=" + nextRefreshTime, LL_DEBUG)
 
         ; if the inventory has never been refreshed, or it's time to refresh, or it's being forced
         If bForceRefresh || lastInventoryRefreshTimestamp == 0 || (currentGameTime >= nextRefreshTime)
@@ -783,7 +877,7 @@ Function PurgeAlreadySoldUniques(SpaceshipReference[] akShipList, SpaceshipRefer
 EndFunction
 
 
-; matches the "always" and "unique" ships to sell lists to the ships for sale lists and refreshes those lists if needed
+; matches the "always" and "unique" ships-to-sell lists to the ships-for-sale lists and refreshes those lists if needed
 Function CheckForNewShips()
     string fnName = "CheckForNewShips" Const
     _Log(fnName, "begin", LL_DEBUG)
@@ -798,7 +892,7 @@ Function CheckForNewShips()
     RefreshShipsToSellArrays()
     var[] ShipsToSellAlwaysCopy = None
     var[] ShipsToSellUniqueCopy = None
-    If SVFUseNewDatasets == true
+    If useSVFDatasets == true
         ShipsToSellAlwaysCopy = SVFShipsToSellAlways as var[]
         ShipsToSellUniqueCopy = SVFShipsToSellUnique as var[]
     Else
@@ -836,7 +930,7 @@ bool Function ForSaleMatchesToSell(SpaceshipReference[] akShipsForSaleList, var[
         refToShipMappingIndex = akMappingList.FindStruct("shipRef", shipToCheck)
         If refToShipMappingIndex > -1
             leveledShip = akMappingList[refToShipMappingIndex].leveledShip
-            If SVFUseNewDatasets == true
+            If useSVFDatasets == true
                 leveledShipIndex = (akShipsToSellList as LeveledSpaceshipBase[]).Find(leveledShip)
             Else
                 leveledShipIndex = (akShipsToSellList as ShipVendorListScript:ShipToSell[]).FindStruct("leveledShip", leveledShip)
@@ -865,7 +959,7 @@ bool Function UniqueShipsToSell()
     string fnName = "UniqueShipsToSell" Const
     _Log(fnName, "begin", LL_DEBUG)
     bool toReturn
-    If SVFUseNewDatasets == true
+    If useSVFDatasets == true
         toReturn = SVFShipsToSellUnique.Length > 0
     Else
         toReturn = ShipsToSellUnique.Length > 0
@@ -882,7 +976,7 @@ Function RefreshShipsToSellArrays()
     string fnName = "RefreshShipsToSellArrays" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    If SVFUseNewDatasets == true
+    If useSVFDatasets == true
         RefreshShipsToSellArraysLVLB()
     Else
         RefreshShipsToSellArraysShipToSell()
@@ -898,28 +992,29 @@ Function RefreshShipsToSellArraysLVLB()
     _Log(fnName, "begin", LL_DEBUG)
 
     ; fill arrays using datasets
-    If SVFShipsToSellListRandomDataset != None
+    If SVFShipsToSellListRandomDatasetLocal != None
         _Log(fnName, "random ships dataset found", LL_DEBUG)
-        SVFShipsToSellRandom = SVFShipsToSellListRandomDataset.GetArray() as LeveledSpaceshipBase[]
+        SVFShipsToSellRandom = SVFShipsToSellListRandomDatasetLocal.GetArray() as LeveledSpaceshipBase[]
         _Log(fnName, "SVFShipsToSellRandom=" + SVFShipsToSellRandom, LL_DEBUG)
     Else
         SVFShipsToSellRandom.Clear()
     EndIf
-    If SVFShipsToSellListAlwaysDataset != None
+    If SVFShipsToSellListAlwaysDatasetLocal != None
         _Log(fnName, "priority ships dataset found", LL_DEBUG)
-        SVFShipsToSellAlways = SVFShipsToSellListAlwaysDataset.GetArray() as LeveledSpaceshipBase[]
+        SVFShipsToSellAlways = SVFShipsToSellListAlwaysDatasetLocal.GetArray() as LeveledSpaceshipBase[]
         _Log(fnName, "SVFShipsToSellAlways=" + SVFShipsToSellAlways, LL_DEBUG)
     Else
         SVFShipsToSellAlways.Clear()
     EndIf
-    If SVFShipsToSellListUniqueDataset != None
+    If SVFShipsToSellListUniqueDatasetLocal != None
         _Log(fnName, "unique ships dataset found", LL_DEBUG)
-        SVFShipsToSellUnique = SVFShipsToSellListUniqueDataset.GetArray() as LeveledSpaceshipBase[]
+        SVFShipsToSellUnique = SVFShipsToSellListUniqueDatasetLocal.GetArray() as LeveledSpaceshipBase[]
         _Log(fnName, "SVFShipsToSellUnique=" + SVFShipsToSellUnique, LL_DEBUG)
     Else
         SVFShipsToSellUnique.Clear()
     EndIf
 
+    ; variable to keep track of various list indices
     int i = 0
 
     ; remove any random ships that are already in the always or unique lists
@@ -1103,7 +1198,7 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         var[] vShipsToSellAlways = None
         var[] vShipsToSellRandom = None
         var[] vShipsToSellUnique = None
-        If SVFUseNewDatasets == true
+        If useSVFDatasets == true
             vShipsToSellAlways = SVFShipsToSellAlways as var[]
             vShipsToSellRandom = SVFShipsToSellRandom as var[]
             vShipsToSellUnique = SVFShipsToSellUnique as var[]
@@ -1269,7 +1364,7 @@ Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMark
     ; create the ships
     _Log(fnName, "attempting to create " + aiShipsToCreate + " ships (out of " + akShipToSellList.Length + " possible) at " + akCreateMarker + " (landing marker " + myLandingMarker + ")")
     int i = 0
-    If SVFUseNewDatasets == true
+    If useSVFDatasets == true
         While i < aiShipsToCreate
             CreateShipForSale(akShipToSellList[i] as LeveledSpaceshipBase, akCreateMarker, akEncLoc, akShipList, akRefToLLMap)
             i += 1

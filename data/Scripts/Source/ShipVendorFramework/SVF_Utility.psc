@@ -63,8 +63,12 @@ EndFunction
 ; local opinionated log function
 ; aiSeverity values: 0 = info, 1 = warning, 2 = error, 3 = debug
 Function _Log(string asFunctionName, string asLogMessage, int aiSeverity = 0) Global
-    int LOG_LEVEL = 2 const
-    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiSeverity, LOG_LEVEL)
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    int LL_DEBUG = 3 Const
+    int LOG_LEVEL_THRESHOLD = LL_DEBUG Const  ; TODO change back to LL_INFO for release
+    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiSeverity, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 
@@ -365,4 +369,65 @@ bool Function ArraysEqualShipToSell(ShipVendorListScript:ShipToSell[] avArray1, 
 
     _Log(fnName, "end", LL_DEBUG)
     Return true
+EndFunction
+
+
+; returns the last Form in a FormList, or None if the FormList is empty or None
+Form Function FormListGetLast(Form akFormList) Global
+    string fnName = "FormListGetLast" Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    int LL_DEBUG = 3 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If !(akFormList is FormList)
+        _Log(fnName, "akFormList is not a FormList", LL_ERROR)
+        return None
+    EndIf
+
+    If akFormList == None
+        _Log(fnName, "akFormList is None", LL_ERROR)
+        return None
+    EndIf
+
+    FormList list = akFormList as FormList
+    int size = list.GetSize()
+    If size <= 0
+        _Log(fnName, "akFormList is empty", LL_WARNING)
+        return None
+    EndIf
+
+    Form lastForm = list.GetAt(size - 1)
+    _Log(fnName, "form list " + list + " (size " + size + "): " + list.GetArray(), LL_DEBUG)
+    _Log(fnName, "last form: " + lastForm, LL_DEBUG)
+
+    _Log(fnName, "end", LL_DEBUG)
+    return lastForm
+EndFunction
+
+
+; returns the value of a GameplayOption or GlobalVariable, or a default value if the Form is not one of those types
+float Function GetValue2(Form akForm, float afDefault = 0.0) Global
+    string fnName = "GetValue2" Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    int LL_DEBUG = 3 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    float toReturn = afDefault
+    If akForm is GameplayOption
+        _Log(fnName, akForm + " is a GameplayOption, value: " + toReturn, LL_DEBUG)
+        toReturn = (akForm as GameplayOption).GetValue()
+    ElseIf akForm is GlobalVariable
+        _Log(fnName, akForm + " is a GlobalVariable, value: " + toReturn, LL_DEBUG)
+        toReturn = (akForm as GlobalVariable).GetValue()
+    Else
+        _Log(fnName, "akForm is not a GameplayOption or GlobalVariable, returning default value", LL_WARNING)
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    _Log(fnName, "returning value: " + toReturn, LL_DEBUG)
+    Return toReturn
 EndFunction
