@@ -23,9 +23,10 @@ ShipVendorListScript property ShipsToSellListUniqueDataset auto const
 { DEPRECATED - Use SVFShipsToSellListUniqueDataset or the vendor data map instead. }
 
 int Property ShipsForSaleMin = 4 Auto Const
-{ NOTE: if these are 0, the only ships for sale will be from ShipsToSellListAlwaysDataset }
+{ The minimum number of ships from the "random" dataset for sale. Note that the vendor data map supersedes this value. }
 
 int Property ShipsForSaleMax = 8 Auto Const
+{ The maximum number of ships from the "random" dataset for sale. Note that the vendor data map supersedes this value. }
 
 ObjectReference Property myLandingMarker Auto Hidden
 { landing marker, set by OnInit }
@@ -67,8 +68,7 @@ Group ShipVendorFramework
     { !!!DEPRECATED!!! Mark vendor as using the new Ship Vendor Framework datasets. !!!DEPRECATED!!! }
 
     FormList Property SVFExternalUniquesSoldList Auto Const  ; DEPRECATED
-    { OPTIONAL - can be used to coordinate a list of unique ships that have been already sold between chosen vendors.
-        If not filled in, the vendor will use their own local list.}
+    { !!!DEPRECATED!!! OPTIONAL - can be used to coordinate a list of unique ships that have been already sold between chosen vendors. If not filled in, the vendor will use their own local list. !!!DEPRECATED!!! }
 EndGroup
 
 ; local clones of various properties
@@ -645,11 +645,20 @@ Function PopulateLocals()
         ShipsForSaleMaxLocal = ShipsForSaleMax
     EndIf
 
+    ; sanity check the min/max random ships for sale values, switching if needed
+    If ShipsForSaleMaxLocal < ShipsForSaleMinLocal
+        _Log(fnName, "random ships for sale values need to be reversed. min=" + ShipsForSaleMinLocal + ", max=" + ShipsForSaleMaxLocal, LL_WARNING)
+        ; swap the values
+        int temp = ShipsForSaleMinLocal
+        ShipsForSaleMinLocal = ShipsForSaleMaxLocal
+        ShipsForSaleMaxLocal = temp
+    EndIf
+
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
-; check to see if this script should use the SVF datasets (replacement for property SVFUseNewDatasets)
+; check to see if this script should use the SVF datasets (replacement for 'SVFUseNewDatasets' property)
 Function UseSVFDatasetsCheck()
     string fnName = "UseSVFDatasetsCheck" Const
     _Log(fnName, "begin", LL_DEBUG)
