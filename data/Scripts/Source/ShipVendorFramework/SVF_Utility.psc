@@ -418,13 +418,13 @@ float Function GetValue2(Form akForm, float afDefault = 0.0) Global
 
     float toReturn = afDefault
     If akForm is GameplayOption
-        _Log(fnName, akForm + " is a GameplayOption, value: " + toReturn, LL_DEBUG)
         toReturn = (akForm as GameplayOption).GetValue()
+        _Log(fnName, akForm + " is a GameplayOption, value: " + toReturn, LL_DEBUG)
     ElseIf akForm is GlobalVariable
-        _Log(fnName, akForm + " is a GlobalVariable, value: " + toReturn, LL_DEBUG)
         toReturn = (akForm as GlobalVariable).GetValue()
+        _Log(fnName, akForm + " is a GlobalVariable, value: " + toReturn, LL_DEBUG)
     Else
-        _Log(fnName, "akForm is not a GameplayOption or GlobalVariable, returning default value", LL_WARNING)
+        _Log(fnName, "akForm is not a GameplayOption or GlobalVariable, returning default value: " + toReturn, LL_WARNING)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
