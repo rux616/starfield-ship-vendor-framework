@@ -42,8 +42,6 @@ FormList Property UniqueShipsSoldToPlayerREF Auto Const
 
 ; default values for the vendor mappings
 Group DefaultVendorMappingValues
-    bool Property BuysShipsDefault = true Auto Const
-    bool Property SellsShipsDefault = true Auto Const
     int Property RandomShipsForSaleMinDefault = 4 Auto Const
     int Property RandomShipsForSaleMaxDefault = 8 Auto Const
 EndGroup
