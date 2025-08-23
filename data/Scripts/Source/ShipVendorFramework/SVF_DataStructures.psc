@@ -40,7 +40,7 @@ EndStruct
 ; predecessor struct
 ; this is unused at the moment, but if a v2 of the framework is made, the plan is to have it replace the
 ; "ShipRefToSpaceshipLeveledListMapping" struct in ShipVendorScript
-Struct ShipLVLBToShipRefMap
-    LeveledSpaceshipBase leveledShip
-    SpaceshipReference shipRef
+Struct ShipLVLBToREFMap
+    LeveledSpaceshipBase LeveledShip
+    SpaceshipReference ShipRef
 EndStruct
