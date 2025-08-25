@@ -13,13 +13,13 @@ Location Property ShipVendorLocation Auto Const
 { OPTIONAL - The location used to spawn vendor ships at for leveling purposes.
     If not filled in, script will use vendor's current location }
 
-ShipVendorListScript property ShipsToSellListRandomDataset auto const
+ShipVendorListScript Property ShipsToSellListRandomDataset Auto Const
 { DEPRECATED - Use SVFShipsToSellListRandomDataset or the vendor data map instead. }
 
-ShipVendorListScript property ShipsToSellListAlwaysDataset auto const
+ShipVendorListScript Property ShipsToSellListAlwaysDataset Auto Const
 { DEPRECATED - Use SVFShipsToSellListAlwaysDataset or the vendor data map instead. }
 
-ShipVendorListScript property ShipsToSellListUniqueDataset auto const
+ShipVendorListScript Property ShipsToSellListUniqueDataset Auto Const
 { DEPRECATED - Use SVFShipsToSellListUniqueDataset or the vendor data map instead. }
 
 int Property ShipsForSaleMin = 4 Auto Const
@@ -28,7 +28,7 @@ int Property ShipsForSaleMin = 4 Auto Const
 int Property ShipsForSaleMax = 8 Auto Const
 { The maximum number of ships from the "random" dataset for sale. Note that the vendor data map supersedes this value. }
 
-ObjectReference Property myLandingMarker Auto Hidden
+ObjectReference Property MyLandingMarker Auto Hidden
 { landing marker, set by OnInit }
 
 RefCollectionAlias Property PlayerShips Auto Const Mandatory
@@ -43,13 +43,13 @@ bool Property SellsShips = true Auto Conditional
 bool Property InitializeOnLoad = true Auto Const
 { if false, Initialize() needs to be called manually (e.g. for outpost ship vendor) }
 
-ShipVendorListScript:ShipToSell[] ShipsToSellRandom
-ShipVendorListScript:ShipToSell[] ShipsToSellAlways
-ShipVendorListScript:ShipToSell[] ShipsToSellUnique
+ShipVendorListScript:ShipToSell[] shipsToSellRandom
+ShipVendorListScript:ShipToSell[] shipsToSellAlways
+ShipVendorListScript:ShipToSell[] shipsToSellUnique
 float lastInventoryRefreshTimestamp ; timestamp when last refresh happened
 
-SpaceshipReference[] shipsForSale RequiresGuard(shipsForSaleGuard)
-Guard shipsForSaleGuard
+SpaceshipReference[] shipsForSale RequiresGuard(ShipsForSaleGuard)
+Guard ShipsForSaleGuard
 
 bool initialized = false
 
@@ -72,61 +72,61 @@ Group ShipVendorFramework
 EndGroup
 
 ; local clones of various properties
-FormList SVFShipsToSellListRandomDatasetLocal
-FormList SVFShipsToSellListAlwaysDatasetLocal
-FormList SVFShipsToSellListUniqueDatasetLocal
-int ShipsForSaleMinLocal
-int ShipsForSaleMaxLocal
+FormList svfShipsToSellListRandomDatasetLocal
+FormList svfShipsToSellListAlwaysDatasetLocal
+FormList svfShipsToSellListUniqueDatasetLocal
+int shipsForSaleMinLocal
+int shipsForSaleMaxLocal
 
 ; local cache of the contents of the new FormList-based datasets
-LeveledSpaceshipBase[] SVFShipsToSellRandom
-LeveledSpaceshipBase[] SVFShipsToSellAlways
-LeveledSpaceshipBase[] SVFShipsToSellUnique
+LeveledSpaceshipBase[] svfShipsToSellRandom
+LeveledSpaceshipBase[] svfShipsToSellAlways
+LeveledSpaceshipBase[] svfShipsToSellUnique
 
 ; track the actual ships available to sell in the various established categories: random, always, unique, and
 ; player-sold
-SpaceshipReference[] ShipsForSaleRandom RequiresGuard(shipsForSaleGuard)
-SpaceshipReference[] ShipsForSaleAlways RequiresGuard(shipsForSaleGuard)
-SpaceshipReference[] ShipsForSaleUnique RequiresGuard(shipsForSaleGuard)
-SpaceshipReference[] ShipsForSaleSoldByPlayer RequiresGuard(shipsForSaleGuard)
+SpaceshipReference[] shipsForSaleRandom RequiresGuard(ShipsForSaleGuard)
+SpaceshipReference[] shipsForSaleAlways RequiresGuard(ShipsForSaleGuard)
+SpaceshipReference[] shipsForSaleUnique RequiresGuard(ShipsForSaleGuard)
+SpaceshipReference[] shipsForSaleSoldByPlayer RequiresGuard(ShipsForSaleGuard)
 
 ; flag to indicate whether the vendor should use SVF datasets; updated every load (replaces SVFUseNewDatasets property)
 bool useSVFDatasets = false
 
 ; unique ships that have been sold to the player and thus should not be available for sale again
 ; TODO determine whether to store the form list ref locally or whether to use svf_control directly
-FormList SVFUniqueShipsSoldToPlayerListLVLB
-FormList SVFUniqueShipsSoldToPlayerListREF
+FormList svfUniqueShipsSoldToPlayerListLVLB
+FormList svfUniqueShipsSoldToPlayerListREF
 ; local 'sold' lists
-LeveledSpaceshipBase[] UniquesSoldListLocal ; TODO this is probably not needed in v3
-LeveledSpaceshipBase[] AlwaysSoldList
+LeveledSpaceshipBase[] uniquesSoldListLocal ; TODO this is probably not needed in v3
+LeveledSpaceshipBase[] alwaysSoldList
 
 ; struct to hold the mapping of a ship reference to its originating leveled list
 Struct ShipRefToSpaceshipLeveledListMapping
-    LeveledSpaceshipBase leveledShip
-    SpaceshipReference shipRef
+    LeveledSpaceshipBase LeveledShip
+    SpaceshipReference ShipRef
 EndStruct
 ; variables to hold the ship ref to leveled list mappings to support ship tracking
-ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMapping
-ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingRandom
-ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingAlways
-ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingUnique
+ShipRefToSpaceshipLeveledListMapping[] shipsForSaleMapping
+ShipRefToSpaceshipLeveledListMapping[] shipsForSaleMappingRandom
+ShipRefToSpaceshipLeveledListMapping[] shipsForSaleMappingAlways
+ShipRefToSpaceshipLeveledListMapping[] shipsForSaleMappingUnique
 
 ; the desired version of the Ship Vendor Framework enhancements
 int Property SVFEnhancementsVersion = 3 Auto Const Hidden
 
 ; the current version of the Ship Vendor Framework enhancements active on the vendor
-int SVFEnhancementsVersionCurrent = 0
+int svfEnhancementsVersionCurrent = 0
 
 ; the control script for the Ship Vendor Framework
-ShipVendorFramework:SVF_Control SVFControlScript
+ShipVendorFramework:SVF_Control svfControlScript
 
 ; the player reference
-Actor PlayerRef
+Actor playerRef
 
 ; guard (and dummy int) to protect against multiple initialization calls
-int DummyInt RequiresGuard(LoadGuard)
-guard LoadGuard
+int dummyInt RequiresGuard(LoadGuard)
+Guard LoadGuard
 
 ; the log level for the script
 ; -1=none, 0=info, 1=warning, 2=error, 3=debug
@@ -166,7 +166,7 @@ Event OnUnload()
     _Log(fnName, "begin", LL_DEBUG)
 
     _Log(fnName, "unregistering for player load game events")
-    UnregisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
+    UnregisterForRemoteEvent(playerRef, "OnPlayerLoadGame")
 
     _Log(fnName, "end", LL_DEBUG)
 EndEvent
@@ -212,7 +212,7 @@ Event Actor.OnPlayerLoadGame(Actor akPlayer)
     EndWhile
     If loaded3D == false
         _Log(fnName, "3D not loaded, unregistering for OnPlayerLoadGame event", LL_WARNING)
-        UnregisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
+        UnregisterForRemoteEvent(playerRef, "OnPlayerLoadGame")
     Else
         _Log(fnName, "3D loaded; continuing", LL_DEBUG)
         LockGuard LoadGuard
@@ -229,7 +229,7 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
     _Log(fnName, "begin", LL_DEBUG)
 
     ; needed to satisfy the guard
-    DummyInt = 0
+    dummyInt = 0
 
     If LogLevel == LL_DEBUG
         _Log(fnName, "starting stack profiling", LL_DEBUG)
@@ -273,18 +273,18 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
 EndFunction
 
 
-Function Initialize(ObjectReference landingMarkerRef)
+Function Initialize(ObjectReference akLandingMarkerRef)
     string fnName = "Initialize" Const
-    _Log(fnName, "begin (" + landingMarkerRef + ")", LL_DEBUG)
+    _Log(fnName, "begin (" + akLandingMarkerRef + ")", LL_DEBUG)
 
     bool doRefreshCheck = false
 
     _Log(fnName, "Log level: " + LogLevel)
     _Log(fnName, "Primary initialization done: " + initialized)
-    _Log(fnName, "SVF Enhancements version: current=" + SVFEnhancementsVersionCurrent + ", desired=" + SVFEnhancementsVersion)
+    _Log(fnName, "SVF Enhancements version: current=" + svfEnhancementsVersionCurrent + ", desired=" + SVFEnhancementsVersion)
 
-    If landingMarkerRef != None
-        myLandingMarker = landingMarkerRef
+    If akLandingMarkerRef != None
+        myLandingMarker = akLandingMarkerRef
         _Log(fnName, "setting myLandingMarker to " + myLandingMarker)
     Else
         _Log(fnName, "CRITICAL: no landing marker provided; aborting", LL_ERROR)
@@ -293,11 +293,11 @@ Function Initialize(ObjectReference landingMarkerRef)
 
     If initialized == false
         ; Initialize arrays.
-        ShipsToSellRandom = new ShipVendorListScript:ShipToSell[0]
-        ShipsToSellAlways = new ShipVendorListScript:ShipToSell[0]
-        ShipsToSellUnique = new ShipVendorListScript:ShipToSell[0]
+        shipsToSellRandom = new ShipVendorListScript:ShipToSell[0]
+        shipsToSellAlways = new ShipVendorListScript:ShipToSell[0]
+        shipsToSellUnique = new ShipVendorListScript:ShipToSell[0]
 
-        LockGuard shipsForSaleGuard
+        LockGuard ShipsForSaleGuard
             shipsForSale = new SpaceshipReference[0]
         EndLockGuard
 
@@ -305,19 +305,19 @@ Function Initialize(ObjectReference landingMarkerRef)
     EndIf
 
     ; SVF initial setup
-    If SVFEnhancementsVersionCurrent < 1
+    If svfEnhancementsVersionCurrent < 1
         InitializeSVFEnhancementsVersion1()
         doRefreshCheck = true
     EndIf
 
     ; SVF version 1 to 2 update tasks
-    If SVFEnhancementsVersionCurrent < 2
+    If svfEnhancementsVersionCurrent < 2
         InitializeSVFEnhancementsVersion2()
         doRefreshCheck = true
     EndIf
 
     ; SVF version 2 to 3 update tasks
-    If SVFEnhancementsVersionCurrent < 3
+    If svfEnhancementsVersionCurrent < 3
         InitializeSVFEnhancementsVersion3()
         doRefreshCheck = true
     EndIf
@@ -330,7 +330,7 @@ Function Initialize(ObjectReference landingMarkerRef)
         CheckForInventoryRefresh()
     EndIf
 
-    _Log(fnName, "end (" + landingMarkerRef + ")", LL_DEBUG)
+    _Log(fnName, "end (" + akLandingMarkerRef + ")", LL_DEBUG)
 EndFunction
 
 
@@ -345,7 +345,7 @@ Function RegisterForPermanentRemoteEvents()
 
     ; register for load game events - automatically unregistered when the vendor is unloaded
     _Log(fnName, "registering for player load game events", LL_DEBUG)
-    RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
+    RegisterForRemoteEvent(playerRef, "OnPlayerLoadGame")
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
@@ -356,7 +356,7 @@ bool Function SVFEnhancementsInitialized()
     string fnName = "SVFEnhancementsInitialized" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    bool toReturn = SVFEnhancementsVersionCurrent == SVFEnhancementsVersion
+    bool toReturn = svfEnhancementsVersionCurrent == SVFEnhancementsVersion
     _Log(fnName, "returning " + toReturn, LL_DEBUG)
 
     _Log(fnName, "end", LL_DEBUG)
@@ -372,34 +372,34 @@ Function InitializeSVFEnhancementsVersion1()
     _Log(fnName, "Ship Vendor Framework enhancements initializing to version " + updatingToVersion)
 
     ; variable initialization
-    SVFShipsToSellRandom = new LeveledSpaceshipBase[0]
-    SVFShipsToSellAlways = new LeveledSpaceshipBase[0]
-    SVFShipsToSellUnique = new LeveledSpaceshipBase[0]
-    ShipsForSaleMapping = new ShipRefToSpaceshipLeveledListMapping[0]
-    ShipsForSaleMappingRandom = new ShipRefToSpaceshipLeveledListMapping[0]
-    ShipsForSaleMappingAlways = new ShipRefToSpaceshipLeveledListMapping[0]
-    ShipsForSaleMappingUnique = new ShipRefToSpaceshipLeveledListMapping[0]
-    UniquesSoldListLocal = new LeveledSpaceshipBase[0]
-    LockGuard shipsForSaleGuard
-        ShipsForSaleRandom = new SpaceshipReference[0]
-        ShipsForSaleAlways = new SpaceshipReference[0]
-        ShipsForSaleUnique = new SpaceshipReference[0]
-        ShipsForSaleSoldByPlayer = new SpaceshipReference[0]
+    svfShipsToSellRandom = new LeveledSpaceshipBase[0]
+    svfShipsToSellAlways = new LeveledSpaceshipBase[0]
+    svfShipsToSellUnique = new LeveledSpaceshipBase[0]
+    shipsForSaleMapping = new ShipRefToSpaceshipLeveledListMapping[0]
+    shipsForSaleMappingRandom = new ShipRefToSpaceshipLeveledListMapping[0]
+    shipsForSaleMappingAlways = new ShipRefToSpaceshipLeveledListMapping[0]
+    shipsForSaleMappingUnique = new ShipRefToSpaceshipLeveledListMapping[0]
+    uniquesSoldListLocal = new LeveledSpaceshipBase[0]
+    LockGuard ShipsForSaleGuard
+        shipsForSaleRandom = new SpaceshipReference[0]
+        shipsForSaleAlways = new SpaceshipReference[0]
+        shipsForSaleUnique = new SpaceshipReference[0]
+        shipsForSaleSoldByPlayer = new SpaceshipReference[0]
     EndLockGuard
-    PlayerRef = Game.GetPlayer()
+    playerRef = Game.GetPlayer()
 
     ; if the vendor itself is already initialized, force refresh the inventory
     If initialized == true
         _Log(fnName, "vendor already initialized, deleting existing ships and resetting timestamp to trigger inventory refresh")
         ; manually delete the ship references first
-        LockGuard shipsForSaleGuard
+        LockGuard ShipsForSaleGuard
             DeleteShips(shipsForSale)
         EndLockGuard
         ; reset timestamp so that the inventory refresh happens immediately
         lastInventoryRefreshTimestamp = 0.0
     EndIf
 
-    SVFEnhancementsVersionCurrent = updatingToVersion
+    svfEnhancementsVersionCurrent = updatingToVersion
     _Log(fnName, "Ship Vendor Framework enhancements updated to version " + updatingToVersion)
 
     _Log(fnName, "end", LL_DEBUG)
@@ -415,11 +415,11 @@ Function InitializeSVFEnhancementsVersion2()
     int i = 0
 
     ; variable initialization
-    AlwaysSoldList = new LeveledSpaceshipBase[0]
+    alwaysSoldList = new LeveledSpaceshipBase[0]
 
     ; purge ShipsForSale* lists of ship references that are None
     _Log(fnName, "purging ShipsForSale* lists of ship references that are None")
-    LockGuard shipsForSaleGuard
+    LockGuard ShipsForSaleGuard
         _Log(fnName, "purging ShipsForSale of None ships", LL_DEBUG)
         i = ShipsForSale.Length - 1
         While i > -1
@@ -429,39 +429,39 @@ Function InitializeSVFEnhancementsVersion2()
             EndIf
             i += -1
         EndWhile
-        _Log(fnName, "purging ShipsForSaleRandom of None ships", LL_DEBUG)
-        i = ShipsForSaleRandom.Length - 1
+        _Log(fnName, "purging shipsForSaleRandom of None ships", LL_DEBUG)
+        i = shipsForSaleRandom.Length - 1
         While i > -1
-            If ShipsForSaleRandom[i].IsBoundGameObjectAvailable() == false
+            If shipsForSaleRandom[i].IsBoundGameObjectAvailable() == false
                 _Log(fnName, "removing None ship at position " + i + " from random list", LL_DEBUG)
-                ShipsForSaleRandom.Remove(i)
+                shipsForSaleRandom.Remove(i)
             EndIf
             i += -1
         EndWhile
-        _Log(fnName, "purging ShipsForSaleAlways of None ships", LL_DEBUG)
-        i = ShipsForSaleAlways.Length - 1
+        _Log(fnName, "purging shipsForSaleAlways of None ships", LL_DEBUG)
+        i = shipsForSaleAlways.Length - 1
         While i > -1
-            If ShipsForSaleAlways[i].IsBoundGameObjectAvailable() == false
+            If shipsForSaleAlways[i].IsBoundGameObjectAvailable() == false
                 _Log(fnName, "removing None ship at position " + i + " from priority list", LL_DEBUG)
-                ShipsForSaleAlways.Remove(i)
+                shipsForSaleAlways.Remove(i)
             EndIf
             i += -1
         EndWhile
-        _Log(fnName, "purging ShipsForSaleUnique of None ships", LL_DEBUG)
-        i = ShipsForSaleUnique.Length - 1
+        _Log(fnName, "purging shipsForSaleUnique of None ships", LL_DEBUG)
+        i = shipsForSaleUnique.Length - 1
         While i > -1
-            If ShipsForSaleUnique[i].IsBoundGameObjectAvailable() == false
+            If shipsForSaleUnique[i].IsBoundGameObjectAvailable() == false
                 _Log(fnName, "removing None ship at position " + i + " from unique list", LL_DEBUG)
-                ShipsForSaleUnique.Remove(i)
+                shipsForSaleUnique.Remove(i)
             EndIf
             i += -1
         EndWhile
-        _Log(fnName, "purging ShipsForSaleSoldByPlayer of None ships", LL_DEBUG)
-        i = ShipsForSaleSoldByPlayer.Length - 1
+        _Log(fnName, "purging shipsForSaleSoldByPlayer of None ships", LL_DEBUG)
+        i = shipsForSaleSoldByPlayer.Length - 1
         While i > -1
-            If ShipsForSaleSoldByPlayer[i].IsBoundGameObjectAvailable() == false
+            If shipsForSaleSoldByPlayer[i].IsBoundGameObjectAvailable() == false
                 _Log(fnName, "removing None ship at position " + i + " from player sold list", LL_DEBUG)
-                ShipsForSaleSoldByPlayer.Remove(i)
+                shipsForSaleSoldByPlayer.Remove(i)
             EndIf
             i += -1
         EndWhile
@@ -469,39 +469,39 @@ Function InitializeSVFEnhancementsVersion2()
 
     ; purge ship to leveled base ship maps of mappings that have ship references that are None
     _Log(fnName, "purging ship to leveled base ship maps of mappings that have ship references that are None")
-    _Log(fnName, "purging ShipsForSaleMapping of None ships", LL_DEBUG)
-    i = ShipsForSaleMapping.Length - 1
+    _Log(fnName, "purging shipsForSaleMapping of None ships", LL_DEBUG)
+    i = shipsForSaleMapping.Length - 1
     While i > -1
-        If ShipsForSaleMapping[i].shipRef.IsBoundGameObjectAvailable() == false
+        If shipsForSaleMapping[i].ShipRef.IsBoundGameObjectAvailable() == false
             _Log(fnName, "removing None ship at position " + i + " from mapping list", LL_DEBUG)
-            ShipsForSaleMapping.Remove(i)
+            shipsForSaleMapping.Remove(i)
         EndIf
         i += -1
     EndWhile
-    _Log(fnName, "purging ShipsForSaleMappingRandom of None ships", LL_DEBUG)
-    i = ShipsForSaleMappingRandom.Length - 1
+    _Log(fnName, "purging shipsForSaleMappingRandom of None ships", LL_DEBUG)
+    i = shipsForSaleMappingRandom.Length - 1
     While i > -1
-        If ShipsForSaleMappingRandom[i].shipRef.IsBoundGameObjectAvailable() == false
+        If shipsForSaleMappingRandom[i].ShipRef.IsBoundGameObjectAvailable() == false
             _Log(fnName, "removing None ship at position " + i + " from mapping list", LL_DEBUG)
-            ShipsForSaleMappingRandom.Remove(i)
+            shipsForSaleMappingRandom.Remove(i)
         EndIf
         i += -1
     EndWhile
-    _Log(fnName, "purging ShipsForSaleMappingAlways of None ships", LL_DEBUG)
-    i = ShipsForSaleMappingAlways.Length - 1
+    _Log(fnName, "purging shipsForSaleMappingAlways of None ships", LL_DEBUG)
+    i = shipsForSaleMappingAlways.Length - 1
     While i > -1
-        If ShipsForSaleMappingAlways[i].shipRef.IsBoundGameObjectAvailable() == false
+        If shipsForSaleMappingAlways[i].ShipRef.IsBoundGameObjectAvailable() == false
             _Log(fnName, "removing None ship at position " + i + " from mapping list", LL_DEBUG)
-            ShipsForSaleMappingAlways.Remove(i)
+            shipsForSaleMappingAlways.Remove(i)
         EndIf
         i += -1
     EndWhile
-    _Log(fnName, "purging ShipsForSaleMappingUnique of None ships", LL_DEBUG)
-    i = ShipsForSaleMappingUnique.Length - 1
+    _Log(fnName, "purging shipsForSaleMappingUnique of None ships", LL_DEBUG)
+    i = shipsForSaleMappingUnique.Length - 1
     While i > -1
-        If ShipsForSaleMappingUnique[i].shipRef.IsBoundGameObjectAvailable() == false
+        If shipsForSaleMappingUnique[i].ShipRef.IsBoundGameObjectAvailable() == false
             _Log(fnName, "removing None ship at position " + i + " from mapping list", LL_DEBUG)
-            ShipsForSaleMappingUnique.Remove(i)
+            shipsForSaleMappingUnique.Remove(i)
         EndIf
         i += -1
     EndWhile
@@ -513,16 +513,16 @@ Function InitializeSVFEnhancementsVersion2()
         SpaceshipReference[] linkedShips = myLandingMarker.GetRefsLinkedToMe(SpaceshipStoredLink) as SpaceshipReference[]
         SpaceshipReference[] shipsToPurge = new SpaceshipReference[0]
 
-        LockGuard shipsForSaleGuard
+        LockGuard ShipsForSaleGuard
             Actor owner
             int mapping
             int playerSoldShip
             i = 0
             While i < linkedShips.Length
                 owner = linkedShips[i].GetActorRefOwner()
-                mapping = ShipsForSaleMapping.FindStruct("shipRef", linkedShips[i])
-                playerSoldShip = ShipsForSaleSoldByPlayer.Find(linkedShips[i])
-                _Log(fnName, "checks: ship=" + linkedShips[i] + ", owner=" + owner + ", ShipsForSaleMapping=" + mapping + ", ShipsForSaleSoldByPlayer=" + playerSoldShip, LL_DEBUG)
+                mapping = shipsForSaleMapping.FindStruct("ShipRef", linkedShips[i])
+                playerSoldShip = shipsForSaleSoldByPlayer.Find(linkedShips[i])
+                _Log(fnName, "checks: ship=" + linkedShips[i] + ", owner=" + owner + ", shipsForSaleMapping=" + mapping + ", shipsForSaleSoldByPlayer=" + playerSoldShip, LL_DEBUG)
                 If owner == Self && mapping < 0 && playerSoldShip < 0
                     _Log(fnName, "adding " + linkedShips[i] + " to purge list", LL_DEBUG)
                     shipsToPurge.Add(linkedShips[i])
@@ -542,7 +542,7 @@ Function InitializeSVFEnhancementsVersion2()
         lastInventoryRefreshTimestamp = 0.0
     EndIf
 
-    SVFEnhancementsVersionCurrent = updatingToVersion
+    svfEnhancementsVersionCurrent = updatingToVersion
     _Log(fnName, "Ship Vendor Framework enhancements updated to version " + updatingToVersion)
 
     _Log(fnName, "end", LL_DEBUG)
@@ -557,7 +557,7 @@ Function InitializeSVFEnhancementsVersion3()
     _Log(fnName, "Ship Vendor Framework enhancements updating to version " + updatingToVersion)
 
     ; init control script variable
-    SVFControlScript = Game.GetFormFromFile(0x000810, "ShipVendorFramework.esm") as ShipVendorFramework:SVF_Control
+    svfControlScript = Game.GetFormFromFile(0x000810, "ShipVendorFramework.esm") as ShipVendorFramework:SVF_Control
 
     ; TODO convert uniques sold list
 
@@ -567,7 +567,7 @@ Function InitializeSVFEnhancementsVersion3()
     ; check whether to actually utilize the SVF datasets
     UseSVFDatasetsCheck()
 
-    SVFEnhancementsVersionCurrent = updatingToVersion
+    svfEnhancementsVersionCurrent = updatingToVersion
     _Log(fnName, "Ship Vendor Framework enhancements updated to version " + updatingToVersion)
 
     _Log(fnName, "end", LL_DEBUG)
@@ -591,28 +591,28 @@ Function DebugDumpData()
     EndIf
 
     ; if in debug mode and SVFEnhancements is already initialized, dump the current arrays
-    If LogLevel == LL_DEBUG && SVFEnhancementsVersionCurrent > 0
+    If LogLevel == LL_DEBUG && svfEnhancementsVersionCurrent > 0
         _Log(fnName, "dumping current arrays", LL_DEBUG)
-        _Log(fnName, "SVFShipsToSellRandom=" + SVFShipsToSellRandom, LL_DEBUG)
-        _Log(fnName, "SVFShipsToSellAlways=" + SVFShipsToSellAlways, LL_DEBUG)
-        _Log(fnName, "SVFShipsToSellUnique=" + SVFShipsToSellUnique, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMapping=" + ShipsForSaleMapping, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMappingRandom=" + ShipsForSaleMappingRandom, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMappingAlways=" + ShipsForSaleMappingAlways, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMappingUnique=" + ShipsForSaleMappingUnique, LL_DEBUG)
-        _Log(fnName, "AlwaysSoldList=" + AlwaysSoldList, LL_DEBUG)
-        _Log(fnName, "UniquesSoldListLocal=" + UniquesSoldListLocal, LL_DEBUG)
-        _Log(fnName, "SVFShipsToSellListRandomDatasetLocal=" + SVFShipsToSellListRandomDatasetLocal, LL_DEBUG)
-        _Log(fnName, "SVFShipsToSellListAlwaysDatasetLocal=" + SVFShipsToSellListAlwaysDatasetLocal, LL_DEBUG)
-        _Log(fnName, "SVFShipsToSellListUniqueDatasetLocal=" + SVFShipsToSellListUniqueDatasetLocal, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMinLocal=" + ShipsForSaleMinLocal, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMaxLocal=" + ShipsForSaleMaxLocal, LL_DEBUG)
-        LockGuard shipsForSaleGuard
+        _Log(fnName, "svfShipsToSellRandom=" + svfShipsToSellRandom, LL_DEBUG)
+        _Log(fnName, "svfShipsToSellAlways=" + svfShipsToSellAlways, LL_DEBUG)
+        _Log(fnName, "svfShipsToSellUnique=" + svfShipsToSellUnique, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMapping=" + shipsForSaleMapping, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMappingRandom=" + shipsForSaleMappingRandom, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMappingAlways=" + shipsForSaleMappingAlways, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMappingUnique=" + shipsForSaleMappingUnique, LL_DEBUG)
+        _Log(fnName, "alwaysSoldList=" + alwaysSoldList, LL_DEBUG)
+        _Log(fnName, "uniquesSoldListLocal=" + uniquesSoldListLocal, LL_DEBUG)
+        _Log(fnName, "svfShipsToSellListRandomDatasetLocal=" + svfShipsToSellListRandomDatasetLocal, LL_DEBUG)
+        _Log(fnName, "svfShipsToSellListAlwaysDatasetLocal=" + svfShipsToSellListAlwaysDatasetLocal, LL_DEBUG)
+        _Log(fnName, "svfShipsToSellListUniqueDatasetLocal=" + svfShipsToSellListUniqueDatasetLocal, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMinLocal=" + shipsForSaleMinLocal, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMaxLocal=" + shipsForSaleMaxLocal, LL_DEBUG)
+        LockGuard ShipsForSaleGuard
             _Log(fnName, "shipsForSale=" + shipsForSale, LL_DEBUG)
-            _Log(fnName, "ShipsForSaleRandom=" + ShipsForSaleRandom, LL_DEBUG)
-            _Log(fnName, "ShipsForSaleAlways=" + ShipsForSaleAlways, LL_DEBUG)
-            _Log(fnName, "ShipsForSaleUnique=" + ShipsForSaleUnique, LL_DEBUG)
-            _Log(fnName, "ShipsForSaleSoldByPlayer=" + ShipsForSaleSoldByPlayer, LL_DEBUG)
+            _Log(fnName, "shipsForSaleRandom=" + shipsForSaleRandom, LL_DEBUG)
+            _Log(fnName, "shipsForSaleAlways=" + shipsForSaleAlways, LL_DEBUG)
+            _Log(fnName, "shipsForSaleUnique=" + shipsForSaleUnique, LL_DEBUG)
+            _Log(fnName, "shipsForSaleSoldByPlayer=" + shipsForSaleSoldByPlayer, LL_DEBUG)
         EndLockGuard
     EndIf
 
@@ -625,33 +625,33 @@ Function PopulateLocals()
     string fnName = "PopulateLocals" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    Form baseSelf = self.GetBaseObject()
-    _Log(fnName, "getting vendor data map for " + self + " (base: " + (baseSelf as ActorBase) + ")")
+    Form baseSelf = Self.GetBaseObject()
+    _Log(fnName, "getting vendor data map for " + Self + " (base: " + (baseSelf as ActorBase) + ")")
     ShipVendorFramework:SVF_DataStructures:ShipVendorDataMap vendorDataMap
-    vendorDataMap = SVFControlScript.GetShipVendorDataMap(baseSelf)
+    vendorDataMap = svfControlScript.GetShipVendorDataMap(baseSelf)
     If vendorDataMap != None
         _Log(fnName, "vendor data map found")
-        SVFShipsToSellListRandomDatasetLocal = vendorDataMap.ListRandom
-        SVFShipsToSellListAlwaysDatasetLocal = vendorDataMap.ListAlways
-        SVFShipsToSellListUniqueDatasetLocal = vendorDataMap.ListUnique
-        ShipsForSaleMinLocal = vendorDataMap.RandomShipsForSaleMin
-        ShipsForSaleMaxLocal = vendorDataMap.RandomShipsForSaleMax
+        svfShipsToSellListRandomDatasetLocal = vendorDataMap.ListRandom
+        svfShipsToSellListAlwaysDatasetLocal = vendorDataMap.ListAlways
+        svfShipsToSellListUniqueDatasetLocal = vendorDataMap.ListUnique
+        shipsForSaleMinLocal = vendorDataMap.RandomShipsForSaleMin
+        shipsForSaleMaxLocal = vendorDataMap.RandomShipsForSaleMax
     Else
         _Log(fnName, "vendor data map not found")
-        SVFShipsToSellListAlwaysDatasetLocal = SVFShipsToSellListAlwaysDataset
-        SVFShipsToSellListRandomDatasetLocal = SVFShipsToSellListRandomDataset
-        SVFShipsToSellListUniqueDatasetLocal = SVFShipsToSellListUniqueDataset
-        ShipsForSaleMinLocal = ShipsForSaleMin
-        ShipsForSaleMaxLocal = ShipsForSaleMax
+        svfShipsToSellListRandomDatasetLocal = SVFShipsToSellListRandomDataset
+        svfShipsToSellListAlwaysDatasetLocal = SVFShipsToSellListAlwaysDataset
+        svfShipsToSellListUniqueDatasetLocal = SVFShipsToSellListUniqueDataset
+        shipsForSaleMinLocal = ShipsForSaleMin
+        shipsForSaleMaxLocal = ShipsForSaleMax
     EndIf
 
     ; sanity check the min/max random ships for sale values, switching if needed
-    If ShipsForSaleMaxLocal < ShipsForSaleMinLocal
-        _Log(fnName, "random ships for sale values need to be reversed. min=" + ShipsForSaleMinLocal + ", max=" + ShipsForSaleMaxLocal, LL_WARNING)
+    If shipsForSaleMaxLocal < shipsForSaleMinLocal
+        _Log(fnName, "random ships for sale values need to be reversed. min=" + shipsForSaleMinLocal + ", max=" + shipsForSaleMaxLocal, LL_WARNING)
         ; swap the values
-        int temp = ShipsForSaleMinLocal
-        ShipsForSaleMinLocal = ShipsForSaleMaxLocal
-        ShipsForSaleMaxLocal = temp
+        int temp = shipsForSaleMinLocal
+        shipsForSaleMinLocal = shipsForSaleMaxLocal
+        shipsForSaleMaxLocal = temp
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
@@ -663,9 +663,9 @@ Function UseSVFDatasetsCheck()
     string fnName = "UseSVFDatasetsCheck" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    useSVFDatasets = SVFShipsToSellListAlwaysDatasetLocal != None \
-        && SVFShipsToSellListRandomDatasetLocal != None \
-        && SVFShipsToSellListUniqueDatasetLocal != None
+    useSVFDatasets = svfShipsToSellListAlwaysDatasetLocal != None \
+        && svfShipsToSellListRandomDatasetLocal != None \
+        && svfShipsToSellListUniqueDatasetLocal != None
     _Log(fnName, "Using SVF datasets: " + useSVFDatasets)
 
     _Log(fnName, "end", LL_DEBUG)
@@ -683,30 +683,30 @@ Function SyncUniquesSoldList()
         int i = 0
         int externalUniquesSoldIndex = 0
         bool addedToExternalList = false
-        While i < UniquesSoldListLocal.Length && externalUniquesSold.Length > 0
-            externalUniquesSoldIndex = externalUniquesSold.Find(UniquesSoldListLocal[i])
+        While i < uniquesSoldListLocal.Length && externalUniquesSold.Length > 0
+            externalUniquesSoldIndex = externalUniquesSold.Find(uniquesSoldListLocal[i])
             If externalUniquesSoldIndex < 0
-                SVFExternalUniquesSoldList.AddForm(UniquesSoldListLocal[i])
+                SVFExternalUniquesSoldList.AddForm(uniquesSoldListLocal[i])
                 addedToExternalList = true
             EndIf
             i += 1
         EndWhile
         If addedToExternalList
             _Log(fnName, "added unique ships to external list")
-            UniquesSoldListLocal = SVFExternalUniquesSoldList.GetArray() as LeveledSpaceshipBase[]
+            uniquesSoldListLocal = SVFExternalUniquesSoldList.GetArray() as LeveledSpaceshipBase[]
         Else
             _Log(fnName, "external list is up to date")
-            UniquesSoldListLocal = externalUniquesSold
+            uniquesSoldListLocal = externalUniquesSold
         EndIf
-        _Log(fnName, "external list contents are now: " + UniquesSoldListLocal, LL_DEBUG)
+        _Log(fnName, "external list contents are now: " + uniquesSoldListLocal, LL_DEBUG)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
-Function TestLinkedRefChildren(ObjectReference refToCheck, Keyword theKeyword)
-    debug.trace(self + " GetRefsLinkedToMe=" + refToCheck.GetRefsLinkedToMe(theKeyword))
+Function TestLinkedRefChildren(ObjectReference akRefToCheck, Keyword akKeyword)
+    Debug.Trace(Self + " GetRefsLinkedToMe=" + akRefToCheck.GetRefsLinkedToMe(akKeyword))
 EndFunction
 
 
@@ -719,9 +719,9 @@ Event RefCollectionAlias.OnShipSold(RefCollectionAlias akSender, ObjectReference
     ; if this ship is linked to this landing marker, add it to vendor's list
     SpaceshipReference soldShip = akSenderRef as SpaceshipReference
     If soldShip && soldShip.GetLinkedRef(SpaceshipStoredLink) == myLandingMarker
-        LockGuard shipsForSaleGuard
+        LockGuard ShipsForSaleGuard
             shipsForSale.Add(soldShip)
-            ShipsForSaleSoldByPlayer.Add(soldShip)
+            shipsForSaleSoldByPlayer.Add(soldShip)
         EndLockGuard
     EndIf
     ; TODO add support for taking uniques off the unique purchased list if sold by the player
@@ -735,42 +735,42 @@ Event SpaceshipReference.OnShipBought(SpaceshipReference akSenderRef)
     _Log(fnName, "begin", LL_DEBUG)
 
     _Log(fnName, "akSenderRef=" + akSenderRef, LL_DEBUG)
-    LockGuard shipsForSaleGuard
+    LockGuard ShipsForSaleGuard
         LeveledSpaceshipBase clearedLeveledShip = None
 
         ; clear the ship reference from the vendor's lists
         _Log(fnName, "clearing ship reference from shipsForSale list", LL_DEBUG)
-        ClearShipReference(akSenderRef, shipsForSale, ShipsForSaleMapping)
+        ClearShipReference(akSenderRef, shipsForSale, shipsForSaleMapping)
         _Log(fnName, "clearing ship reference from shipsForSaleRandom list", LL_DEBUG)
-        clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleRandom, ShipsForSaleMappingRandom)
+        clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleRandom, shipsForSaleMappingRandom)
 
         If clearedLeveledShip == None
             ; ships in the "always" list are added to a local list of sold ships that resets when the vendor does
             _Log(fnName, "clearing ship reference from shipsForSaleAlways list", LL_DEBUG)
-            clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleAlways, ShipsForSaleMappingAlways)
+            clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleAlways, shipsForSaleMappingAlways)
             If clearedLeveledShip != None
                 _Log(fnName, "'always' ship was bought, adding " + clearedLeveledShip + " to 'always' sold list")
-                AlwaysSoldList.Add(clearedLeveledShip)
+                alwaysSoldList.Add(clearedLeveledShip)
             EndIf
         EndIf
 
         If clearedLeveledShip == None
             ; ships in the "unique" list are added to a list of uniques sold, either local or external
             _Log(fnName, "clearing ship reference from shipsForSaleUnique list", LL_DEBUG)
-            clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleUnique, ShipsForSaleMappingUnique)
+            clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleUnique, shipsForSaleMappingUnique)
             If clearedLeveledShip != None
                 _Log(fnName, "'unique' ship was bought, adding " + clearedLeveledShip + " to 'unique' sold list")
                 If SVFExternalUniquesSoldList != None
                     SVFExternalUniquesSoldList.AddForm(clearedLeveledShip)
                     SyncUniquesSoldList()
                 Else
-                    UniquesSoldListLocal.Add(clearedLeveledShip)
+                    uniquesSoldListLocal.Add(clearedLeveledShip)
                 EndIf
             EndIf
         EndIf
 
         If clearedLeveledShip == None
-            clearedLeveledShip = ClearShipReference(akSenderRef, ShipsForSaleSoldByPlayer, None)
+            clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleSoldByPlayer, None)
         EndIf
     EndLockGuard
 
@@ -792,7 +792,7 @@ LeveledSpaceshipBase Function ClearShipReference(SpaceshipReference akShipRef, S
         ; clear the ship reference from the mapping list, but check if the mapping isn't None first, as that can happen
         ; in the case of player-sold ships
         If akShipListMapping != None
-            refIndex = akShipListMapping.FindStruct("shipRef", akShipRef)
+            refIndex = akShipListMapping.FindStruct("ShipRef", akShipRef)
             If refIndex > -1
                 toReturn = akShipListMapping[refIndex].leveledShip
                 akShipListMapping.Remove(refIndex)
@@ -807,7 +807,7 @@ EndFunction
 
 
 ; checks if it's time to refresh the inventory (can be forced) and kicks it off if needed
-Function CheckForInventoryRefresh(bool bForceRefresh = false)
+Function CheckForInventoryRefresh(bool abForceRefresh = false)
     string fnName = "CheckForInventoryRefresh" Const
     _Log(fnName, "begin", LL_DEBUG)
 
@@ -817,20 +817,20 @@ Function CheckForInventoryRefresh(bool bForceRefresh = false)
         _Log(fnName, "currentGameTime=" + currentGameTime + " || nextRefreshTime=" + nextRefreshTime, LL_DEBUG)
 
         ; if the inventory has never been refreshed, or it's time to refresh, or it's being forced
-        If bForceRefresh || lastInventoryRefreshTimestamp == 0 || (currentGameTime >= nextRefreshTime)
-            _Log(fnName, "refreshing inventory (force=" + bForceRefresh + ")")
+        If abForceRefresh || lastInventoryRefreshTimestamp == 0 || (currentGameTime >= nextRefreshTime)
+            _Log(fnName, "refreshing inventory (force=" + abForceRefresh + ")")
 
             ; the "always" sold list is cleared when the vendor refreshes their inventory
-            AlwaysSoldList.Clear()
+            alwaysSoldList.Clear()
 
             RefreshShipsToSellArrays()
-            LockGuard shipsForSaleGuard
-                RefreshInventoryList(myLandingMarker, shipsForSale, ShipsForSaleAlways, ShipsForSaleRandom, ShipsForSaleUnique, ShipsForSaleSoldByPlayer)
+            LockGuard ShipsForSaleGuard
+                RefreshInventoryList(myLandingMarker, shipsForSale, shipsForSaleAlways, shipsForSaleRandom, shipsForSaleUnique, shipsForSaleSoldByPlayer)
                 _Log(fnName, "shipsForSale=" + shipsForSale, LL_DEBUG)
             EndLockGuard
         Else
-            LockGuard shipsForSaleGuard
-                PurgeAlreadySoldUniques(shipsForSale, ShipsForSaleUnique)
+            LockGuard ShipsForSaleGuard
+                PurgeAlreadySoldUniques(shipsForSale, shipsForSaleUnique)
             EndLockGuard
             CheckForNewShips()
         EndIf
@@ -850,23 +850,23 @@ Function PurgeAlreadySoldUniques(SpaceshipReference[] akShipList, SpaceshipRefer
     ;   - there are unique ships that have already been sold
     ;   - there is an external list to sync with
     ; (if there is no external list, the local list is used and will always be up to date)
-    If UniqueShipsToSell() == true && UniquesSoldListLocal.Length > 0 && SVFExternalUniquesSoldList != None
+    If UniqueShipsToSell() == true && uniquesSoldListLocal.Length > 0 && SVFExternalUniquesSoldList != None
         int uniqueSoldIndex = 0
         int mappingIndex = 0
         int uniquesListIndex = 0
         int i = akShipList.Length - 1
         While i > -1
-            mappingIndex = ShipsForSaleMapping.FindStruct("shipRef", akShipList[i])
+            mappingIndex = shipsForSaleMapping.FindStruct("ShipRef", akShipList[i])
             If mappingIndex > -1
-                uniqueSoldIndex = UniquesSoldListLocal.Find(ShipsForSaleMapping[mappingIndex].leveledShip)
+                uniqueSoldIndex = uniquesSoldListLocal.Find(shipsForSaleMapping[mappingIndex].LeveledShip)
                 If uniqueSoldIndex > -1
-                    _Log(fnName, "unique ship " + UniquesSoldListLocal[uniqueSoldIndex] + " was already bought - removing it from index " + i)
+                    _Log(fnName, "unique ship " + uniquesSoldListLocal[uniqueSoldIndex] + " was already bought - removing it from index " + i)
                     SpaceshipReference shipToDelete = akShipList[i]
                     ; make sure to remove the link to the landing marker, otherwise the ship will still show up until
                     ; the game gets around to actually deleting it
                     shipToDelete.SetLinkedRef(None, SpaceshipStoredLink)
                     _Log(fnName, "deleting ship " + shipToDelete)
-                    debug.trace(self + " PurgeAlreadySoldUniques: deleting ship " + shipToDelete + ", ignore following error message")
+                    Debug.Trace(Self + " PurgeAlreadySoldUniques: deleting ship " + shipToDelete + ", ignore following error message")
                     shipToDelete.Delete()
                     uniquesListIndex = akShipListUniques.Find(akShipList[i])
                     If uniquesListIndex > -1
@@ -893,28 +893,28 @@ Function CheckForNewShips()
 
     SpaceshipReference[] ShipsForSaleAlwaysCopy = None
     SpaceshipReference[] ShipsForSaleUniqueCopy = None
-    LockGuard shipsForSaleGuard
-        ShipsForSaleAlwaysCopy = (ShipsForSaleAlways as var[]) as SpaceshipReference[]
-        ShipsForSaleUniqueCopy = (ShipsForSaleUnique as var[]) as SpaceshipReference[]
+    LockGuard ShipsForSaleGuard
+        ShipsForSaleAlwaysCopy = (shipsForSaleAlways as var[]) as SpaceshipReference[]
+        ShipsForSaleUniqueCopy = (shipsForSaleUnique as var[]) as SpaceshipReference[]
     EndLockGuard
 
     RefreshShipsToSellArrays()
     var[] ShipsToSellAlwaysCopy = None
     var[] ShipsToSellUniqueCopy = None
     If useSVFDatasets == true
-        ShipsToSellAlwaysCopy = SVFShipsToSellAlways as var[]
-        ShipsToSellUniqueCopy = SVFShipsToSellUnique as var[]
+        ShipsToSellAlwaysCopy = svfShipsToSellAlways as var[]
+        ShipsToSellUniqueCopy = svfShipsToSellUnique as var[]
     Else
-        ShipsToSellAlwaysCopy = ShipsToSellAlways as var[]
-        ShipsToSellUniqueCopy = ShipsToSellUnique as var[]
+        ShipsToSellAlwaysCopy = shipsToSellAlways as var[]
+        ShipsToSellUniqueCopy = shipsToSellUnique as var[]
     EndIf
 
-    bool refreshAlways = !ForSaleMatchesToSell(ShipsForSaleAlwaysCopy, ShipsToSellAlwaysCopy, ShipsForSaleMappingAlways)
-    bool refreshUnique = !ForSaleMatchesToSell(ShipsForSaleUniqueCopy, ShipsToSellUniqueCopy, ShipsForSaleMappingUnique)
+    bool refreshAlways = !ForSaleMatchesToSell(ShipsForSaleAlwaysCopy, ShipsToSellAlwaysCopy, shipsForSaleMappingAlways)
+    bool refreshUnique = !ForSaleMatchesToSell(ShipsForSaleUniqueCopy, ShipsToSellUniqueCopy, shipsForSaleMappingUnique)
 
     If refreshAlways == true || refreshUnique == true
-        LockGuard shipsForSaleGuard
-            RefreshInventoryList(myLandingMarker, shipsForSale, ShipsForSaleAlways, ShipsForSaleRandom, ShipsForSaleUnique, ShipsForSaleSoldByPlayer)
+        LockGuard ShipsForSaleGuard
+            RefreshInventoryList(myLandingMarker, shipsForSale, shipsForSaleAlways, shipsForSaleRandom, shipsForSaleUnique, shipsForSaleSoldByPlayer)
         EndLockGuard
     EndIf
 
@@ -936,13 +936,13 @@ bool Function ForSaleMatchesToSell(SpaceshipReference[] akShipsForSaleList, var[
     int i = akShipsForSaleList.Length - 1
     While i > -1 && toReturn == true
         shipToCheck = akShipsForSaleList[i]
-        refToShipMappingIndex = akMappingList.FindStruct("shipRef", shipToCheck)
+        refToShipMappingIndex = akMappingList.FindStruct("ShipRef", shipToCheck)
         If refToShipMappingIndex > -1
-            leveledShip = akMappingList[refToShipMappingIndex].leveledShip
+            leveledShip = akMappingList[refToShipMappingIndex].LeveledShip
             If useSVFDatasets == true
                 leveledShipIndex = (akShipsToSellList as LeveledSpaceshipBase[]).Find(leveledShip)
             Else
-                leveledShipIndex = (akShipsToSellList as ShipVendorListScript:ShipToSell[]).FindStruct("leveledShip", leveledShip)
+                leveledShipIndex = (akShipsToSellList as ShipVendorListScript:ShipToSell[]).FindStruct("LeveledShip", leveledShip)
             EndIf
             If leveledShipIndex > -1
                 akShipsForSaleList.Remove(i)
@@ -969,9 +969,9 @@ bool Function UniqueShipsToSell()
     _Log(fnName, "begin", LL_DEBUG)
     bool toReturn
     If useSVFDatasets == true
-        toReturn = SVFShipsToSellUnique.Length > 0
+        toReturn = svfShipsToSellUnique.Length > 0
     Else
-        toReturn = ShipsToSellUnique.Length > 0
+        toReturn = shipsToSellUnique.Length > 0
     EndIf
     _Log(fnName, "returning " + toReturn, LL_DEBUG)
     _Log(fnName, "end", LL_DEBUG)
@@ -1001,69 +1001,69 @@ Function RefreshShipsToSellArraysLVLB()
     _Log(fnName, "begin", LL_DEBUG)
 
     ; fill arrays using datasets
-    If SVFShipsToSellListRandomDatasetLocal != None
+    If svfShipsToSellListRandomDatasetLocal != None
         _Log(fnName, "random ships dataset found", LL_DEBUG)
-        SVFShipsToSellRandom = SVFShipsToSellListRandomDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "SVFShipsToSellRandom=" + SVFShipsToSellRandom, LL_DEBUG)
+        svfShipsToSellRandom = svfShipsToSellListRandomDatasetLocal.GetArray() as LeveledSpaceshipBase[]
+        _Log(fnName, "svfShipsToSellRandom=" + svfShipsToSellRandom, LL_DEBUG)
     Else
-        SVFShipsToSellRandom.Clear()
+        svfShipsToSellRandom.Clear()
     EndIf
-    If SVFShipsToSellListAlwaysDatasetLocal != None
+    If svfShipsToSellListAlwaysDatasetLocal != None
         _Log(fnName, "priority ships dataset found", LL_DEBUG)
-        SVFShipsToSellAlways = SVFShipsToSellListAlwaysDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "SVFShipsToSellAlways=" + SVFShipsToSellAlways, LL_DEBUG)
+        svfShipsToSellAlways = svfShipsToSellListAlwaysDatasetLocal.GetArray() as LeveledSpaceshipBase[]
+        _Log(fnName, "svfShipsToSellAlways=" + svfShipsToSellAlways, LL_DEBUG)
     Else
-        SVFShipsToSellAlways.Clear()
+        svfShipsToSellAlways.Clear()
     EndIf
-    If SVFShipsToSellListUniqueDatasetLocal != None
+    If svfShipsToSellListUniqueDatasetLocal != None
         _Log(fnName, "unique ships dataset found", LL_DEBUG)
-        SVFShipsToSellUnique = SVFShipsToSellListUniqueDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "SVFShipsToSellUnique=" + SVFShipsToSellUnique, LL_DEBUG)
+        svfShipsToSellUnique = svfShipsToSellListUniqueDatasetLocal.GetArray() as LeveledSpaceshipBase[]
+        _Log(fnName, "svfShipsToSellUnique=" + svfShipsToSellUnique, LL_DEBUG)
     Else
-        SVFShipsToSellUnique.Clear()
+        svfShipsToSellUnique.Clear()
     EndIf
 
     ; variable to keep track of various list indices
     int i = 0
 
     ; remove any random ships that are already in the always or unique lists
-    i = SVFShipsToSellRandom.Length - 1
+    i = svfShipsToSellRandom.Length - 1
     ; traverse the array from the end to the beginning so that removing elements doesn't mess up the loop
     While i > -1
-        If SVFShipsToSellAlways.Find(SVFShipsToSellRandom[i]) > -1
-            _Log(fnName, "random ship " + SVFShipsToSellRandom[i] + " (index " + i + ") is already in the always list - removing it")
-            SVFShipsToSellRandom.Remove(i)
+        If svfShipsToSellAlways.Find(svfShipsToSellRandom[i]) > -1
+            _Log(fnName, "random ship " + svfShipsToSellRandom[i] + " (index " + i + ") is already in the always list - removing it")
+            svfShipsToSellRandom.Remove(i)
         EndIf
-        If SVFShipsToSellUnique.Find(SVFShipsToSellRandom[i]) > -1
-            _Log(fnName, "random ship " + SVFShipsToSellRandom[i] + " (index " + i + ") is already in the unique list - removing it")
-            SVFShipsToSellRandom.Remove(i)
+        If svfShipsToSellUnique.Find(svfShipsToSellRandom[i]) > -1
+            _Log(fnName, "random ship " + svfShipsToSellRandom[i] + " (index " + i + ") is already in the unique list - removing it")
+            svfShipsToSellRandom.Remove(i)
         EndIf
         i += -1
     EndWhile
 
     ; remove any priority ships that have already been sold this refresh cycle
-    If SVFShipsToSellAlways.Length > 0 && AlwaysSoldList.Length > 0
+    If svfShipsToSellAlways.Length > 0 && alwaysSoldList.Length > 0
         int alwaysIndex = 0
         i = 0
-        While i < AlwaysSoldList.Length
-            alwaysIndex = SVFShipsToSellAlways.Find(AlwaysSoldList[i])
+        While i < alwaysSoldList.Length
+            alwaysIndex = svfShipsToSellAlways.Find(alwaysSoldList[i])
             If alwaysIndex > -1
-                _Log(fnName, "priority ship " + AlwaysSoldList[i] + " was already bought - removing it from refreshed priority 'to sell' list")
-                SVFShipsToSellAlways.Remove(alwaysIndex)
+                _Log(fnName, "priority ship " + alwaysSoldList[i] + " was already bought - removing it from refreshed priority 'to sell' list")
+                svfShipsToSellAlways.Remove(alwaysIndex)
             EndIf
             i += 1
         EndWhile
     EndIf
 
     ; remove any unique ships that have already been sold
-    If SVFShipsToSellUnique.Length > 0 && UniquesSoldListLocal.Length > 0
+    If svfShipsToSellUnique.Length > 0 && uniquesSoldListLocal.Length > 0
         int uniqueIndex = 0
         i = 0
-        While i < UniquesSoldListLocal.Length
-            uniqueIndex = SVFShipsToSellUnique.Find(UniquesSoldListLocal[i])
+        While i < uniquesSoldListLocal.Length
+            uniqueIndex = svfShipsToSellUnique.Find(uniquesSoldListLocal[i])
             If uniqueIndex > -1
-                _Log(fnName, "unique ship " + UniquesSoldListLocal[i] + " was already bought - removing it from refreshed uniques 'to sell' list")
-                SVFShipsToSellUnique.Remove(uniqueIndex)
+                _Log(fnName, "unique ship " + uniquesSoldListLocal[i] + " was already bought - removing it from refreshed uniques 'to sell' list")
+                svfShipsToSellUnique.Remove(uniqueIndex)
             EndIf
             i += 1
         EndWhile
@@ -1081,24 +1081,24 @@ Function RefreshShipsToSellArraysShipToSell()
     ; fill arrays using datasets using `(... as var[]) as ...[]` to copy the array to get it done faster
     If ShipsToSellListRandomDataset != None
         _Log(fnName, "random ships dataset found", LL_DEBUG)
-        ShipsToSellRandom = (ShipsToSellListRandomDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "ShipsToSellRandom=" + ShipsToSellRandom, LL_DEBUG)
+        shipsToSellRandom = (ShipsToSellListRandomDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
+        _Log(fnName, "shipsToSellRandom=" + shipsToSellRandom, LL_DEBUG)
     Else
-        ShipsToSellRandom.Clear()
+        shipsToSellRandom.Clear()
     EndIf
     If ShipsToSellListAlwaysDataset != None
         _Log(fnName, "priority ships dataset found", LL_DEBUG)
-        ShipsToSellAlways = (ShipsToSellListAlwaysDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "ShipsToSellAlways=" + ShipsToSellAlways, LL_DEBUG)
+        shipsToSellAlways = (ShipsToSellListAlwaysDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
+        _Log(fnName, "shipsToSellAlways=" + shipsToSellAlways, LL_DEBUG)
     Else
-        ShipsToSellAlways.Clear()
+        shipsToSellAlways.Clear()
     EndIf
     If ShipsToSellListUniqueDataset != None
         _Log(fnName, "unique ships dataset found", LL_DEBUG)
-        ShipsToSellUnique = (ShipsToSellListUniqueDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "ShipsToSellUnique=" + ShipsToSellUnique, LL_DEBUG)
+        shipsToSellUnique = (ShipsToSellListUniqueDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
+        _Log(fnName, "shipsToSellUnique=" + shipsToSellUnique, LL_DEBUG)
     Else
-        ShipsToSellUnique.Clear()
+        shipsToSellUnique.Clear()
     EndIf
 
     int i = 0
@@ -1106,47 +1106,47 @@ Function RefreshShipsToSellArraysShipToSell()
     ; remove any random ships that are already in the always or unique lists, or that the player
     ; isn't a high enough level for; traversing the array from the end to the beginning so that
     ; removing elements doesn't mess up the loop
-    int playerLevel = PlayerRef.GetLevel()
-    i = ShipsToSellRandom.Length - 1
+    int playerLevel = playerRef.GetLevel()
+    i = shipsToSellRandom.Length - 1
     While i > -1
-        If ShipsToSellRandom[i].minLevel > playerLevel
-            _Log(fnName, "player does not meet level requirements of random ship " + ShipsToSellRandom[i] + " (index " + i + ") - removing it")
-            ShipsToSellRandom.Remove(i)
+        If shipsToSellRandom[i].minLevel > playerLevel
+            _Log(fnName, "player does not meet level requirements of random ship " + shipsToSellRandom[i] + " (index " + i + ") - removing it")
+            shipsToSellRandom.Remove(i)
         EndIf
-        If ShipsToSellAlways.Length > 0 && ShipsToSellAlways.FindStruct("leveledShip", ShipsToSellRandom[i].leveledShip) > -1
-            _Log(fnName, "random ship " + ShipsToSellRandom[i] + " (index " + i + ") is already in the always list - removing it")
-            ShipsToSellRandom.Remove(i)
+        If shipsToSellAlways.Length > 0 && shipsToSellAlways.FindStruct("LeveledShip", shipsToSellRandom[i].LeveledShip) > -1
+            _Log(fnName, "random ship " + shipsToSellRandom[i] + " (index " + i + ") is already in the always list - removing it")
+            shipsToSellRandom.Remove(i)
         EndIf
-        If ShipsToSellUnique.Length > 0 && ShipsToSellUnique.FindStruct("leveledShip", ShipsToSellRandom[i].leveledShip) > -1
-            _Log(fnName, "random ship " + ShipsToSellRandom[i] + " (index " + i + ") is already in the unique list - removing it")
-            ShipsToSellRandom.Remove(i)
+        If shipsToSellUnique.Length > 0 && shipsToSellUnique.FindStruct("LeveledShip", shipsToSellRandom[i].LeveledShip) > -1
+            _Log(fnName, "random ship " + shipsToSellRandom[i] + " (index " + i + ") is already in the unique list - removing it")
+            shipsToSellRandom.Remove(i)
         EndIf
         i += -1
     EndWhile
 
     ; remove any priority ships that have already been sold this refresh cycle
-    If ShipsToSellAlways.Length > 0 && AlwaysSoldList.Length > 0
+    If shipsToSellAlways.Length > 0 && alwaysSoldList.Length > 0
         int alwaysIndex = 0
         i = 0
-        While i < AlwaysSoldList.Length
-            alwaysIndex = ShipsToSellAlways.FindStruct("leveledShip", AlwaysSoldList[i])
+        While i < alwaysSoldList.Length
+            alwaysIndex = shipsToSellAlways.FindStruct("LeveledShip", alwaysSoldList[i])
             If alwaysIndex > -1
-                _Log(fnName, "priority ship " + AlwaysSoldList[i] + " was already bought - removing it from refreshed priority 'to sell' list")
-                ShipsToSellAlways.Remove(alwaysIndex)
+                _Log(fnName, "priority ship " + alwaysSoldList[i] + " was already bought - removing it from refreshed priority 'to sell' list")
+                shipsToSellAlways.Remove(alwaysIndex)
             EndIf
             i += 1
         EndWhile
     EndIf
 
     ; remove any unique ships that have already been sold
-    If ShipsToSellUnique.Length > 0 && UniquesSoldListLocal.Length > 0
+    If shipsToSellUnique.Length > 0 && uniquesSoldListLocal.Length > 0
         int uniqueIndex = 0
         i = 0
-        While i < UniquesSoldListLocal.Length
-            uniqueIndex = ShipsToSellUnique.FindStruct("leveledShip", UniquesSoldListLocal[i])
+        While i < uniquesSoldListLocal.Length
+            uniqueIndex = shipsToSellUnique.FindStruct("LeveledShip", uniquesSoldListLocal[i])
             If uniqueIndex > -1
-                _Log(fnName, "unique ship " + UniquesSoldListLocal[i] + " was already bought - removing it from refreshed uniques 'to sell' list")
-                ShipsToSellUnique.Remove(uniqueIndex)
+                _Log(fnName, "unique ship " + uniquesSoldListLocal[i] + " was already bought - removing it from refreshed uniques 'to sell' list")
+                shipsToSellUnique.Remove(uniqueIndex)
             EndIf
             i += 1
         EndWhile
@@ -1172,7 +1172,7 @@ Function DeleteShips(SpaceshipReference[] akShipList)
         ; cannot be deleted and the reference will be disabled instead. in the probably unfounded hope that this will
         ; eventually be fixed, make a note before the error is thrown.
         _Log(fnName, "attempting to delete " + theShip, LL_DEBUG)
-        debug.trace(self + ".DeleteShips(): Attempting to delete " + theShip + ". This may throw an error, please ignore it.")
+        Debug.Trace(Self + ".DeleteShips(): Attempting to delete " + theShip + ". This may throw an error, please ignore it.")
         theShip.Delete()
         i += -1
     EndWhile
@@ -1186,13 +1186,13 @@ EndFunction
 ;
 ; arguments:
 ; - akCreateMarker: the marker to create the ships at
-; - shipList: the main list of ships
-; - shipListAlways: the list of priority ships
-; - shipListRandom: the list of random ships
-; - shipListUnique: the list of unique ships
+; - akShipList: the main list of ships
+; - akShipListAlways: the list of priority ships
+; - akShipListRandom: the list of random ships
+; - akShipListUnique: the list of unique ships
 ;
 ; returns: None
-Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference[] shipList, SpaceshipReference[] shipListAlways, SpaceshipReference[] shipListRandom, SpaceshipReference[] shipListUnique, SpaceshipReference[] shipListSoldByPlayer)
+Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference[] akShipList, SpaceshipReference[] akShipListAlways, SpaceshipReference[] akShipListRandom, SpaceshipReference[] akShipListUnique, SpaceshipReference[] akShipListSoldByPlayer)
     string fnName = "RefreshInventoryList" Const
     _Log(fnName, "begin", LL_DEBUG)
 
@@ -1201,26 +1201,26 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         Debug.StartStackProfiling()
     EndIf
 
-    _Log(fnName, "akCreateMarker=" + akCreateMarker + " shipList=" + shipList, LL_DEBUG)
+    _Log(fnName, "akCreateMarker=" + akCreateMarker + " akShipList=" + akShipList, LL_DEBUG)
 
     If akCreateMarker
         var[] vShipsToSellAlways = None
         var[] vShipsToSellRandom = None
         var[] vShipsToSellUnique = None
         If useSVFDatasets == true
-            vShipsToSellAlways = SVFShipsToSellAlways as var[]
-            vShipsToSellRandom = SVFShipsToSellRandom as var[]
-            vShipsToSellUnique = SVFShipsToSellUnique as var[]
+            vShipsToSellAlways = svfShipsToSellAlways as var[]
+            vShipsToSellRandom = svfShipsToSellRandom as var[]
+            vShipsToSellUnique = svfShipsToSellUnique as var[]
         Else
-            vShipsToSellAlways = ShipsToSellAlways as var[]
-            vShipsToSellRandom = ShipsToSellRandom as var[]
-            vShipsToSellUnique = ShipsToSellUnique as var[]
+            vShipsToSellAlways = shipsToSellAlways as var[]
+            vShipsToSellRandom = shipsToSellRandom as var[]
+            vShipsToSellUnique = shipsToSellUnique as var[]
         EndIf
 
         ; clear the existing ships
-        shipList.Clear()
+        akShipList.Clear()
         ; also clear the ship ref to leveled ship mapping list
-        ShipsForSaleMapping.Clear()
+        shipsForSaleMapping.Clear()
 
         ; check whether to create new ship at the current ship rather than the landing marker to avoid issues with
         ; creating a ship inside a ship
@@ -1238,65 +1238,65 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
 
         ; refresh priority ships
         _Log(fnName, "clearing priority ships and ship ref to leveled ship mapping list")
-        DeleteShips(shipListAlways)
-        ShipsForSaleMappingAlways.Clear()
+        DeleteShips(akShipListAlways)
+        shipsForSaleMappingAlways.Clear()
         _Log(fnName, "attempting to create " + vShipsToSellAlways.Length + " priority ships")
-        CreateShipsForSale(vShipsToSellAlways, akCreateMarker, encounterLocation, shipListAlways, ShipsForSaleMappingAlways)
+        CreateShipsForSale(vShipsToSellAlways, akCreateMarker, encounterLocation, akShipListAlways, shipsForSaleMappingAlways)
 
         ; refresh random ships
         _Log(fnName, "clearing random ships and ship ref to leveled ship mapping list")
-        DeleteShips(shipListRandom)
-        ShipsForSaleMappingRandom.Clear()
+        DeleteShips(akShipListRandom)
+        shipsForSaleMappingRandom.Clear()
         int randomShipsToCreateCount = ShipVendorFramework:SVF_Utility.MinInt(vShipsToSellRandom.Length, Utility.RandomInt(ShipsForSaleMin, ShipsForSaleMax))
         _Log(fnName, "attempting to create " + randomShipsToCreateCount + " random ships (min=" + ShipsForSaleMin + ", max=" + ShipsForSaleMax + ", possible=" + vShipsToSellRandom.Length + ")")
-        CreateShipsForSale(vShipsToSellRandom, akCreateMarker, encounterLocation, shipListRandom, ShipsForSaleMappingRandom, randomShipsToCreateCount, true)
+        CreateShipsForSale(vShipsToSellRandom, akCreateMarker, encounterLocation, akShipListRandom, shipsForSaleMappingRandom, randomShipsToCreateCount, true)
 
         ; refresh unique ships
         _Log(fnName, "clearing unique ships and ship ref to leveled ship mapping list")
-        DeleteShips(shipListUnique)
-        ShipsForSaleMappingUnique.Clear()
+        DeleteShips(akShipListUnique)
+        shipsForSaleMappingUnique.Clear()
         _Log(fnName, "attempting to create " + vShipsToSellUnique.Length + " unique ships")
-        CreateShipsForSale(vShipsToSellUnique, akCreateMarker, encounterLocation, shipListUnique, ShipsForSaleMappingUnique)
+        CreateShipsForSale(vShipsToSellUnique, akCreateMarker, encounterLocation, akShipListUnique, shipsForSaleMappingUnique)
 
         ; clear out the list of ships sold to the vendor by the player
         _Log(fnName, "clearing ships sold by player to vendor")
-        DeleteShips(shipListSoldByPlayer)
+        DeleteShips(akShipListSoldByPlayer)
 
         ; combine ship lists
-        ; create a temporary array because when using `as var[]` on an empty array (which `shipList` would be at this
+        ; create a temporary array because when using `as var[]` on an empty array (which `akShipList` would be at this
         ; point), it returns None, which causes an error when when attempting to pass it to `AppendToArray`
         SpaceshipReference[] shipListTemp
         _Log(fnName, "combining ship lists")
-        _Log(fnName, "shipList=" + shipList, LL_DEBUG)
-        _Log(fnName, "shipListAlways=" + shipListAlways, LL_DEBUG)
-        _Log(fnName, "shipListRandom=" + shipListRandom, LL_DEBUG)
-        _Log(fnName, "shipListUnique=" + shipListUnique, LL_DEBUG)
-        _Log(fnName, "shipListSoldByPlayer=" + shipListSoldByPlayer, LL_DEBUG)
-        shipListTemp = ShipVendorFramework:SVF_Utility.AppendToArray(shipListTemp as var[], shipListAlways as var[]) as SpaceshipReference[]
-        shipListTemp = ShipVendorFramework:SVF_Utility.AppendToArray(shipListTemp as var[], shipListRandom as var[]) as SpaceshipReference[]
-        shipListTemp = ShipVendorFramework:SVF_Utility.AppendToArray(shipListTemp as var[], shipListUnique as var[]) as SpaceshipReference[]
-        shipListTemp = ShipVendorFramework:SVF_Utility.AppendToArray(shipListTemp as var[], shipListSoldByPlayer as var[]) as SpaceshipReference[]
+        _Log(fnName, "akShipList=" + akShipList, LL_DEBUG)
+        _Log(fnName, "akShipListAlways=" + akShipListAlways, LL_DEBUG)
+        _Log(fnName, "akShipListRandom=" + akShipListRandom, LL_DEBUG)
+        _Log(fnName, "akShipListUnique=" + akShipListUnique, LL_DEBUG)
+        _Log(fnName, "akShipListSoldByPlayer=" + akShipListSoldByPlayer, LL_DEBUG)
+        shipListTemp = ShipVendorFramework:SVF_Utility.AppendToArray(shipListTemp as var[], akShipListAlways as var[]) as SpaceshipReference[]
+        shipListTemp = ShipVendorFramework:SVF_Utility.AppendToArray(shipListTemp as var[], akShipListRandom as var[]) as SpaceshipReference[]
+        shipListTemp = ShipVendorFramework:SVF_Utility.AppendToArray(shipListTemp as var[], akShipListUnique as var[]) as SpaceshipReference[]
+        shipListTemp = ShipVendorFramework:SVF_Utility.AppendToArray(shipListTemp as var[], akShipListSoldByPlayer as var[]) as SpaceshipReference[]
         int i = 0
         While i < shipListTemp.Length
-            shipList.Add(shipListTemp[i])
+            akShipList.Add(shipListTemp[i])
             i += 1
         EndWhile
 
         ; combine ship ref to leveled ship mappings
-        ; create a temporary array because when using `as var[]` on an empty array (which `ShipsForSaleMapping` would be
+        ; create a temporary array because when using `as var[]` on an empty array (which `shipsForSaleMapping` would be
         ; at this point), it returns None, which causes an error when attempting to pass it to `AppendToArray`
         ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingTemp
         _Log(fnName, "combining ship ref to leveled ship mappings")
-        _Log(fnName, "ShipsForSaleMapping=" + ShipsForSaleMapping, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMappingAlways=" + ShipsForSaleMappingAlways, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMappingRandom=" + ShipsForSaleMappingRandom, LL_DEBUG)
-        _Log(fnName, "ShipsForSaleMappingUnique=" + ShipsForSaleMappingUnique, LL_DEBUG)
-        ShipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(ShipsForSaleMapping as var[], ShipsForSaleMappingAlways as var[]) as ShipRefToSpaceshipLeveledListMapping[]
-        ShipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(ShipsForSaleMapping as var[], ShipsForSaleMappingRandom as var[]) as ShipRefToSpaceshipLeveledListMapping[]
-        ShipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(ShipsForSaleMapping as var[], ShipsForSaleMappingUnique as var[]) as ShipRefToSpaceshipLeveledListMapping[]
+        _Log(fnName, "shipsForSaleMapping=" + shipsForSaleMapping, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMappingAlways=" + shipsForSaleMappingAlways, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMappingRandom=" + shipsForSaleMappingRandom, LL_DEBUG)
+        _Log(fnName, "shipsForSaleMappingUnique=" + shipsForSaleMappingUnique, LL_DEBUG)
+        shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingAlways as var[]) as ShipRefToSpaceshipLeveledListMapping[]
+        shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingRandom as var[]) as ShipRefToSpaceshipLeveledListMapping[]
+        shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingUnique as var[]) as ShipRefToSpaceshipLeveledListMapping[]
         i = 0
         While i < ShipsForSaleMappingTemp.Length
-            ShipsForSaleMapping.Add(ShipsForSaleMappingTemp[i])
+            shipsForSaleMapping.Add(ShipsForSaleMappingTemp[i])
             i += 1
         EndWhile
 
@@ -1304,36 +1304,36 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         lastInventoryRefreshTimestamp = Utility.GetCurrentGameTime()
     EndIf
 
-    _Log(fnName, "DONE. shipList=" + shipList)
+    _Log(fnName, "DONE. akShipList=" + akShipList)
 
     If LogLevel == LL_DEBUG
-        _Log(fnName, "Leveled Base Ships in shipList:", LL_DEBUG)
+        _Log(fnName, "Leveled Base Ships in akShipList:", LL_DEBUG)
 
         _Log(fnName, "    Priority Ships:", LL_DEBUG)
         int i = 0
-        While i < shipListAlways.Length
-            _Log(fnName, "        " + Utility.IntToHex(shipListAlways[i].GetFormID()) + ": " + shipListAlways[i].GetBaseObject())
+        While i < akShipListAlways.Length
+            _Log(fnName, "        " + Utility.IntToHex(akShipListAlways[i].GetFormID()) + ": " + akShipListAlways[i].GetBaseObject())
             i += 1
         EndWhile
 
         _Log(fnName, "    Random Ships:", LL_DEBUG)
         i = 0
-        While i < shipListRandom.Length
-            _Log(fnName, "        " + Utility.IntToHex(shipListRandom[i].GetFormID()) + ": " + shipListRandom[i].GetBaseObject())
+        While i < akShipListRandom.Length
+            _Log(fnName, "        " + Utility.IntToHex(akShipListRandom[i].GetFormID()) + ": " + akShipListRandom[i].GetBaseObject())
             i += 1
         EndWhile
 
         _Log(fnName, "    Unique Ships:", LL_DEBUG)
         i = 0
-        While i < shipListUnique.Length
-            _Log(fnName, "        " + Utility.IntToHex(shipListUnique[i].GetFormID()) + ": " + shipListUnique[i].GetBaseObject())
+        While i < akShipListUnique.Length
+            _Log(fnName, "        " + Utility.IntToHex(akShipListUnique[i].GetFormID()) + ": " + akShipListUnique[i].GetBaseObject())
             i += 1
         EndWhile
 
         _Log(fnName, "    Player-sold Ships:", LL_DEBUG)
         i = 0
-        While i < shipListSoldByPlayer.Length
-            _Log(fnName, "        " + Utility.IntToHex(shipListSoldByPlayer[i].GetFormID()) + ": " + shipListSoldByPlayer[i].GetBaseObject())
+        While i < akShipListSoldByPlayer.Length
+            _Log(fnName, "        " + Utility.IntToHex(akShipListSoldByPlayer[i].GetFormID()) + ": " + akShipListSoldByPlayer[i].GetBaseObject())
             i += 1
         EndWhile
     EndIf
@@ -1380,12 +1380,12 @@ Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMark
         EndWhile
     Else
         While i < aiShipsToCreate
-            CreateShipForSale((akShipToSellList[i] as ShipVendorListScript:ShipToSell).leveledShip, akCreateMarker, akEncLoc, akShipList, akRefToLLMap)
+            CreateShipForSale((akShipToSellList[i] as ShipVendorListScript:ShipToSell).LeveledShip, akCreateMarker, akEncLoc, akShipList, akRefToLLMap)
             i += 1
         EndWhile
     EndIf
     _Log(fnName, "created " + akShipList.Length + " ships")
-    _Log(fnName, "shipList=" + akShipList, LL_DEBUG)
+    _Log(fnName, "ship list=" + akShipList, LL_DEBUG)
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
@@ -1404,15 +1404,15 @@ Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference 
         ; link to landing pad
         newShip.SetLinkedRef(myLandingMarker, SpaceshipStoredLink)
         ; assign vendor ownership
-        newShip.SetActorRefOwner(self)
+        newShip.SetActorRefOwner(Self)
         ; register for player buying event
         RegisterForRemoteEvent(newShip, "OnShipBought")
         ; clear inventory
         newShip.RemoveAllItems()
         ; create mapping for ship ref to leveled ship and add it to the list
         ShipRefToSpaceshipLeveledListMapping shipRefMap = new ShipRefToSpaceshipLeveledListMapping
-        shipRefMap.shipRef = newShip
-        shipRefMap.leveledShip = akShipToCreate
+        shipRefMap.ShipRef = newShip
+        shipRefMap.LeveledShip = akShipToCreate
         akRefToLLMap.Add(shipRefMap)
 
         _Log(fnName, "created ship " + newShip + " from leveled ship " + akShipToCreate)
@@ -1424,16 +1424,16 @@ Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference 
 EndFunction
 
 
-SpaceshipReference Function GetShipForSale(int index = 0)
+SpaceshipReference Function GetShipForSale(int aiIndex = 0)
     string fnName = "GetShipForSale" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    SpaceshipReference shipForSale = NONE
-    LockGuard shipsForSaleGuard
+    SpaceshipReference shipForSale = None
+    LockGuard ShipsForSaleGuard
         If shipsForSale.Length > 0
-            If index > -1 && index < shipsForSale.Length
-                shipForSale = shipsForSale[index]
-            ElseIf index >= shipsForSale.Length
+            If aiIndex > -1 && aiIndex < shipsForSale.Length
+                shipForSale = shipsForSale[aiIndex]
+            ElseIf aiIndex >= shipsForSale.Length
                 shipForSale = shipsForSale[shipsForSale.Length-1]
             Else
                 shipForSale = shipsForSale[0]
@@ -1441,7 +1441,7 @@ SpaceshipReference Function GetShipForSale(int index = 0)
         EndIf
     EndLockGuard
     If LogLevel == LL_DEBUG && shipForSale != None
-        _Log(fnName, "returning " + shipForSale + " (" + shipForSale.GetBaseObject() + ") for index " + index, LL_DEBUG)
+        _Log(fnName, "returning " + shipForSale + " (" + shipForSale.GetBaseObject() + ") for aiIndex " + aiIndex, LL_DEBUG)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
@@ -1450,16 +1450,16 @@ EndFunction
 
 
 Function TestShowHangarMenu()
-    myLandingMarker.ShowHangarMenu(0, self, NONE)
+    myLandingMarker.ShowHangarMenu(0, Self, None)
 EndFunction
 
 
 Function TestOutputShipsForSale()
-    LockGuard shipsForSaleGuard
+    LockGuard ShipsForSaleGuard
         int i = 0
         While i < shipsForSale.Length
             SpaceshipReference theShip = shipsForSale[i]
-            debug.trace(self + " i=" + i + ": " + theShip)
+            Debug.Trace(Self + " i=" + i + ": " + theShip)
             i += 1
         EndWhile
     EndLockGuard
