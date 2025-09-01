@@ -20,59 +20,75 @@ ScriptName ShipVendorFramework:SVF_Control Extends Quest
 
 
 ; imports
-import ShipVendorFramework:SVF_DataStructures
-import ShipVendorFramework:SVF_Utility
+Import ShipVendorFramework:SVF_DataStructures
+Import ShipVendorFramework:SVF_Utility
 
 
+; The desired version of the SVF_Control script.
 int Property SVFControlVersion = 1 Auto Const Hidden
-{ The desired version of the SVF_Control script. }
 
 ; The current version of the SVF_Control script.
 int SVFControlVersionCurrent = 0
 
-string Property SVFVersion = "1.5.4" Auto Const Hidden
-{ The Ship Vendor Framework version. }
+; The Ship Vendor Framework version.
+string Property SVFVersion = "1.6.0" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
 
-; form lists that keep track of the unique ships that the player has purchased from ship vendors
-FormList Property UniqueShipsSoldToPlayerLVLB Auto Const
-FormList Property UniqueShipsSoldToPlayerREF Auto Const
+FormList Property UniqueShipsSold Auto Const
+{ Form List that keeps track of unique ships sold to the player. }
+
+Group GameplayOptions
+    GameplayOption Property RegenerateUniqueShipsOption Auto Const
+    { Gameplay option to control whether unique ships sold to the player can be regenerated. }
+
+    GameplayOption Property RichShipVendorsOption Auto Const
+    { Gameplay option to control whether ship vendors have more credits and auto-replenish said credits. }
+EndGroup
 
 ; default values for the vendor mappings
-Group DefaultVendorMappingValues
-    int Property RandomShipsForSaleMinDefault = 4 Auto Const
-    int Property RandomShipsForSaleMaxDefault = 8 Auto Const
-EndGroup
+int Property RandomShipsForSaleMinDefault = 4 Auto Const Hidden
+int Property RandomShipsForSaleMaxDefault = 8 Auto Const Hidden
 
 Group ShipVendorMappings
-    ; list of type Actor
-    FormList Property Vendors Auto Const
-    ; list of type FormList
-    FormList Property ShipListsRandom Auto Const
-    ; list of type FormList
-    FormList Property ShipListsAlways Auto Const
-    ; list of type FormList
-    FormList Property ShipListsUnique Auto Const
-    ; list of type GlobalVariable
-    FormList Property RandomShipsForSaleMin Auto Const
-    ; list of type GameplayOption
-    FormList Property RandomShipsForSaleMax Auto Const
+    FormList Property Vendors Auto Const                ; list of type Actor
+    { The list of vendors to build the data mappings from. }
+    FormList Property ShipListsRandom Auto Const        ; list of type FormList
+    { The list of random ship lists that correspond to each vendor. }
+    FormList Property ShipListsAlways Auto Const        ; list of type FormList
+    { The list of always available ship lists that correspond to each vendor. }
+    FormList Property ShipListsUnique Auto Const        ; list of type FormList
+    { The list of unique ship lists that correspond to each vendor. }
+    FormList Property RandomShipsForSaleMin Auto Const  ; list of type GameplayOption/GlobalVariable
+    { The list containing the gameplay option or global variable controlling the minimum number of
+      random ships for sale for each vendor. }
+    FormList Property RandomShipsForSaleMax Auto Const  ; list of type GameplayOption/GlobalVariable
+    { The list containing the gameplay option or global variable controlling the maximum number of
+      random ships for sale for each vendor. }
 EndGroup
 
-int Property LogLevel = 3 Auto Const  ; TODO change back to 0 for release
-{ The log level for the script. -1=none, 0=info, 1=warning, 2=error, 3=debug. }
+; cached vendor mappings
+Form[] vendorsCache
+Form[] shipListsRandomCache
+Form[] shipListsAlwaysCache
+Form[] shipListsUniqueCache
+Form[] randomShipsForSaleMinCache
+Form[] randomShipsForSaleMaxCache
+
+; the log level for the script
+; -1=none, 0=info, 1=warning, 2=error, 3=debug
+int Property LogLevel = 3 Auto Const Hidden  ; TODO change back to 0 for release
 
 ; log levels
 ; "info" log level
-int LL_INFO = 0 Const
+int Property LL_INFO = 0 Auto Const Hidden
 ; "warning" log level
-int LL_WARNING = 1 Const
+int Property LL_WARNING = 1 Auto Const Hidden
 ; "error" log level
-int LL_ERROR = 2 Const
+int Property LL_ERROR = 2 Auto Const Hidden
 ; "debug" log level
-int LL_DEBUG = 3 Const
+int Property LL_DEBUG = 3 Auto Const Hidden
 
 
 ; local opinionated log function
@@ -85,7 +101,7 @@ Event OnInit()
     string fnName = "OnInit" Const
     _Log(fnName, "begin", LL_DEBUG)
     Log("SVF_Control", 0, "Init", "begin_direct", -1)
-    VersionInfo(false)
+    VersionInfo()
     Log("SVF_Control", 0, "Init", "end_direct", -1)
     _Log(fnName, "end", LL_DEBUG)
 EndEvent
@@ -107,7 +123,6 @@ Event Actor.OnPlayerLoadGame(Actor akPlayer)
     Log("SVF_Control", 0, "Actor.OnPlayerLoadGame", "begin_direct", -1)
     VersionInfo()
     Initialize()
-    VendorMappingsSanityCheck()
     Log("SVF_Control", 0, "Actor.OnPlayerLoadGame", "end_direct", -1)
     _Log(fnName, "end", LL_DEBUG)
 EndEvent
@@ -116,78 +131,146 @@ EndEvent
 Function Initialize()
     string fnName = "Initialize" Const
     _Log(fnName, "begin", LL_DEBUG)
-    _Log(fnName, "SVF_Control version: current=" + SVFControlVersionCurrent + ", desired=" + SVFControlVersion)
+    _Log(fnName, "SVF Control version: current=" + SVFControlVersionCurrent + ", desired=" + SVFControlVersion)
 
-    If SVFControlVersionCurrent != SVFControlVersion
-        If SVFControlVersionCurrent == 0
-            _Log(fnName, "SVF_Control initializing")
-            ; because the CK (still) can't assign actors to script properties, we have to do this manually
-            PlayerRef = Game.GetPlayer()
-            RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
-            SVFControlVersionCurrent = SVFControlVersion
-            _Log(fnName, "SVF_Control initialized")
-        EndIf
+    If SVFControlVersionCurrent < 1
+        InitializeSVFControlVersion1()
+    EndIf
+
+    ; perform sanity checks
+    bool mappingsNotNone = VendorMappingsNotNone()
+    bool mappingsSizesMatch = true
+    If mappingsNotNone == true
+        CacheVendorMappings()
+        mappingsSizesMatch = VendorMappingsSizesMatch()
+    EndIf
+
+    ; show error messages if needed
+    If mappingsNotNone == false
+        ; TODO show an error message in game
+    ElseIf mappingsSizesMatch == false
+        ; TODO show an error message in game
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
+bool Function SVFControlInitialized()
+    string fnName = "SVFControlInitialized" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    bool toReturn = SVFControlVersionCurrent == SVFControlVersion
+    _Log(fnName, "returning " + toReturn, LL_DEBUG)
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return toReturn
+EndFunction
+
+
+Function InitializeSVFControlVersion1()
+    int updatingToVersion = 1 Const
+    string fnName = "InitializeSVFControlVersion" + updatingToVersion Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    _Log(fnName, "SVF Control initializing to version " + updatingToVersion)
+
+    ; because the CK (still) can't assign actors to script properties, we have to do this manually
+    PlayerRef = Game.GetPlayer()
+    RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
+
+    SVFControlVersionCurrent = updatingToVersion
+    _Log(fnName, "SVF Control initialized to version " + updatingToVersion)
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
 ; print version and misc debug into to the log
-Function VersionInfo(bool abFull = true)
+Function VersionInfo()
     Log("", 0, "", "Log level: " + LogLevel, -1)
     Log("", 0, "", "Starfield version: " + Debug.GetVersionNumber(), -1)
     Log("", 0, "", "Ship Vendor Framework version: " + SVFVersion, -1)
 EndFunction
 
 
-; does a sanity check on the vendor associations to ensure that the lists are not None and that they match in size
-Function VendorMappingsSanityCheck()
-    string fnName = "VendorMappingsSanityCheck" Const
+; performs a sanity check on the vendor mappings to ensure that the lists are not None
+bool Function VendorMappingsNotNone()
+    string fnName = "VendorMappingsNotNone" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    bool listNoneError = false
+    bool listNone = false
     If Vendors == None
         _Log(fnName, "Vendors is None", LL_ERROR)
-        listNoneError = true
+        listNone = true
     EndIf
 
     If ShipListsRandom == None
         _Log(fnName, "ShipListsRandom is None", LL_ERROR)
-        listNoneError = true
+        listNone = true
     EndIf
 
     If ShipListsAlways == None
         _Log(fnName, "ShipListsAlways is None", LL_ERROR)
-        listNoneError = true
+        listNone = true
     EndIf
 
     If ShipListsUnique == None
         _Log(fnName, "ShipListsUnique is None", LL_ERROR)
-        listNoneError = true
+        listNone = true
     EndIf
 
     If RandomShipsForSaleMin == None
         _Log(fnName, "RandomShipsForSaleMin is None", LL_ERROR)
-        listNoneError = true
+        listNone = true
     EndIf
 
     If RandomShipsForSaleMax == None
         _Log(fnName, "RandomShipsForSaleMax is None", LL_ERROR)
-        listNoneError = true
+        listNone = true
     EndIf
 
-    If !listNoneError
-        int vendorCount = Vendors.GetSize()
-        bool vendorCountMatches = ShipListsRandom.GetSize() == vendorCount \
-            && ShipListsAlways.GetSize() == vendorCount \
-            && ShipListsUnique.GetSize() == vendorCount \
-            && RandomShipsForSaleMin.GetSize() == vendorCount \
-            && RandomShipsForSaleMax.GetSize() == vendorCount
-        if !vendorCountMatches
-            _Log(fnName, "VanillaShipVendors and associated lists do not match in size", LL_ERROR)
-        EndIf
+    _Log(fnName, "end", LL_DEBUG)
+    Return !listNone
+EndFunction
+
+
+; performs a sanity check on the vendor mappings to ensure that the sizes match
+bool Function VendorMappingsSizesMatch()
+    string fnName = "VendorMappingsSizesMatch" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    bool listSizesMatch = vendorsCache.Length == shipListsRandomCache.Length       \
+                       && vendorsCache.Length == shipListsAlwaysCache.Length       \
+                       && vendorsCache.Length == shipListsUniqueCache.Length       \
+                       && vendorsCache.Length == randomShipsForSaleMinCache.Length \
+                       && vendorsCache.Length == randomShipsForSaleMaxCache.Length
+    if !listSizesMatch
+        _Log(fnName, "The vendor mappings lists do not match in size", LL_ERROR)
+        _Log(fnName, "    Vendors: " + vendorsCache.Length, LL_ERROR)
+        _Log(fnName, "    ShipListsRandom: " + shipListsRandomCache.Length, LL_ERROR)
+        _Log(fnName, "    ShipListsAlways: " + shipListsAlwaysCache.Length, LL_ERROR)
+        _Log(fnName, "    ShipListsUnique: " + shipListsUniqueCache.Length, LL_ERROR)
+        _Log(fnName, "    RandomShipsForSaleMin: " + randomShipsForSaleMinCache.Length, LL_ERROR)
+        _Log(fnName, "    RandomShipsForSaleMax: " + randomShipsForSaleMaxCache.Length, LL_ERROR)
     EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return listSizesMatch
+EndFunction
+
+
+; caches the vendor mappings into local arrays for faster access
+Function CacheVendorMappings()
+    string fnName = "CacheVendorMappings" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    vendorsCache = Vendors.GetArray()
+    shipListsRandomCache = ShipListsRandom.GetArray()
+    shipListsAlwaysCache = ShipListsAlways.GetArray()
+    shipListsUniqueCache = ShipListsUnique.GetArray()
+    randomShipsForSaleMinCache = RandomShipsForSaleMin.GetArray()
+    randomShipsForSaleMaxCache = RandomShipsForSaleMax.GetArray()
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
@@ -199,16 +282,16 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendor)
 
     If akShipVendor == None
         _Log(fnName, "akShipVendor is None", LL_ERROR)
-        return None
+        Return None
     EndIf
 
-    _Log(fnName, "searching for " + akShipVendor + " in Vendors (" + Vendors.GetArray() + ")", LL_DEBUG)
-    int vendorIndex = Vendors.Find(akShipVendor)
+    _Log(fnName, "searching for " + akShipVendor + " in Vendors (" + vendorsCache + ")", LL_DEBUG)
+    int vendorIndex = vendorsCache.Find(akShipVendor)
     If vendorIndex < 0
         _Log(fnName, akShipVendor + " not found in Vendors", LL_WARNING)
-        return None
+        Return None
     EndIf
-    _Log(fnName, akShipVendor + " found at index: " + vendorIndex, LL_DEBUG)
+    _Log(fnName, akShipVendor + " found at index " + vendorIndex, LL_DEBUG)
 
     ShipVendorDataMap vendorDataMap
     vendorDataMap = new ShipVendorDataMap
@@ -221,26 +304,26 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendor)
     ; characters per line
     vendorDataMap.Vendor = akShipVendor as ActorBase
 
-    vendorDataMap.ListRandom = FormListGetLast(ShipListsRandom.GetAt(vendorIndex)) as FormList
-    vendorDataMap.ListAlways = FormListGetLast(ShipListsAlways.GetAt(vendorIndex)) as FormList
-    vendorDataMap.ListUnique = FormListGetLast(ShipListsUnique.GetAt(vendorIndex)) as FormList
+    vendorDataMap.ListRandom = FormListGetLast(shipListsRandomCache[vendorIndex]) as FormList
+    vendorDataMap.ListAlways = FormListGetLast(shipListsAlwaysCache[vendorIndex]) as FormList
+    vendorDataMap.ListUnique = FormListGetLast(shipListsUniqueCache[vendorIndex]) as FormList
 
     Form tempForm
 
-    tempForm = FormListGetLast(RandomShipsForSaleMin.GetAt(vendorIndex))
+    tempForm = FormListGetLast(randomShipsForSaleMinCache[vendorIndex])
     vendorDataMap.RandomShipsForSaleMin = GetValue2(tempForm, RandomShipsForSaleMinDefault) as int
 
-    tempForm = FormListGetLast(RandomShipsForSaleMax.GetAt(vendorIndex))
+    tempForm = FormListGetLast(randomShipsForSaleMaxCache[vendorIndex])
     vendorDataMap.RandomShipsForSaleMax = GetValue2(tempForm, RandomShipsForSaleMaxDefault) as int
 
 
-    _Log(fnName, "vendorDataMap.Vendor: " + vendorDataMap.Vendor, LL_DEBUG)
-    _Log(fnName, "vendorDataMap.ListRandom: " + vendorDataMap.ListRandom, LL_DEBUG)
-    _Log(fnName, "vendorDataMap.ListAlways: " + vendorDataMap.ListAlways, LL_DEBUG)
-    _Log(fnName, "vendorDataMap.ListUnique: " + vendorDataMap.ListUnique, LL_DEBUG)
-    _Log(fnName, "vendorDataMap.RandomShipsForSaleMin: " + vendorDataMap.RandomShipsForSaleMin, LL_DEBUG)
-    _Log(fnName, "vendorDataMap.RandomShipsForSaleMax: " + vendorDataMap.RandomShipsForSaleMax, LL_DEBUG)
+    _Log(fnName, "vendorDataMap.Vendor: " + vendorDataMap.Vendor, LL_INFO)
+    _Log(fnName, "vendorDataMap.ListRandom: " + vendorDataMap.ListRandom, LL_INFO)
+    _Log(fnName, "vendorDataMap.ListAlways: " + vendorDataMap.ListAlways, LL_INFO)
+    _Log(fnName, "vendorDataMap.ListUnique: " + vendorDataMap.ListUnique, LL_INFO)
+    _Log(fnName, "vendorDataMap.RandomShipsForSaleMin: " + vendorDataMap.RandomShipsForSaleMin, LL_INFO)
+    _Log(fnName, "vendorDataMap.RandomShipsForSaleMax: " + vendorDataMap.RandomShipsForSaleMax, LL_INFO)
 
     _Log(fnName, "end", LL_DEBUG)
-    return vendorDataMap
+    Return vendorDataMap
 EndFunction
