@@ -95,16 +95,6 @@ Function _Log(string asFunctionName, string asLogMessage, int aiSeverity = 0)
 EndFunction
 
 
-Event OnInit()
-    string fnName = "OnInit" Const
-    _Log(fnName, "begin", LL_DEBUG)
-    Log("SVF_Control", 0, "Init", "begin_direct", -1)
-    VersionInfo()
-    Log("SVF_Control", 0, "Init", "end_direct", -1)
-    _Log(fnName, "end", LL_DEBUG)
-EndEvent
-
-
 Event OnQuestInit()
     string fnName = "OnQuestInit" Const
     _Log(fnName, "begin", LL_DEBUG)
