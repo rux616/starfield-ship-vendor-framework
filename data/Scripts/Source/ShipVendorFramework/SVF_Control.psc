@@ -61,11 +61,9 @@ Group ShipVendorMappings
     FormList Property ShipListsUnique Auto Const        ; list of type FormList
     { The list of unique ship lists that correspond to each vendor. }
     FormList Property RandomShipsForSaleMin Auto Const  ; list of type GameplayOption/GlobalVariable
-    { The list containing the gameplay option or global variable controlling the minimum number of
-      random ships for sale for each vendor. }
+    { The list containing the gameplay option or global variable controlling the minimum number of random ships for sale for each vendor. }
     FormList Property RandomShipsForSaleMax Auto Const  ; list of type GameplayOption/GlobalVariable
-    { The list containing the gameplay option or global variable controlling the maximum number of
-      random ships for sale for each vendor. }
+    { The list containing the gameplay option or global variable controlling the maximum number of random ships for sale for each vendor. }
 EndGroup
 
 ; cached vendor mappings

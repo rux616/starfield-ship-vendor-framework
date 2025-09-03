@@ -246,13 +246,13 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
             ; SVFEnhancementsInitialized() _must_ have returned false, which means the SVF enhancements still need to be
             ; initialized
             _Log(fnName, "initializing SVF enhancements on load", LL_DEBUG)
-            Initialize(myLandingMarker)
+            Initialize(MyLandingMarker)
         ElseIf InitializeOnLoad == true
-            If myLandingMarker == None
-                myLandingMarker = GetLinkedRef(LinkShipLandingMarker01)
+            If MyLandingMarker == None
+                MyLandingMarker = GetLinkedRef(LinkShipLandingMarker01)
             EndIf
-            _Log(fnName, "initializing on load, landing marker is " + myLandingMarker, LL_DEBUG)
-            Initialize(myLandingMarker)
+            _Log(fnName, "initializing on load, landing marker is " + MyLandingMarker, LL_DEBUG)
+            Initialize(MyLandingMarker)
         EndIf
     Else
         PopulateLocals()
@@ -284,8 +284,8 @@ Function Initialize(ObjectReference akLandingMarkerRef)
     _Log(fnName, "SVF Enhancements version: current=" + svfEnhancementsVersionCurrent + ", desired=" + SVFEnhancementsVersion)
 
     If akLandingMarkerRef != None
-        myLandingMarker = akLandingMarkerRef
-        _Log(fnName, "setting myLandingMarker to " + myLandingMarker)
+        MyLandingMarker = akLandingMarkerRef
+        _Log(fnName, "setting MyLandingMarker to " + MyLandingMarker)
     Else
         _Log(fnName, "CRITICAL: no landing marker provided; aborting", LL_ERROR)
         Return
@@ -508,9 +508,9 @@ Function InitializeSVFEnhancementsVersion2()
 
     ; iterate through the linked ships and if the ship belongs to the vendor but isn't in the mappings and wasn't sold
     ; by the player, add it to the list of ships to purge
-    If myLandingMarker != None
+    If MyLandingMarker != None
         _Log(fnName, "purging linked ships that are owned by the vendor but don't have mappings and weren't sold by the player")
-        SpaceshipReference[] linkedShips = myLandingMarker.GetRefsLinkedToMe(SpaceshipStoredLink) as SpaceshipReference[]
+        SpaceshipReference[] linkedShips = MyLandingMarker.GetRefsLinkedToMe(SpaceshipStoredLink) as SpaceshipReference[]
         SpaceshipReference[] shipsToPurge = new SpaceshipReference[0]
 
         LockGuard ShipsForSaleGuard
@@ -603,8 +603,8 @@ Function DebugDumpData()
     _Log(fnName, "begin", LL_DEBUG)
 
     ; if in debug mode dump linked ref info (again)
-    If LogLevel == LL_DEBUG && myLandingMarker != None
-        ObjectReference[] linkedRefs = myLandingMarker.GetRefsLinkedToMe(SpaceshipStoredLink)
+    If LogLevel == LL_DEBUG && MyLandingMarker != None
+        ObjectReference[] linkedRefs = MyLandingMarker.GetRefsLinkedToMe(SpaceshipStoredLink)
         _Log(fnName, "dumping linked ref info", LL_DEBUG)
         _Log(fnName, "GetRefsLinkedToMe(" + linkedRefs.Length + ")=" + linkedRefs, LL_DEBUG)
         int i = 0
@@ -728,8 +728,8 @@ Event RefCollectionAlias.OnShipSold(RefCollectionAlias akSender, ObjectReference
 
     ; if this ship is linked to this landing marker, add it to vendor's list
     SpaceshipReference soldShip = akSenderRef as SpaceshipReference
-    If soldShip && soldShip.GetLinkedRef(SpaceshipStoredLink) == myLandingMarker
-        _Log(fnName, "player sold ship " + soldShip + " that has linked ref " + soldShip.GetLinkedRef(SpaceshipStoredLink) + "(landing marker is " + myLandingMarker + ") for keyword " + SpaceshipStoredLink)
+    If soldShip && soldShip.GetLinkedRef(SpaceshipStoredLink) == MyLandingMarker
+        _Log(fnName, "player sold ship " + soldShip + " that has linked ref " + soldShip.GetLinkedRef(SpaceshipStoredLink) + "(landing marker is " + MyLandingMarker + ") for keyword " + SpaceshipStoredLink)
         LockGuard ShipsForSaleGuard
             shipsForSale.Add(soldShip)
             shipsForSaleSoldByPlayer.Add(soldShip)
@@ -830,7 +830,7 @@ Function CheckForInventoryRefresh(bool abForceRefresh = false)
 
             RefreshShipsToSellArrays()
             LockGuard ShipsForSaleGuard
-                RefreshInventoryList(myLandingMarker, shipsForSale, shipsForSaleAlways, shipsForSaleRandom, shipsForSaleUnique, shipsForSaleSoldByPlayer)
+                RefreshInventoryList(MyLandingMarker, shipsForSale, shipsForSaleAlways, shipsForSaleRandom, shipsForSaleUnique, shipsForSaleSoldByPlayer)
                 _Log(fnName, "shipsForSale=" + shipsForSale, LL_DEBUG)
             EndLockGuard
         Else
@@ -920,7 +920,7 @@ Function CheckForNewShips()
 
     If refreshAlways == true || refreshUnique == true
         LockGuard ShipsForSaleGuard
-            RefreshInventoryList(myLandingMarker, shipsForSale, shipsForSaleAlways, shipsForSaleRandom, shipsForSaleUnique, shipsForSaleSoldByPlayer)
+            RefreshInventoryList(MyLandingMarker, shipsForSale, shipsForSaleAlways, shipsForSaleRandom, shipsForSaleUnique, shipsForSaleSoldByPlayer)
         EndLockGuard
     EndIf
 
@@ -1379,7 +1379,7 @@ Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMark
     EndIf
 
     ; create the ships
-    _Log(fnName, "attempting to create " + aiShipsToCreate + " ships (out of " + akShipToSellList.Length + " possible) at " + akCreateMarker + " (landing marker " + myLandingMarker + ")")
+    _Log(fnName, "attempting to create " + aiShipsToCreate + " ships (out of " + akShipToSellList.Length + " possible) at " + akCreateMarker + " (landing marker " + MyLandingMarker + ")")
     int i = 0
     If useSVFDatasets == true
         While i < aiShipsToCreate
@@ -1410,7 +1410,7 @@ Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference 
     If newShip != None && newShip.IsBoundGameObjectAvailable()
         akShipList.Add(newShip)
         ; link to landing pad
-        newShip.SetLinkedRef(myLandingMarker, SpaceshipStoredLink)
+        newShip.SetLinkedRef(MyLandingMarker, SpaceshipStoredLink)
         ; assign vendor ownership
         newShip.SetActorRefOwner(Self)
         ; register for player buying event
@@ -1458,7 +1458,7 @@ EndFunction
 
 
 Function TestShowHangarMenu()
-    myLandingMarker.ShowHangarMenu(0, Self, None)
+    MyLandingMarker.ShowHangarMenu(0, Self, None)
 EndFunction
 
 
