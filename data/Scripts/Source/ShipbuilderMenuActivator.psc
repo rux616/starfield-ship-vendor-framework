@@ -1,4 +1,4 @@
-Scriptname ShipbuilderMenuActivator Extends ObjectReference
+ScriptName ShipbuilderMenuActivator Extends ObjectReference
 { script for buying ships via a kiosk activator
     NOTE: kiosk should either be linked to a landing marker, OR be linked to another kiosk which is linked to the landing marker.ShipVendorScript
     So, if you have multiple kiosks, only link one to the landing marker, link the others to that kiosk.
