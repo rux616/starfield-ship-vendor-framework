@@ -136,7 +136,9 @@ EndFunction
 ; notes:
 ; - YOU SHOULD _REALLY_ HAVE A LOCK GUARD ON THE ARRAY YOU'RE SHUFFLING
 ; - the modifications to the algorithm make it potentially not quite truly random, especially for
-; large arrays, but it should still be good enough for our purposes
+;   large arrays, but it should still be good enough for our purposes
+; - the _Log() calls in the loop of the function are commented out so as to keep it as performant as
+;   possible; uncomment them as needed for troubleshooting
 ;
 ; arguments:
 ; - avArray: the array to shuffle
@@ -157,7 +159,7 @@ var[] Function ShuffleArray(var[] avArray, int aiSteps = -1, int aiIndexStart = 
     _Log(fnName, "begin", LL_DEBUG)
     ; _Log(fnName, "avArray.Length=" + avArray.Length + ", aiSteps=" + aiSteps + ", aiIndexStart=" + aiIndexStart, LL_DEBUG)
 
-    int MAX_RANDOM_INTS = 128 Const
+    int MAX_RANDOM_INTS = 128 Const         ; arrays can only have a max of 128 elements
     int RANDOM_SEED_MIN = 0x00000000 Const  ; the RandomInt() function is weird and doesn't like 0x80000000 as min
     int RANDOM_SEED_MAX = 0x7FFFFFFE Const  ; the RandomInt() function is weird and doesn't like 0x7FFFFFFF as max
 
@@ -395,7 +397,7 @@ Form Function FormListGetLast(Form akFormList) Global
     Form[] listContents = list.GetArray()
     int size = listContents.Length
     If size == 0
-        _Log(fnName, "akFormList is empty", LL_WARNING)
+        _Log(fnName, "form list " + akFormList + " is empty", LL_WARNING)
         Return None
     EndIf
 
