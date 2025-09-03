@@ -64,6 +64,9 @@ Group ShipVendorFramework
     FormList Property SVFShipsToSellListUniqueDataset Auto Const
     { The list of unique ships to make available for sale. (Never respawns.) }
 
+    ObjectReference Property VendorContainer Auto Const
+    { The vendor's container reference. }
+
     bool Property SVFUseNewDatasets = false Auto Const  ; DEPRECATED
     { !!!DEPRECATED!!! Mark vendor as using the new Ship Vendor Framework datasets. !!!DEPRECATED!!! }
 
@@ -77,6 +80,7 @@ FormList svfShipsToSellListAlwaysDatasetLocal
 FormList svfShipsToSellListUniqueDatasetLocal
 int shipsForSaleMinLocal
 int shipsForSaleMaxLocal
+ObjectReference vendorContainerLocal
 
 ; original values of BuysShips/SellsShips so they can be restored if necessary
 bool originalBuysShips
@@ -631,6 +635,7 @@ Function DebugDumpData()
         _Log(fnName, "svfShipsToSellListUniqueDatasetLocal=" + svfShipsToSellListUniqueDatasetLocal, LL_DEBUG)
         _Log(fnName, "shipsForSaleMinLocal=" + shipsForSaleMinLocal, LL_DEBUG)
         _Log(fnName, "shipsForSaleMaxLocal=" + shipsForSaleMaxLocal, LL_DEBUG)
+        _Log(fnName, "vendorContainerLocal=" + vendorContainerLocal, LL_DEBUG)
         LockGuard ShipsForSaleGuard
             _Log(fnName, "shipsForSale=" + shipsForSale, LL_DEBUG)
             _Log(fnName, "shipsForSaleRandom=" + shipsForSaleRandom, LL_DEBUG)
@@ -660,6 +665,7 @@ Function PopulateLocals()
         svfShipsToSellListUniqueDatasetLocal = vendorDataMap.ListUnique
         shipsForSaleMinLocal = vendorDataMap.RandomShipsForSaleMin
         shipsForSaleMaxLocal = vendorDataMap.RandomShipsForSaleMax
+        vendorContainerLocal = vendorDataMap.VendorContainer
     Else
         _Log(fnName, "vendor data map not found")
         svfShipsToSellListRandomDatasetLocal = SVFShipsToSellListRandomDataset
@@ -667,6 +673,7 @@ Function PopulateLocals()
         svfShipsToSellListUniqueDatasetLocal = SVFShipsToSellListUniqueDataset
         shipsForSaleMinLocal = ShipsForSaleMin
         shipsForSaleMaxLocal = ShipsForSaleMax
+        vendorContainerLocal = VendorContainer
     EndIf
 
     _Log(fnName, "svfShipsToSellListRandomDatasetLocal=" + svfShipsToSellListRandomDatasetLocal, LL_DEBUG)
@@ -674,6 +681,7 @@ Function PopulateLocals()
     _Log(fnName, "svfShipsToSellListUniqueDatasetLocal=" + svfShipsToSellListUniqueDatasetLocal, LL_DEBUG)
     _Log(fnName, "shipsForSaleMinLocal=" + shipsForSaleMinLocal, LL_DEBUG)
     _Log(fnName, "shipsForSaleMaxLocal=" + shipsForSaleMaxLocal, LL_DEBUG)
+    _Log(fnName, "vendorContainerLocal=" + vendorContainerLocal, LL_DEBUG)
 
     ; sanity check the min/max random ships for sale values, switching if needed
     If shipsForSaleMaxLocal < shipsForSaleMinLocal
@@ -1426,6 +1434,34 @@ Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference 
         _Log(fnName, "created ship " + newShip + " from leveled ship " + akShipToCreate)
     Else
         _Log(fnName, "no ship created")
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+Function ApplyRichShipVendorCreditAdjustment()
+    string fnName = "ApplyRichShipVendorCreditAdjustment"
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If (svfControl.RichShipVendorsOption.GetValue() as bool) == true
+        _Log(fnName, "rich ship vendors option is enabled, applying", LL_DEBUG)
+        ObjectReference theContainer = vendorContainerLocal
+        If theContainer == None
+            theContainer = Self
+        EndIf
+        MiscObject credits = Game.GetCredits()
+        int currentCredits = theContainer.GetItemCount(credits)
+        _Log(fnName, "vendor container " + theContainer + " currently has " + currentCredits + " credits", LL_DEBUG)
+        int minimumCreditsIndex = svfControl.RichShipVendorsMinimumCreditsOption.GetValue() as int
+        int minimumCredits = svfControl.RichShipVendorsMinimumCreditsValues[minimumCreditsIndex]
+        _Log(fnName, "minimum credits: " + minimumCredits, LL_DEBUG)
+        If currentCredits < minimumCredits
+            _Log(fnName, "vendor container " + theContainer + " does not have enough credits, adding " + (minimumCredits - currentCredits) + " credits", LL_DEBUG)
+            theContainer.AddItem(credits, minimumCredits - currentCredits)
+        EndIf
+    Else
+        _Log(fnName, "rich ship vendors option is disabled, not applying", LL_DEBUG)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)

@@ -33,6 +33,8 @@ Struct ShipVendorDataMap
 
     int RandomShipsForSaleMin
     int RandomShipsForSaleMax
+
+    ObjectReference VendorContainer
 EndStruct
 
 ; struct to hold the mapping of a ship reference to its originating leveled ship

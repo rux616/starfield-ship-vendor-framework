@@ -84,6 +84,7 @@ Event OnActivate(ObjectReference akActionRef)
                     theShipServicesActor.Initialize(theShipServicesActor.MyLandingMarker)
                 EndIf
                 ; TODO add a "please wait, initializing" message
+                theShipServicesActor.ApplyRichShipVendorCreditAdjustment()
                 theShipServicesActor.MyLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab=true)
             ElseIf messageIndex == 2
                 theShipServicesActor.MyLandingMarker.ShowHangarMenu(1, theShipServicesActor)

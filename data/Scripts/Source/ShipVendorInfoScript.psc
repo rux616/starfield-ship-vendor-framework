@@ -45,6 +45,7 @@ Event OnEnd(ObjectReference akSpeakerRef, bool abHasBeenSaid)
 			If OpenToShipForSale
 				shipForSale = theVendor.GetShipForSale()
 			EndIf
+			theVendor.ApplyRichShipVendorCreditAdjustment()
            	theVendor.MyLandingMarker.ShowHangarMenu(0, theVendor, shipForSale, OpenToShipForSale)
             ; TODO <--- this needs to have a "please wait, initializing" message gate
         EndIf

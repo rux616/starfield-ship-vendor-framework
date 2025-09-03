@@ -45,7 +45,13 @@ Group GameplayOptions
 
     GameplayOption Property RichShipVendorsOption Auto Const
     { Gameplay option to control whether ship vendors have more credits and auto-replenish said credits. }
+
+    GameplayOption Property RichShipVendorsMinimumCreditsOption Auto Const
+    { Gameplay option to control the minimum number of credits ship vendors should have when the "rich ship vendors" option is enabled. }
 EndGroup
+
+int[] Property RichShipVendorsMinimumCreditsValues Auto Const
+{ The values for the minimum credits for rich ship vendors. }
 
 ; default values for the vendor mappings
 int Property RandomShipsForSaleMinDefault = 4 Auto Const Hidden
@@ -64,6 +70,8 @@ Group ShipVendorMappings
     { The list containing the gameplay option or global variable controlling the minimum number of random ships for sale for each vendor. }
     FormList Property RandomShipsForSaleMax Auto Const  ; list of type GameplayOption/GlobalVariable
     { The list containing the gameplay option or global variable controlling the maximum number of random ships for sale for each vendor. }
+    FormList Property VendorContainers Auto Const       ; list of type ObjectReference
+    { The list of containers to use as vendor containers for each vendor. If None, the vendor actor will be used. }
 EndGroup
 
 ; cached vendor mappings
@@ -73,6 +81,7 @@ Form[] shipListsAlwaysCache
 Form[] shipListsUniqueCache
 Form[] randomShipsForSaleMinCache
 Form[] randomShipsForSaleMaxCache
+Form[] vendorContainersCache
 
 ; the log level for the script
 ; -1=none, 0=info, 1=warning, 2=error, 3=debug
@@ -99,6 +108,7 @@ Event OnQuestInit()
     string fnName = "OnQuestInit" Const
     _Log(fnName, "begin", LL_DEBUG)
     Log("SVF_Control", 0, "OnQuestInit", "begin_direct", -1)
+    VersionInfo()
     Initialize()
     Log("SVF_Control", 0, "OnQuestInit", "end_direct", -1)
     _Log(fnName, "end", LL_DEBUG)
@@ -232,7 +242,8 @@ bool Function VendorMappingsSizesMatch()
                        && vendorsCache.Length == shipListsAlwaysCache.Length       \
                        && vendorsCache.Length == shipListsUniqueCache.Length       \
                        && vendorsCache.Length == randomShipsForSaleMinCache.Length \
-                       && vendorsCache.Length == randomShipsForSaleMaxCache.Length
+                       && vendorsCache.Length == randomShipsForSaleMaxCache.Length \
+                       && vendorsCache.Length == vendorContainersCache.Length
     if !listSizesMatch
         _Log(fnName, "The vendor mappings lists do not match in size", LL_ERROR)
         _Log(fnName, "    Vendors: " + vendorsCache.Length, LL_ERROR)
@@ -241,6 +252,7 @@ bool Function VendorMappingsSizesMatch()
         _Log(fnName, "    ShipListsUnique: " + shipListsUniqueCache.Length, LL_ERROR)
         _Log(fnName, "    RandomShipsForSaleMin: " + randomShipsForSaleMinCache.Length, LL_ERROR)
         _Log(fnName, "    RandomShipsForSaleMax: " + randomShipsForSaleMaxCache.Length, LL_ERROR)
+        _Log(fnName, "    VendorContainers: " + vendorContainersCache.Length, LL_ERROR)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
@@ -259,6 +271,7 @@ Function CacheVendorMappings()
     shipListsUniqueCache = ShipListsUnique.GetArray()
     randomShipsForSaleMinCache = RandomShipsForSaleMin.GetArray()
     randomShipsForSaleMaxCache = RandomShipsForSaleMax.GetArray()
+    vendorContainersCache = VendorContainers.GetArray()
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
@@ -304,6 +317,8 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendor)
     tempForm = FormListGetLast(randomShipsForSaleMaxCache[vendorIndex])
     vendorDataMap.RandomShipsForSaleMax = GetValue2(tempForm, RandomShipsForSaleMaxDefault) as int
 
+    vendorDataMap.VendorContainer = FormListGetLast(vendorContainersCache[vendorIndex]) as ObjectReference
+
 
     _Log(fnName, "vendorDataMap.Vendor: " + vendorDataMap.Vendor, LL_INFO)
     _Log(fnName, "vendorDataMap.ListRandom: " + vendorDataMap.ListRandom, LL_INFO)
@@ -311,6 +326,7 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendor)
     _Log(fnName, "vendorDataMap.ListUnique: " + vendorDataMap.ListUnique, LL_INFO)
     _Log(fnName, "vendorDataMap.RandomShipsForSaleMin: " + vendorDataMap.RandomShipsForSaleMin, LL_INFO)
     _Log(fnName, "vendorDataMap.RandomShipsForSaleMax: " + vendorDataMap.RandomShipsForSaleMax, LL_INFO)
+    _Log(fnName, "vendorDataMap.VendorContainer: " + vendorDataMap.VendorContainer, LL_INFO)
 
     _Log(fnName, "end", LL_DEBUG)
     Return vendorDataMap
