@@ -31,28 +31,39 @@ EndFunction
 
 ; override parent function
 Function HandleOnWorkshopObjectPlaced(ObjectReference akReference)
-    Debug.Trace(Self + " OnWorkshopObjectPlaced")
+    string fnName = "HandleOnWorkshopObjectPlaced"
+    _Log(fnName, "begin", LL_DEBUG)
+
     ; create vendor
     MyVendor = PlaceAtMe(OutpostShipbuilderVendor, abInitiallyDisabled=true) as ShipVendorScript
     ObjectReference myLandingMarker = GetLinkedRef()
-    Debug.Trace(Self + "   myLandingMarker=" + myLandingMarker)
+    _Log(fnName, "   myLandingMarker=" + myLandingMarker, LL_DEBUG)
     ; link to landing marker and reinitialize
     MyVendor.Initialize(myLandingMarker)
+
+    _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
 ; override parent function
 Function HandleOnWorkshopObjectRemoved(ObjectReference akReference)
-    Debug.Trace(Self + " OnWorkshopObjectRemoved")
+    string fnName = "HandleOnWorkshopObjectRemoved"
+    _Log(fnName, "begin", LL_DEBUG)
+
     If MyVendor
         MyVendor.Delete()
-        MyVendor = NONE
+        MyVendor = None
     EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
 Event OnActivate(ObjectReference akActionRef)
-    Debug.Trace(Self + " OnActivate " + akActionRef)
+    string fnName = "OnActivate"
+    _Log(fnName, "begin", LL_DEBUG)
+
+    _Log(fnName, "OnActivate " + akActionRef, LL_DEBUG)
     If akActionRef == Game.GetPlayer()
         ShipVendorScript theShipServicesActor = MyVendor as ShipVendorScript
         If theShipServicesActor
@@ -79,4 +90,6 @@ Event OnActivate(ObjectReference akActionRef)
             EndIf
         EndIf
     EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
 EndEvent

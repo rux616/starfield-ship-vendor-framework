@@ -40,35 +40,44 @@ EndFunction
 
 
 Event OnLoad()
+    string fnName = "OnLoad"
+    _Log(fnName, "begin", LL_DEBUG)
+
     If initialized == false
-        Debug.Trace(Self + " OnLoad: initializing...")
-        If MyVendor == None && MyLinkedParent == NONE
+        _Log(fnName, "OnLoad: initializing...", LL_DEBUG)
+        If MyVendor == None && MyLinkedParent == None
             ; get vendor from linked kiosk, or create a new one
             MyLinkedParent = GetLinkedRef() as ShipbuilderMenuActivator
-            Debug.Trace(Self + " MyLinkedParent=" + MyLinkedParent)
-            If MyLinkedParent == NONE
+            _Log(fnName, "MyLinkedParent=" + MyLinkedParent, LL_DEBUG)
+            If MyLinkedParent == None
                 ; not linked to another kiosk
                 ; create vendor
                 MyVendor = PlaceAtMe(ShipbuilderVendor, abInitiallyDisabled=true) as ShipVendorScript
                 ; link to landing marker and reinitialize
-                Debug.Trace(Self + " MyVendor=" + MyVendor)
+                _Log(fnName, "MyVendor=" + MyVendor, LL_DEBUG)
                 MyVendor.Initialize(GetLinkedRef())
             EndIf
         EndIf
         initialized = true
     EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
 EndEvent
 
+
 Event OnActivate(ObjectReference akActionRef)
-    Debug.Trace(Self + " OnActivate " + akActionRef)
+    string fnName = "OnActivate"
+    _Log(fnName, "begin", LL_DEBUG)
+    _Log(fnName, "action ref " + akActionRef, LL_DEBUG)
+
     If akActionRef == Game.GetPlayer()
         ShipVendorScript theShipServicesActor = MyVendor
         If theShipServicesActor == None
-            Debug.Trace(Self + " trying to get my vendor from linked parent")
+            _Log(fnName, "trying to get my vendor from linked parent", LL_DEBUG)
             ; get it from my linked kiosk
             theShipServicesActor = MyLinkedParent.MyVendor
         EndIf
-        Debug.Trace(Self + " theShipServicesActor=" + theShipServicesActor)
+        _Log(fnName, "theShipServicesActor=" + theShipServicesActor, LL_DEBUG)
         If theShipServicesActor
             int messageIndex = ShipBuilderVendorMessage.Show()
             If messageIndex == 0
@@ -86,4 +95,6 @@ Event OnActivate(ObjectReference akActionRef)
             EndIf
         EndIf
     EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
 EndEvent
