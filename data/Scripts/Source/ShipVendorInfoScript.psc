@@ -27,7 +27,7 @@ Event OnEnd(ObjectReference akSpeakerRef, bool abHasBeenSaid)
 	string fnName = "OnEnd"
 	_Log(fnName, "begin", LL_DEBUG)
 
-	_Log("try to show hangar menu for speaker " + akSpeakerRef, LL_DEBUG)
+	_Log(fnName, "try to show hangar menu for speaker " + akSpeakerRef, LL_DEBUG)
 	; if we're calling this on the player, grab whoever the player is talking to and show menu, otherwise just show menu
 	If Utility.IsGameMenuPaused() == false
         SQ_ShipServicesActorScript theVendor
@@ -37,7 +37,7 @@ Event OnEnd(ObjectReference akSpeakerRef, bool abHasBeenSaid)
             theVendor = akSpeakerRef as SQ_ShipServicesActorScript
 		EndIf
         If theVendor && theVendor.MyLandingMarker
-        	_Log("showing ship hangar menu: landing marker=" + theVendor.MyLandingMarker + ", vendor=" + theVendor, LL_DEBUG)
+        	_Log(fnName, "showing ship hangar menu: landing marker=" + theVendor.MyLandingMarker + ", vendor=" + theVendor, LL_DEBUG)
 			; wait a second to allow the audio to finish
     	    Utility.Wait(0.2)
             ; TODO this needs to have a "please wait, initializing" message gate --->
