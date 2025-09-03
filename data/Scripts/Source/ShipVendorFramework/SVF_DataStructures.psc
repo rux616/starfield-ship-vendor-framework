@@ -35,9 +35,7 @@ Struct ShipVendorDataMap
     int RandomShipsForSaleMax
 EndStruct
 
-; struct to hold the mapping of a ship reference to its originating leveled list
-; TODO check if moving this struct to this file and renaming it would invalidate any existing variables using its
-; predecessor struct
+; struct to hold the mapping of a ship reference to its originating leveled ship
 ; this is unused at the moment, but if a v2 of the framework is made, the plan is to have it replace the
 ; "ShipRefToSpaceshipLeveledListMapping" struct in ShipVendorScript
 Struct ShipLVLBToREFMap
