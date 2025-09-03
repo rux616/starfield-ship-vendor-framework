@@ -137,13 +137,13 @@ int Property LogLevel = 3 Auto Const Hidden  ; TODO change back to 0 for release
 
 ; log levels
 ; "info" log level
-int LL_INFO = 0 Const
+int Property LL_INFO = 0 Auto Const Hidden
 ; "warning" log level
-int LL_WARNING = 1 Const
+int Property LL_WARNING = 1 Auto Const Hidden
 ; "error" log level
-int LL_ERROR = 2 Const
+int Property LL_ERROR = 2 Auto Const Hidden
 ; "debug" log level
-int LL_DEBUG = 3 Const
+int Property LL_DEBUG = 3 Auto Const Hidden
 
 
 ; local opinionated log function
