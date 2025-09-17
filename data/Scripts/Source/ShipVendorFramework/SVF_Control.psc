@@ -118,10 +118,8 @@ EndFunction
 Event OnQuestInit()
     string fnName = "OnQuestInit" Const
     _Log(fnName, "begin", LL_DEBUG)
-    Log("SVF_Control", 0, "OnQuestInit", "begin_direct", -1)
     VersionInfo()
     Initialize()
-    Log("SVF_Control", 0, "OnQuestInit", "end_direct", -1)
     _Log(fnName, "end", LL_DEBUG)
 EndEvent
 
@@ -129,10 +127,8 @@ EndEvent
 Event Actor.OnPlayerLoadGame(Actor akPlayer)
     string fnName = "Actor.OnPlayerLoadGame" Const
     _Log(fnName, "begin", LL_DEBUG)
-    Log("SVF_Control", 0, "Actor.OnPlayerLoadGame", "begin_direct", -1)
     VersionInfo()
     Initialize()
-    Log("SVF_Control", 0, "Actor.OnPlayerLoadGame", "end_direct", -1)
     _Log(fnName, "end", LL_DEBUG)
 EndEvent
 
