@@ -18,7 +18,7 @@ int Property LL_DEBUG = 3 Auto Const Hidden
 
 
 ; local opinionated log function
-Function _Log(string asFunctionName, string asLogMessage, int aiSeverity = 0)
+Function _Log(string asFunctionName, string asLogMessage, int aiSeverity)
     ShipVendorFramework:SVF_Utility.Log("ShipVendorInfoScript", GetFormID(), asFunctionName, asLogMessage, aiSeverity, LogLevel)
 EndFunction
 

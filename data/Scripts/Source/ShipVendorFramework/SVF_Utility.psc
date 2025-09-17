@@ -62,7 +62,7 @@ EndFunction
 
 ; local opinionated log function
 ; aiSeverity values: 0 = info, 1 = warning, 2 = error, 3 = debug
-Function _Log(string asFunctionName, string asLogMessage, int aiSeverity = 0) Global
+Function _Log(string asFunctionName, string asLogMessage, int aiSeverity) Global
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const

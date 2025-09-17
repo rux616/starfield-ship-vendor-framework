@@ -99,7 +99,7 @@ int Property LL_DEBUG = 3 Auto Const Hidden
 
 
 ; local opinionated log function
-Function _Log(string asFunctionName, string asLogMessage, int aiSeverity = 0)
+Function _Log(string asFunctionName, string asLogMessage, int aiSeverity)
     Log("SVF_Control", GetFormID(), asFunctionName, asLogMessage, aiSeverity, LogLevel)
 EndFunction
 
