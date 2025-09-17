@@ -702,6 +702,8 @@ Function UseSVFDatasetsCheck()
     _Log(fnName, "begin", LL_DEBUG)
 
     useSVFDatasets = svfShipsToSellListAlwaysDatasetLocal != None \
+                  && svfShipsToSellListRandomDatasetLocal != None \
+                  && svfShipsToSellListUniqueDatasetLocal != None
     _Log(fnName, "Using SVF datasets: " + useSVFDatasets, LL_INFO)
 
     ; if a vendor is using SVF datasets, then it should be able to buy and sell ships, so we set the flags manually.
