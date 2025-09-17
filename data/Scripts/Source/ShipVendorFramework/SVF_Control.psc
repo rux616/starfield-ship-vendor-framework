@@ -136,7 +136,7 @@ EndEvent
 Function Initialize()
     string fnName = "Initialize" Const
     _Log(fnName, "begin", LL_DEBUG)
-    _Log(fnName, "SVF Control version: current=" + SVFControlVersionCurrent + ", desired=" + SVFControlVersion)
+    _Log(fnName, "SVF Control version: current=" + SVFControlVersionCurrent + ", desired=" + SVFControlVersion, LL_INFO)
 
     If SVFControlVersionCurrent < 1
         InitializeSVFControlVersion1()
@@ -208,34 +208,36 @@ bool Function VendorMappingsNotNone()
     string fnName = "VendorMappingsNotNone" Const
     _Log(fnName, "begin", LL_DEBUG)
 
+    _Log(fnName, "Running checks on vendor mappings", LL_INFO)
+
     bool listNone = false
     If Vendors == None
-        _Log(fnName, "Vendors is None", LL_ERROR)
+        _Log(fnName, "    Vendors is None", LL_ERROR)
         listNone = true
     EndIf
 
     If ShipListsRandom == None
-        _Log(fnName, "ShipListsRandom is None", LL_ERROR)
+        _Log(fnName, "    ShipListsRandom is None", LL_ERROR)
         listNone = true
     EndIf
 
     If ShipListsAlways == None
-        _Log(fnName, "ShipListsAlways is None", LL_ERROR)
+        _Log(fnName, "    ShipListsAlways is None", LL_ERROR)
         listNone = true
     EndIf
 
     If ShipListsUnique == None
-        _Log(fnName, "ShipListsUnique is None", LL_ERROR)
+        _Log(fnName, "    ShipListsUnique is None", LL_ERROR)
         listNone = true
     EndIf
 
     If RandomShipsForSaleMin == None
-        _Log(fnName, "RandomShipsForSaleMin is None", LL_ERROR)
+        _Log(fnName, "    RandomShipsForSaleMin is None", LL_ERROR)
         listNone = true
     EndIf
 
     If RandomShipsForSaleMax == None
-        _Log(fnName, "RandomShipsForSaleMax is None", LL_ERROR)
+        _Log(fnName, "    RandomShipsForSaleMax is None", LL_ERROR)
         listNone = true
     EndIf
 
@@ -248,6 +250,8 @@ EndFunction
 bool Function VendorMappingsSizesMatch()
     string fnName = "VendorMappingsSizesMatch" Const
     _Log(fnName, "begin", LL_DEBUG)
+
+    _Log(fnName, "Checking that vendor mappings lists match in size", LL_INFO)
 
     bool listSizesMatch = vendorsCache.Length == shipListsRandomCache.Length       \
                        && vendorsCache.Length == shipListsAlwaysCache.Length       \
