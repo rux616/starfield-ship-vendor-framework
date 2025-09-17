@@ -898,80 +898,48 @@ Function PurgeAlreadySoldUniques(SpaceshipReference[] akShipList, SpaceshipRefer
 EndFunction
 
 
-; matches the "always" and "unique" ships-to-sell lists to the ships-for-sale lists and refreshes those lists if needed
+; matches the "always" and "unique" ships-to-sell lists pre and post update and refreshes the ship inventory if needed
 Function CheckForNewShips()
     string fnName = "CheckForNewShips" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    SpaceshipReference[] ShipsForSaleAlwaysCopy = None
-    SpaceshipReference[] ShipsForSaleUniqueCopy = None
-    LockGuard ShipsForSaleGuard
-        ShipsForSaleAlwaysCopy = (shipsForSaleAlways as var[]) as SpaceshipReference[]
-        ShipsForSaleUniqueCopy = (shipsForSaleUnique as var[]) as SpaceshipReference[]
-    EndLockGuard
+    ; general algorithm is as follows:
+    ; 1. make copies of the "always" and "unique" ships-to-sell lists
+    ; 2. refresh the ships-to-sell lists from the datasets
+    ; 3. compare the new lists to the copies made in step 1
 
-    RefreshShipsToSellArrays()
-    var[] ShipsToSellAlwaysCopy = None
-    var[] ShipsToSellUniqueCopy = None
+    bool refreshAlways
+    bool refreshUnique
     If useSVFDatasets == true
-        ShipsToSellAlwaysCopy = svfShipsToSellAlways as var[]
-        ShipsToSellUniqueCopy = svfShipsToSellUnique as var[]
+        LeveledSpaceshipBase[] svfShipsToSellAlwaysCopy = (svfShipsToSellAlways as var[]) as LeveledSpaceshipBase[]
+        LeveledSpaceshipBase[] svfShipsToSellUniqueCopy = (svfShipsToSellUnique as var[]) as LeveledSpaceshipBase[]
+
+        RefreshShipsToSellArrays()
+
+        refreshAlways = !ShipVendorFramework:SVF_Utility.ArraysEqualLVLB(svfShipsToSellAlwaysCopy, svfShipsToSellAlways, abConsiderOrder=true)
+        refreshUnique = !ShipVendorFramework:SVF_Utility.ArraysEqualLVLB(svfShipsToSellUniqueCopy, svfShipsToSellUnique, abConsiderOrder=true)
     Else
-        ShipsToSellAlwaysCopy = shipsToSellAlways as var[]
-        ShipsToSellUniqueCopy = shipsToSellUnique as var[]
+        ShipVendorListScript:ShipToSell[] shipsToSellAlwaysCopy = (shipsToSellAlways as var[]) as ShipVendorListScript:ShipToSell[]
+        ShipVendorListScript:ShipToSell[] shipsToSellUniqueCopy = (shipsToSellUnique as var[]) as ShipVendorListScript:ShipToSell[]
+
+        RefreshShipsToSellArrays()
+
+        refreshAlways = !ShipVendorFramework:SVF_Utility.ArraysEqualShipToSell(shipsToSellAlwaysCopy, shipsToSellAlways, abConsiderOrder=true)
+        refreshUnique = !ShipVendorFramework:SVF_Utility.ArraysEqualShipToSell(shipsToSellUniqueCopy, shipsToSellUnique, abConsiderOrder=true)
     EndIf
 
-    bool refreshAlways = !ForSaleMatchesToSell(ShipsForSaleAlwaysCopy, ShipsToSellAlwaysCopy, shipsForSaleMappingAlways)
-    bool refreshUnique = !ForSaleMatchesToSell(ShipsForSaleUniqueCopy, ShipsToSellUniqueCopy, shipsForSaleMappingUnique)
-
+    ; if there are any differences between the original and refreshed lists, refresh the inventory
     If refreshAlways == true || refreshUnique == true
+        _Log(fnName, "New ships detected, refreshing inventory", LL_INFO)
+        _Log(fnName, "refreshAlways=" + refreshAlways + ", refreshUnique=" + refreshUnique, LL_DEBUG)
         LockGuard ShipsForSaleGuard
             RefreshInventoryList(MyLandingMarker, shipsForSale, shipsForSaleAlways, shipsForSaleRandom, shipsForSaleUnique, shipsForSaleSoldByPlayer)
         EndLockGuard
+    Else
+        _Log(fnName, "No new ships detected", LL_INFO)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
-EndFunction
-
-
-; check to see if the spaceship references are in the "for sale" list and that it matches the "to sell" list
-bool Function ForSaleMatchesToSell(SpaceshipReference[] akShipsForSaleList, var[] akShipsToSellList, ShipRefToSpaceshipLeveledListMapping[] akMappingList)
-    string fnName = "ForSaleMatchesToSell" Const
-    _Log(fnName, "begin", LL_DEBUG)
-
-    bool toReturn = true
-
-    SpaceshipReference shipToCheck = None
-    int refToShipMappingIndex = 0
-    LeveledSpaceshipBase leveledShip = None
-    int leveledShipIndex = 0
-    int i = akShipsForSaleList.Length - 1
-    While i > -1 && toReturn == true
-        shipToCheck = akShipsForSaleList[i]
-        refToShipMappingIndex = akMappingList.FindStruct("ShipRef", shipToCheck)
-        If refToShipMappingIndex > -1
-            leveledShip = akMappingList[refToShipMappingIndex].LeveledShip
-            If useSVFDatasets == true
-                leveledShipIndex = (akShipsToSellList as LeveledSpaceshipBase[]).Find(leveledShip)
-            Else
-                leveledShipIndex = (akShipsToSellList as ShipVendorListScript:ShipToSell[]).FindStruct("LeveledShip", leveledShip)
-            EndIf
-            If leveledShipIndex > -1
-                akShipsForSaleList.Remove(i)
-                akShipsToSellList.Remove(leveledShipIndex)
-            Else
-                toReturn = false
-            EndIf
-        EndIf
-        i += -1
-    EndWhile
-    If toReturn == true && (akShipsForSaleList.Length > 0 || akShipsToSellList.Length > 0)
-        toReturn = false
-    EndIf
-
-    _Log(fnName, "returning " + toReturn, LL_DEBUG)
-    _Log(fnName, "end", LL_DEBUG)
-    Return toReturn
 EndFunction
 
 

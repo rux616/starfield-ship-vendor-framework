@@ -257,10 +257,9 @@ var[] Function AppendToArray(var[] avAppendTo, var[] avAppendFrom) Global
 EndFunction
 
 
-; wrapper function to check if two arrays are equal. supports arrays of LeveledSpaceshipBase and
-; ShipVendorListScript:ShipToSell structs, and can optionally consider order
-bool Function ArraysEqual(var[] avArray1, var[] avArray2, bool abConsiderOrder = false) Global
-    string fnName = "ArraysEqual" Const
+; check if two arrays of LeveledSpaceshipBase structs are equal
+bool Function ArraysEqualLVLB(LeveledSpaceshipBase[] avArray1, LeveledSpaceshipBase[] avArray2, bool abConsiderOrder) Global
+    string fnName = "ArraysEqualLVLB" Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
@@ -274,29 +273,6 @@ bool Function ArraysEqual(var[] avArray1, var[] avArray2, bool abConsiderOrder =
         Return false
     EndIf
 
-    ; farm out the actual checking of the arrays to the appropriate function based on the type of the arrays
-    If avArray1 is LeveledSpaceshipBase[] && avArray2 is LeveledSpaceshipBase[]
-        Return ArraysEqualLVLB(avArray1 as LeveledSpaceshipBase[], avArray2 as LeveledSpaceshipBase[], abConsiderOrder)
-    ElseIf avArray1 is ShipVendorListScript:ShipToSell[] && avArray2 is ShipVendorListScript:ShipToSell[]
-        Return ArraysEqualShipToSell(avArray1 as ShipVendorListScript:ShipToSell[], avArray2 as ShipVendorListScript:ShipToSell[], abConsiderOrder)
-    Else
-        _Log(fnName, "unsupported array type or arrays are not of the same type", LL_ERROR)
-    EndIf
-
-    _Log(fnName, "end", LL_DEBUG)
-    Return false
-EndFunction
-
-
-; check if two arrays of LeveledSpaceshipBase structs are equal
-bool Function ArraysEqualLVLB(LeveledSpaceshipBase[] avArray1, LeveledSpaceshipBase[] avArray2, bool abConsiderOrder) Global
-    string fnName = "ArraysEqualLVLB" Const
-    int LL_INFO = 0 Const
-    int LL_WARNING = 1 Const
-    int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
-    _Log(fnName, "begin", LL_DEBUG)
-
     int i = 0
     If abConsiderOrder == true
         While i < avArray1.Length
@@ -308,13 +284,15 @@ bool Function ArraysEqualLVLB(LeveledSpaceshipBase[] avArray1, LeveledSpaceshipB
         EndWhile
     Else
         int findResult = 0
+        ; since we'll be removing items from the array as we find matches, make a copy first
+        LeveledSpaceshipBase[] avArray2Copy = (avArray2 as var[]) as LeveledSpaceshipBase[]
         While i < avArray1.Length
-            findResult = avArray2.Find(avArray1[i])
+            findResult = avArray2Copy.Find(avArray1[i])
             If findResult == -1
                 _Log(fnName, avArray1[i] + " of array 1 not found in array 2", LL_DEBUG)
                 Return false
             Else
-                avArray2.Remove(findResult)
+                avArray2Copy.Remove(findResult)
             EndIf
             i += 1
         EndWhile
@@ -335,6 +313,13 @@ bool Function ArraysEqualShipToSell(ShipVendorListScript:ShipToSell[] avArray1, 
     int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
 
+    ; check for length differences. by definition, if the lengths are different, the arrays cannot be equal, regardless
+    ; of order or type
+    If avArray1.Length != avArray2.Length
+        _Log(fnName, "arrays differ in length: " + avArray1.Length + " != " + avArray2.Length, LL_DEBUG)
+        Return false
+    EndIf
+
     int i = 0
     If abConsiderOrder == true
         While i < avArray1.Length
@@ -347,16 +332,24 @@ bool Function ArraysEqualShipToSell(ShipVendorListScript:ShipToSell[] avArray1, 
     Else
         bool matchFound = false
         int findResult = 0
+        ; since we'll be removing items from the array as we find matches, make a copy first
+        ShipVendorListScript:ShipToSell[] avArray2Copy = (avArray2 as var[]) as ShipVendorListScript:ShipToSell[]
         While i < avArray1.Length
             matchFound = false
-            findResult = avArray2.FindStruct("leveledShip", avArray1[i].leveledShip)
+            findResult = avArray2Copy.FindStruct("leveledShip", avArray1[i].leveledShip)
+            ; loop while the the find result is valid and a match hasn't been found yet
             While findResult > -1 && matchFound == false
-                If avArray1[i].minLevel == avArray2[findResult].minLevel  ; check minLevel
+                ; check the minimum level to verify a match
+                If avArray1[i].minLevel == avArray2Copy[findResult].minLevel
                     matchFound = true
-                    avArray2.Remove(findResult)
-                ElseIf findResult < avArray2.Length - 1  ; make sure the starting index is not the last index
-                    findResult = avArray2.FindStruct("leveledShip", avArray1[i].leveledShip, findResult + 1)
-                Else  ; if the starting index is the last index, break out of the loop
+                    avArray2Copy.Remove(findResult)
+                ; if the minimum level doesn't match, look for the next instance of the leveled ship in the array
+                ; this ElseIf clause checks to make sure that the starting index of the next search is not the last
+                ; index, as that would be useless and trying to search outside the array bounds would cause an error
+                ElseIf findResult < avArray2Copy.Length - 1  ; make sure the starting index is not the last index
+                    findResult = avArray2Copy.FindStruct("leveledShip", avArray1[i].leveledShip, findResult + 1)
+                ; if the starting index is the last index, break out of the loop
+                Else
                     findResult = -1
                 EndIf
             EndWhile
