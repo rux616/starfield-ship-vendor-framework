@@ -65,17 +65,23 @@ int Property RandomShipsForSaleMaxDefault = 8 Auto Const Hidden
 Group ShipVendorMappings
     FormList Property Vendors Auto Const                ; list of type Actor
     { The list of vendors to build the data mappings from. }
+
     FormList Property ShipListsRandom Auto Const        ; list of type FormList
-    { The list of random ship lists that correspond to each vendor. }
+    { The list of pointer lists that correspond to each vendor for random ship lists. }
+
     FormList Property ShipListsAlways Auto Const        ; list of type FormList
-    { The list of always available ship lists that correspond to each vendor. }
+    { The list of pointer lists that correspond to each vendor for always available ship lists. }
+
     FormList Property ShipListsUnique Auto Const        ; list of type FormList
-    { The list of unique ship lists that correspond to each vendor. }
+    { The list of pointer lists that correspond to each vendor for unique ship lists. }
     FormList Property RandomShipsForSaleMin Auto Const  ; list of type GameplayOption/GlobalVariable
-    { The list containing the gameplay option or global variable controlling the minimum number of random ships for sale for each vendor. }
+    { The list of pointer lists that correspond to each vendor which contains the gameplay option or global variable controlling the minimum number of random ships for sale. }
+
     FormList Property RandomShipsForSaleMax Auto Const  ; list of type GameplayOption/GlobalVariable
-    { The list containing the gameplay option or global variable controlling the maximum number of random ships for sale for each vendor. }
+    { The list of pointer lists that correspond to each vendor which contains the gameplay option or global variable controlling the maximum number of random ships for sale. }
+
     FormList Property VendorContainers Auto Const       ; list of type ObjectReference
+    { The list of pointer lists that correspond to each vendor which contains the container to use as vendor containers. If the contents of the pointer list is None, the vendor actor will be used. }
     { The list of containers to use as vendor containers for each vendor. If None, the vendor actor will be used. }
 EndGroup
 
