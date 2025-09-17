@@ -18,24 +18,24 @@ Message Property ShipBuilderVendorMessage Auto Const
 
 bool initialized = false
 
-; the log level for the script
-; -1=none, 0=info, 1=warning, 2=error, 3=debug
-int Property LogLevel = 3 Auto Const Hidden  ; TODO change back to 0 for release
+; the log level threshold for the script; messages with a level less than this threshold will not be logged
+; -1 = debug (all), 0 = info (default), 1 = warning, 2 = error, 3 = none (suppress)
+int Property LOG_LEVEL_THRESHOLD = -1 Auto Const Hidden  ; TODO change back to 0 for release
 
 ; log levels
+; "debug" log level
+int Property LL_DEBUG = -1 Auto Const Hidden
 ; "info" log level
 int Property LL_INFO = 0 Auto Const Hidden
 ; "warning" log level
 int Property LL_WARNING = 1 Auto Const Hidden
 ; "error" log level
 int Property LL_ERROR = 2 Auto Const Hidden
-; "debug" log level
-int Property LL_DEBUG = 3 Auto Const Hidden
 
 
 ; local opinionated log function
-Function _Log(string asFunctionName, string asLogMessage, int aiSeverity)
-    ShipVendorFramework:SVF_Utility.Log("ShipbuilderMenuActivator", GetFormID(), asFunctionName, asLogMessage, aiSeverity, LogLevel)
+Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel)
+    ShipVendorFramework:SVF_Utility.Log("ShipbuilderMenuActivator", GetFormID(), asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 

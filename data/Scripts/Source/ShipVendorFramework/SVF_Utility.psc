@@ -21,14 +21,14 @@ ScriptName ShipVendorFramework:SVF_Utility
 
 
 ; log function
-; aiSeverity: severity of the log message
-; aiSeverity values: 0 = info, 1 = warning, 2 = error, 3 = debug
-; aiSeverityLimit: limits the level of severity that will be logged to the given level and below
-; aiSeverityLimit values: -1 = none (suppress), 0 = info, 1 = warning, 2 = error, 3 = debug
-Function Log(string asScriptName, int aiSource, string asFunctionName, string asLogMessage, int aiSeverity = 0, int aiSeverityLimit = 2, string asLogName = "ShipVendorFramework") Global
-    aiSeverityLimit = ClampInt(aiSeverityLimit, -1, 3)
-    aiSeverity = ClampInt(aiSeverity, -1, 3)
-    If aiSeverity > aiSeverityLimit
+; aiLogLevel: severity of the log message
+; aiLogLevel values: -1 = debug, 0 = info, 1 = warning, 2 = error, 3 = forced (always log regardless of threshold)
+; aiLogLevelThreshold: messages will only be logged if their level is greater than or equal to this threshold
+; aiLogLevelThreshold values: -1 = debug (all), 0 = info (default), 1 = warning, 2 = error, 3 = none (suppress)
+Function Log(string asScriptName, int aiSource, string asFunctionName, string asLogMessage, int aiLogLevel = 0, int aiLogLevelThreshold = -1, string asLogName = "ShipVendorFramework") Global ; TODO change aiLogLevelThreshold back to 0 for release
+    aiLogLevel = ClampInt(aiLogLevel, -1, 3)
+    aiLogLevelThreshold = ClampInt(aiLogLevelThreshold, -1, 3)
+    If aiLogLevel < aiLogLevelThreshold
         Return
     EndIf
     If asScriptName != "" && aiSource != 0
@@ -37,38 +37,38 @@ Function Log(string asScriptName, int aiSource, string asFunctionName, string as
     If asFunctionName != ""
         asFunctionName = "." + asFunctionName + "(): "
     EndIf
-    string asSeverity = ""
-    If aiSeverity == 0
-        asSeverity = "NFO"
-    ElseIf aiSeverity == 3
-        asSeverity = "DBG"
-        aiSeverity = 0
-    ElseIf aiSeverity == 1
-        asSeverity = "WRN"
-    ElseIf aiSeverity == 2
-        asSeverity = "ERR"
+    string logLevelText = ""
+    If aiLogLevel == -1
+        logLevelText = "DBG"
+        aiLogLevel = 0
+    ElseIf aiLogLevel == 0
+        logLevelText = "NFO"
+    ElseIf aiLogLevel == 1
+        logLevelText = "WRN"
+    ElseIf aiLogLevel == 2
+        logLevelText = "ERR"
     EndIf
-    If asSeverity != ""
-        asSeverity = asSeverity + ": "
+    If logLevelText != ""
+        logLevelText = logLevelText + ": "
     EndIf
-    asLogMessage = asSeverity + asScriptName + asFunctionName + asLogMessage
-    If ! Debug.TraceUser(asLogName, asLogMessage, aiSeverity)
-        ; if log wasn't open, open it, then send trace again
+    asLogMessage = logLevelText + asScriptName + asFunctionName + asLogMessage
+    ; try to log; if the TraceUser function returns false, the log wasn't open, so open it and try again
+    If Debug.TraceUser(asLogName, asLogMessage, aiLogLevel) == false
         Debug.OpenUserLog(asLogName)
-        Debug.TraceUser(asLogName, asLogMessage, aiSeverity)
+        Debug.TraceUser(asLogName, asLogMessage, aiLogLevel)
     EndIf
 EndFunction
 
 
 ; local opinionated log function
-; aiSeverity values: 0 = info, 1 = warning, 2 = error, 3 = debug
-Function _Log(string asFunctionName, string asLogMessage, int aiSeverity) Global
+; aiLogLevel values: -1 debug, 0 = info, 1 = warning, 2 = error, 3 = forced
+Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel) Global
+    int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
     int LOG_LEVEL_THRESHOLD = LL_DEBUG Const  ; TODO change back to LL_INFO for release
-    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiSeverity, LOG_LEVEL_THRESHOLD)
+    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 
@@ -104,10 +104,10 @@ EndFunction
 ; deduplicate an integer array (from the back, as it's more efficient)
 Function DeduplicateIntArray(int[] aiArray) Global
     string fnName = "DeduplicateIntArray" Const
+    int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
 
     int i = aiArray.Length - 1
@@ -152,10 +152,10 @@ EndFunction
 ; - the shuffled array
 var[] Function ShuffleArray(var[] avArray, int aiSteps = -1, int aiIndexStart = 0) Global
     string fnName = "ShuffleArray" Const
+    int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
     ; _Log(fnName, "avArray.Length=" + avArray.Length + ", aiSteps=" + aiSteps + ", aiIndexStart=" + aiIndexStart, LL_DEBUG)
 
@@ -232,10 +232,10 @@ EndFunction
 ; append the second array to the first array
 var[] Function AppendToArray(var[] avAppendTo, var[] avAppendFrom) Global
     string fnName = "AppendToArray" Const
+    int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
 
     If avAppendTo.Length + avAppendFrom.Length > 128
@@ -260,10 +260,10 @@ EndFunction
 ; check if two arrays of LeveledSpaceshipBase structs are equal
 bool Function ArraysEqualLVLB(LeveledSpaceshipBase[] avArray1, LeveledSpaceshipBase[] avArray2, bool abConsiderOrder) Global
     string fnName = "ArraysEqualLVLB" Const
+    int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
 
     ; check for length differences. by definition, if the lengths are different, the arrays cannot be equal, regardless
@@ -307,10 +307,10 @@ EndFunction
 ; check if two arrays of ShipVendorListScript:ShipToSell structs are equal
 bool Function ArraysEqualShipToSell(ShipVendorListScript:ShipToSell[] avArray1, ShipVendorListScript:ShipToSell[] avArray2, bool abConsiderOrder) Global
     string fnName = "ArraysEqualShipToSell" Const
+    int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
 
     ; check for length differences. by definition, if the lengths are different, the arrays cannot be equal, regardless
@@ -370,10 +370,10 @@ EndFunction
 ; returns the last Form in a FormList, or None if the FormList is empty or None
 Form Function FormListGetLast(Form akFormList) Global
     string fnName = "FormListGetLast" Const
+    int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
 
     If akFormList == None
@@ -406,10 +406,10 @@ EndFunction
 ; returns the value of a GameplayOption or GlobalVariable, or a default value if the Form is not one of those types
 float Function GetValue2(Form akForm, float afDefault = 0.0) Global
     string fnName = "GetValue2" Const
+    int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
-    int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
 
     float toReturn = afDefault
