@@ -376,13 +376,13 @@ Form Function FormListGetLast(Form akFormList) Global
     int LL_DEBUG = 3 Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    If !(akFormList is FormList)
-        _Log(fnName, "akFormList is not a FormList", LL_ERROR)
+    If akFormList == None
+        _Log(fnName, "akFormList is None", LL_ERROR)
         Return None
     EndIf
 
-    If akFormList == None
-        _Log(fnName, "akFormList is None", LL_ERROR)
+    If !(akFormList is FormList)
+        _Log(fnName, "akFormList is not a FormList", LL_ERROR)
         Return None
     EndIf
 
@@ -390,7 +390,7 @@ Form Function FormListGetLast(Form akFormList) Global
     Form[] listContents = list.GetArray()
     int size = listContents.Length
     If size == 0
-        _Log(fnName, "form list " + akFormList + " is empty", LL_WARNING)
+        _Log(fnName, "form list " + list + " is empty", LL_WARNING)
         Return None
     EndIf
 
