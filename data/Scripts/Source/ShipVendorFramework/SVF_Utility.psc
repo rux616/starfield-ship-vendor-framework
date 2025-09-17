@@ -427,3 +427,15 @@ float Function GetValue2(Form akForm, float afDefault = 0.0) Global
     _Log(fnName, "returning value: " + toReturn, LL_DEBUG)
     Return toReturn
 EndFunction
+
+
+; small utility function to get the hex ID of a Form, optionally with the "0x" prefix
+string Function GetHexID(Form akForm, bool abIncludePrefix = true) Global
+    If akForm == None
+        Return "None"
+    EndIf
+    If abIncludePrefix
+        Return "0x" + Utility.IntToHex(akForm.GetFormID())
+    EndIf
+    Return Utility.IntToHex(akForm.GetFormID())
+EndFunction
