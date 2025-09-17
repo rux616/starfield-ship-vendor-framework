@@ -82,7 +82,17 @@ Group ShipVendorMappings
 
     FormList Property VendorContainers Auto Const       ; list of type ObjectReference
     { The list of pointer lists that correspond to each vendor which contains the container to use as vendor containers. If the contents of the pointer list is None, the vendor actor will be used. }
-    { The list of containers to use as vendor containers for each vendor. If None, the vendor actor will be used. }
+EndGroup
+
+Group Messages
+    Message Property MsgErrorVendorMappingsNone Auto Const
+    { Message to show when a vendor mappings list is not defined. }
+
+    Message Property MsgErrorVendorMappingsNoneDeep Auto Const
+    { Message to show when a vendor mappings list contains entries that evaluate to None. }
+
+    Message Property MsgErrorVendorMappingsSizesMismatch Auto Const
+    { Message to show when the vendor mappings lists do not match in size. }
 EndGroup
 
 ; cached vendor mappings
@@ -156,9 +166,11 @@ Function Initialize()
 
     ; show error messages if needed
     If mappingsNotNone == false
-        ; TODO show an error message in game
+        MsgErrorVendorMappingsNone.Show()
     ElseIf mappingsSizesMatch == false
+        MsgErrorVendorMappingsSizesMismatch.Show()
     ElseIf mappingsNotNoneDeep == false
+        MsgErrorVendorMappingsNoneDeep.Show()
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
