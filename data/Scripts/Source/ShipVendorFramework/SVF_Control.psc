@@ -284,25 +284,19 @@ Function CacheVendorMappings()
 EndFunction
 
 
-ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendor)
-    string fnName = "GetShipVendorDataMap" Const
+ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akShipVendor)
+    string fnName = "GetShipVendorDataMap[0x" + Utility.IntToHex(akShipVendor.GetFormID()) + "]" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    If akShipVendor == None
-        _Log(fnName, "akShipVendor is None", LL_ERROR)
-        Return None
-    EndIf
-
-    _Log(fnName, "searching for " + akShipVendor + " in Vendors (" + vendorsCache + ")", LL_DEBUG)
-    int vendorIndex = vendorsCache.Find(akShipVendor)
+    _Log(fnName, "searching for " + akShipVendorBase + " in Vendors (" + vendorsCache + ")", LL_DEBUG)
+    int vendorIndex = vendorsCache.Find(akShipVendorBase)
     If vendorIndex < 0
-        _Log(fnName, akShipVendor + " not found in Vendors", LL_WARNING)
+        _Log(fnName, akShipVendorBase + " not found in Vendors", LL_WARNING)
         Return None
     EndIf
-    _Log(fnName, akShipVendor + " found at index " + vendorIndex, LL_DEBUG)
+    _Log(fnName, akShipVendorBase + " found at index " + vendorIndex, LL_DEBUG)
 
-    ShipVendorDataMap vendorDataMap
-    vendorDataMap = new ShipVendorDataMap
+    ShipVendorDataMap vendorDataMap = new ShipVendorDataMap
 
 
     ; this block takes the each form list from the vendor mappings, gets the last form in the list (thereby allowing
@@ -310,7 +304,7 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendor)
     ; appropriate type for each variable. it could be done without the intermediate tempForm variable, but the code is
     ; easier to read this way because it doesn't have to get split up into multiple lines with the editor set to 120
     ; characters per line
-    vendorDataMap.Vendor = akShipVendor as ActorBase
+    vendorDataMap.Vendor = akShipVendorBase as ActorBase
 
     vendorDataMap.ListRandom = FormListGetLast(shipListsRandomCache[vendorIndex]) as FormList
     vendorDataMap.ListAlways = FormListGetLast(shipListsAlwaysCache[vendorIndex]) as FormList

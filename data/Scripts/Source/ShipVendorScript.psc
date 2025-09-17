@@ -657,7 +657,7 @@ Function PopulateLocals()
     Form baseSelf = Self.GetBaseObject()
     _Log(fnName, "getting vendor data map for " + Self + " (base: " + (baseSelf as ActorBase) + ")", LL_DEBUG)
     ShipVendorFramework:SVF_DataStructures:ShipVendorDataMap vendorDataMap
-    vendorDataMap = svfControl.GetShipVendorDataMap(baseSelf)
+    vendorDataMap = svfControl.GetShipVendorDataMap(baseSelf, Self)
     If vendorDataMap != None
         _Log(fnName, "vendor data map found", LL_INFO)
         svfShipsToSellListRandomDatasetLocal = vendorDataMap.ListRandom
