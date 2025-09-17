@@ -36,9 +36,6 @@ string Property SVFVersion = "1.6.0" Auto Const Hidden
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
 
-FormList Property UniqueShipsSold Auto Const
-{ Form List that keeps track of unique ships sold to the player. }
-
 Group GameplayOptions
     GameplayOption Property RegenerateUniqueShipsOption Auto Const
     { Gameplay option to control whether unique ships sold to the player can be regenerated. }
@@ -50,8 +47,16 @@ Group GameplayOptions
     { Gameplay option to control the minimum number of credits ship vendors should have when the "rich ship vendors" option is enabled. }
 EndGroup
 
-int[] Property RichShipVendorsMinimumCreditsValues Auto Const
-{ The values for the minimum credits for rich ship vendors. }
+Group Other
+    FormList Property UniqueShipsSold Auto Const
+    { Form List that keeps track of unique ships sold to the player. }
+
+    Keyword Property NoPickpocketKeyword Auto Const
+    { The NoPickpocket keyword. If the vendor container is not set and the vendor does not have this keyword, it will be added to prevent pick-pocketing. }
+
+    int[] Property RichShipVendorsMinimumCreditsValues Auto Const
+    { The values for the minimum credits for rich ship vendors. }
+EndGroup
 
 ; default values for the vendor mappings
 int Property RandomShipsForSaleMinDefault = 4 Auto Const Hidden

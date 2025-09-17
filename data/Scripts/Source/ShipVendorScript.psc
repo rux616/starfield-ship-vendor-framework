@@ -1447,6 +1447,13 @@ Function ApplyRichShipVendorCreditAdjustment()
         ObjectReference theContainer = vendorContainerLocal
         If theContainer == None
             theContainer = Self
+            Keyword noPickpocketKeyword = svfControl.NoPickpocketKeyword
+            If Self.HasKeyword(noPickpocketKeyword) == false
+                _Log(fnName, "Vendor container not set and vendor does not have the " + noPickpocketKeyword + " keyword; adding it", LL_WARNING)
+                Self.AddKeyword(noPickpocketKeyword)
+            Else
+                _Log(fnName, "Vendor container not set but vendor already has the " + noPickpocketKeyword + " keyword", LL_DEBUG)
+            EndIf
         EndIf
         MiscObject credits = Game.GetCredits()
         int currentCredits = theContainer.GetItemCount(credits)
