@@ -178,14 +178,14 @@ Function InitializeSVFControlVersion1()
     string fnName = "InitializeSVFControlVersion" + updatingToVersion Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    _Log(fnName, "SVF Control initializing to version " + updatingToVersion)
+    _Log(fnName, "SVF Control initializing to version " + updatingToVersion, LL_INFO)
 
     ; because the CK (still) can't assign actors to script properties, we have to do this manually
     PlayerRef = Game.GetPlayer()
     RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
 
     SVFControlVersionCurrent = updatingToVersion
-    _Log(fnName, "SVF Control initialized to version " + updatingToVersion)
+    _Log(fnName, "SVF Control initialized to version " + updatingToVersion, LL_INFO)
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
