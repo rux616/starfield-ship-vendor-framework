@@ -145,16 +145,20 @@ Function Initialize()
     ; perform sanity checks
     bool mappingsNotNone = VendorMappingsNotNone()
     bool mappingsSizesMatch = true
+    bool mappingsNotNoneDeep = true
     If mappingsNotNone == true
         CacheVendorMappings()
         mappingsSizesMatch = VendorMappingsSizesMatch()
+        If mappingsSizesMatch == true
+            mappingsNotNoneDeep = VendorMappingsNotNoneDeep()
+        EndIf
     EndIf
 
     ; show error messages if needed
     If mappingsNotNone == false
         ; TODO show an error message in game
     ElseIf mappingsSizesMatch == false
-        ; TODO show an error message in game
+    ElseIf mappingsNotNoneDeep == false
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
@@ -264,6 +268,53 @@ bool Function VendorMappingsSizesMatch()
 
     _Log(fnName, "end", LL_DEBUG)
     Return listSizesMatch
+EndFunction
+
+
+; performs a deep sanity check on the vendor mappings to ensure that the form lists in the mappings do not contain None entries
+bool Function VendorMappingsNotNoneDeep()
+    string fnName = "VendorMappingsNotNoneDeep" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    _Log(fnName, "Running deep checks on vendor mappings", LL_INFO)
+
+    bool listNoneDeep = false
+
+    int i = 0
+    While i < vendorsCache.Length
+        If FormListGetLast(shipListsRandomCache[i]) == None
+            _Log(fnName, "    ShipListsRandom[" + i + "], " + GetHexID(shipListsRandomCache[i]) + ", evaluates to None (vendor " + GetHexID(vendorsCache[i]) + ")", LL_ERROR)
+            listNoneDeep = true
+        EndIf
+
+        If FormListGetLast(shipListsAlwaysCache[i]) == None
+            _Log(fnName, "    ShipListsAlways[" + i + "], " + GetHexID(shipListsAlwaysCache[i]) + ", evaluates to None (vendor " + GetHexID(vendorsCache[i]) + ")", LL_ERROR)
+            listNoneDeep = true
+        EndIf
+
+        If FormListGetLast(shipListsUniqueCache[i]) == None
+            _Log(fnName, "    ShipListsUnique[" + i + "], " + GetHexID(shipListsUniqueCache[i]) + ", evaluates to None (vendor " + GetHexID(vendorsCache[i]) + ")", LL_ERROR)
+            listNoneDeep = true
+        EndIf
+
+        If FormListGetLast(randomShipsForSaleMinCache[i]) == None
+            _Log(fnName, "    RandomShipsForSaleMin[" + i + "], " + GetHexID(randomShipsForSaleMinCache[i]) + ", evaluates to None (vendor " + GetHexID(vendorsCache[i]) + ")", LL_ERROR)
+            listNoneDeep = true
+        EndIf
+
+        If FormListGetLast(randomShipsForSaleMaxCache[i]) == None
+            _Log(fnName, "    RandomShipsForSaleMax[" + i + "], " + GetHexID(randomShipsForSaleMaxCache[i]) + ", evaluates to None (vendor " + GetHexID(vendorsCache[i]) + ")", LL_ERROR)
+            listNoneDeep = true
+        EndIf
+
+        ; NOTE: vendorContainersCache can be None, in which case the vendor actor will be used as the container,
+        ; so we don't check it here
+
+        i += 1
+    EndWhile
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return !listNoneDeep
 EndFunction
 
 
