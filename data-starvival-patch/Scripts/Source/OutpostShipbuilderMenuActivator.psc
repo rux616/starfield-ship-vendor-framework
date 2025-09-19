@@ -105,7 +105,7 @@ EndEvent
 Function ShipTechnicianMenuRefuel(Int MenuType = 0, Int Button = 0, Bool MenuOpened = True)
     While MenuOpened
         If Button == -1
-            ; do nothing
+
         ElseIf MenuType == 0
             SpaceShipReference akShip = SQ_PlayerShip.PlayerShip.GetShipRef()
             Float FuelTankAmount = akShip.GetBaseValue(SpaceshipTotalFuelAmountBase)
@@ -207,7 +207,7 @@ Function VehicleMenuRefuel(Int MenuType = 0, Int Button = 0, Bool MenuOpened = T
                 ; Exit
                 MenuOpened = False
             EndIf
-      EndIf
+        EndIf
     EndWhile
 EndFunction
 
@@ -241,7 +241,7 @@ Function VehicleMenuRepair(Int MenuType = 0, Int Button = 0, Bool MenuOpened = T
                 ; Exit
                 MenuOpened = False
             EndIf
-      EndIf
+        EndIf
     EndWhile
 EndFunction
 
