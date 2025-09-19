@@ -65,24 +65,48 @@ Event OnActivate(ObjectReference akActionRef)
         If theShipServicesActor
             ; SVF addition -->
             ; fix if the landing marker is not set
-            If theShipServicesActor.myLandingMarker == NONE
-                theShipServicesActor.myLandingMarker = GetLinkedRef()
+            If theShipServicesActor.MyLandingMarker == None
+                theShipServicesActor.MyLandingMarker = GetLinkedRef()
             EndIf
+            ShipVendorFramework:SVF_DataStructures:ShipVendorStatus vendorStatus
+
             ; SVF addition <--
             Int messageIndex = OutpostShipbuilderMessage.Show(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
             If messageIndex == 0
-                TechVendorCreditsRefresh()
+                ; SVF addition -->
+                ; gate the menu opening on the vendor being fully initialized
+                vendorStatus = theShipServicesActor.GetStatus()
+                ShipVendorFramework:SVF_Utility.Log("OutpostShipbuilderVendor", GetFormID(), "OnActivate", "{Starvival} vendor status: " + theShipServicesActor.GetStatusText(vendorStatus), aiLogLevel=0)
+                If vendorStatus.IsReady == false
+                    If vendorStatus.IsFullyInitialized == false && vendorStatus.IsFunctionRunning == false
+                        theShipServicesActor.Initialize(theShipServicesActor.MyLandingMarker)
+                    EndIf
+                    Return
+                EndIf
+                theShipServicesActor.ApplyRichShipVendorCreditAdjustment()
+                ; SVF addition <--
+                ; SVF change -->
+                ; commenting out the credits refresh as that's taken care of via the rich ship vendor adjustment
+                ; TechVendorCreditsRefresh()
+                ; SVF change <--
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor as Actor, None, False)
             ElseIf messageIndex == 1
-                TechVendorCreditsRefresh()
                 ; SVF addition -->
-                If theShipServicesActor.SVFEnhancementsInitialized() == False
-                    ; calling Initialize() again is a workaround for the fact that if the player loads a save where the
-                    ; vendor is already loaded, the OnLoad event for the vendor does not fire again and thus the SVF
-                    ; enhancements do not get initialized automatically
-                    theShipServicesActor.Initialize(theShipServicesActor.myLandingMarker)
+                ; gate the menu opening on the vendor being fully initialized
+                vendorStatus = theShipServicesActor.GetStatus()
+                ShipVendorFramework:SVF_Utility.Log("OutpostShipbuilderVendor", GetFormID(), "OnActivate", "{Starvival} vendor status: " + theShipServicesActor.GetStatusText(vendorStatus), aiLogLevel=0)
+                If vendorStatus.IsReady == false
+                    If vendorStatus.IsFullyInitialized == false && vendorStatus.IsFunctionRunning == false
+                        theShipServicesActor.Initialize(theShipServicesActor.MyLandingMarker)
+                    EndIf
+                    Return
                 EndIf
+                theShipServicesActor.ApplyRichShipVendorCreditAdjustment()
                 ; SVF addition <--
+                ; SVF change -->
+                ; commenting out the credits refresh as that's taken care of via the rich ship vendor adjustment
+                ; TechVendorCreditsRefresh()
+                ; SVF change <--
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(0, theShipServicesActor as Actor, None, True)
             ElseIf messageIndex == 2
                 theShipServicesActor.myLandingMarker.ShowHangarMenu(1, theShipServicesActor)
