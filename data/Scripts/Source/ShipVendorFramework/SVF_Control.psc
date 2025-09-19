@@ -28,7 +28,7 @@ Import ShipVendorFramework:SVF_Utility
 int Property SVFControlVersion = 1 Auto Const Hidden
 
 ; The current version of the SVF_Control script.
-int SVFControlVersionCurrent = 0
+int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
 string Property SVFVersion = "1.5.4" Auto Const Hidden
@@ -146,9 +146,9 @@ EndEvent
 Function Initialize()
     string fnName = "Initialize" Const
     _Log(fnName, "begin", LL_DEBUG)
-    _Log(fnName, "SVF Control version: current=" + SVFControlVersionCurrent + ", desired=" + SVFControlVersion, LL_INFO)
+    _Log(fnName, "SVF Control version: current=" + svfControlVersionCurrent + ", desired=" + SVFControlVersion, LL_INFO)
 
-    If SVFControlVersionCurrent < 1
+    If svfControlVersionCurrent < 1
         InitializeSVFControlVersion1()
     EndIf
 
@@ -181,7 +181,7 @@ bool Function SVFControlInitialized()
     string fnName = "SVFControlInitialized" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    bool toReturn = SVFControlVersionCurrent == SVFControlVersion
+    bool toReturn = svfControlVersionCurrent == SVFControlVersion
     _Log(fnName, "returning " + toReturn, LL_DEBUG)
 
     _Log(fnName, "end", LL_DEBUG)
@@ -200,7 +200,7 @@ Function InitializeSVFControlVersion1()
     PlayerRef = Game.GetPlayer()
     RegisterForRemoteEvent(PlayerRef, "OnPlayerLoadGame")
 
-    SVFControlVersionCurrent = updatingToVersion
+    svfControlVersionCurrent = updatingToVersion
     _Log(fnName, "SVF Control initialized to version " + updatingToVersion, LL_INFO)
 
     _Log(fnName, "end", LL_DEBUG)
