@@ -79,18 +79,30 @@ Event OnActivate(ObjectReference akActionRef)
         EndIf
         _Log(fnName, "theShipServicesActor=" + theShipServicesActor, LL_DEBUG)
         If theShipServicesActor
+            ShipVendorFramework:SVF_DataStructures:ShipVendorStatus vendorStatus
             int messageIndex = ShipBuilderVendorMessage.Show()
             If messageIndex == 0
+                ; gate the menu opening on the vendor being fully initialized
+                vendorStatus = theShipServicesActor.GetStatus()
+                _Log(fnName, "vendor status: " + theShipServicesActor.GetStatusText(vendorStatus), LL_INFO)
+                If vendorStatus.IsReady == false
+                    If vendorStatus.IsFullyInitialized == false && vendorStatus.IsFunctionRunning == false
+                        theShipServicesActor.Initialize(theShipServicesActor.MyLandingMarker)
+                    EndIf
+                    Return
+                EndIf
+                theShipServicesActor.ApplyRichShipVendorCreditAdjustment()
                 theShipServicesActor.MyLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab=false)
             ElseIf messageIndex == 1
-                If theShipServicesActor.SVFEnhancementsInitialized() == false
-                    ; TODO add a "please wait, initializing" message
-                    ; calling Initialize() again is a workaround for the fact that if the player loads a save where the
-                    ; vendor is already loaded, the OnLoad event for the vendor does not fire again and thus the SVF
-                    ; enhancements do not get initialized automatically
-                    theShipServicesActor.Initialize(theShipServicesActor.MyLandingMarker)
+                ; gate the menu opening on the vendor being fully initialized
+                vendorStatus = theShipServicesActor.GetStatus()
+                _Log(fnName, "vendor status: " + theShipServicesActor.GetStatusText(vendorStatus), LL_INFO)
+                If vendorStatus.IsReady == false
+                    If vendorStatus.IsFullyInitialized == false && vendorStatus.IsFunctionRunning == false
+                        theShipServicesActor.Initialize(theShipServicesActor.MyLandingMarker)
+                    EndIf
+                    Return
                 EndIf
-                ; TODO add a "please wait, initializing" message
                 theShipServicesActor.ApplyRichShipVendorCreditAdjustment()
                 theShipServicesActor.MyLandingMarker.ShowHangarMenu(0, theShipServicesActor, abOpenToAvailableTab=true)
             EndIf

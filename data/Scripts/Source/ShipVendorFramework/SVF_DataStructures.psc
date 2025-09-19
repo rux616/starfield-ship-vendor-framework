@@ -44,3 +44,11 @@ Struct ShipLVLBToREFMap
     LeveledSpaceshipBase LeveledShip
     SpaceshipReference ShipRef
 EndStruct
+
+; struct to hold the status of a ship vendor for when the various activator scripts are checking if the vendor is ready
+Struct ShipVendorStatus
+    bool IsReady  ; true if the vendor is fully initialized and NOT currently running one of the key startup functions
+
+    bool IsFullyInitialized
+    bool IsFunctionRunning
+EndStruct

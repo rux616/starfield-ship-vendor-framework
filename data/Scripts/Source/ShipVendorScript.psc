@@ -125,6 +125,14 @@ int Property SVFEnhancementsVersion = 3 Auto Const Hidden
 ; the current version of the Ship Vendor Framework enhancements active on the vendor
 int svfEnhancementsVersionCurrent = 0
 
+bool isOnLoadRunning = false
+bool isOnActivateRunning = false
+bool isOnPlayerLoadGameRunning = false
+bool isHandleOnLoadRunning = false
+bool isInitializeRunning = false
+
+bool showMessageWhenReady = false
+
 ; the control script for the Ship Vendor Framework
 ShipVendorFramework:SVF_Control svfControl
 
@@ -157,6 +165,7 @@ EndFunction
 
 
 Event OnLoad()
+    isOnLoadRunning = true
     string fnName = "OnLoad" Const
     _Log(fnName, "begin", LL_DEBUG)
 
@@ -165,6 +174,7 @@ Event OnLoad()
     EndLockGuard
 
     _Log(fnName, "end", LL_DEBUG)
+    isOnLoadRunning = false
 EndEvent
 
 
@@ -183,18 +193,20 @@ EndEvent
 ; where the vendor is already loaded, the OnPlayerLoadGame event hasn't yet been registered, so it won't fire, and
 ; neither will the OnLoad event for the vendor
 Event OnActivate(ObjectReference akActionRef)
+    isOnActivateRunning = true
     string fnName = "OnActivate" Const
     _Log(fnName, "begin (" + akActionRef + ")", LL_DEBUG)
 
     ; only do something if the SVF enhancements haven't been initialized
     LockGuard LoadGuard
-        If SVFEnhancementsInitialized() == false
+        If svfEnhancementsVersionCurrent != SVFEnhancementsVersion
             _Log(fnName, "SVF enhancements not initialized - initializing now", LL_INFO)
             HandleOnLoad()
         EndIf
     EndLockGuard
 
     _Log(fnName, "end (" + akActionRef + ")", LL_DEBUG)
+    isOnActivateRunning = false
 EndEvent
 
 
@@ -203,6 +215,7 @@ EndEvent
 ; because it potentially gives more time between running the HandleOnLoad() function and the player actually
 ; interacting with the vendor
 Event Actor.OnPlayerLoadGame(Actor akPlayer)
+    isOnPlayerLoadGameRunning = true
     string fnName = "Actor.OnPlayerLoadGame" Const
     _Log(fnName, "begin", LL_DEBUG)
 
@@ -228,10 +241,12 @@ Event Actor.OnPlayerLoadGame(Actor akPlayer)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
+    isOnPlayerLoadGameRunning = false
 EndEvent
 
 
 Function HandleOnLoad() RequiresGuard(LoadGuard)
+    isHandleOnLoadRunning = true
     string fnName = "HandleOnLoad" Const
     _Log(fnName, "begin", LL_DEBUG)
 
@@ -244,11 +259,10 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         DebugDumpData()
     EndIf
 
-    If initialized == false || SVFEnhancementsInitialized() == false
+    If initialized == false || svfEnhancementsVersionCurrent != SVFEnhancementsVersion
         If initialized == true
             ; if initialized == true, the vendor has already been initialized, but because of the prior logic statement,
-            ; SVFEnhancementsInitialized() _must_ have returned false, which means the SVF enhancements still need to be
-            ; initialized
+            ; the SVF enhancements must not be fully initialized
             _Log(fnName, "initializing SVF enhancements on load", LL_DEBUG)
             Initialize(MyLandingMarker)
         ElseIf InitializeOnLoad == true
@@ -273,11 +287,18 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         _Log(fnName, "stopped stack profiling", LL_DEBUG)
     EndIf
 
+    If showMessageWhenReady == true
+        (Game.GetFormFromFile(0x8E7, "ShipVendorFramework.esm") as Message).Show()  ; SVF_Msg_VendorReady
+        showMessageWhenReady = false
+    EndIf
+
     _Log(fnName, "end", LL_DEBUG)
+    isHandleOnLoadRunning = false
 EndFunction
 
 
 Function Initialize(ObjectReference akLandingMarkerRef)
+    isInitializeRunning = true
     string fnName = "Initialize" Const
     _Log(fnName, "begin (" + akLandingMarkerRef + ")", LL_DEBUG)
 
@@ -334,7 +355,19 @@ Function Initialize(ObjectReference akLandingMarkerRef)
         CheckForInventoryRefresh()
     EndIf
 
+    ; if set to show a message when ready, only do so here if the vendor is ONLY running Initialize directly (happens
+    ; when the vendor is spawned via script versus placed)
+    If showMessageWhenReady == true \
+            && isOnLoadRunning == false \
+            && isOnActivateRunning == false \
+            && isOnPlayerLoadGameRunning == false \
+            && isHandleOnLoadRunning == false
+        (Game.GetFormFromFile(0x8E7, "ShipVendorFramework.esm") as Message).Show()  ; SVF_Msg_VendorReady
+        showMessageWhenReady = false
+    EndIf
+
     _Log(fnName, "end (" + akLandingMarkerRef + ")", LL_DEBUG)
+    isInitializeRunning = false
 EndFunction
 
 
@@ -355,14 +388,53 @@ Function RegisterForPermanentRemoteEvents()
 EndFunction
 
 
-; check if the Ship Vendor Framework enhancements have been initialized
-bool Function SVFEnhancementsInitialized()
-    string fnName = "SVFEnhancementsInitialized" Const
+; gets the status of the vendor
+ShipVendorFramework:SVF_DataStructures:ShipVendorStatus Function GetStatus(bool abShowMessage = true)
+    string fnName = "GetStatus" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    bool toReturn = svfEnhancementsVersionCurrent == SVFEnhancementsVersion
+    ShipVendorFramework:SVF_DataStructures:ShipVendorStatus toReturn
+    toReturn = new ShipVendorFramework:SVF_DataStructures:ShipVendorStatus
+
+    toReturn.IsFullyInitialized = initialized == true \
+                               && svfEnhancementsVersionCurrent == SVFEnhancementsVersion
+    toReturn.IsFunctionRunning = isOnLoadRunning == true \
+                              || isOnActivateRunning == true \
+                              || isOnPlayerLoadGameRunning == true \
+                              || isHandleOnLoadRunning == true \
+                              || isInitializeRunning == true
+    toReturn.IsReady = toReturn.IsFullyInitialized == true \
+                    && toReturn.IsFunctionRunning == false
     _Log(fnName, "returning " + toReturn, LL_DEBUG)
 
+    If toReturn.IsReady == false && abShowMessage == true
+        showMessageWhenReady = true
+        ; grab the message directly because svfControl could be None, so svfControl.<property> would error out
+        (Game.GetFormFromFile(0x8F3, "ShipVendorFramework.esm") as Message).Show()  ; SVF_Msg_VendorNotReady
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return toReturn
+EndFunction
+
+
+string Function GetStatusText(ShipVendorFramework:SVF_DataStructures:ShipVendorStatus aiStatus)
+    string fnName = "GetStatusText" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    string toReturn = ""
+    If aiStatus.IsFullyInitialized == false
+        toReturn += "not fully initialized, "
+    Else
+        toReturn += "fully initialized, "
+    EndIf
+    If aiStatus.IsFunctionRunning == true
+        toReturn += "running key functions"
+    Else
+        toReturn += "idle"
+    EndIf
+
+    _Log(fnName, "returning '" + toReturn + "'", LL_DEBUG)
     _Log(fnName, "end", LL_DEBUG)
     Return toReturn
 EndFunction
