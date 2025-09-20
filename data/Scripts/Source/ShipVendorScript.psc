@@ -279,7 +279,7 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         CheckForInventoryRefresh()
     EndIf
 
-    RegisterForPermanentRemoteEvents()
+    RegisterForRemoteEvents()
 
     If LOG_LEVEL_THRESHOLD == LL_DEBUG
         DebugDumpData()
@@ -347,7 +347,7 @@ Function Initialize(ObjectReference akLandingMarkerRef)
         doRefreshCheck = true
     EndIf
 
-    RegisterForPermanentRemoteEvents()
+    RegisterForRemoteEvents()
 
     initialized = true
 
@@ -371,9 +371,9 @@ Function Initialize(ObjectReference akLandingMarkerRef)
 EndFunction
 
 
-; register for the permanent remote events that the vendor needs to listen to
-Function RegisterForPermanentRemoteEvents()
-    string fnName = "RegisterForPermanentRemoteEvents" Const
+; register for the remote events that the vendor needs to listen to
+Function RegisterForRemoteEvents()
+    string fnName = "RegisterForRemoteEvents" Const
     _Log(fnName, "begin", LL_DEBUG)
 
     ; register for ship sell events
