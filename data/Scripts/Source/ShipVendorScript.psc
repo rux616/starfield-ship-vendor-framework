@@ -62,16 +62,16 @@ Group ShipVendorFramework
     FormList Property SVFShipsToSellListAlwaysDataset Auto Const
     { The list of ships that should always be available for sale. }
     FormList Property SVFShipsToSellListUniqueDataset Auto Const
-    { The list of unique ships to make available for sale. (Never respawns.) }
+    { The list of unique ships to make available for sale. (Doesn't respawn unless Gameplay Option is enabled.) }
 
     ObjectReference Property VendorContainer Auto Const
     { The vendor's container reference. }
 
-    bool Property SVFUseNewDatasets = false Auto Const  ; DEPRECATED
-    { !!!DEPRECATED!!! Mark vendor as using the new Ship Vendor Framework datasets. !!!DEPRECATED!!! }
+    bool Property SVFUseNewDatasets = false Auto Const Hidden  ; DEPRECATED
+    { Mark vendor as using the new Ship Vendor Framework datasets. }
 
-    FormList Property SVFExternalUniquesSoldList Auto Const  ; DEPRECATED
-    { !!!DEPRECATED!!! OPTIONAL - can be used to coordinate a list of unique ships that have been already sold between chosen vendors. If not filled in, the vendor will use their own local list. !!!DEPRECATED!!! }
+    FormList Property SVFExternalUniquesSoldList Auto Const Hidden  ; DEPRECATED
+    { OPTIONAL - can be used to coordinate a list of unique ships that have been already sold between chosen vendors. If not filled in, the vendor will use their own local list. }
 EndGroup
 
 ; local clones of various properties
