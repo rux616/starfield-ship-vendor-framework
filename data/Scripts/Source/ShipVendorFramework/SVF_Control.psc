@@ -121,7 +121,7 @@ int Property LL_ERROR = 2 Auto Const Hidden
 
 ; local opinionated log function
 Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel)
-    Log("SVF_Control", GetFormID(), asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
+    Log("ShipVendorFramework:SVF_Control", GetFormID(), asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 

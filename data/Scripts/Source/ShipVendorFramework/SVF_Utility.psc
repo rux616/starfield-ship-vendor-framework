@@ -68,7 +68,7 @@ Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel) Global
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
     int LOG_LEVEL_THRESHOLD = LL_DEBUG Const  ; TODO change back to LL_INFO for release
-    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
+    Log("ShipVendorFramework:SVF_Utility", 0, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 

@@ -76,7 +76,7 @@ Event OnActivate(ObjectReference akActionRef)
                 ; SVF addition -->
                 ; gate the menu opening on the vendor being fully initialized
                 vendorStatus = theShipServicesActor.GetStatus()
-                ShipVendorFramework:SVF_Utility.Log("OutpostShipbuilderVendor", GetFormID(), "OnActivate", "{Starvival} vendor status: " + theShipServicesActor.GetStatusText(vendorStatus), aiLogLevel=0)
+                ShipVendorFramework:SVF_Utility.Log("OutpostShipbuilderMenuActivator", GetFormID(), "OnActivate", "{Starvival} vendor status: " + theShipServicesActor.GetStatusText(vendorStatus), aiLogLevel=0)
                 If vendorStatus.IsReady == false
                     If vendorStatus.IsFullyInitialized == false && vendorStatus.IsFunctionRunning == false
                         theShipServicesActor.Initialize(theShipServicesActor.MyLandingMarker)
