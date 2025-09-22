@@ -1,4 +1,4 @@
-; Copyright 2021 Dan Cassidy
+; Copyright 2025 Dan Cassidy
 
 ; This program is free software: you can redistribute it and/or modify
 ; it under the terms of the GNU General Public License as published by
