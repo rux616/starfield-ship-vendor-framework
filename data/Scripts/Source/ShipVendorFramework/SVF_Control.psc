@@ -93,6 +93,12 @@ Group Messages
 
     Message Property MsgErrorVendorMappingsSizesMismatch Auto Const
     { Message to show when the vendor mappings lists do not match in size. }
+
+    Message Property MsgVendorNotReady Auto Const
+    { Message to show when the vendor is not ready to sell ships. }
+
+    Message Property MsgVendorReady Auto Const
+    { Message to show when the vendor is ready to sell ships. }
 EndGroup
 
 ; cached vendor mappings
