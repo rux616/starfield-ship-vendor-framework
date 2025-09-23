@@ -245,6 +245,22 @@ Event Actor.OnPlayerLoadGame(Actor akPlayer)
 EndEvent
 
 
+Event OnTimer(int aiTimerID)
+    string fnName = "OnTimer" Const
+    _Log(fnName, "begin (" + aiTimerID + ")", LL_DEBUG)
+
+    ; if the timer ID matches the vendor's form ID, check the status and show the message if not ready
+    If aiTimerID == GetFormID()
+        ShipVendorFramework:SVF_DataStructures:ShipVendorStatus status = GetStatus(abShowMessage=false)
+        If status.IsReady == false
+            ShowVendorNotReadyMessage()
+        EndIf
+    EndIf
+
+    _Log(fnName, "end (" + aiTimerID + ")", LL_DEBUG)
+EndEvent
+
+
 Function HandleOnLoad() RequiresGuard(LoadGuard)
     isHandleOnLoadRunning = true
     string fnName = "HandleOnLoad" Const
@@ -288,8 +304,7 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
     EndIf
 
     If showMessageWhenReady == true
-        (Game.GetFormFromFile(0x8E7, "ShipVendorFramework.esm") as Message).Show()  ; SVF_Msg_VendorReady
-        showMessageWhenReady = false
+        ShowVendorReadyMessage()
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
@@ -362,8 +377,7 @@ Function Initialize(ObjectReference akLandingMarkerRef)
             && isOnActivateRunning == false \
             && isOnPlayerLoadGameRunning == false \
             && isHandleOnLoadRunning == false
-        (Game.GetFormFromFile(0x8E7, "ShipVendorFramework.esm") as Message).Show()  ; SVF_Msg_VendorReady
-        showMessageWhenReady = false
+        ShowVendorReadyMessage()
     EndIf
 
     _Log(fnName, "end (" + akLandingMarkerRef + ")", LL_DEBUG)
@@ -409,14 +423,60 @@ ShipVendorFramework:SVF_DataStructures:ShipVendorStatus Function GetStatus(bool 
 
     If toReturn.IsReady == false && abShowMessage == true
         showMessageWhenReady = true
-        ; grab the message directly because svfControl could be None, so svfControl.<property> would error out
-        (Game.GetFormFromFile(0x8F3, "ShipVendorFramework.esm") as Message).Show()  ; SVF_Msg_VendorNotReady
+        ShowVendorNotReadyMessage()
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
     Return toReturn
 EndFunction
 
+
+Function ShowVendorNotReadyMessage()
+    string fnName = "ShowVendorNotReadyMessage" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    ; set timer to show the message repeatedly until the vendor is ready
+    float timerLength = 5.0 Const
+    _Log(fnName, "registering timer for " + timerLength + " seconds", LL_DEBUG)
+    StartTimer(timerLength, aiTimerID=GetFormID())
+
+    Message theMessage
+    If svfControl != None
+        _Log(fnName, "svfControl is initialized", LL_DEBUG)
+        theMessage = svfControl.MsgVendorNotReady
+    Else
+        ; if svfControl isn't initialized yet, svfControl.<property> would error out, so get the message directly
+        _Log(fnName, "svfControl is NOT initialized", LL_DEBUG)
+        theMessage = (Game.GetFormFromFile(0x8F3, "ShipVendorFramework.esm") as Message)  ; SVF_Msg_VendorNotReady
+    EndIf
+    theMessage.Show()
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+Function ShowVendorReadyMessage()
+    string fnName = "ShowVendorReadyMessage" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    showMessageWhenReady = false
+
+    Message theMessage
+    If svfControl != None
+        _Log(fnName, "svfControl is initialized", LL_DEBUG)
+        theMessage = svfControl.MsgVendorReady
+    Else
+        ; if svfControl isn't initialized yet, svfControl.<property> would error out, so get the message directly
+        _Log(fnName, "svfControl is NOT initialized", LL_DEBUG)
+        theMessage = (Game.GetFormFromFile(0x8E7, "ShipVendorFramework.esm") as Message)  ; SVF_Msg_VendorReady
+    EndIf
+    theMessage.Show()
+
+    ; set timer to show the message repeatedly until the vendor is ready
+    CancelTimer(aiTimerID=GetFormID())
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
 
 string Function GetStatusText(ShipVendorFramework:SVF_DataStructures:ShipVendorStatus aiStatus)
     string fnName = "GetStatusText" Const
