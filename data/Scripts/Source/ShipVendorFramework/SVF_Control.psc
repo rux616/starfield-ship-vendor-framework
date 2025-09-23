@@ -152,6 +152,9 @@ Function Initialize()
         InitializeSVFControlVersion1()
     EndIf
 
+    ; check for certain mods that may alter the behavior of some ship vendors
+    CheckForMods()
+
     ; perform sanity checks
     bool mappingsNotNone = VendorMappingsNotNone()
     bool mappingsSizesMatch = true
@@ -212,6 +215,29 @@ Function VersionInfo()
     Log("", 0, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3)
     Log("", 0, "", "Starfield version: " + Debug.GetVersionNumber(), 3)
     Log("", 0, "", "Ship Vendor Framework version: " + SVFVersion, 3)
+EndFunction
+
+
+; checks for certain mods that may alter the behavior of some ship vendors
+Function CheckForMods()
+    string fnName = "CheckForMods" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    string[] modsToCheck = new string[0]
+    modsToCheck.Add("DarkStar.esm")  ; DarkStar by WykkydGaming
+    modsToCheck.Add("Starvival - Immersive Survival Addon.esm")  ; Starvival by lKocMoHaBTl
+
+    int i = 0
+    While i < modsToCheck.Length
+        string modName = modsToCheck[i]
+        If Game.IsPluginInstalled(modName)
+            ; since the potential behavior exhibited is wide ranging, just log a warning rather than try to correct
+            _Log(fnName, "Mod detected: " + modName, LL_WARNING)
+        EndIf
+        i += 1
+    EndWhile
+
+    _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
