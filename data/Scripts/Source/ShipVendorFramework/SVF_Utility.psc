@@ -47,6 +47,9 @@ Function Log(string asScriptName, int aiSource, string asFunctionName, string as
         logLevelText = "WRN"
     ElseIf aiLogLevel == 2
         logLevelText = "ERR"
+    ElseIf aiLogLevel == 3
+        ; forced log, no prefix
+        aiLogLevel = 0
     EndIf
     If logLevelText != ""
         logLevelText = logLevelText + ": "
