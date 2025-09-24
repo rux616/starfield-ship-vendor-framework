@@ -112,7 +112,7 @@ Form[] vendorContainersCache
 
 ; the log level threshold for the script; messages with a level less than this threshold will not be logged
 ; -1 = debug (all), 0 = info (default), 1 = warning, 2 = error, 3 = none (suppress)
-int Property LOG_LEVEL_THRESHOLD = -1 Auto Const Hidden  ; TODO change back to 0 for release
+int Property LOG_LEVEL_THRESHOLD = 0 Auto Const Hidden
 
 ; log levels
 ; "debug" log level
