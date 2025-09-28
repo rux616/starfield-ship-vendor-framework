@@ -60,6 +60,7 @@ NPC Form List
 | Inaya Rehman (HopeTech HQ)                      | Location_HopeTechHQ_Always     | Manufacturer_HopeTech            | Location_HopeTechHQ_Unique     |
 | Jasmine Durand (The Key)                        | Location_KeyThe_Always         | Faction_CrimsonFleet             | Location_KeyThe_Unique         |
 | Lon Anderssen (Red Mile)                        | Location_RedMile_Always        | Faction_Unaffiliated_BlackMarket | Location_RedMile_Unique        |
+| Lt. Jillian Toft (UC Vigilance) \*\*            | Location_UCVigilance_Always    | Faction_CrimsonFleet             | Location_UCVigilance_Unique    |
 | Nikau Henderson (Deimos Staryard)               | Location_DeimosStaryard_Always | Manufacturer_Deimos              | Location_DeimosStaryard_Unique |
 | Player Outpost Shipbuilder                      | Location_PlayerOutpost_Always  | Collection_Generic               | Location_PlayerOutpost_Unique  |
 | Ship Services Technician (Akila City)           | Location_AkilaCity_Always      | Faction_FreestarCollective       | Location_AkilaCity_Unique      |
@@ -78,6 +79,101 @@ NPC Form List
 | Veronica Young (Neon, Taiyo Store)              | Location_TaiyoStore_Always     | Manufacturer_Taiyo               | Location_TaiyoStore_Unique     |
 
 \* Shattered Space
+\*\* Must complete Crimson Fleet quest line first
+
+| NPC                         | Always List                                | Random List                                | Unique List                                |
+|-----------------------------|--------------------------------------------|--------------------------------------------|--------------------------------------------|
+| Falkland Sales Rep          | Location_FalklandSystemsNewAtlantis_Always | Location_FalklandSystemsNewAtlantis_Random | Location_FalklandSystemsNewAtlantis_Unique |
+| Falkland Systems Ship Kiosk | Location_FalklandSystemsNewAtlantis_Always | Location_FalklandSystemsNewAtlantis_Random | Location_FalklandSystemsNewAtlantis_Unique |
+
+| NPC                      | Always List                      | Random List                      | Unique List                      |
+|--------------------------|----------------------------------|----------------------------------|----------------------------------|
+| DSA Shipbuilding Console | Mod_DarkStarAstrodynamics_Always | Mod_DarkStarAstrodynamics_Random | Mod_DarkStarAstrodynamics_Unique |
+
+game option pretty ordering (vanilla):
+- Akila City Ship Services
+- Cydonia Ship Services
+- Eleos Retreat Ship Services
+- Gagarin Ship Services
+- Havershaw
+- HopeTown Ship Services
+- Inaya Rehman
+- Jasmine Durand
+- Lon Anderssen
+- Lt. Jillian Toft
+- Neon Ship Services
+- New Atlantis Ship Services
+- New Homestead Ship Services
+- Nikau Henderson
+- Outpost Shipbuilder
+- Paradiso Ship Services
+- Red Devils HQ Ship Services
+- Stroud-Eklund Neon Kiosk
+- The Clinic Ship Services
+- The Den Ship Services
+- Veronica Young
+
+
+## NPC Script Differences (outside of ship lists)
+0x002a0ea0 Ship Services Technician (The Den):
+- BuysShips: False -> (removed - defaults to True)
+- SellsShips: False -> (removed - defaults to True)
+- ShipsForSaleMax: (removed - defaults to 8) -> 2
+- ShipsForSaleMin: (removed - defaults to 4) -> 1
+0x002a0e9f Ship Services Technician (The Clinic):
+- BuysShips: False -> (removed - defaults to True)
+- SellsShips: False -> (removed - defaults to True)
+- ShipsForSaleMax: (removed - defaults to 8) -> 1
+- ShipsForSaleMin: (removed - defaults to 4) -> 0
+0x00064ee9 Ship Services Technician (Red Devils HQ)
+- BuysShips: False -> (removed - defaults to True)
+- SellsShips: False -> (removed - defaults to True)
+- ShipsForSaleMax: (removed - defaults to 8) -> 1
+- ShipsForSaleMin: (removed - defaults to 4) -> 0
+0x0002f8fd Outpost Ship Builder:
+- ShipsForSaleMin: 4 -> (removed - defaults to 4)
+0x0001539e Jasmine Durand (The Key):
+- BuysShips: True -> (removed - defaults to True)
+- SellsShips: True -> (removed - defaults to True)
+- ShipsForSaleMax: (removed - defaults to 8) -> 6
+- ShipsForSaleMin: 6 -> (removed - defaults to 4)
+
+how to deal with these? could create a custom override system based on formlists. `BuysShips` and `SellsShips` can't be included in the form lists because those variables are used by some dialog checks directly
+
+use gameplayoption forms
+- [svf]
+    - rich ship vendors
+    - debug logging (?)
+    - allow unique ships to regenerate
+    - random ships for sale:
+        - min: choice of 0, 1, 2, ..., 32 (all vendors)
+        - max: choice of 0, 1, 2, ..., 32 (all vendors)
+
+
+## how uniques should work v2
+general:
+- player loads into area where a vendor has a unique for sale
+- script checks to see if it should refresh inventory
+    - if the inventory should be refreshed
+        - if the vendor has a unique LVLB in their inventory that matches an entry in the tracking array:
+            - remove (and nuke) that REF
+        - if the vendor does not have a unique LVLB in their inventory that matches an entry in the tracking array, but wants to generate one:
+            - block generation of that LVLB
+        - if the vendor has a unique LVLB that they want to generate that does not match an entry in the tracking array:
+            - do so
+        - if the vendor has a unique LVLB in inventory that
+buying:
+-
+selling:
+- player loads into area where a vendor is located
+- script checks to see if it should refresh inventory
+- script looks at unique LVLB/REF tracking array
+    - if the vendor has a unique LVLB in their inventory that matches an entry in the tracking array:
+        - remove (and nuke) that REF
+    - if the vendor does not have a unique LVLB in their inventory that matches an entry in the tracking array, but wants to generate one:
+        - block generation of that LVLB
+    - if the vendor has a unique LVLB that they want to generate that does not match an entry in the tracking array:
+        - do so
 
 
 ## starting script states
@@ -102,3 +198,33 @@ outpost vendor already initialized and loaded
 standard vendor not initialized at all
 standard vendor already initialized
 standard vendor already initialized and loaded
+
+
+## voice lines for toft
+
+| original ID | text                                  |  mod ID  |
+|:-----------:|---------------------------------------|:--------:|
+|  0034D418   | All right, let's see what you need.   | 0009D5C6 |
+|  00694785   | Let's see what we can do for you.     | 005BC37C |
+|  000AF511   | We'll do our best to accommodate you. | 004BE129 |
+
+
+## possible method for getting container for vendor
+
+part 1:
+- make SVF_VendorData_*_Container form lists
+- add the object reference (if one exists) to that form list for each vendor
+
+part 2:
+- expand "ShipVendorDataMap" with another member "VendorContainer" or something like that
+- expand vendor data map function in svf_control to also give container
+- add a function or property to get the container in ShipVendorScript
+- check the new ShipVendorScript function from inside ShipVendorInfoScript/ShipbuilderMenuActivator/OutpostShipbuilderActivator scripts to get the container (None means use the actor)
+
+procedure to add ref to form list:
+- open form list
+- find ref in cell view
+- drag ref to form list (the ref will not show up, this is normal)
+- in form list window, click the "paste selected element" button (or right click -> paste)
+
+note: might need to change RHQ ship services tech, as its container is gagarin's
