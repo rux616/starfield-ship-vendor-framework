@@ -64,20 +64,20 @@
       "args": [
         "./support/common/scripts/populate-known-masters.py",
         "--full-masters",
+        "DarkStar.esm",
+        "FalklandSystems.esm",
         "L-K_Ships.esm",
         "LowLandingPad.esm",
         "Starvival - Immersive Survival Addon.esm",
         "vcDenAstrodynamics.esm",
         "--medium-masters",
+        "DarkStar_Astrodynamics.esm",
         "outpostvendorcustomships.esm",
         "--small-masters",
         "deadalus1.esm",
         "dominion.esm",
         "nighthawk.esm",
         "ShipVendorFramework.esm",
-        "Starvival - ModuleSpaceshipSystems.esm",
-        "SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esm",
-        "SVF-Generic-ShipVendors-Patch.esm",
         "SVF-ShatteredSpace-Patch.esm"
       ]
     },
@@ -112,6 +112,7 @@
         "-Starfield",
         "-Skip7z",
         "-SkipBA2Cleanup",
+        "-BA2AlsoMakeXbox",
         "-BA2ForceUncompressed",
         "-BA2DisableSharing"
       ]
