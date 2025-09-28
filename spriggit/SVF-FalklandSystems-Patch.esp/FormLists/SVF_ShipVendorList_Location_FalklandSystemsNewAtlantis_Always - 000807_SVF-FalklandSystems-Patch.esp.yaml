@@ -1,0 +1,7 @@
+FormKey: 000807:SVF-FalklandSystems-Patch.esp
+EditorID: SVF_ShipVendorList_Location_FalklandSystemsNewAtlantis_Always
+Items:
+- 00CF4D:FalklandSystems.esm
+- 00666D:FalklandSystems.esm
+- 006B76:FalklandSystems.esm
+AddToList: Null

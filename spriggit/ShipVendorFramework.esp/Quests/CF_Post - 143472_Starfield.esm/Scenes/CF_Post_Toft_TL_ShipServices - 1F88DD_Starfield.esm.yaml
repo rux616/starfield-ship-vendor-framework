@@ -1,0 +1,95 @@
+FormKey: 1F88DD:Starfield.esm
+EditorID: CF_Post_Toft_TL_ShipServices
+Version2: 2
+Flags:
+- Interruptable
+- DisableDialogueCamera
+- 0x2000
+Phases:
+- Name: ''
+  EditorWidth: 500
+- Name: ''
+  EditorWidth: 500
+- Name: Loop01
+  EditorWidth: 500
+Actors:
+- ID: 4294967294
+  Flags:
+  - NoCommandState
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - 0x100
+- ID: 29
+  Flags:
+  - NoCommandState
+  BehaviorFlags:
+  - DeathEnd
+  - CombatEnd
+  - 0x100
+Actions:
+- MutagenObjectType: DialogueSceneAction
+  Name: ''
+  AliasID: -2
+  Index: 1
+  Flags: []
+  Topic: 1655CA:Starfield.esm
+  LoopingMax: 10
+  LoopingMin: 1
+- MutagenObjectType: PlayerDialogueSceneAction
+  Name: ''
+  AliasID: 29
+  Index: 3
+  Flags: []
+  StartPhase: 2
+  EndPhase: 2
+  DialogueTargetActor: 29
+  DialogueList:
+  - PlayerChoice: 1655C9:Starfield.esm
+    NpcResponse: 1655CF:Starfield.esm
+  - PlayerChoice: 0008F5:ShipVendorFramework.esp
+    NpcResponse: 0008F7:ShipVendorFramework.esp
+  - PlayerChoice: 1655C8:Starfield.esm
+    NpcResponse: 1655CE:Starfield.esm
+  - PlayerChoice: 1655C7:Starfield.esm
+    NpcResponse: 1655CD:Starfield.esm
+  - PlayerChoice: 140CAA:Starfield.esm
+    NpcResponse: 1655CC:Starfield.esm
+- MutagenObjectType: DialogueSceneAction
+  Name: ''
+  AliasID: 29
+  Index: 4
+  Flags: []
+  StartPhase: 1
+  EndPhase: 1
+  Topic: 051DF7:Starfield.esm
+  LoopingMax: 10
+  LoopingMin: 1
+  HNAM:
+    Aliases:
+    - -2
+    ForceRotate: True
+    ForceRotateMustComplete: True
+Quest: 143472:Starfield.esm
+LastActionIndex: 4
+VNAM: 0x0300000003000000030000000300000003000000
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageDoneConditionData
+    FirstParameter: 143472:Starfield.esm
+    SecondParameter: 25
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetQuestCompletedConditionData
+    FirstParameter: 1B41D0:Starfield.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+    FirstParameter: 29
+  ComparisonValue: 1
+BOLV: '[]'
+Index: 0
+SCPI: 0x6400

@@ -12,7 +12,7 @@ ModHeader:
     Patch for "Ship Vendor Framework" by rux616 and the Shattered Space expansion.
 
 
-    Version: 2.0.0
+    Version: 2.1.0
   MasterReferences:
   - Master: Starfield.esm
   - Master: ShatteredSpace.esm

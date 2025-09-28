@@ -1,0 +1,21 @@
+FormKey: 0008FB:ShipVendorFramework.esm
+EditorID: SVF_Msg_ErrorVendorMappingsNoneDeep
+Description:
+  TargetLanguage: English
+  Value: >-
+    One or more of the vendor map pointer lists is empty. This is generally caused by incomplete SVF vendor map information in one of your loaded mods.
+
+
+    While you can continue playing, one or more vendors likely won't work properly. It is recommended that you stop playing until the issue is corrected.
+
+
+    Please take note of your load order and seek help from the author on the Nexus Mods page. The URL can be found in this mod's readme. If you are on PC, please also upload your logs. More information can be found in the readme.
+Name:
+  TargetLanguage: English
+  Value: Ship Vendor Framework Error
+Flags:
+- MessageBox
+BNAM: 4294967295
+ShortTitle:
+  TargetLanguage: English
+  Value: SVF Error

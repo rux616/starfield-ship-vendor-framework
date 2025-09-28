@@ -7,12 +7,12 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 19924
+  Unused: 95
   Reference: 3A2E1D:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
-    Unknown2: 16615
+    Unknown2: 4684
     Data:
       MutagenObjectType: GetInWorldspaceConditionData
       RunOnType: Reference
@@ -20,11 +20,11 @@ Entries:
       FirstParameter: 244CAA:Starfield.esm
     ComparisonValue: 1
 - Level: 16
-  Unused: 19924
+  Unused: 95
   Reference: 3A2E1D:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 19924
+  Unused: 95
   Reference: 3A2E1B:Starfield.esm
   Count: 1
 Model:

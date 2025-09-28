@@ -28,29 +28,80 @@
         - [X] SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esp
         - [X] SVF-Generic-ShipVendors-Patch.esp
         - [X] SVF-Generic-ShipVendors-ShatteredSpace-Patch.esp
-- [ ] add min and max limits to the number of "always" and "unique" ships? (default to -1, which means unlimited)
-- [ ] add howto document/article that shows how to add vendors that utilize SVF
-- [ ] add howto document/article that shows how to clean a plugin of dirty edits to ship vendor NPC_ records
+- [-] add min and max limits to the number of "always" and "unique" ships? (default to -1, which means unlimited)
 - [-] Cache `GetFormID()` in ShipVendorScript (used in `_Log()`). (`GetFormID()` is a non-delayed native function, so it doesn't actually take much time, but i suspect there's possibly a tiny amount of time savings to be had by caching it)
     - profiling shows that for 132 calls to `GetFormID()` (and accompanying calls to `IntToHex()`) took less than 2ms. not worth worrying about.
 - [ ] add threaded creation of ships to help with large lists
     - not going to be possible in a sane way until/unless the `GetFormFromFile()` function is fixed
-- [ ] investigate ways to break 128-element barrier for generated ships, just in case (form list is likely the only way, but would possible open up script to corruption if record is overwritten)
+- [ ] investigate ways to break 128-element barrier for generated ships, just in case (form list is likely the only way, but would possibly open up script to corruption if record is overwritten)
 - [X] when deleting ships from the vendor, sometimes it's not deleting them all. try getting all the linked refs of the landing pad marker and iterating through that list?
     - [-] check taiyo ship vendor for duplicated inventory issue
     - [-] xbox-only issue?
     - [-] make a terminal data slate to manually diagnose issue?
-- [ ] add messaging to show when script is done processing. (block activation until done? how would this work when SVF hasn't been initialized yet?)
+- [X] add messaging to show when script is done processing. (block activation until done? how would this work when SVF hasn't been initialized yet?)
 - [X] investigate issues with SVF after just coming out of unity
     - couldn't reproduce once i got around to testing - i suspect it was a symptom of another bug
 - [X] clear player-sold ships upon inventory refresh
-- [ ] change up terminology re capability vs compatibility. maybe "enhancement" instead of "capability"?
+- [-] change up terminology re capability vs compatibility? maybe "enhancement" instead of "capability"?
+    - decided not to change terminology
 - [X] fix bug where "always" and "unique" ships (or maybe only "always" ships?) will fully respawn on OnLoad (due to the function that matches existing ships with what "should" be there)
 - [X] fix mis-ordering of ships in list after partial refresh, probably going to have to remove linked ref and re-add
     - partial refreshes never seemed to work properly, so i removed them entirely
 - [X] add patch for [The Den Astrodynamics](https://www.nexusmods.com/starfield/mods/8809)
 - [-] add patch for [Rich Outpost Shipbuilder](https://www.nexusmods.com/starfield/mods/5492)
     - not going to support this for now - if `GetFormFromFile()` gets fixed for small/medium masters, will do this dynamically
-- [ ] if `GetFormFromFile()` is fixed for small/medium masters, add in options like dynamic keyword addition at outpost ship builders (maybe regular ship services technicians as well?), always rich ship techs (outpost/regular)
+- [X] if `GetFormFromFile()` is fixed for small/medium masters, add in options like dynamic keyword addition at outpost ship builders (maybe regular ship services technicians as well?), always rich ship techs (outpost/regular)
+    - [-] won't bother with dynamic keywords (not needed)
+    - [X] will implement rich ship vendors
 - [X] bug: ship services kiosk in stroud eklund showroom in neon doesn't have any ships for sale
+    - fixed in v1.4.0
 - [X] bug: vendors (at least New Atlantis) seem to be regenerating their inventory every time
+    - fixed in v1.4.0
+- [X] adjust gameplay options for random ship numbers to start at 0 and go to 32
+- [X] add a way to regenerate unique ships
+    - [-] add quest ships to list? -> are quest ships like the rangers reward ship actually unique?
+        - don't add quest ships to list. if the player sells one of those ships, that's on them
+    - [X] determine whether FormList.AddForm() adds duplicate forms
+        - it does not
+- [X] make unique ship regen a gameplay option
+- [X] figure out why svf_control seems to get initialized twice
+    - code in "init()" event function seems to get activated multiple times. solution: remove init() event function
+- [-] make debug logging a specific setting (versus log level) and have it propagate via function parameters
+    - not going to do this
+- [X] due to the vendor data map, the following plugins are obsolete and can be removed:
+    - [X] SVF-FalklandSystems-Patch
+    - [X] SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch
+    - [X] SVF-Generic-AllShipModulesUnlocked-AllShipVendors-ShatteredSpace-Patch
+    - [X] SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch
+    - [X] SVF-Generic-ShipVendors-Patch
+    - [X] SVF-Generic-ShipVendors-ShatteredSpace-Patch
+- [X] due to the vendor data map, the following plugins need changing
+    - [X] SVF-LowerLandingPad
+        - [X] need to be converted to vendor data map
+    - [-] SVF-LowerLandingPadUnlocked
+        - vendor data map means one patch will work for regular or unlocked
+    - [X] SVF-ShatteredSpace-Patch
+        - [X] need to be converted to vendor data map
+    - [X] SVF-Starvival-Patch
+        - [X] strip all changes to records, and make a dummy keyword
+    - [X] SVF-TheDenAstrodynamics-Patch
+        - [X] changes to NPC need to be removed
+- [X] add capability patches for
+    - [-] DarkStar
+        - uses custom scripts
+        - never going to happen
+    - [X] DarkStar Astrodynamics
+    - [X] Falkland Systems
+- [X] determine whether to keep "CheckForNewShips" function (more specifically, the ForSaleMatchesToSell function), as if it encounters a ship that can't be spawned for conditional reasons, it'll trigger a refresh of the ships available for sale
+    - revamped CheckForNewShips function to work off of before-and-after lists rather than should-be-spawned vs is-spawned
+- [] 1.6 release tasks
+    - [X] update NPC form list
+    - [X] add NPC form list for capability mods (DarkStar, DarkStar Astrodynamics, Falkland Systems)
+    - [X] update readme
+        - [X] conflicting forms
+        - [X] conflicting files
+        - [-] theory/practice of vendor data map
+    - [X] update creations readme
+    - [X] update patches readme
+    - [X] add capability mod NPC list to readme
+    - [X] add to howto document/article to show how to add vendors that utilize SVF

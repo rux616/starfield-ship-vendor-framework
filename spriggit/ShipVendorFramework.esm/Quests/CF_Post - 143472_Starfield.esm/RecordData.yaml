@@ -1,0 +1,774 @@
+FormKey: 143472:Starfield.esm
+EditorID: CF_Post
+Version2: 14
+VirtualMachineAdapter:
+  Scripts:
+  - Name: CF_PostQuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Captain_AdlerShip
+      Object: 143472:Starfield.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Captain_EstelleShip
+      Object: 143472:Starfield.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Captain_HuanShip
+      Object: 143472:Starfield.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Captain_MathisShip
+      Object: 143472:Starfield.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Captain_NaevaShip
+      Object: 143472:Starfield.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Captain_RokovShip
+      Object: 143472:Starfield.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CFPost_CFVigilanceMarker
+      Object: 143472:Starfield.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CFPost_SDVigilanceMarker
+      Object: 143472:Starfield.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionCrimsonFleet
+      Object: 010B30:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionUC
+      Object: 05BD93:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimsonFleetCaptainState_Adler
+      Object: 278E85:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimsonFleetCaptainState_Estelle
+      Object: 278E84:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimsonFleetCaptainState_Huan
+      Object: 278E83:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimsonFleetCaptainState_Mathis
+      Object: 278E87:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimsonFleetCaptainState_Naeva
+      Object: 278E86:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimsonFleetCaptainState_Rokov
+      Object: 278E88:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueShipServices
+      Object: 22E153:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Health
+      Object: 0002D4:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerShip
+      Object: 143472:Starfield.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerShipPilotSeat
+      Object: 143472:Starfield.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SQ_PlayerShip
+      Object: 0174A2:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SuvorovOrbitLocation
+      Object: 143472:Starfield.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TheKey
+      Object: 143472:Starfield.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TheKeyMapMarker
+      Object: 143472:Starfield.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: UCSysDefFaction
+      Object: 2733AF:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Vigilance
+      Object: 143472:Starfield.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: VigilanceSystemActorValues
+      Objects:
+      - Name: ''
+        Object: 1EF0CD:Starfield.esm
+      - Name: ''
+        Object: 1EF0CB:Starfield.esm
+      - Name: ''
+        Object: 1EF0CA:Starfield.esm
+      - Name: ''
+        Object: 1EE8C9:Starfield.esm
+      - Name: ''
+        Object: 0003A3:Starfield.esm
+      - Name: ''
+        Object: 0003A4:Starfield.esm
+      - Name: ''
+        Object: 0003A5:Starfield.esm
+      - Name: ''
+        Object: 1EC77F:Starfield.esm
+  Script:
+    Name: Fragments:Quests:QF_CF_Post_00143472
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CF_Post_Kibwe
+      Object: 143472:Starfield.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CF_Post_Toft
+      Object: 143472:Starfield.esm
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CF08_Key_DataCoreAnalyzer_DisableMarker
+      Object: 143472:Starfield.esm
+      Alias: 34
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CF08_Key_DataCoreAnalyzer_EnableMarker
+      Object: 143472:Starfield.esm
+      Alias: 33
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CFPost_FleetatVigilanceEnableMarker
+      Object: 143472:Starfield.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CFPost_Key_DataCoreAnalyzer
+      Object: 143472:Starfield.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CFPost_Key_DataCoreAnalyzer_DisableMarker
+      Object: 143472:Starfield.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CFPost_Key_DataCoreAnalyzer_EnableMarker
+      Object: 143472:Starfield.esm
+      Alias: 36
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CFPost_SysDefatKeyEnableMarker
+      Object: 143472:Starfield.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LC088_KeyTurretsEnableMarker
+      Object: 143472:Starfield.esm
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Vigilance
+      Object: 143472:Starfield.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CF08_Fleet
+      Object: 1EF7F1:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CF08_SysDef
+      Object: 1B41D0:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CFPost_CFEnableMarker
+      Object: 143472:Starfield.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CFPost_SDEnableMarker
+      Object: 143472:Starfield.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: cTestCOCMarkerRef
+      Object: 2778EB:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueCFTheKey
+      Object: 015358:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LC082
+      Object: 2BF365:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LC082_Quickstart_DockingPort
+      Object: 2C6B59:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LC088
+      Object: 2BF36A:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LC088_Key
+      Object: 2BF36B:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LC088_Space
+      Object: 21E73C:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LC088_Vigilance
+      Object: 2BF36C:Starfield.esm
+  Fragments:
+  - Unknown2: 1
+    ScriptName: Fragments:Quests:QF_CF_Post_00143472
+    FragmentName: Fragment_Stage_0000_Item_00
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: Fragments:Quests:QF_CF_Post_00143472
+    FragmentName: Fragment_Stage_0200_Item_00
+  - Stage: 210
+    Unknown2: 1
+    ScriptName: Fragments:Quests:QF_CF_Post_00143472
+    FragmentName: Fragment_Stage_0210_Item_00
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: Fragments:Quests:QF_CF_Post_00143472
+    FragmentName: Fragment_Stage_0030_Item_00
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: Fragments:Quests:QF_CF_Post_00143472
+    FragmentName: Fragment_Stage_0001_Item_00
+  - Stage: 110
+    Unknown2: 1
+    ScriptName: Fragments:Quests:QF_CF_Post_00143472
+    FragmentName: Fragment_Stage_0110_Item_00
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: Fragments:Quests:QF_CF_Post_00143472
+    FragmentName: Fragment_Stage_0100_Item_00
+Name:
+  TargetLanguage: English
+  Value: Crimson Fleet Post-Quest Coverage
+Data:
+  Flags:
+  - StartGameEnabled
+  - StartsEnabled
+  - RunOnce
+  - 0x10000
+  Priority: 30
+  Unused: 0x000000
+TextDisplayGlobals:
+- 31A186:Starfield.esm
+UnusedConditions: []
+Stages:
+- Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: 'Quickstart: CF Postquest'
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 1
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: 'Quickstart: SD Postquest'
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 3
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Rake Dialogue 1
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 4
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Rake Dialogue 2
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 5
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Rake goodbye toggle
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 11
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Ikande Brig Choice 1
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 12
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Ikande Brig Choice 2
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 13
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Ikande Brig Choice 3
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 14
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Ikande Brig Choice 4
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 15
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Ikande Brig Greet End
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 20
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Toft Brig Greet End
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 25
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Toft Services
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 30
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: DLG - Toft Key
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 100
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: 'CF Postquest: Startup'
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 110
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: 'CF Postquest: Final State'
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 200
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: 'SD Postquest: Startup'
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+  - Flags: []
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+- Index: 210
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+    Note: 'SD Postquest: Final State'
+    StageCompleteDatas:
+    - QSRD: 0x00000000
+    - QSRD: '[]'
+Aliases:
+- MutagenObjectType: QuestLocationAlias
+  ID: 27
+  Name: LC082VigilanceLocation
+  Flags:
+  - AllowReserved
+  - AllowCleared
+  ALFG: 0
+  SpecificLocation: 2BF36E:Starfield.esm
+- MutagenObjectType: QuestLocationAlias
+  ID: 4
+  Name: SuvorovOrbitLocation
+  Flags:
+  - AllowReserved
+  - AllowCleared
+  ALFG: 0
+  SpecificLocation: 01AD97:Starfield.esm
+- MutagenObjectType: QuestLocationAlias
+  ID: 10
+  Name: KeySpaceCellLocation
+  Flags:
+  - AllowReserved
+  - AllowCleared
+  ALFG: 0
+  SpecificLocation: 01535B:Starfield.esm
+- MutagenObjectType: QuestLocationAlias
+  ID: 38
+  Name: KeyInteriorLocation
+  Flags:
+  - AllowReserved
+  - AllowCleared
+  ALFG: 0
+  SpecificLocation: 01535A:Starfield.esm
+- MutagenObjectType: QuestReferenceAlias
+  ID: 5
+  Name: TheKey
+  Flags:
+  - AllowReserved
+  ALFG: 0
+  UniqueBaseForm: 032406:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 6
+  Name: Vigilance
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ALFG: 0
+  UniqueBaseForm: 257106:Starfield.esm
+  PackageData:
+  - 140A74:Starfield.esm
+  - 140A73:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 7
+  Name: PlayerShip
+  Flags:
+  - Optional
+  - AllowReserved
+  - ExternalAliasLinked
+  ALFG: 0
+  External:
+    Quest: 0174A2:Starfield.esm
+    AliasID: 0
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 8
+  Name: PlayerShipPilotSeat
+  Flags:
+  - Optional
+  - AllowReserved
+  - ExternalAliasLinked
+  ALFG: 0
+  External:
+    Quest: 0174A2:Starfield.esm
+    AliasID: 3
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 9
+  Name: Captain_RokovShip
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 21C929:Starfield.esm
+  PackageData:
+  - 0055F3:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 14
+  Name: Captain_MathisShip
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 21C925:Starfield.esm
+  PackageData:
+  - 0055F3:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 15
+  Name: Captain_NaevaShip
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 21C927:Starfield.esm
+  PackageData:
+  - 0055F3:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 13
+  Name: Captain_AdlerShip
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 21C92A:Starfield.esm
+  PackageData:
+  - 0055F3:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 12
+  Name: Captain_HuanShip
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 21C926:Starfield.esm
+  PackageData:
+  - 0055F3:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 11
+  Name: Captain_EstelleShip
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 21C928:Starfield.esm
+  PackageData:
+  - 0055F3:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 23
+  Name: LC088_KeyTurretsEnableMarker
+  Flags:
+  - AllowDead
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 140A6D:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 16
+  Name: CFPost_CFEnableMarker
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 140A57:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 25
+  Name: CFPost_SysDefatKeyEnableMarker
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  ForcedReference: 171B57:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 26
+  Name: CFPost_FleetatVigilanceEnableMarker
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 27
+    RefType: 078293:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 21
+  Name: CFPost_CFVigilanceMarker
+  Flags: []
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 140A71:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestCollectionAlias
+  Collection:
+  - ID: 20
+    MaxInitialFillCount: 10
+    ALAM: 0
+    ReferenceAlias:
+      ID: 20
+      Name: CFPost_CFShipsAtVigilance
+      Flags:
+      - AllowDisabled
+      ALFG: 0
+      Location:
+        AliasID: 10
+        RefType: 140A65:Starfield.esm
+      VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 17
+  Name: CFPost_SDEnableMarker
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 140A58:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 22
+  Name: CFPost_SDVigilanceMarker
+  Flags: []
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 140A72:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestCollectionAlias
+  Collection:
+  - ID: 19
+    MaxInitialFillCount: 10
+    ALAM: 0
+    ReferenceAlias:
+      ID: 19
+      Name: CFPost_SDShipsAtKey
+      Flags:
+      - AllowDisabled
+      ALFG: 0
+      Location:
+        AliasID: 10
+        RefType: 140A62:Starfield.esm
+      VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 18
+  Name: TheKeyMapMarker
+  Flags: []
+  ALFG: 0
+  Location:
+    AliasID: 10
+    RefType: 02271F:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 33
+  Name: CF08_Key_DataCoreAnalyzer_EnableMarker
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 38
+    RefType: 238A40:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 34
+  Name: CF08_Key_DataCoreAnalyzer_DisableMarker
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 38
+    RefType: 238A3F:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 36
+  Name: CFPost_Key_DataCoreAnalyzer_EnableMarker
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 38
+    RefType: 163DA6:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 35
+  Name: CFPost_Key_DataCoreAnalyzer_DisableMarker
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 38
+    RefType: 163DA7:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 37
+  Name: CFPost_Key_DataCoreAnalyzer
+  Flags:
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 38
+    RefType: 163DA8:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 3
+  Name: '------------------------------------------'
+  Flags:
+  - Optional
+  ALFG: 0
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  Name: CF_Post_AustinRake
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+  - CreateRefTemp
+  - NoPickpocket
+  ALFG: 0
+  UniqueActor: 1105F7:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 1
+  Name: CF_Post_AdlerKemp
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+  ALFG: 0
+  UniqueActor: 279221:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 28
+  Name: CF_Post_Kibwe
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+  ALFG: 0
+  UniqueActor: 009137:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 29
+  Name: CF_Post_Toft
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+  ALFG: 0
+  UniqueActor: 018946:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 30
+  Name: CF_Post_Jailor
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 27
+    RefType: 137E51:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 31
+  Name: CF_Post_Archangel
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 27
+    RefType: 137E4F:Starfield.esm
+  VoiceTypes: Null
+- MutagenObjectType: QuestReferenceAlias
+  ID: 32
+  Name: CF_Post_Bedi
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+  ALFG: 0
+  Location:
+    AliasID: 27
+    RefType: 137E50:Starfield.esm
+  VoiceTypes: Null

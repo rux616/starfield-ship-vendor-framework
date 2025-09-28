@@ -1,0 +1,67 @@
+FormKey: 0008A8:ShipVendorFramework.esp
+EditorID: SVF_Option_RichShipVendorsMinCredits
+Name:
+  TargetLanguage: English
+  Value: '  Rich Ship Vendors Minimum Credits'
+Description:
+  TargetLanguage: English
+  Value: >-
+    The minimum number of credits ship vendors will have when the "Rich Ship Vendors" option is set to <font color="#EDEDED">ON</font>.
+
+
+    <font color="#EDEDED">1,000,000</font>: Default value of this option.
+Data:
+  MutagenObjectType: FloatGameplayOptionData
+  Value1: 1
+  Value2: 1
+  Max: 5
+  Step: 1
+Rewards:
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 0
+  Name:
+    TargetLanguage: English
+    Value: 500,000
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 1
+  Name:
+    TargetLanguage: English
+    Value: 1,000,000
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 2
+  Name:
+    TargetLanguage: English
+    Value: 5,000,000
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 3
+  Name:
+    TargetLanguage: English
+    Value: 10,000,000
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 4
+  Name:
+    TargetLanguage: English
+    Value: 50,000,000
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 5
+  Name:
+    TargetLanguage: English
+    Value: 100,000,000
+  RewardValue: 0

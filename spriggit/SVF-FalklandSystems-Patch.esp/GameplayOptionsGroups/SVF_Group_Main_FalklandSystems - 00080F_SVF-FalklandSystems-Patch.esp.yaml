@@ -1,0 +1,12 @@
+FormKey: 00080F:SVF-FalklandSystems-Patch.esp
+EditorID: SVF_Group_Main_FalklandSystems
+Name:
+  TargetLanguage: English
+  Value: ''
+Options:
+  MutagenObjectType: GameplayOptionsGroupLeaf
+  GameplayOptions:
+  - 00080A:SVF-FalklandSystems-Patch.esp
+  - 000806:SVF-FalklandSystems-Patch.esp
+  - 00080C:SVF-FalklandSystems-Patch.esp
+  - 00080B:SVF-FalklandSystems-Patch.esp

@@ -1,0 +1,6 @@
+FormKey: 00081F:SVF-FalklandSystems-Patch.esp
+EditorID: SVF_VendorMapAdd_ShipListsRandom_FalklandSystems
+Items:
+- 000819:SVF-FalklandSystems-Patch.esp
+- 000812:SVF-FalklandSystems-Patch.esp
+AddToList: 00083F:ShipVendorFramework.esm

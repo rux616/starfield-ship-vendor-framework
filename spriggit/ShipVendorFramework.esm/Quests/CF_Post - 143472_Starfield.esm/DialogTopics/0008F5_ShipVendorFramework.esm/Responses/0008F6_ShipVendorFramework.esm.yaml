@@ -1,0 +1,25 @@
+FormKey: 0008F6:ShipVendorFramework.esm
+Flags: {}
+Responses:
+- Emotion: None
+  WEMFile: 17118478
+  ResponseText:
+    TargetLanguage: English
+    Value: Let me see what ships you have for sale.
+  ScriptNotes: ''
+  Edits: ''
+  AlternateLipText: ''
+  TextHash: 0xB036AD45491DDC01
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Unknown2: 16630
+  Data:
+    MutagenObjectType: GetVMScriptVariableConditionData
+    RunOnType: Target
+    FirstUnusedIntParameter: 1733465272
+    FirstParameter: sq_shipservicesactorscript
+    SecondUnusedIntParameter: 1733465248
+    SecondParameter: ::SellsShips_var
+  ComparisonValue: 1
+StartScenePhase: ''
+SubtitlePriority: Low

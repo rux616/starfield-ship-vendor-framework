@@ -1,0 +1,13 @@
+FormKey: 0008E7:ShipVendorFramework.esp
+EditorID: SVF_Msg_VendorReady
+Description:
+  TargetLanguage: English
+  Value: ship vendor ready
+Name:
+  TargetLanguage: English
+  Value: 'Ship Vendor Framework: Vendor Ready'
+DisplayTime: 4
+BNAM: 4294967295
+ShortTitle:
+  TargetLanguage: English
+  Value: Vendor Ready

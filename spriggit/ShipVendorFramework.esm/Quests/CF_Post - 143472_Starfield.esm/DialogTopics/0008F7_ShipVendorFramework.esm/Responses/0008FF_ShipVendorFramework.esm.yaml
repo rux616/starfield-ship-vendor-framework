@@ -1,0 +1,10 @@
+FormKey: 0008FF:ShipVendorFramework.esm
+MajorRecordFlagsRaw: 64
+StarfieldMajorRecordFlags:
+- 0x40
+Flags:
+  Flags: 768
+StartScenePhase: ''
+SubtitlePriority: 0
+MajorFlags:
+- InfoGroup

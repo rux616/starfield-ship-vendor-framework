@@ -1,0 +1,7 @@
+FormKey: 0008F5:ShipVendorFramework.esp
+Quest: 143472:Starfield.esm
+Category: Scene
+Subtype: CustomScene
+SubtypeName: CustomScene
+TopicInfoList:
+- 0008F6:ShipVendorFramework.esp

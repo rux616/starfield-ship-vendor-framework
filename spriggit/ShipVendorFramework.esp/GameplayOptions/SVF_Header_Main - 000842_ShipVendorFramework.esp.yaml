@@ -1,0 +1,14 @@
+FormKey: 000842:ShipVendorFramework.esp
+EditorID: SVF_Header_Main
+Name:
+  TargetLanguage: English
+  Value: '[ Ship Vendor Framework ]'
+Description:
+  TargetLanguage: English
+  Value: This section contains the options pertaining to the Ship Vendor Framework mod.
+Data:
+  MutagenObjectType: FloatGameplayOptionData
+  Value1: 0
+  Value2: 0
+  Max: 1
+  Step: 1

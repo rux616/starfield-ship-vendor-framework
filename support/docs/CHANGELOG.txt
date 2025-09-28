@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.6.0
     - v1.5.4
     - v1.5.3
     - v1.5.2
@@ -23,6 +24,41 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.6.0
+------
+Main mod:
+- Implemented a "Vendor Data Map" concept to allow the mod to be as conflict-free as possible, and as a result, was able to remove all direct vendor record edits
+- Set Lt. Jillian Toft on the Vigilance to function as a ship vendor once the Crimson Fleet quest line concludes (modifies `CF_Post` dialogue `[QUST:00143472]` and `CF_Post_Toft_TL_ShipServices` scene `[SCEN:001F88DD]`)
+- Added a gameplay option to allow unique ships to regenerate after purchase, instead of being a one-and-done thing
+- Added a "Rich Ship Vendors" gameplay option; the amount of credits ship vendors have is controlled by a different gameplay option
+- Added gameplay options to control the minimum and maximum number of ships in the "random" category that a ship vendor will attempt to sell
+- Added more variable caching to try and minimize calls to potentially expensive external functions
+- Added sanity checks (with messages if they fail) to support new conflict-free methodologies and records
+- Added a toast-style message that pop up if a ship vendor is accessed before it's ready and another toast-style message that will then pop up when the vendor is ready
+- Changed how the unique ships are tracked so that they are tracked across vendors
+- Made a pass for style consistency in all scripts
+- Updated auxiliary scripts to use their own internal logging function
+- Added many comments to the code to clarify things where needed and to make certain bits of logic (hopefully) easier to follow
+- Removed OnInit event code from SVF_Control script to clean things up
+- Made sure that all calls to local _Log function have a log level specified
+- Re-worked log levels to function more like other languages
+- Fixed an issue where ShipVendorScript could attempt to register for a remote event on a variable that was None.
+
+Patches:
+- Added DarkStar Astrodynamics patch
+- Updated Falkland Systems Ship Services patch to utilize the "Vendor Data Map" concept
+- Updated Lower Landing Pad patch to utilize the "Vendor Data Map" concept
+- Updated Shattered Space patch to utilize the "Vendor Data Map" concept
+- Updated Starvival patch
+- Fixed The Den Astrodynamics patch to remove a couple of mistakenly-added ships
+- Removed no-longer-necessary "Generic" compatibility patches
+- Removed no-longer-necessary Lower Landing Pad (Unlocked) patch
+
+Miscellaneous:
+- Updated README
+- Updated HOWTO with sections on configuring a vendor to use Ship Vendor Framework lists, both using the "Vendor Data Map" concept, and direct
+- Updated spelling list
 
 v1.5.4
 ------
