@@ -17,4 +17,9 @@
 
 
 # customizations for the archive manifests
-$additional_exclude_7z = @("SVFTest.esm", "SVFTestShip.esm", "*.esp")
+$additional_exclude_7z = @(
+    "SVF-Example-VendorDirect-Patch.esm",
+    "SVFTest.esm",
+    "SVFTestShip.esm",
+    "*.esp"
+)
