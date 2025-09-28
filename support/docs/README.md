@@ -10,9 +10,10 @@ Table Of Contents
     - [Table Of Contents](#table-of-contents)
 - [Overview](#overview)
     - [Summary](#summary)
-    - [How To (Lite)](#how-to-lite)
+    - [How To Add Ships (Lite)](#how-to-add-ships-lite)
     - [Compatibility](#compatibility)
     - [Known Issues](#known-issues)
+    - [Enabling Logs](#enabling-logs)
     - [NPC Ship Lists](#npc-ship-lists)
 - [Installation](#installation)
     - [Load Order](#load-order)
@@ -39,40 +40,44 @@ That's where this mod comes in. I've designed a system such that mod authors can
 
 As with Ship Builder Categories, this mod is intended to be a community resource and so will always have manual donations disabled and remain opted out of the Nexus Mods Donation Point system.
 
-NOTE: The "random" ships are only regenerated every 7 days (by default).
+**NOTE:** Vendors refresh their ship inventory every 7 days by default.
 
 ([TOC](#table-of-contents))
 
-How To (Lite)
--------------
-Mod authors, want to use the framework? It's easy, and you can do it in just three steps:
+How To Add Ships (Lite)
+-----------------------
+Mod authors, want to use the framework? It's easy, and you can do it in just three steps with the Starfield Creation Kit:
 
 1. Design your ship.
 2. Add your ship to a leveled base form.
 3. Put that leveled base form into a form list and set one of the form lists included with this mod (SVF_ShipVendorList_*) as the target in the "add to list" box.
 
-More detailed instructions are included in the HOWTO.txt document, and in the ["How to Utilize the Ship Vendor Framework" article](https://www.nexusmods.com/starfield/articles/624) on Nexus Mods.
+More detailed instructions, including for making your own SVF-enhanced ship vendors, are included in the HOWTO.txt document, and in the ["How to Utilize the Ship Vendor Framework" article](https://www.nexusmods.com/starfield/articles/624) on Nexus Mods.
 
 ([TOC](#table-of-contents))
 
 Compatibility
 -------------
-This mod alters NPCs that offer ship services, as well as some of the leveled lists for spaceships that vendors use. Any other mods that also alter those objects may conflict without patches.
+This mod alters most of the leveled lists for spaceships that vendors use to add proper level gates, as well as the `CF_Post` dialogue `[QUST:00143472]` and `CF_Post_Toft_TL_ShipServices` scene `[SCEN:001F88DD]` to allow for Lt. Jillian Toft to function as a ship vendor once the Crimson Fleet quest line concludes. Any other mods that also alter those records may conflict without patches.
 
-Additionally, this mod alters 3 vanilla scripts, "OutpostShipbuilderMenuActivator", "ShipBuilderMenuActivator", and "ShipVendorScript". As a result, any other mod that alters any of those scripts by definition will conflict. This also means that when the game is updated, script changes by Bethesda will not be present in this mod until it is updated.
+Additionally, this mod alters 4 vanilla scripts, "OutpostShipbuilderMenuActivator", "ShipBuilderMenuActivator", "ShipVendorInfoScript", and "ShipVendorScript". As a result, a mod that alters any of those scripts will conflict by definition. This also means that when the game is updated, script changes by Bethesda will not be present in this mod until it is updated.
 
 Mods that are known to conflict:
-- "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 [[Creations](https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti)]: Use SVF Capability Patch - Daedalus and Battlestar and one of the SVF Generic Patches that fits what you need.
-- "Dominion" by rhart317 [[Creations](https://creations.bethesda.net/en/starfield/details/97f792d0-d078-4a50-aa32-f03cc054e241/Dominion)]: Use SVF Capability Patch - Dominion.
-- "Iconic Ships" by ShipTechnician [[Creations](https://creations.bethesda.net/en/starfield/details/569e938e-228c-42fb-91ba-c6967575bcf3/Iconic_Ships)]: Use SVF Capability Patch - Iconic Ships, and one of the SVF Generic Patches that fits what you need.
-- "L-K Ships" by Lighthorse and KeithVSmith1977 [[Creations](https://creations.bethesda.net/en/starfield/details/f287801b-a863-48fb-b796-1eeaeda4eab3/L_K_Ships) / [Nexus](https://www.nexusmods.com/starfield/mods/7433)]: Use SVF Capability Patch - L-K Ships.
-- "Lower Landing Pad" by SenterPat [[Nexus](https://www.nexusmods.com/starfield/mods/8363)]: Use one of the "Lower Landing Pad" SVF Capability Patches.
-- "Outpost Vendor New Ships" by nefurun [[Creations](https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships)]: Use SVF Capability Patch - Outpost Vendor New Ships, and one of the SVF Generic Patches that fits what you need.
-- "Outpost Shipbuilder Unlocked ESM" by goldenchrome [[Nexus](https://www.nexusmods.com/starfield/mods/5667)]: Use SVF Generic Patch - All Ship Modules Unlocked (Outpost Only).
-- "Rich Outpost Shipbuilder" by LilithMotherOfAll [[Nexus](https://www.nexusmods.com/starfield/mods/5492)]: No patch. If you loaded a save at an outpost after installing SVF, go to another world (one of the big cities is best), then back to your outpost.
+- "DarkStar" by WykkydGaming [[Creations](https://creations.bethesda.net/en/starfield/details/f082c443-5f3e-4528-b03e-10c319d01ddf/DarkStar)]: No patch. There are no lists for mod authors to add ships to, the "Rich Ship Vendors" option doesn't work with the DarkStar ship vendors, and not all ships may be immediately available to purchase if the "buy ships" option is accessed too soon after the vendor's ship inventory is refreshed or the vendor is initially created.
+- "Rich Outpost Shipbuilder" by LilithMotherOfAll [[Nexus](https://www.nexusmods.com/starfield/mods/5492)]: No patch. Uninstall this mod if you have it. Ship Vendor Framework now has this functionality built in.
 - "Starvival" by lKocMoHaBTl [[Creations](https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon) / [Nexus](https://www.nexusmods.com/starfield/mods/6890)]: Use SVF Compatibility Patch - Starvival.
-- "The Den Astrodynamics" by VoodooChild [[Nexus](https://www.nexusmods.com/starfield/mods/8809)]: Use SVF Compatibility Patch - The Den Astrodynamics.
-- "Ultimate Shipyards Unlocked" by JustAnOrdinaryGuy [[Nexus](https://www.nexusmods.com/starfield/mods/4723)]: Use one of the "All Ship Modules Unlocked" SVF Generic Patches.
+
+Mods that I have created capability patches for (included in the main download):
+- "DarkStar Astrodynamics" by WykkydGaming [[Creations](https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics) / [Nexus](https://www.nexusmods.com/starfield/mods/9458)]
+- "Dominion" by rhart317 [[Creations](https://creations.bethesda.net/en/starfield/details/97f792d0-d078-4a50-aa32-f03cc054e241/Dominion)]
+- "Falkland Systems Ship Services" by Hjalmere [[Creations](https://creations.bethesda.net/en/starfield/details/6cbf2c64-b736-4d95-bf06-38183a94b359/Falkland_Systems_Ship_Services)]
+- "Iconic Ships" by ShipTechnician [[Creations](https://creations.bethesda.net/en/starfield/details/569e938e-228c-42fb-91ba-c6967575bcf3/Iconic_Ships)]
+- "L-K Ships" by Lighthorse and KeithVSmith1977 [[Creations](https://creations.bethesda.net/en/starfield/details/f287801b-a863-48fb-b796-1eeaeda4eab3/L_K_Ships) / [Nexus](https://www.nexusmods.com/starfield/mods/7433)]
+- "Lower Landing Pad" by SenterPat [[Nexus](https://www.nexusmods.com/starfield/mods/8363)]
+- "Outpost Shipbuilder Unlocked ESM" by goldenchrome [[Nexus](https://www.nexusmods.com/starfield/mods/5667)]
+- "Outpost Vendor New Ships" by nefurun [[Creations](https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships)]
+- "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 [[Creations](https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti)]
+- "The Den Astrodynamics" by VoodooChild [[Nexus](https://www.nexusmods.com/starfield/mods/8809)]
 
 ([TOC](#table-of-contents))
 
@@ -82,11 +87,34 @@ None
 
 ([TOC](#table-of-contents))
 
+Enabling Logs
+-------------
+**NOTE:** This section only applies to PC users.
+
+In your StarfieldCustom.ini file, make sure you have the following section:
+
+    [Papyrus]
+    bEnableLogging=1
+    bEnableProfiling=1
+    bEnableTrace=1
+    bLoadDebugInformation=1
+
+This will ensure that the game writes logs. If I request them in order to help you, I will be looking for "Papyrus.X.log" in the "%UserProfile%\Documents\My Games\Starfield\Logs" directory, and "ShipVendorFramework.X.log" in the "%UserProfile%\Documents\My Games\Starfield\Logs\Script\User" directory, where "X" represents a number 0-3.
+
+([TOC](#table-of-contents))
+
 NPC Ship Lists
 --------------
-Note: All form list editor IDs start with "SVF_ShipVendorList_". This prefix has been removed from the lists as presented in the following table for the sake of brevity.
+**NOTE:** All form list editor IDs start with "SVF_ShipVendorList_". This prefix has been removed from the lists as presented in the following tables for the sake of brevity.
 
-![NPC Ship List Table](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1743126556-99326829.jpeg)
+Vanilla + Shattered Space:
+![NPC Ship List Table (Vanilla + Shattered Space)](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690728-542329203.jpg)
+
+DarkStar Astrodynamics (with patch):
+![NPC Ship List Table (DarkStar Astrodynamics Patch)](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690462-441494414.jpg)
+
+Falkland Systems Ship Services (with patch):
+![NPC Ship List Table (Falkland Systems Ship Services Patch)](https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690440-150465271.jpg)
 
 ([TOC](#table-of-contents))
 
@@ -102,7 +130,6 @@ For patches, the load order should be as follows:
 - ShipVendorFramework.esm
 - (SVF Expansion Patches, if any)
 - (SVF Capability Patches, if any)
-- (SVF Generic Patches, if any)
 - (SVF Compatibility Patches, if any)
 
 ([TOC](#table-of-contents))
@@ -136,7 +163,7 @@ When upgrading major versions (for example v1.whatever to v2.whatever), you need
 
 Mod Manager
 -----------
-NOTE: Support for NMM will **NOT** be provided as its FOMOD implementation is broken. Use either Mod Organizer 2 or Vortex.
+**NOTE:** Support for NMM will **NOT** be provided as its FOMOD implementation is broken. Use either Mod Organizer 2 or Vortex.
 
 Download and install the archive with either [Mod Organizer 2](https://github.com/ModOrganizer2/modorganizer/releases) (version 2.5.2 or later) or [Vortex](https://www.nexusmods.com/site/mods/1). I personally recommend Mod Organizer 2 (with the optional [Root Builder](https://kezyma.github.io/?p=rootbuilder) plugin to use with SFSE or any other mod that requires files be put directly in the game's installation folder).
 
@@ -151,8 +178,8 @@ Unsupported. I want nothing to do with your hand-crafted artisanal potential dum
 
 License
 =======
-- All code files are copyright 2024 Dan Cassidy, and are licensed under the [GPL v3.0 or later](https://www.gnu.org/licenses/gpl-3.0.en.html). The sole exceptions to this are the "ShipVendorScript.psc" and "OutpostShipbuilderMenuActivator.psc" files, as they are built upon the base that BGS provided and so are covered by their licenses.
-- All non-code files are copyright 2024 Dan Cassidy, and are licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
+- All code files are copyright Dan Cassidy (see individual files for exact years), and are licensed under the [GPL v3.0 or later](https://www.gnu.org/licenses/gpl-3.0.en.html). The sole exceptions to this are the "OutpostShipbuilderMenuActivator", "ShipBuilderMenuActivator", "ShipVendorInfoScript", and "ShipVendorScript" files, as they are built upon the base that BGS provided and so are covered by their licenses.
+- All non-code files are copyright 2024, 2025 Dan Cassidy, and are licensed under the [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
 
 ([TOC](#table-of-contents))
 
@@ -173,11 +200,12 @@ Scrivener07: For some advice and clarification on papyrus matters
 
 Contact
 =======
-If you find a bug or have a question about the mod, please post it on the [mod page at Nexus Mods](https://www.nexusmods.com/starfield/mods/10057), or in the [GitHub project](https://github.com/rux616/starfield-ship-vendor-framework).
+If you find a bug or have a question about the mod, please post it on the [mod page at Nexus Mods](https://www.nexusmods.com/starfield/mods/10057), the [GitHub project](https://github.com/rux616/starfield-ship-vendor-framework), or on Reddit in [r/StarfieldMods](https://www.reddit.com/r/starfieldmods/) (make sure to tag me: u/rux616).
 
 If you need to contact me personally, I can be reached through one of the following means:
-- **Nexus Mods**: [rux616](https://www.nexusmods.com/users/124191) (Send a message via the "CONTACT" button.)
+- **Nexus Mods**: [rux616](https://www.nexusmods.com/users/124191) (Click the "Message" button.)
 - **Email**: rux616-at-pm-dot-me (replace `-at-` with `@` and `-dot-` with `.`)
+- **Reddit**: u/rux616
 - **Discord**: rux616 (user ID 234489279991119873) - make sure to "@" me
     - [Lively's Modding Hub](https://discord.gg/livelymods)
     - [Nexus Mods](https://discord.gg/nexusmods)
