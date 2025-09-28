@@ -7,15 +7,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 24
-  Unused: 19924
+  Unused: 95
   Reference: 001E9F:Starfield.esm
   Count: 1
 - Level: 44
-  Unused: 19924
+  Unused: 95
   Reference: 001EA1:Starfield.esm
   Count: 1
 - Level: 64
-  Unused: 19924
+  Unused: 95
   Reference: 001EA6:Starfield.esm
   Count: 1
 Model:

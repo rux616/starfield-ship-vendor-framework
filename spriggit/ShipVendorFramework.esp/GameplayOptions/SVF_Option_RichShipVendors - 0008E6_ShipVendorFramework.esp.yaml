@@ -1,0 +1,16 @@
+FormKey: 0008E6:ShipVendorFramework.esp
+EditorID: SVF_Option_RichShipVendors
+Name:
+  TargetLanguage: English
+  Value: '  Rich Ship Vendors'
+Description:
+  TargetLanguage: English
+  Value: >-
+    Whether ship vendors will have a large quantity of credits that will be refreshed every time you enter the purchasing interface.
+
+
+    <font color="#EDEDED">OFF</font>: Default value of this option.
+Data:
+  MutagenObjectType: BoolGameplayOptionData
+  Value1: False
+  Value2: False

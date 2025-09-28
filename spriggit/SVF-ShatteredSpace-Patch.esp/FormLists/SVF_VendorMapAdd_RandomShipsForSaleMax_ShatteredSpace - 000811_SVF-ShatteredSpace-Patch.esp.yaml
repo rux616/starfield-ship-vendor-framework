@@ -1,0 +1,5 @@
+FormKey: 000811:SVF-ShatteredSpace-Patch.esp
+EditorID: SVF_VendorMapAdd_RandomShipsForSaleMax_ShatteredSpace
+Items:
+- 000806:SVF-ShatteredSpace-Patch.esp
+AddToList: 00084A:ShipVendorFramework.esm

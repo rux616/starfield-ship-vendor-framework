@@ -1,0 +1,16 @@
+FormKey: 0008A7:ShipVendorFramework.esp
+EditorID: SVF_Option_RegenerateUniqueShips
+Name:
+  TargetLanguage: English
+  Value: '  Regenerate Unique Ships'
+Description:
+  TargetLanguage: English
+  Value: >-
+    Whether ships from the "unique" list will regenerate after being purchased from a vendor. Turning this option <font color="#EDEDED">ON</font> also prevents the Ship Vendor Framework from purging already-purchased ships from the unique list for any vendor where they may have already been for sale (at outpost shipbuilders for example).
+
+
+    <font color="#EDEDED">OFF</font>: Default value of this option.
+Data:
+  MutagenObjectType: BoolGameplayOptionData
+  Value1: False
+  Value2: False

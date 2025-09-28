@@ -1,0 +1,21 @@
+FormKey: 000843:ShipVendorFramework.esm
+EditorID: SVF_Header_RandomShipsForSale
+Name:
+  TargetLanguage: English
+  Value: '  [ Random Ships For Sale ]'
+Description:
+  TargetLanguage: English
+  Value: >-
+    <font color="#EDEDED">NOTE: Changes to options in this subsection won't take effect until the next vendor refresh. These occur roughly weekly by default.</font>
+
+
+    This subsection contains the options controlling how many ships in the "random" category (versus the "always" or "unique" categories) that each vendor will attempt to sell.
+
+
+    Possible values for all options: 0, 1, 2, ..., 32
+Data:
+  MutagenObjectType: FloatGameplayOptionData
+  Value1: 0
+  Value2: 0
+  Max: 1
+  Step: 1

@@ -1,0 +1,13 @@
+FormKey: 0008F3:ShipVendorFramework.esm
+EditorID: SVF_Msg_VendorNotReady
+Description:
+  TargetLanguage: English
+  Value: still creating ships, please wait...
+Name:
+  TargetLanguage: English
+  Value: 'Ship Vendor Framework: Vendor Not Ready'
+DisplayTime: 2
+BNAM: 4294967295
+ShortTitle:
+  TargetLanguage: English
+  Value: Vendor Not Ready

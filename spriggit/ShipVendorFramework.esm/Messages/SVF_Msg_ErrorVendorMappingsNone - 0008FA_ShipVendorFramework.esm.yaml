@@ -1,0 +1,21 @@
+FormKey: 0008FA:ShipVendorFramework.esm
+EditorID: SVF_Msg_ErrorVendorMappingsNone
+Description:
+  TargetLanguage: English
+  Value: >-
+    One or more of the vendor mappings is None. This likely indicates that the data has changed for some unknown reason.
+
+
+    This is considered a critical error and Ship Vendor Framework will not work properly in the current state. It is recommended that you stop playing until the issue is corrected.
+
+
+    Please take note of your load order and seek help from the author on the Nexus Mods page. The URL can be found in this mod's readme. If you are on PC, please also upload your logs. More information can be found in the readme.
+Name:
+  TargetLanguage: English
+  Value: Ship Vendor Framework Critical Error
+Flags:
+- MessageBox
+BNAM: 4294967295
+ShortTitle:
+  TargetLanguage: English
+  Value: SVF Critical Error

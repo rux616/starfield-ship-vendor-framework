@@ -1,0 +1,55 @@
+FormKey: 0008E8:ShipVendorFramework.esm
+EditorID: SVF_Group_Main
+Name:
+  TargetLanguage: English
+  Value: Group_Main
+Options:
+  MutagenObjectType: GameplayOptionsGroupLeaf
+  GameplayOptions:
+  - 000842:ShipVendorFramework.esm
+  - 0008A7:ShipVendorFramework.esm
+  - 0008E6:ShipVendorFramework.esm
+  - 0008A8:ShipVendorFramework.esm
+  - 000843:ShipVendorFramework.esm
+  - 00089D:ShipVendorFramework.esm
+  - 00084F:ShipVendorFramework.esm
+  - 000897:ShipVendorFramework.esm
+  - 000850:ShipVendorFramework.esm
+  - 000896:ShipVendorFramework.esm
+  - 000858:ShipVendorFramework.esm
+  - 000890:ShipVendorFramework.esm
+  - 00085E:ShipVendorFramework.esm
+  - 000882:ShipVendorFramework.esm
+  - 000873:ShipVendorFramework.esm
+  - 00087B:ShipVendorFramework.esm
+  - 00085F:ShipVendorFramework.esm
+  - 000881:ShipVendorFramework.esm
+  - 000847:ShipVendorFramework.esm
+  - 00087A:ShipVendorFramework.esm
+  - 000008:ShipVendorFramework.esm
+  - 000856:ShipVendorFramework.esm
+  - 00084E:ShipVendorFramework.esm
+  - 0008F2:ShipVendorFramework.esm
+  - 0008F1:ShipVendorFramework.esm
+  - 000857:ShipVendorFramework.esm
+  - 000865:ShipVendorFramework.esm
+  - 00089E:ShipVendorFramework.esm
+  - 000866:ShipVendorFramework.esm
+  - 0008A4:ShipVendorFramework.esm
+  - 00086C:ShipVendorFramework.esm
+  - 000888:ShipVendorFramework.esm
+  - 000874:ShipVendorFramework.esm
+  - 000851:ShipVendorFramework.esm
+  - 00084D:ShipVendorFramework.esm
+  - 0008A5:ShipVendorFramework.esm
+  - 00086D:ShipVendorFramework.esm
+  - 0008A0:ShipVendorFramework.esm
+  - 00089F:ShipVendorFramework.esm
+  - 00083C:ShipVendorFramework.esm
+  - 000848:ShipVendorFramework.esm
+  - 0008A2:ShipVendorFramework.esm
+  - 0008A1:ShipVendorFramework.esm
+  - 0008A6:ShipVendorFramework.esm
+  - 0008A3:ShipVendorFramework.esm
+  - 00088F:ShipVendorFramework.esm
+  - 000889:ShipVendorFramework.esm

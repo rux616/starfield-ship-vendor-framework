@@ -5,11 +5,65 @@ VirtualMachineAdapter:
   - Name: ShipVendorFramework:SVF_Control
     Properties:
     - MutagenObjectType: ScriptObjectProperty
-      Name: PlayerUnityTimesEntered
-      Object: 219529:Starfield.esm
+      Name: MsgErrorVendorMappingsNone
+      Object: 0008FA:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
-      Name: UniverseVariant
-      Object: 1D5AC7:Starfield.esm
+      Name: MsgErrorVendorMappingsNoneDeep
+      Object: 0008FB:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MsgErrorVendorMappingsSizesMismatch
+      Object: 0008FC:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MsgVendorNotReady
+      Object: 0008F3:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MsgVendorReady
+      Object: 0008E7:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NoPickpocketKeyword
+      Object: 0F55DC:Starfield.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RandomShipsForSaleMax
+      Object: 00084A:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RandomShipsForSaleMin
+      Object: 000849:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RegenerateUniqueShipsOption
+      Object: 0008A7:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RichShipVendorsMinimumCreditsOption
+      Object: 0008A8:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptIntListProperty
+      Name: RichShipVendorsMinimumCreditsValues
+      Data:
+      - 500000
+      - 1000000
+      - 5000000
+      - 10000000
+      - 50000000
+      - 100000000
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RichShipVendorsOption
+      Object: 0008E6:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipListsAlways
+      Object: 00083E:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipListsRandom
+      Object: 00083F:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipListsUnique
+      Object: 000840:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: UniqueShipsSold
+      Object: 0008AA:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VendorContainers
+      Object: 0008E9:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Vendors
+      Object: 00083D:ShipVendorFramework.esp
   Versioning:
   - Break0
   ExtraBindDataVersion: 0

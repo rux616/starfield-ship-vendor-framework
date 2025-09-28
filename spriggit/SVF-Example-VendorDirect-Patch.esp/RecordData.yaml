@@ -1,0 +1,17 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.39.11
+ModKey: SVF-Example-VendorDirect-Patch.esp
+GameRelease: Starfield
+ModHeader:
+  Author: rux616
+  Description: >-
+    Example plugin for showing how to set up a vendor to use Ship Vendor Framework.
+
+
+    "Direct" method.
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: ShatteredSpace.esm
+  - Master: ShipVendorFramework.esm
+  Branch: Main

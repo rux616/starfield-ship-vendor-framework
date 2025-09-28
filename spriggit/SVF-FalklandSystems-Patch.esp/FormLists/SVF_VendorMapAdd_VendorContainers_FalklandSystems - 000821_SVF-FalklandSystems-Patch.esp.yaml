@@ -1,0 +1,6 @@
+FormKey: 000821:SVF-FalklandSystems-Patch.esp
+EditorID: SVF_VendorMapAdd_VendorContainers_FalklandSystems
+Items:
+- 00081B:SVF-FalklandSystems-Patch.esp
+- 000814:SVF-FalklandSystems-Patch.esp
+AddToList: 0008E9:ShipVendorFramework.esm

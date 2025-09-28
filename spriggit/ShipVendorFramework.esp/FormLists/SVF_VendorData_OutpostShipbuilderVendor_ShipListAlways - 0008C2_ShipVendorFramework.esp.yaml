@@ -1,0 +1,5 @@
+FormKey: 0008C2:ShipVendorFramework.esp
+EditorID: SVF_VendorData_OutpostShipbuilderVendor_ShipListAlways
+Items:
+- 000828:ShipVendorFramework.esp
+AddToList: Null

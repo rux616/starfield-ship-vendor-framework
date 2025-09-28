@@ -1,0 +1,286 @@
+FormKey: 00087B:ShipVendorFramework.esm
+EditorID: SVF_Option_Vendor_ShipServices_HopeTown_RandomShipsForSaleMin
+Name:
+  TargetLanguage: English
+  Value: '    Hope Town Ship Services: Min'
+Description:
+  TargetLanguage: English
+  Value: >-
+    <font color="#EDEDED">NOTE: If the value of this option is greater than that of the companion "Max" option, the value of that option will be used instead.</font>
+
+
+    The minimum number of ships in the "random" category that the Hope Town Ship Services Technician will attempt to sell.
+
+
+    <font color="#EDEDED">4</font>: Default value of this option.
+Data:
+  MutagenObjectType: FloatGameplayOptionData
+  Value1: 4
+  Value2: 4
+  Max: 32
+  Step: 1
+Rewards:
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 0
+  Name:
+    TargetLanguage: English
+    Value: 0
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 1
+  Name:
+    TargetLanguage: English
+    Value: 1
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 2
+  Name:
+    TargetLanguage: English
+    Value: 2
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 3
+  Name:
+    TargetLanguage: English
+    Value: 3
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 4
+  Name:
+    TargetLanguage: English
+    Value: 4
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 5
+  Name:
+    TargetLanguage: English
+    Value: 5
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 6
+  Name:
+    TargetLanguage: English
+    Value: 6
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 7
+  Name:
+    TargetLanguage: English
+    Value: 7
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 8
+  Name:
+    TargetLanguage: English
+    Value: 8
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 9
+  Name:
+    TargetLanguage: English
+    Value: 9
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 10
+  Name:
+    TargetLanguage: English
+    Value: 10
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 11
+  Name:
+    TargetLanguage: English
+    Value: 11
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 12
+  Name:
+    TargetLanguage: English
+    Value: 12
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 13
+  Name:
+    TargetLanguage: English
+    Value: 13
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 14
+  Name:
+    TargetLanguage: English
+    Value: 14
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 15
+  Name:
+    TargetLanguage: English
+    Value: 15
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 16
+  Name:
+    TargetLanguage: English
+    Value: 16
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 17
+  Name:
+    TargetLanguage: English
+    Value: 17
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 18
+  Name:
+    TargetLanguage: English
+    Value: 18
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 19
+  Name:
+    TargetLanguage: English
+    Value: 19
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 20
+  Name:
+    TargetLanguage: English
+    Value: 20
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 21
+  Name:
+    TargetLanguage: English
+    Value: 21
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 22
+  Name:
+    TargetLanguage: English
+    Value: 22
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 23
+  Name:
+    TargetLanguage: English
+    Value: 23
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 24
+  Name:
+    TargetLanguage: English
+    Value: 24
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 25
+  Name:
+    TargetLanguage: English
+    Value: 25
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 26
+  Name:
+    TargetLanguage: English
+    Value: 26
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 27
+  Name:
+    TargetLanguage: English
+    Value: 27
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 28
+  Name:
+    TargetLanguage: English
+    Value: 28
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 29
+  Name:
+    TargetLanguage: English
+    Value: 29
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 30
+  Name:
+    TargetLanguage: English
+    Value: 30
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 31
+  Name:
+    TargetLanguage: English
+    Value: 31
+  RewardValue: 0
+- Description:
+    TargetLanguage: English
+    Value: ''
+  SettingValue: 32
+  Name:
+    TargetLanguage: English
+    Value: 32
+  RewardValue: 0

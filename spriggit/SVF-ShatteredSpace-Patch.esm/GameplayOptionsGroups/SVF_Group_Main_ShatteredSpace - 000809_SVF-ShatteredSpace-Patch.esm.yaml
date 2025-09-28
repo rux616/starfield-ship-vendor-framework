@@ -1,0 +1,10 @@
+FormKey: 000809:SVF-ShatteredSpace-Patch.esm
+EditorID: SVF_Group_Main_ShatteredSpace
+Name:
+  TargetLanguage: English
+  Value: ''
+Options:
+  MutagenObjectType: GameplayOptionsGroupLeaf
+  GameplayOptions:
+  - 00080C:SVF-ShatteredSpace-Patch.esm
+  - 00080B:SVF-ShatteredSpace-Patch.esm

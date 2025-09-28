@@ -1,0 +1,10 @@
+FormKey: 000814:SVF-DarkStarAstrodynamics-Patch.esp
+EditorID: SVF_Group_Main_DarkStarAstrodynamics
+Name:
+  TargetLanguage: English
+  Value: ''
+Options:
+  MutagenObjectType: GameplayOptionsGroupLeaf
+  GameplayOptions:
+  - 000810:SVF-DarkStarAstrodynamics-Patch.esp
+  - 00080F:SVF-DarkStarAstrodynamics-Patch.esp

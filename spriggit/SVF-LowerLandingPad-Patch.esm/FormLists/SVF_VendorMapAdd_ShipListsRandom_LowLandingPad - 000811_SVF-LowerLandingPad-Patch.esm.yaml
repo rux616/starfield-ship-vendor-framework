@@ -1,0 +1,5 @@
+FormKey: 000811:SVF-LowerLandingPad-Patch.esm
+EditorID: SVF_VendorMapAdd_ShipListsRandom_LowLandingPad
+Items:
+- 000809:SVF-LowerLandingPad-Patch.esm
+AddToList: 00083F:ShipVendorFramework.esm

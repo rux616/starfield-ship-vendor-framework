@@ -1,0 +1,5 @@
+FormKey: 0008DC:ShipVendorFramework.esp
+EditorID: SVF_VendorData_ShipServices_TheClinic_VendorContainer
+Items:
+- 1CF7E6:Starfield.esm
+AddToList: Null

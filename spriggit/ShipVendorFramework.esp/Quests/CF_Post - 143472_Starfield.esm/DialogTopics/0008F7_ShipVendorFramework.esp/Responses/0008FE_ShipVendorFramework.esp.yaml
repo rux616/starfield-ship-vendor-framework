@@ -1,0 +1,26 @@
+FormKey: 0008FE:ShipVendorFramework.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ShipVendorInfoScript
+    Properties:
+    - MutagenObjectType: ScriptBoolProperty
+      Name: OpenToShipForSale
+      Data: True
+Flags:
+  Flags: 2
+DialogGroup: 0008FF:ShipVendorFramework.esp
+Responses:
+- Emotion: 0FA851:Starfield.esm
+  WEMFile: 22791036
+  TROTs:
+  - VoiceType: 262CC8:Starfield.esm
+    EmotionOut: 9.966667
+  ResponseText:
+    TargetLanguage: English
+    Value: Let's see what we can do for you.
+  ScriptNotes: ''
+  Edits: ''
+  AlternateLipText: ''
+  TextHash: 0xC022DC5F4A1DDC01
+StartScenePhase: ''
+SubtitlePriority: Low

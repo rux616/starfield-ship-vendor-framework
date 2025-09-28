@@ -1,0 +1,6 @@
+FormKey: 00081C:SVF-FalklandSystems-Patch.esp
+EditorID: SVF_VendorMapAdd_RandomShipsForSaleMax_FalklandSystems
+Items:
+- 000816:SVF-FalklandSystems-Patch.esp
+- 00080E:SVF-FalklandSystems-Patch.esp
+AddToList: 00084A:ShipVendorFramework.esm

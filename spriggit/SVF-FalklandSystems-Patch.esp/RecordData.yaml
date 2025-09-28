@@ -1,0 +1,17 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.39.11
+ModKey: SVF-FalklandSystems-Patch.esp
+GameRelease: Starfield
+ModHeader:
+  Author: rux616
+  Description: >-
+    Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" by Hjalmere.
+
+
+    Version: 1.0.0
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: FalklandSystems.esm
+  - Master: ShipVendorFramework.esm
+  Branch: Main
