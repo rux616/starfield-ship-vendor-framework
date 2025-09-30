@@ -69,22 +69,35 @@ Add the new Leveled Base Form you just created to the list.
 
 Set the "Add To List" target of your formlist. All of the lists added by Ship Vendor Framework have a prefix of "SVF_ShipVendorList_", and from there are broken down into things like location, manufacturer, faction, etc.
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942682-1441125928.jpeg)[/img][/b][/size]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942682-1441125928.jpeg[/img]
+
+
+[size=5][b]Set Vendor To Use SVF - Vendor Data Map (Recommended)[/b][/size]
 Before you continue this section, it might be a good idea to familiarize yourself with the vendor data map concept introduced in v1.6 of Ship Vendor Framework.
 
 [size=4][b][u]Step 1: Load the Starfield Creation Kit:[/u][/b][/size]
 Load up the Starfield Creation Kit, making sure that you have ShipVendorFramework.esm and the mod you wish to add SVF vendor capabilities to active in your mod manager, then double click to make sure that both mods have an "X" next to them.
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706409-1414994907.jpg)[/img]:[/u][/b][/size]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706409-1414994907.jpg[/img]
+
+
+[size=4][b][u]Step 2: Create Min/Max Gameplay Options (Optional):[/u][/b][/size]
 This step is optional, but will allow you to enable users to change the minimum and maximum number of ships that an enhanced ship vendor will attempt to sell from the set of "random" ships. If you choose to not use Gameplay Options for this, you can also use Globals to set numbers that the user can't change dynamically, or nothing at all in which case the Ship Vendor Framework will default to a minimum of 4 and a maximum of 8.
 
 Go to "Miscellaneous" => "Gameplay Options" in the Object Window, pick the two items that begin with "SVF_Option_TEMPLATE", right click them, and choose "Duplicate and Rename".
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706492-1934340497.jpg)[/img].
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706492-1934340497.jpg[/img]
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706517-1550077560.jpg)[/img]. Look at the other records if you need an example. I would recommend not messing with the "Rewards" section unless you really know what you're doing.
+In the "Rename" window, change "Count" to 0, enter "TEMPLATE" into the "Search" field and enter whatever the editor ID of your vendor is into the "Replace" field (for example, for the Shattered Space ship vendor, you would enter "SFBGS001_HV_DumarHasadi").
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706542-2115368012.jpg)[/img]:[/u][/b][/size]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706517-1550077560.jpg[/img]
+
+Open up the two newly-created Gameplay Options and change the "CHANGE ME" text to the name of your vendor, and double check that the default is what you want (it will be 4 or 8 for min or max, respectively). Look at the other records if you need an example. I would recommend not messing with the "Rewards" section unless you really know what you're doing.
+
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706542-2115368012.jpg[/img]
+
+
+[size=4][b][u]Step 3: Create Gameplay Option Group (Optional):[/u][/b][/size]
 NOTE: You only need to do this step if you created Gameplay Options in the previous step.
 
 Go to "Miscellaneous" => "Gameplay Option Group" in the Object Window, right click, and select "New". For the ID, I would suggest something like "SVF_Group_Main_<ModFileName>".
@@ -131,11 +144,13 @@ Populate each of the formlists as follows:
 - RandomShipsForSaleMax/RandomShipsForSaleMin: the gameplay options you created in step 2
     - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784402-160024135.jpg[/img]
 - ShipListAlways/ShipListRandom/ShipListUnique: the ShipVendorList formlist you created in step 4, or one of the existing ones
-    - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784416-1017880171.jpg)[/img]
+    - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784416-1017880171.jpg[/img]
+- VendorContainer: the object reference of your vendor's container (a note about this: at least as of CK v1.15.222.0, you can't just drag and drop the reference, you need to engage in some shenanigans to do it)
     - Make sure you have the "Cell View" window open (you can make sure it's shown by going to the "View" menu and selecting "Cell View"
     - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784428-6105545.jpg[/img]
     - Filter the Cell View window however you need to in order to find your vendor's vendor container
-    - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784439-1101570346.jpg)[/img]
+    - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784439-1101570346.jpg[/img]
+    - Open the VendorContainer formlist you created, drag the vendor container reference into the list box (above the Conditions box), then click the "Paste selected element" button on the right side of the list box (it looks like a clipboard)
     - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784452-137422332.jpg[/img]
     - Yes, this is stupidly convoluted. No, I have no idea when or even if Bethesda will ever fix it. If you have a proven better way, please let me know.
 
@@ -159,7 +174,9 @@ For the ID, I would recommend something like "SVF_VendorMapAdd_<Map_Type>_<Mod_F
 
 To each of these lists, add the respective formlist created in Step 5 (with the exception of the "Vendors" list - you just add the vendor actor itself), and then set the "add to list" box to the appropriate "SVF_VendorMap_[...]" list from the main mod. For example, if you create a "SVF_VendorMapAdd_VendorContainers_MyAwesomeMod" formlist, you would set the "add to list" box to "SVF_VendorMap_VendorContainers".
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071549-1310188835.jpg)[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071549-1310188835.jpg[/img]
+
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071565-1696964893.jpg[/img]
 
 
 
@@ -200,7 +217,9 @@ Open up your vendor, go to the "Scripts" area, and double click "sq_shipservices
 
 At the top of this window, you should notice a group called "ShipVendorFramework" with a few properties underneath. Set the values for the "SVFShipsToSellList{Always,Random,Unique}Dataset" properties to their respective formlists you created in the last step.
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072802-1587812210.jpg)[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072802-1587812210.jpg[/img]
+
+Set the "VendorContainer" property to your vendor's vendor container. (This is important for the "Rich Ship Vendors" option.)
 
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072814-1588839804.jpg[/img]
 
