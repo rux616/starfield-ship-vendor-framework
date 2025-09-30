@@ -94,7 +94,7 @@
     - [X] Falkland Systems
 - [X] determine whether to keep "CheckForNewShips" function (more specifically, the ForSaleMatchesToSell function), as if it encounters a ship that can't be spawned for conditional reasons, it'll trigger a refresh of the ships available for sale
     - revamped CheckForNewShips function to work off of before-and-after lists rather than should-be-spawned vs is-spawned
-- [] 1.6 release tasks
+- [X] 1.6 release tasks
     - [X] update NPC form list
     - [X] add NPC form list for capability mods (DarkStar, DarkStar Astrodynamics, Falkland Systems)
     - [X] update readme
@@ -105,3 +105,5 @@
     - [X] update patches readme
     - [X] add capability mod NPC list to readme
     - [X] add to howto document/article to show how to add vendors that utilize SVF
+- [X] take a look at nexusbbcode generator, it's mangling markdown image links for some reason
+- [X] fix DarkStar Astrodynamics and The Den Astrodynamics patches are always enabled by default when installing

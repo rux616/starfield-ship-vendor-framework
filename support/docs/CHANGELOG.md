@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.6.1](#v161)
     - [v1.6.0](#v160)
     - [v1.5.4](#v154)
     - [v1.5.3](#v153)
@@ -24,6 +25,13 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.6.1
+------
+- Fixed DarkStar Astrodynamics and The Den Astrodynamics patches always being initially selected in FOMOD installer
+- Fixed Markdown image to BBCode image conversion regex
+
+([TOC](#table-of-contents))
 
 v1.6.0
 ------
