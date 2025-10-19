@@ -1,0 +1,10 @@
+FormKey: 00080B:SVF-Watchtower-Patch.esm
+EditorID: SVF_Group_Main_kinggathcreations_spaceship
+Name:
+  TargetLanguage: English
+  Value: ''
+Options:
+  MutagenObjectType: GameplayOptionsGroupLeaf
+  GameplayOptions:
+  - 000806:SVF-Watchtower-Patch.esm
+  - 000807:SVF-Watchtower-Patch.esm
