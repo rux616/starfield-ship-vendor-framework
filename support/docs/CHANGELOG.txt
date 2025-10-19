@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.7.0
     - v1.6.1
     - v1.6.0
     - v1.5.4
@@ -25,6 +26,10 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.7.0
+------
+- Added patch for Watchtower
 
 v1.6.1
 ------
