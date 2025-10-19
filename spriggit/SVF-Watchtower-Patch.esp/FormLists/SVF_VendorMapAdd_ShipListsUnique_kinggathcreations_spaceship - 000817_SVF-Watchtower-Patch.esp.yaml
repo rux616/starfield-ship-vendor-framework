@@ -1,0 +1,5 @@
+FormKey: 000817:SVF-Watchtower-Patch.esp
+EditorID: SVF_VendorMapAdd_ShipListsUnique_kinggathcreations_spaceship
+Items:
+- 000811:SVF-Watchtower-Patch.esp
+AddToList: 000840:ShipVendorFramework.esm

@@ -1,0 +1,5 @@
+FormKey: 000814:SVF-Watchtower-Patch.esp
+EditorID: SVF_VendorMapAdd_RandomShipsForSaleMax_kinggathcreations_spaceship
+Items:
+- 00080D:SVF-Watchtower-Patch.esp
+AddToList: 00084A:ShipVendorFramework.esm

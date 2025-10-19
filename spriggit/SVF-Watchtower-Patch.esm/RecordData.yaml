@@ -1,0 +1,26 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.39.11
+ModKey: SVF-Watchtower-Patch.esm
+GameRelease: Starfield
+ModHeader:
+  Flags:
+  - Master
+  - Light
+  Author: rux616
+  Description: >-
+    Patch for "Ship Vendor Framework" by rux616 and "Watchtower" by kinggath_creations.
+
+
+    Version: 1.0.0
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: kinggathcreations_spaceship.esm
+  - Master: ShipVendorFramework.esm
+  - Master: SFBGS004.esm
+  - Master: SFBGS008.esm
+  - Master: SFBGS007.esm
+  - Master: SFBGS006.esm
+  - Master: sfbgs003.esm
+  Branch: Main
+  InteriorCellCount: 0

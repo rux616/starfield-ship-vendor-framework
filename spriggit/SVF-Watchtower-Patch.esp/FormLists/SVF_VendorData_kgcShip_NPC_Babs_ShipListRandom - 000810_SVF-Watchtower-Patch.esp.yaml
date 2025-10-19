@@ -1,0 +1,5 @@
+FormKey: 000810:SVF-Watchtower-Patch.esp
+EditorID: SVF_VendorData_kgcShip_NPC_Babs_ShipListRandom
+Items:
+- 000811:ShipVendorFramework.esm
+AddToList: Null
