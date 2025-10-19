@@ -13,6 +13,7 @@ Table Of Contents
     - [SVF Capability Patch - Outpost Vendor New Ships](#svf-capability-patch---outpost-vendor-new-ships)
     - [SVF Capability Patch - SGC Deadalus and Battlestar](#svf-capability-patch---sgc-deadalus-and-battlestar)
     - [SVF Capability Patch - The Den Astrodynamics](#svf-capability-patch---the-den-astrodynamics)
+    - [SVF Capability Patch - Watchtower](#svf-capability-patch---watchtower)
 - [Compatibility Patches](#compatibility-patches)
     - [SVF Compatibility Patch - Starvival v11](#svf-compatibility-patch---starvival-v11)
 
@@ -130,6 +131,17 @@ Patch for "Ship Vendor Framework" by rux616 and "The Den Astrodynamics" by Voodo
 
 Mod Source:
 - Nexus: https://www.nexusmods.com/starfield/mods/8809
+
+Patch Type:
+- Capability
+
+
+SVF Capability Patch - Watchtower
+-----
+Patch for "Ship Vendor Framework" by rux616 and "Watchtower" by kinggath_creations.
+
+Mod Source:
+- https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command
 
 Patch Type:
 - Capability
