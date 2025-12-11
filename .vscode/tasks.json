@@ -137,8 +137,8 @@
       "label": "Create Archives",
       "type": "shell",
       "command": "./support/common/scripts/build-archives.ps1",
-      "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-SkipBA2", "-SkipBA2Cleanup"],
-      "dependsOrder": "parallel",
+      "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-SkipBA2"],
+      "dependsOrder": "sequence",
       "dependsOn": ["Create Archives (Starvival Patch BA2)", "Create Archives (Main BA2)"]
     },
     {
