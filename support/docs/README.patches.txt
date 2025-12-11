@@ -6,7 +6,7 @@ Table Of Contents
 - Capability Patches
     - SVF Capability Patch - DarkStar Astrodynamics
     - SVF Capability Patch - Dominion
-    - SVF Capability Patch - Falkland Systems
+    - SVF Capability Patch - Falkland Systems v2
     - SVF Capability Patch - Iconic Ships
     - SVF Capability Patch - L-K Ships
     - SVF Capability Patch - Lower Landing Pad
@@ -58,7 +58,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Falkland Systems
+SVF Capability Patch - Falkland Systems v2
 -----
 Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" by Hjalmere.
 

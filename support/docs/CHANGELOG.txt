@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.8.0
     - v1.7.0
     - v1.6.1
     - v1.6.0
@@ -26,6 +27,12 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.8.0
+------
+- Updated Falkland Systems patch to add the "Kestrel" ship introduced in v2
+- Fixed order of Game Settings in the Watchtower patch
+- Added image to show lists for Watchtower
 
 v1.7.0
 ------

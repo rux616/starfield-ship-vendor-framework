@@ -1,4 +1,4 @@
-Version: 1.7.0
+Version: 1.8.0
 
 Summary
 -----
@@ -14,7 +14,7 @@ This is a limited version of the README. The full version can be found at the mo
 
 Load Order
 -----
-For best results, put this mod last in your load order, followed by other mods that have it as a master.
+For best results, I would recommend keeping this mod and all its patches in a single block, all following any other mods that are being patched.
 
 For patches, the load order should be as follows:
 - ShipVendorFramework.esm

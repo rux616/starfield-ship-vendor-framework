@@ -9,14 +9,14 @@ ModHeader:
     Patch for "Ship Vendor Framework" by rux616 and "Watchtower" by kinggath_creations.
 
 
-    Version: 1.0.0
+    Version: 1.0.1
   MasterReferences:
   - Master: Starfield.esm
   - Master: kinggathcreations_spaceship.esm
   - Master: ShipVendorFramework.esm
-  - Master: SFBGS004.esm
   - Master: SFBGS008.esm
   - Master: SFBGS007.esm
+  - Master: SFBGS004.esm
   - Master: SFBGS006.esm
   - Master: sfbgs003.esm
   Branch: Main

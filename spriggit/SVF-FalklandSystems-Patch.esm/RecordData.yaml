@@ -12,7 +12,7 @@ ModHeader:
     Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" by Hjalmere.
 
 
-    Version: 1.0.0
+    Version: 1.1.0
   MasterReferences:
   - Master: Starfield.esm
   - Master: FalklandSystems.esm

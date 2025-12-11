@@ -2,7 +2,7 @@ Ship Vendor Framework
 =====================
 by rux616
 
-Version: 1.7.0
+Version: 1.8.0
 
 Table Of Contents
 -----------------
@@ -107,13 +107,16 @@ DarkStar Astrodynamics (with patch):
 Falkland Systems Ship Services (with patch):
 (Image: NPC Ship List Table (Falkland Systems Ship Services Patch))
 
+Watchtower (with patch):
+(Image: NPC Ship List Table (Watchtower Patch))
+
 
 Installation
 ============
 
 Load Order
 ----------
-For best results, put this mod last in your load order, followed by other mods that have it as a master.
+For best results, I would recommend keeping this mod and all its patches in a single block, all following any other mods that are being patched.
 
 For patches, the load order should be as follows:
 - ShipVendorFramework.esm
