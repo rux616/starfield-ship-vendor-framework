@@ -90,6 +90,10 @@ NPC Form List
 |--------------------------|----------------------------------|----------------------------------|----------------------------------|
 | DSA Shipbuilding Console | Mod_DarkStarAstrodynamics_Always | Mod_DarkStarAstrodynamics_Random | Mod_DarkStarAstrodynamics_Unique |
 
+| NPC     | Always List                   | Random List                    | Unique List                   |
+|---------|-------------------------------|--------------------------------|-------------------------------|
+| B.A.B.S | Location_StardockAlpha_Always | Faction_UnitedColonies_Limited | Location_StardockAlpha_Unique |
+
 game option pretty ordering (vanilla):
 - Akila City Ship Services
 - Cydonia Ship Services
