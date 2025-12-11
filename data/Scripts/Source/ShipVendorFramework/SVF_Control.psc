@@ -31,7 +31,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
-string Property SVFVersion = "1.7.0" Auto Const Hidden
+string Property SVFVersion = "1.8.0" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
