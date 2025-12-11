@@ -107,3 +107,6 @@
     - [X] add to howto document/article to show how to add vendors that utilize SVF
 - [X] take a look at nexusbbcode generator, it's mangling markdown image links for some reason
 - [X] fix DarkStar Astrodynamics and The Den Astrodynamics patches are always enabled by default when installing
+- [X] watchtower vendor (B.A.B.S) has their min/max settings inverted (max, min) in the "Game Settings" menu
+- [X] add Watchtower vendor lists picture
+- [X] add Kestrel from Falkland Systems v2 to patch
