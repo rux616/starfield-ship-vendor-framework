@@ -31,7 +31,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
-string Property SVFVersion = "1.8.0" Auto Const Hidden
+string Property SVFVersion = "1.8.1" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
@@ -110,6 +110,10 @@ Form[] randomShipsForSaleMinCache
 Form[] randomShipsForSaleMaxCache
 Form[] vendorContainersCache
 
+; sentinel variable to check that the initialization of the script (version updates, sanity checks, etc.) have all
+; finished
+bool svfControlInitialized = false
+
 ; the log level threshold for the script; messages with a level less than this threshold will not be logged
 ; -1 = debug (all), 0 = info (default), 1 = warning, 2 = error, 3 = none (suppress)
 int Property LOG_LEVEL_THRESHOLD = 0 Auto Const Hidden
@@ -150,6 +154,8 @@ EndEvent
 
 
 Function Initialize()
+    svfControlInitialized = false
+
     string fnName = "Initialize" Const
     _Log(fnName, "begin", LL_DEBUG)
     _Log(fnName, "SVF Control version: current=" + svfControlVersionCurrent + ", desired=" + SVFControlVersion, LL_INFO)
@@ -182,6 +188,9 @@ Function Initialize()
         MsgErrorVendorMappingsNoneDeep.Show()
     EndIf
 
+    svfControlInitialized = true
+    _Log(fnName, "SVF Control initialization complete", LL_INFO)
+
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
@@ -190,7 +199,7 @@ bool Function SVFControlInitialized()
     string fnName = "SVFControlInitialized" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    bool toReturn = svfControlVersionCurrent == SVFControlVersion
+    bool toReturn = svfControlVersionCurrent == SVFControlVersion && svfControlInitialized == true
     _Log(fnName, "returning " + toReturn, LL_DEBUG)
 
     _Log(fnName, "end", LL_DEBUG)
