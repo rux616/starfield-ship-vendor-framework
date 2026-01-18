@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.8.1](#v181)
     - [v1.8.0](#v180)
     - [v1.7.0](#v170)
     - [v1.6.1](#v161)
@@ -27,6 +28,16 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.8.1
+------
+- Fixed the SVF_Control:SVFControlInitialized() function not doing a thorough enough job, thus not allowing vendors to initialize properly in certain very specific circumstances (thanks to DeityVengy for bringing this to my attention)
+- Adjusted the duration in the ship vendor script before the code declares a timeout while waiting for SVF_Control initialization
+- Slightly adjusted the description of the Falklands Systems and Starvival patch plugins to add the version of the mods they patch (v2 and v11, respectively) for more clarity
+- Slightly adjusted the description of the Falklands Systems patch in the FOMOD to add the version it is for (v2) for more clarity
+- Added a parameter to build system so that built BA2 files aren't automatically cleaned up
+
+([TOC](#table-of-contents))
 
 v1.8.0
 ------
