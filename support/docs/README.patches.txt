@@ -60,7 +60,7 @@ Patch Type:
 
 SVF Capability Patch - Falkland Systems v2
 -----
-Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" by Hjalmere.
+Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" v2 by Hjalmere.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/6cbf2c64-b736-4d95-bf06-38183a94b359/Falkland_Systems_Ship_Services
