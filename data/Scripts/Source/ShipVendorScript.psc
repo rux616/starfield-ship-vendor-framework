@@ -696,9 +696,9 @@ Function InitializeSVFEnhancementsVersion3()
     svfControl = Game.GetFormFromFile(0x000810, "ShipVendorFramework.esm") as ShipVendorFramework:SVF_Control
 
     ; wait for control script to initialize, but time out after a few seconds
-    int controlInitTimeout = 5
+    int controlInitTimeout = 10
     While svfControl.SVFControlInitialized() == false && controlInitTimeout > 0
-        _Log(fnName, "Waiting for SVF Control to initialize...", LL_WARNING)
+        _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
         Utility.WaitMenuPause(1.0)
         controlInitTimeout -= 1
     EndWhile
