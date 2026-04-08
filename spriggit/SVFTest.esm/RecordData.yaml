@@ -1,6 +1,6 @@
 SpriggitSource:
   PackageName: Spriggit.Yaml.Starfield
-  Version: 0.39.11
+  Version: 0.40
 ModKey: SVFTest.esm
 GameRelease: Starfield
 ModHeader:
