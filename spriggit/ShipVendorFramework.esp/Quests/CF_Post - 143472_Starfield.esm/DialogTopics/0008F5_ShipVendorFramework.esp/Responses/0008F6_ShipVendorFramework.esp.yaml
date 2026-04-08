@@ -16,9 +16,7 @@ Conditions:
   Data:
     MutagenObjectType: GetVMScriptVariableConditionData
     RunOnType: Target
-    FirstUnusedIntParameter: 1733465272
     FirstParameter: sq_shipservicesactorscript
-    SecondUnusedIntParameter: 1733465248
     SecondParameter: ::SellsShips_var
   ComparisonValue: 1
 StartScenePhase: ''
