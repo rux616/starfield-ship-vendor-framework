@@ -277,8 +277,8 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
 
     If initialized == false || svfEnhancementsVersionCurrent != SVFEnhancementsVersion
         If initialized == true
-            ; if initialized == true, the vendor has already been initialized, but because of the prior logic statement,
-            ; the SVF enhancements must not be fully initialized
+            ; if initialized == true, the vendor has already been initialized. but because of the prior logic statement,
+            ; the SVF enhancements are not fully initialized
             _Log(fnName, "initializing SVF enhancements on load", LL_DEBUG)
             Initialize(MyLandingMarker)
         ElseIf InitializeOnLoad == true
@@ -1344,7 +1344,7 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         SpaceshipReference landingMarkerShipRef = akCreateMarker.GetCurrentShipRef()
         If landingMarkerShipRef
             akCreateMarker = landingMarkerShipRef
-        _Log(fnName, "landing marker is in a ship, so new ships will be created at ship ref " + landingMarkerShipRef, LL_INFO)
+            _Log(fnName, "landing marker is in a ship, so new ships will be created at ship ref " + landingMarkerShipRef, LL_INFO)
         EndIf
 
         ; get the encounter location
@@ -1353,8 +1353,11 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
             encounterLocation = GetCurrentLocation()
         EndIf
 
+        _Log(fnName, "current player level is " + playerRef.GetLevel(), LL_INFO)
+
         ; refresh priority ships
         _Log(fnName, "clearing priority ships and ship ref to leveled ship mapping list", LL_INFO)
+        _Log(fnName, "priority ships being cleared: " + akShipListAlways, LL_INFO)
         DeleteShips(akShipListAlways)
         shipsForSaleMappingAlways.Clear()
         _Log(fnName, "attempting to create " + vShipsToSellAlways.Length + " priority ships", LL_INFO)
@@ -1362,6 +1365,7 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
 
         ; refresh random ships
         _Log(fnName, "clearing random ships and ship ref to leveled ship mapping list", LL_INFO)
+        _Log(fnName, "random ships being cleared: " + akShipListRandom, LL_INFO)
         DeleteShips(akShipListRandom)
         shipsForSaleMappingRandom.Clear()
         int randomShipsToCreateCount = ShipVendorFramework:SVF_Utility.MinInt(vShipsToSellRandom.Length, Utility.RandomInt(shipsForSaleMinLocal, shipsForSaleMaxLocal))
@@ -1370,6 +1374,7 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
 
         ; refresh unique ships
         _Log(fnName, "clearing unique ships and ship ref to leveled ship mapping list", LL_INFO)
+        _Log(fnName, "unique ships being cleared: " + akShipListUnique, LL_INFO)
         DeleteShips(akShipListUnique)
         shipsForSaleMappingUnique.Clear()
         _Log(fnName, "attempting to create " + vShipsToSellUnique.Length + " unique ships", LL_INFO)
@@ -1377,6 +1382,7 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
 
         ; clear out the list of ships sold to the vendor by the player
         _Log(fnName, "clearing ships sold by player to vendor", LL_INFO)
+        _Log(fnName, "player-sold ships being cleared: " + akShipListSoldByPlayer, LL_INFO)
         DeleteShips(akShipListSoldByPlayer)
 
         ; combine ship lists
@@ -1564,9 +1570,10 @@ Function ApplyRichShipVendorCreditAdjustment()
         int minimumCreditsIndex = svfControl.RichShipVendorsMinimumCreditsOption.GetValue() as int
         int minimumCredits = svfControl.RichShipVendorsMinimumCreditsValues[minimumCreditsIndex]
         _Log(fnName, "minimum credits: " + minimumCredits, LL_DEBUG)
-        If currentCredits < minimumCredits
-            _Log(fnName, "vendor container " + theContainer + " does not have enough credits, adding " + (minimumCredits - currentCredits) + " credits", LL_DEBUG)
-            theContainer.AddItem(credits, minimumCredits - currentCredits)
+        int neededCredits = minimumCredits - currentCredits
+        If neededCredits > 0
+            _Log(fnName, "vendor container " + theContainer + " has below-minimum credits of " + currentCredits + ", adding " + neededCredits + " credits to reach minimum of " + minimumCredits, LL_INFO)
+            theContainer.AddItem(credits, neededCredits)
         EndIf
     Else
         _Log(fnName, "rich ship vendors option is disabled, not applying", LL_DEBUG)
