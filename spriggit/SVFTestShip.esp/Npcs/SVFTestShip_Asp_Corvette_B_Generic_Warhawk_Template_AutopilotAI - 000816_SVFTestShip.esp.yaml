@@ -2,6 +2,7 @@ FormKey: 000816:SVFTestShip.esp
 IsCompressed: True
 MajorRecordFlagsRaw: 4456448
 EditorID: SVFTestShip_Asp_Corvette_B_Generic_Warhawk_Template_AutopilotAI
+FormVersion: 582
 StarfieldMajorRecordFlags:
 - Compressed
 - 0x400000

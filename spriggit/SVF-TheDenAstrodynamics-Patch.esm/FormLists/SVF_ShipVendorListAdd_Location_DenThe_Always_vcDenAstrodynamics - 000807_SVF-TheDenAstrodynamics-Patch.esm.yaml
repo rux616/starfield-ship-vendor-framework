@@ -1,5 +1,6 @@
 FormKey: 000807:SVF-TheDenAstrodynamics-Patch.esm
 EditorID: SVF_ShipVendorListAdd_Location_DenThe_Always_vcDenAstrodynamics
+FormVersion: 582
 Items:
 - 0008CF:vcDenAstrodynamics.esm
 - 0008D3:vcDenAstrodynamics.esm

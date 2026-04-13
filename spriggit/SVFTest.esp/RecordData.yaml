@@ -4,6 +4,7 @@ SpriggitSource:
 ModKey: SVFTest.esp
 GameRelease: Starfield
 ModHeader:
+  FormVersion: 582
   Author: rux616
   Description: Supplemental test data for the Ship Vendor Framework mod.
   MasterReferences:
