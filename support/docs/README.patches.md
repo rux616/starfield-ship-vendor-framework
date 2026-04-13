@@ -15,7 +15,7 @@ Table Of Contents
     - [SVF Capability Patch - The Den Astrodynamics](#svf-capability-patch---the-den-astrodynamics)
     - [SVF Capability Patch - Watchtower](#svf-capability-patch---watchtower)
 - [Compatibility Patches](#compatibility-patches)
-    - [SVF Compatibility Patch - Starvival v11](#svf-compatibility-patch---starvival-v11)
+    - [SVF Compatibility Patch - Starvival v12.1](#svf-compatibility-patch---starvival-v121)
 
 
 Expansion Patches
@@ -150,9 +150,9 @@ Patch Type:
 Compatibility Patches
 =====================
 
-SVF Compatibility Patch - Starvival v11
+SVF Compatibility Patch - Starvival v12.1
 -----
-Patch for "Ship Vendor Framework" by rux616 and "Starvival" v11 by lKocMoHaBTl.
+Patch for "Ship Vendor Framework" by rux616 and "Starvival" v12.1 by lKocMoHaBTl.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon
