@@ -1,5 +1,6 @@
 FormKey: 0008FA:ShipVendorFramework.esp
 EditorID: SVF_Msg_ErrorVendorMappingsNone
+FormVersion: 582
 Description:
   TargetLanguage: English
   Value: >-

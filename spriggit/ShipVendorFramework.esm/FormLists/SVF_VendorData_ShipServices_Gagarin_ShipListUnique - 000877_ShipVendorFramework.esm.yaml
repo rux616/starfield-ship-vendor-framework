@@ -1,5 +1,6 @@
 FormKey: 000877:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_Gagarin_ShipListUnique
+FormVersion: 582
 Items:
 - 000819:ShipVendorFramework.esm
 AddToList: Null

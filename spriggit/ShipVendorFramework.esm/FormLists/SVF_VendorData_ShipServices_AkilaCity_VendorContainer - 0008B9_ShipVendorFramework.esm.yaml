@@ -1,5 +1,6 @@
 FormKey: 0008B9:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_AkilaCity_VendorContainer
+FormVersion: 582
 Items:
 - 12DF02:Starfield.esm
 AddToList: Null

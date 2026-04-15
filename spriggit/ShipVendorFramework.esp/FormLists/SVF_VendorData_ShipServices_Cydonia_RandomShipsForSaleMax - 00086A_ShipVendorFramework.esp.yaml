@@ -1,5 +1,6 @@
 FormKey: 00086A:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_Cydonia_RandomShipsForSaleMax
+FormVersion: 582
 Items:
 - 000850:ShipVendorFramework.esp
 AddToList: Null

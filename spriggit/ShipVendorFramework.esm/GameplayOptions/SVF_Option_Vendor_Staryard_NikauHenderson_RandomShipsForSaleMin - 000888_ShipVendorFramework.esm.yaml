@@ -1,5 +1,6 @@
 FormKey: 000888:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_Staryard_NikauHenderson_RandomShipsForSaleMin
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Nikau Henderson: Min'

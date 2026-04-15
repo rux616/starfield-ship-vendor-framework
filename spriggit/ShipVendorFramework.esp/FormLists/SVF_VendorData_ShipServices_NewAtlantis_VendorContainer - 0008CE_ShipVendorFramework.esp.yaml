@@ -1,5 +1,6 @@
 FormKey: 0008CE:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_NewAtlantis_VendorContainer
+FormVersion: 582
 Items:
 - 1CF7A1:Starfield.esm
 AddToList: Null

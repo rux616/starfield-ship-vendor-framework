@@ -1,5 +1,6 @@
 FormKey: 0008E6:ShipVendorFramework.esm
 EditorID: SVF_Option_RichShipVendors
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '  Rich Ship Vendors'

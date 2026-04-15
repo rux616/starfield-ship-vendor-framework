@@ -1,5 +1,6 @@
 FormKey: 000866:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_ShipServices_NewAtlantis_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    New Atlantis Ship Services: Max'

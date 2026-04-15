@@ -1,5 +1,6 @@
 FormKey: 000870:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_EleosRetreat_ShipListUnique
+FormVersion: 582
 Items:
 - 000817:ShipVendorFramework.esm
 AddToList: Null

@@ -1,5 +1,6 @@
 FormKey: 0008C9:ShipVendorFramework.esp
 EditorID: SVF_VendorData_RM_LonAnderssen_ShipListAlways
+FormVersion: 582
 Items:
 - 000829:ShipVendorFramework.esp
 AddToList: Null

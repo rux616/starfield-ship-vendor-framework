@@ -1,5 +1,6 @@
 FormKey: 000878:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_Gagarin_RandomShipsForSaleMax
+FormVersion: 582
 Items:
 - 00085E:ShipVendorFramework.esp
 AddToList: Null

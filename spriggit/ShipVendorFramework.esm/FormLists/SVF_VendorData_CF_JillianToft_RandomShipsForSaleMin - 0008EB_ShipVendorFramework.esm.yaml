@@ -1,5 +1,6 @@
 FormKey: 0008EB:ShipVendorFramework.esm
 EditorID: SVF_VendorData_CF_JillianToft_RandomShipsForSaleMin
+FormVersion: 582
 Items:
 - 0008F2:ShipVendorFramework.esm
 AddToList: Null

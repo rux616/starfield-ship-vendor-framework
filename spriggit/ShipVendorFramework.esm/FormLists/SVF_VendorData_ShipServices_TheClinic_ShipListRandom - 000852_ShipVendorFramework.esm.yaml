@@ -1,5 +1,6 @@
 FormKey: 000852:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_TheClinic_ShipListRandom
+FormVersion: 582
 Items:
 - 00081B:ShipVendorFramework.esm
 AddToList: Null

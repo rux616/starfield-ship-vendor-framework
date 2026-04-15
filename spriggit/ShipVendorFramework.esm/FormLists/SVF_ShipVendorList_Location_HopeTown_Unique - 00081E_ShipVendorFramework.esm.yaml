@@ -1,5 +1,6 @@
 FormKey: 00081E:ShipVendorFramework.esm
 EditorID: SVF_ShipVendorList_Location_HopeTown_Unique
+FormVersion: 582
 Items:
 - 055FC0:Starfield.esm
 AddToList: Null

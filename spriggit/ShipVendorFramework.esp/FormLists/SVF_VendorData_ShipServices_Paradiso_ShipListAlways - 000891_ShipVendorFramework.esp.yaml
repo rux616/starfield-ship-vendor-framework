@@ -1,5 +1,6 @@
 FormKey: 000891:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_Paradiso_ShipListAlways
+FormVersion: 582
 Items:
 - 000825:ShipVendorFramework.esp
 AddToList: Null

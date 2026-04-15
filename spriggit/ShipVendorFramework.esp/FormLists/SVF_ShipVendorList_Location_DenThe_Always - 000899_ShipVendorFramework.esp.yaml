@@ -1,5 +1,6 @@
 FormKey: 000899:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Location_DenThe_Always
+FormVersion: 582
 Items:
 - 1EAA08:Starfield.esm
 AddToList: Null

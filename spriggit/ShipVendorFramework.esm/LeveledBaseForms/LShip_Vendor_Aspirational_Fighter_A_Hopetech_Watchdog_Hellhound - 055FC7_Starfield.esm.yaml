@@ -1,0 +1,48 @@
+FormKey: 055FC7:Starfield.esm
+EditorID: LShip_Vendor_Aspirational_Fighter_A_Hopetech_Watchdog_Hellhound
+FormVersion: 582
+Version2: 2
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Unknown2: 16630
+  Data:
+    MutagenObjectType: GetQuestCompletedConditionData
+    FirstParameter: 1EF7F1:Starfield.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Unknown2: 16630
+  Data:
+    MutagenObjectType: GetQuestCompletedConditionData
+    FirstParameter: 1B41D0:Starfield.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Unknown2: 16630
+  Data:
+    MutagenObjectType: GetStageConditionData
+    FirstParameter: 1EF7F1:Starfield.esm
+  ComparisonValue: 1000
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Unknown2: 16630
+  Data:
+    MutagenObjectType: GetStageConditionData
+    FirstParameter: 1B41D0:Starfield.esm
+  ComparisonValue: 1000
+Entries:
+- Level: 1
+  Unused: 19936
+  Reference: 24FC35:Starfield.esm
+  Count: 1
+Model:
+  LightLayer: 1

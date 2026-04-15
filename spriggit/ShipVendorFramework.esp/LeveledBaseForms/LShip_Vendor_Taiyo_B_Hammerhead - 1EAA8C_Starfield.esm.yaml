@@ -1,5 +1,6 @@
 FormKey: 1EAA8C:Starfield.esm
 EditorID: LShip_Vendor_Taiyo_B_Hammerhead
+FormVersion: 582
 Version2: 4
 MaxCount: 0
 Flags:
@@ -7,14 +8,14 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 95
+  Unused: 19936
   Reference: 0B1969:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
     Flags:
     - OR
-    Unknown2: 4684
+    Unknown2: 16630
     Data:
       MutagenObjectType: GetInCellConditionData
       RunOnType: Reference
@@ -22,15 +23,15 @@ Entries:
       FirstParameter: 27A9A4:Starfield.esm
     ComparisonValue: 1
 - Level: 16
-  Unused: 95
+  Unused: 19936
   Reference: 0B1969:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 95
+  Unused: 19936
   Reference: 02C723:Starfield.esm
   Count: 1
 - Level: 56
-  Unused: 95
+  Unused: 19936
   Reference: 02C74B:Starfield.esm
   Count: 1
 Model:

@@ -1,5 +1,6 @@
 FormKey: 0008CC:ShipVendorFramework.esm
 EditorID: SVF_VendorData_RM_LonAnderssen_RandomShipsForSaleMax
+FormVersion: 582
 Items:
 - 00084E:ShipVendorFramework.esm
 AddToList: Null

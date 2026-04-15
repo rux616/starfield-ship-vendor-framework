@@ -1,5 +1,6 @@
 FormKey: 0008FC:ShipVendorFramework.esp
 EditorID: SVF_Msg_ErrorVendorMappingsSizesMismatch
+FormVersion: 582
 Description:
   TargetLanguage: English
   Value: >-

@@ -1,5 +1,6 @@
 FormKey: 0008BA:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_Cydonia_VendorContainer
+FormVersion: 582
 Items:
 - 12DF03:Starfield.esm
 AddToList: Null

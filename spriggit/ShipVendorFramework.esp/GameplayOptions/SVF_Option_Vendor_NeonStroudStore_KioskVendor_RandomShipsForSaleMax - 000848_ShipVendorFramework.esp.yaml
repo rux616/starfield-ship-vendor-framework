@@ -1,5 +1,6 @@
 FormKey: 000848:ShipVendorFramework.esp
 EditorID: SVF_Option_Vendor_NeonStroudStore_KioskVendor_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Stroud-Eklund Neon Kiosk: Max'

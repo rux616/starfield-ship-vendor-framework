@@ -1,5 +1,6 @@
 FormKey: 00083B:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_TheDen_RandomShipsForSaleMin
+FormVersion: 582
 Items:
 - 0008A6:ShipVendorFramework.esm
 AddToList: Null

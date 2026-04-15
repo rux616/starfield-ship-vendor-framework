@@ -1,5 +1,6 @@
 FormKey: 0008D6:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_RHQ_VendorContainer
+FormVersion: 582
 Items:
 - 1CF70C:Starfield.esm
 AddToList: Null

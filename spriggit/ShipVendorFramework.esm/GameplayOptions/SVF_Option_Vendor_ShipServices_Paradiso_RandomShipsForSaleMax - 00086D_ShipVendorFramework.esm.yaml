@@ -1,5 +1,6 @@
 FormKey: 00086D:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_ShipServices_Paradiso_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Paradiso Ship Services: Max'

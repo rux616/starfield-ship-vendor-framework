@@ -1,0 +1,19 @@
+FormKey: 000917:ShipVendorFramework.esp
+EditorID: SVF_Header_RandomShipsForSale_FalklandSystems
+FormVersion: 582
+Name:
+  TargetLanguage: English
+  Value: '    [ Mod: Falkland Systems ]'
+Description:
+  TargetLanguage: English
+  Value: >-
+    These settings will only be utilized when Falkland Systems and its associated Ship Vendor Framework patch are both enabled.
+
+
+    Current status: <font color="#ED0000">Inactive</font>
+Data:
+  MutagenObjectType: FloatGameplayOptionData
+  Value1: 0
+  Value2: 0
+  Max: 1
+  Step: 1

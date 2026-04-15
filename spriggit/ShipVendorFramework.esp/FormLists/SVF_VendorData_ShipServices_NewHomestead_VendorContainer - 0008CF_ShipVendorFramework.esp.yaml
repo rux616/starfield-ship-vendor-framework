@@ -1,5 +1,6 @@
 FormKey: 0008CF:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_NewHomestead_VendorContainer
+FormVersion: 582
 Items:
 - 1CF7AF:Starfield.esm
 AddToList: Null

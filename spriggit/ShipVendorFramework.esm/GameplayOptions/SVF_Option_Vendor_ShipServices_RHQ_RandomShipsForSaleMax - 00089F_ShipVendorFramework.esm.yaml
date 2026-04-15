@@ -1,5 +1,6 @@
 FormKey: 00089F:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_ShipServices_RHQ_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Red Devils HQ Ship Services: Max'

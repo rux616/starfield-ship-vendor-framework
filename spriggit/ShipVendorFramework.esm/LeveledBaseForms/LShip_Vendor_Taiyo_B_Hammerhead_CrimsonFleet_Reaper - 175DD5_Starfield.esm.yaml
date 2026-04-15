@@ -1,5 +1,6 @@
 FormKey: 175DD5:Starfield.esm
 EditorID: LShip_Vendor_Taiyo_B_Hammerhead_CrimsonFleet_Reaper
+FormVersion: 582
 Version2: 2
 MaxCount: 0
 Flags:
@@ -7,15 +8,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 16
-  Unused: 95
+  Unused: 19936
   Reference: 322BEB:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 95
+  Unused: 19936
   Reference: 388945:Starfield.esm
   Count: 1
 - Level: 56
-  Unused: 95
+  Unused: 19936
   Reference: 388947:Starfield.esm
   Count: 1
 Model:

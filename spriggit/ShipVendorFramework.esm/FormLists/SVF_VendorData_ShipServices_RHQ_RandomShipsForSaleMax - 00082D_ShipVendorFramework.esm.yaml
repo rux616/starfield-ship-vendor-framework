@@ -1,5 +1,6 @@
 FormKey: 00082D:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_RHQ_RandomShipsForSaleMax
+FormVersion: 582
 Items:
 - 00089F:ShipVendorFramework.esm
 AddToList: Null

@@ -1,5 +1,6 @@
 FormKey: 0008D1:ShipVendorFramework.esm
 EditorID: SVF_VendorData_Staryard_Havershaw_ShipListRandom
+FormVersion: 582
 Items:
 - 000833:ShipVendorFramework.esm
 AddToList: Null

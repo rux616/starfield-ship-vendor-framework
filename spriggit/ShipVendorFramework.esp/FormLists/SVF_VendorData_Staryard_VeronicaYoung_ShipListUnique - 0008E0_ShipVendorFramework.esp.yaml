@@ -1,5 +1,6 @@
 FormKey: 0008E0:ShipVendorFramework.esp
 EditorID: SVF_VendorData_Staryard_VeronicaYoung_ShipListUnique
+FormVersion: 582
 Items:
 - 000809:ShipVendorFramework.esp
 AddToList: Null

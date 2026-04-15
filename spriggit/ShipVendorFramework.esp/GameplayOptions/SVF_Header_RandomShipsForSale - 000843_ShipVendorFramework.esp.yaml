@@ -1,5 +1,6 @@
 FormKey: 000843:ShipVendorFramework.esp
 EditorID: SVF_Header_RandomShipsForSale
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '  [ Random Ships For Sale ]'

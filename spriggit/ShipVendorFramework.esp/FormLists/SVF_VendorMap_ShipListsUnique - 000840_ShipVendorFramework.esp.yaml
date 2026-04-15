@@ -1,5 +1,6 @@
 FormKey: 000840:ShipVendorFramework.esp
 EditorID: SVF_VendorMap_ShipListsUnique
+FormVersion: 582
 Items:
 - 0008AF:ShipVendorFramework.esp
 - 0008EE:ShipVendorFramework.esp
@@ -7,6 +8,7 @@ Items:
 - 0008BD:ShipVendorFramework.esp
 - 0008C4:ShipVendorFramework.esp
 - 0008CB:ShipVendorFramework.esp
+- 00090C:ShipVendorFramework.esp
 - 000862:ShipVendorFramework.esp
 - 000869:ShipVendorFramework.esp
 - 000870:ShipVendorFramework.esp

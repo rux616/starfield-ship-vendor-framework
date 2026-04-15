@@ -1,5 +1,6 @@
 FormKey: 1EAA06:Starfield.esm
 EditorID: LShip_Vendor_Deimos_B_Bireme
+FormVersion: 582
 Version2: 4
 MaxCount: 0
 Flags:
@@ -7,11 +8,11 @@ Flags:
 - 0x200
 Entries:
 - Level: 18
-  Unused: 95
+  Unused: 19936
   Reference: 0D5584:Starfield.esm
   Count: 1
 - Level: 40
-  Unused: 95
+  Unused: 19936
   Reference: 3E60DB:Starfield.esm
   Count: 1
 Model:

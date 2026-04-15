@@ -1,8 +1,9 @@
 FormKey: 0008F6:ShipVendorFramework.esm
+FormVersion: 582
 Flags: {}
 Responses:
 - Emotion: None
-  WEMFile: 17118478
+  WEMFile: 33895694
   ResponseText:
     TargetLanguage: English
     Value: Let me see what ships you have for sale.
@@ -12,7 +13,7 @@ Responses:
   TextHash: 0xB036AD45491DDC01
 Conditions:
 - MutagenObjectType: ConditionFloat
-  Unknown2: 16630
+  Unknown2: 16509
   Data:
     MutagenObjectType: GetVMScriptVariableConditionData
     RunOnType: Target

@@ -1,5 +1,6 @@
 FormKey: 00087F:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_HopeTown_RandomShipsForSaleMax
+FormVersion: 582
 Items:
 - 00085F:ShipVendorFramework.esm
 AddToList: Null

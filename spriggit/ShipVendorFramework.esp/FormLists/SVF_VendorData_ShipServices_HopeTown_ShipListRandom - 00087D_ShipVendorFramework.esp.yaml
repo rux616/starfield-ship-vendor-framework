@@ -1,5 +1,6 @@
 FormKey: 00087D:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_HopeTown_ShipListRandom
+FormVersion: 582
 Items:
 - 00081B:ShipVendorFramework.esp
 AddToList: Null

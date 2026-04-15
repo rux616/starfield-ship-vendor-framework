@@ -1,5 +1,6 @@
 FormKey: 000858:ShipVendorFramework.esp
 EditorID: SVF_Option_Vendor_ShipServices_EleosRetreat_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Eleos Retreat Ship Services: Max'

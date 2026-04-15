@@ -1,5 +1,6 @@
 FormKey: 0008DA:ShipVendorFramework.esm
 EditorID: SVF_VendorData_Staryard_NikauHenderson_RandomShipsForSaleMax
+FormVersion: 582
 Items:
 - 000874:ShipVendorFramework.esm
 AddToList: Null

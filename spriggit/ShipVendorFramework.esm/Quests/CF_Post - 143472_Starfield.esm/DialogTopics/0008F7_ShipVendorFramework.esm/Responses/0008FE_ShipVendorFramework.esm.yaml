@@ -1,4 +1,5 @@
 FormKey: 0008FE:ShipVendorFramework.esm
+FormVersion: 582
 VirtualMachineAdapter:
   Scripts:
   - Name: ShipVendorInfoScript
@@ -11,7 +12,7 @@ Flags:
 DialogGroup: 0008FF:ShipVendorFramework.esm
 Responses:
 - Emotion: 0FA851:Starfield.esm
-  WEMFile: 22791036
+  WEMFile: 39568252
   TROTs:
   - VoiceType: 262CC8:Starfield.esm
     EmotionOut: 9.966667

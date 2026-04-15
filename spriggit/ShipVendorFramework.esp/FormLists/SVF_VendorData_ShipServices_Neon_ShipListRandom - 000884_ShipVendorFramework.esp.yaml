@@ -1,5 +1,6 @@
 FormKey: 000884:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_Neon_ShipListRandom
+FormVersion: 582
 Items:
 - 000808:ShipVendorFramework.esp
 AddToList: Null

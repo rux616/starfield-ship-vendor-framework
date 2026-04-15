@@ -1,5 +1,6 @@
 FormKey: 00085F:ShipVendorFramework.esp
 EditorID: SVF_Option_Vendor_ShipServices_HopeTown_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Hope Town Ship Services: Max'

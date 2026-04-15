@@ -1,5 +1,6 @@
 FormKey: 0008C2:ShipVendorFramework.esm
 EditorID: SVF_VendorData_OutpostShipbuilderVendor_ShipListAlways
+FormVersion: 582
 Items:
 - 000828:ShipVendorFramework.esm
 AddToList: Null
