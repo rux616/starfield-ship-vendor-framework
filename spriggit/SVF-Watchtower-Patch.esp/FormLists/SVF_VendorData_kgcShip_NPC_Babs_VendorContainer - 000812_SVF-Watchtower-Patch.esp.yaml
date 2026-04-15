@@ -1,5 +1,6 @@
 FormKey: 000812:SVF-Watchtower-Patch.esp
 EditorID: SVF_VendorData_kgcShip_NPC_Babs_VendorContainer
+FormVersion: 582
 Items:
 - 09F9BA:kinggathcreations_spaceship.esm
 AddToList: Null

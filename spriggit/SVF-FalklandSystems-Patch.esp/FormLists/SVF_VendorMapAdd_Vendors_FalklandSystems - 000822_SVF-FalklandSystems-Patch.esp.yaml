@@ -1,5 +1,6 @@
 FormKey: 000822:SVF-FalklandSystems-Patch.esp
 EditorID: SVF_VendorMapAdd_Vendors_FalklandSystems
+FormVersion: 582
 Items:
 - 0167B5:FalklandSystems.esm
 - 016C7E:FalklandSystems.esm

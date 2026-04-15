@@ -1,5 +1,6 @@
 FormKey: 000806:SVF-ShatteredSpace-Patch.esm
 EditorID: SVF_VendorData_SFBGS001_HV_DumarHasadi_RandomShipsForSaleMax
+FormVersion: 582
 Items:
-- 00080B:SVF-ShatteredSpace-Patch.esm
+- 000901:ShipVendorFramework.esm
 AddToList: Null
