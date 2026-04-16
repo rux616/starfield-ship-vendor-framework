@@ -46,7 +46,7 @@ For general ships the template is generally "LShip\_Vendor\_<Manufacturer>\_<Shi
 
 Look at the existing leveled base forms if you need ideas.
 
-In either case, I would recommend prefixing the Editor ID with some sort of unique identifier which will make it easier to filter for your stuff. (For example, in my "Warhawk" ship, I use the prefix "warhawk_".)
+In either case, I would recommend prefixing the Editor ID with some sort of unique identifier which will make it easier to filter for your stuff. (For example, in my "Warhawk" mod, I use the prefix "warhawk_".)
 
 If you chose to duplicate a form, now is the time to clean out the existing ships. You can do this by right clicking on them and selecting "Delete".
 (add image: lvlb-delete-existing)

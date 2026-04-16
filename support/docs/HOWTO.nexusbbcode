@@ -25,112 +25,178 @@ This document is meant to show you how to create mods utilizing the Ship Vendor 
 
 If you have a question about this document or need help with any of the process, please add a comment on the [url=https://www.nexusmods.com/starfield/mods/10057?tab=posts]"Posts" tab[/url] of the Ship Vendor Framework mod.
 
-If you would like to consume the "Add Ships To Vendor" section of this document in video format, check out [url=https://www.youtube.com/watch?v=dfM2OqBzbxQ]this great tutorial video[/url] done by YouTuber "Art Toots"!
+If you would like to consume the "Add Ships To Vendor" section of this document in video format, check out [url=https://www.youtube.com/watch?v=dfM2OqBzbxQ]this great tutorial video[/url] created by YouTuber "Art Toots"!
 
 
 [size=5][b]Add Ships To Vendor[/b][/size]
 
 [size=4][b][u]Step 1: Load the Starfield Creation Kit:[/u][/b][/size]
 Load up the Starfield Creation Kit, making sure that you have ShipVendorFramework.esm active in your mod manager, then double click to make sure that ShipVendorFramework.esm has an "X" next to it.
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942591-312643742.jpeg[/img]
 
 Click the "OK" button to load up the plugins.
 
 
 [size=4][b][u]Step 2: Create Spaceship:[/u][/b][/size]
-Go to "Generic Forms" => "Base Forms" => "Spaceship" in the Object Window, right click, and select "New". From there, create your spaceship. Use the existing spaceships as references if you need to.
-
-[b]NOTE:[/b] Unique spaceships generally go in the "Aspirational" category under "Spaceship".
-
+Go to "Generic Forms" => "Base Forms" => "Spaceship" in the Object Window, right click, and select "New". From there, create your spaceship. Use the existing spaceships as references if you need to. [b]NOTE:[/b] Unique spaceships generally go in the "Aspirational" category under "Spaceship".
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942605-691502869.jpeg[/img]
 
 
 [size=4][b][u]Step 3: Create Leveled Base Form:[/u][/b][/size]
-Go to "Generic Forms" => "Leveled Base Forms" in the Object Window, right click, and select "New".
+Once you have your ship created, you need to add it to a Leveled Base Form. You can find this section in the Object Window, in the "Generic Forms" section.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776222755-350937584.jpg[/img]
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1722316034-46029659.jpeg[/img]
+You can either create a new form by right clicking in the right pane of the Object Window and selecting "New", or by duplicating an existing leveled base form. If you choose to duplicate a form, I suggest using one of the ones that start with [font=Courier New][color=#b2b2b2]LShip_Vendor_[/color][/font].
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776222916-1658047423.jpg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776223139-206198183.jpg[/img]
 
-From there, add your ship to the lower left pane. Note that you can also add conditions to each entry, just like a normal leveled list. For example, you can require that the player be level 50 or higher before the ship will show.
+Alternatively, you can duplicate an existing leveled base form by right clicking an existing record and selecting "Duplicate" and opening up the new record.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776223139-206198183.jpg[/img]
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1722316054-838272.jpeg[/img]
+If you duplicated a form, open up the new form (if you chose "New", a new form is automatically opened for you) and change the Editor ID.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776225596-1312957673.jpg[/img]
+
+The usual template for this for unique ships is [font=Courier New][color=#b2b2b2]LShip_Vendor_Aspirational_<GeneralFunction>_<ShipClass>_<Manufacturer>_<BaseHullName>_<UniqueShipName>[/color][/font].
+
+- [font=Courier New][color=#b2b2b2]<GeneralFunction>[/color][/font]: What it sounds like. Is this a cargo ship? Maybe use "Cargo" or "Hauler" or something similar. A fighter? Use "Fighter" or "Combat", and so on.
+- [font=Courier New][color=#b2b2b2]<ShipClass>[/color][/font]: This is the 1-letter designator of the ship's class: "A", "B", or "C". (Could also possibly be "M" if you intend to add M-class ships.)
+- [font=Courier New][color=#b2b2b2]<Manufacturer>[/color][/font]: Pretty self-explanatory. "Nova", "Deimos", "Taiyo", etc. "Generic" is generally used for ships that don't have a predominate theme.
+- [font=Courier New][color=#b2b2b2]<BaseHullName>[/color][/font]: The hull name that the unique ship was based off of. For example, the "Shieldbreaker" unique ship is based off the "Warhammer" hull, so "Warhammer" would go here in that case.
+- [font=Courier New][color=#b2b2b2]<UniqueShipName>[/color][/font]: The unique ship name. For example, "Shieldbreaker".
+
+For general ships the template is generally [font=Courier New][color=#b2b2b2]LShip_Vendor_<Manufacturer>_<ShipClass>_<GeneralFunction>_<HullName>[/color][/font].
+
+- [font=Courier New][color=#b2b2b2]<Manufacturer>[/color][/font]: See above.
+- [font=Courier New][color=#b2b2b2]<ShipClass>[/color][/font]: See above.
+- [font=Courier New][color=#b2b2b2]<GeneralFunction>[/color][/font]: See above.
+- [font=Courier New][color=#b2b2b2]<HullName>[/color][/font]: The name of the hull. For example, Deimos has an A-class fighter hull called "Gladius".
+
+Look at the existing leveled base forms if you need ideas.
+
+In either case, I would recommend prefixing the Editor ID with some sort of unique identifier which will make it easier to filter for your stuff. (For example, in my "Warhawk" mod, I use the prefix [font=Courier New][color=#b2b2b2]warhawk_[/color][/font].)
+
+If you chose to duplicate a form, now is the time to clean out the existing ships. You can do this by right clicking on them and selecting "Delete".
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776225601-1581985146.jpg[/img]
+
+Now that you have a clean slate, you should right click in the lower left hand corner and choose "New".
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776223199-449705653.jpg[/img]
+
+In the middle area of the window, you can choose the ship and the level. Go ahead and choose the ship you just created as per the instructions in the previous section. Also choose what level you want this ship to spawn.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776225607-1374934730.jpg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776225613-1731705436.jpg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776225618-1003081228.jpg[/img]
+
+[b]NOTE:[/b] When using the Ship Vendor Framework, ships don't generally instantly appear at a vendor once a player reaches the required level. Ship vendors are on a 7 day (by default) timer to update their inventory, which means it could take up to that length of time to see the ship appear, possibly more if the ship you're adding is going into one of the lists used for choosing random ships to spawn at a vendor.
+
+You can also add additional conditions to either the ship specifically, or the leveled base form as a whole. There's a whole raft of options to play with, and you can do some interesting things with conditions, but that is out of scope of this particular guide. There are other guides and videos out there on the internet that do a very good job of explaining them.
+
+Click the "OK" button to save your changes to the leveled base form.
+
+This would also be a good time to save your mod as well.
 
 
 [size=4][b][u]Step 4: Create FormList:[/u][/b][/size]
-Before getting into the details of this step, there's some important information you need to know about the way that ship vendors work. A ship vendor sells a number of ships composed from up to 3 different lists: an "always" list, a "random" list, and a "unique" list, [b]in that order[/b]. So when generating ships for sale, the script attempts to generate all of the "always" ships, a random number of the "random" ships, and all of the "unique" ships. You should consider this when determining which formlist you wish to add your ship to. Please see the NPC Ship Lists section for a full breakdown as to what vendor uses which lists.
+Before getting into the details of this step, there's some important information you need to know about the way that ship vendors work. A ship vendor sells a number of ships composed from up to 3 different lists: an "always" list, a "random" list, and a "unique" list, [b]in that order[/b]. When generating ships for sale, the script attempts to generate all of the ships from the "always" list, a random number of ships from the "random" list, and all of ships from the "unique" list. You should consider this when determining which formlist you wish to add your ship to. Please see the "NPC Ship Lists" section for a full breakdown as to what vendor uses which lists.
 
-Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
+Once you have your leveled base form and your ship added to it, you need to integrate it into the Ship Vendor Framework. That's where the formlist comes in. You can find the "FormList" section inside the "Miscellaneous" section in the Object Window.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226655-530618172.jpg[/img]
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942663-1160920978.jpeg[/img]
+Right click in the right hand pane and select "New". This will pop up a new "FormList [Untitled]" window.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226655-2017775888.jpg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226660-98154083.jpg[/img]
 
-Add the new Leveled Base Form you just created to the list.
+Just like when you created your leveled base form, you need to give this a unique Editor ID (shown as simply "ID" in the window). I recommend the following template for the ID: [font=Courier New][color=#b2b2b2]<ModPrefix>_ShipVendorDistribution_<ListCategory>_<Specifier1>[_<Specifier2>][/color][/font].
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942673-1816070178.jpeg[/img]
+- [font=Courier New][color=#b2b2b2]<ModPrefix>[/color][/font]: This is the prefix you chose when creating your ship or creating the leveled base form.
+- [font=Courier New][color=#b2b2b2]<ListCategory>[/color][/font]: This is the category of list. The Ship Vendor Framework includes 4 categories, "Collection", "Faction", "Location", and "Manufacturer".
+- [font=Courier New][color=#b2b2b2]<Specifier1>[/color][/font]: For a list category such as "Manufacturer", this is something like "Stroud" or "Nova". For a category such as "Faction", "CrimsonFleer" or "Unaffiliated" would be used.
+- [font=Courier New][color=#b2b2b2]<Specifier2>[/color][/font]: This particular part may not be used, depending on which category and specifier1 you've chosen. For a "Location" category, this part will be either "Always" or "Unique", whereas for a "UnitedColonies" faction category, "Full" or "Limited" could be used.
 
-Set the "Add To List" target of your formlist. All of the lists added by Ship Vendor Framework have a prefix of "SVF_ShipVendorList_", and from there are broken down into things like location, manufacturer, faction, etc.
+As an example, let's again use my "Warhawk" mod. The formlist in that mod has the Editor ID of [font=Courier New][color=#b2b2b2]warhawk_ShipVendorDistribution_Location_NewAtlantis_Unique[/color][/font].
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1721942682-1441125928.jpeg[/img]
+Have a look at the formlists in the Ship Vendor Framework (they start with [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_[/color][/font]) if you need ideas.
+
+Don't forget this is [u]your[/u] mod though. You can name this formlist however you want!
+
+Once you've changed the Editor ID, you need to add your ship to the list. You can do this in 2 ways, right click and select "Add", or drag and drop your leveled base form into the list.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226659-1702976581.jpg[/img]
+
+If you choose "Add", in the "Select Form" window that pops up, choose "Leveled Base Forms" and then click the "OK" button. (You can also simply double click "Leveled Base Forms".)
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226664-972740216.jpg[/img]
+
+Now find your leveled base form in the next window that shows up. This is where that special prefix you added might come in handy. Anyway, click your leveled base form to select it, then click the "OK" button. (Again, you can also just double click the leveled base form.)
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226665-1621372468.jpg[/img]
+
+Once that is done, your leveled base form is added to the formlist. Now turn your attention to the "Add To List" box down towards the bottom of the window.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226670-646571253.jpg[/img]
+
+Double click into it to highlight the "None", then start typing "SVF_ShipVendorList_". A list will pop up and automatically filter itself using what you've typed so far. Choose one of those lists to add your leveled base form to. (I'd recommend you pick the list that matches what you set the Editor ID to earlier.)
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226670-1069041000.jpg[/img]
+
+Please see the "NPC Ship Lists" section for a full breakdown as to what vendor uses which lists.
+
+Click the "OK" button to close and save the list.
+
+Save your mod.
+
+Export your mod to ESM by going to the "File" menu, then to "Convert Active File to ...", followed by "{Small/Medium/Full} Master".
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776226674-1990355738.jpg[/img]
+
+Once you've converted the file, make sure you immediately exit out of the Creation Kit (without saving again), as there's a bug that can occur which sets erroneous flags in your ESP file and requires hex editing to fix.
 
 
 [size=5][b]Set Vendor To Use SVF - Vendor Data Map (Recommended)[/b][/size]
-Before you continue this section, it might be a good idea to familiarize yourself with the vendor data map concept introduced in v1.6 of Ship Vendor Framework.
+Before you continue this section, it might be a good idea to familiarize yourself with the vendor data map concept introduced in v1.6 of Ship Vendor Framework. The Vendor Data Map concept uses a series of parent formlists (prefixed [font=Courier New][color=#b2b2b2]SVF_VendorMap_[/color][/font]) to point to other child formlists (or the vendor actor, in the case of [font=Courier New][color=#b2b2b2]SVF_VendorMap_Vendors[/color][/font]), which contain data. (Note that each of the [font=Courier New][color=#b2b2b2]SVF_VendorMap_[/color][/font] parent formlists should be considered "linked" in that they must all have the same number of entries - the scripts do sanity checks and will throw errors and stop working if this is not the case.) These child formlists are what point to the actual data being used for a given list.
+
+The control scripts for Ship Vendor Framework will take the child formlists and only grab the last entry when determining, for example, what formlist to use for a vendor's "random" ship list, which allows for clever overwriting of a list just by appending an entry into that child formlist via a custom formlist that targets said child formlist in the "Add To List" field. This allows immense amounts of flexibility without actually overwriting records.
 
 [size=4][b][u]Step 1: Load the Starfield Creation Kit:[/u][/b][/size]
 Load up the Starfield Creation Kit, making sure that you have ShipVendorFramework.esm and the mod you wish to add SVF vendor capabilities to active in your mod manager, then double click to make sure that both mods have an "X" next to them.
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706409-1414994907.jpg[/img]
 
 
 [size=4][b][u]Step 2: Create Min/Max Gameplay Options (Optional):[/u][/b][/size]
 This step is optional, but will allow you to enable users to change the minimum and maximum number of ships that an enhanced ship vendor will attempt to sell from the set of "random" ships. If you choose to not use Gameplay Options for this, you can also use Globals to set numbers that the user can't change dynamically, or nothing at all in which case the Ship Vendor Framework will default to a minimum of 4 and a maximum of 8.
 
-Go to "Miscellaneous" => "Gameplay Options" in the Object Window, pick the two items that begin with "SVF_Option_TEMPLATE", right click them, and choose "Duplicate and Rename".
-
+Go to "Miscellaneous" => "Gameplay Options" in the Object Window, pick the two items that begin with [font=Courier New][color=#b2b2b2]SVF_Option_TEMPLATE[/color][/font], right click them, and choose "Duplicate and Rename".
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706492-1934340497.jpg[/img]
 
-In the "Rename" window, change "Count" to 0, enter "TEMPLATE" into the "Search" field and enter whatever the editor ID of your vendor is into the "Replace" field (for example, for the Shattered Space ship vendor, you would enter "SFBGS001_HV_DumarHasadi").
-
+In the "Rename" window, change "Count" to 0, enter "TEMPLATE" into the "Search" field and enter whatever the editor ID of your vendor is into the "Replace" field (for example, for the Shattered Space ship vendor, you would enter [font=Courier New][color=#b2b2b2]SFBGS001_HV_DumarHasadi[/color][/font]).
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706517-1550077560.jpg[/img]
 
 Open up the two newly-created Gameplay Options and change the "CHANGE ME" text to the name of your vendor, and double check that the default is what you want (it will be 4 or 8 for min or max, respectively). Look at the other records if you need an example. I would recommend not messing with the "Rewards" section unless you really know what you're doing.
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706542-2115368012.jpg[/img]
 
 
 [size=4][b][u]Step 3: Create Gameplay Option Group (Optional):[/u][/b][/size]
 NOTE: You only need to do this step if you created Gameplay Options in the previous step.
 
-Go to "Miscellaneous" => "Gameplay Option Group" in the Object Window, right click, and select "New". For the ID, I would suggest something like "SVF_Group_Main_<ModFileName>".
-
+Go to "Miscellaneous" => "Gameplay Option Group" in the Object Window, right click, and select "New". For the ID, I would suggest something like [font=Courier New][color=#b2b2b2]SVF_Group_Main_<ModFileName>[/color][/font].
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758778464-1126947296.jpg[/img]
 
 Open up the Gameplay Option Group you just created and add the 2 Gameplay Options you created in the previous step. Make sure to arrange them in the order they should appear in game, that is, the "Min" option, then the "Max" option. Leave the "Root Group" option unchecked.
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758778472-1538921665.jpg[/img]
 
 
 [size=4][b][u]Step 4: Create "ShipVendorList" FormLists:[/u][/b][/size]
 A ship vendor can use up to 3 lists: 1 list for ships that the vendor always sells, 1 list for unique ships that the vendor sells, and 1 list from which the vendor will sell a random number of them. We will designate these as the "always", "unique", and "random" lists, respectively.
 
-In the main Ship Vendor Framework mod, I set these lists to have a naming format of "SVF_ShipVendorList_<List_Type>_<List_Designator>". "<List_Type>" is something like "Manufacturer_Deimos", "Faction_UnitedColonies", or simply "Collection". "<List_Designator>" is something like "Generic", "Always", "Unique", things like that. Feel free to look at the existing lists for inspiration.
+In the main Ship Vendor Framework mod, I set these lists to have a naming format of [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_<List_Type>_<List_Designator>[/color][/font]. [font=Courier New][color=#b2b2b2]<List_Type>[/color][/font] is something like "Manufacturer_Deimos", "Faction_UnitedColonies", or simply "Collection". [font=Courier New][color=#b2b2b2]<List_Designator>[/color][/font] is something like "Generic", "Always", "Unique", things like that. Feel free to look at the existing lists for inspiration.
 
 Create each list by going to "Miscellaneous" => "FormList" in the Object Window, right clicking, and selecting "New".
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758781216-1294962684.jpg[/img]
 
 Set the ID of the lists, then fill them your desired "Leveled Base Form" entries, much like step 4 of the "Add Ships To Vendor" section, except you will leave the "Add To List" field as "None".
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758781226-515829392.jpg[/img]
 
 
 [size=4][b][u]Step 5: Create "VendorData" FormLists:[/u][/b][/size]
-These formlists are pointers to the data that Ship Vendor Framework needs to work with a specified vendor. These formlists [b]MUST[/b] be created. Additionally, the "ShipListAlways", "ShipListRandom", and "ShipListUnique" formlists [b]MUST[/b] be populated by a "SVF_ShipVendorList_[...]"-type list, though it doesn't have to be one you create. For example, you could choose to use "SVF_ShipVendorList_Faction_UnitedColonies_Limited" in the "ShipListRandom" formlist.
+These formlists are pointers to the data that Ship Vendor Framework needs to work with a specified vendor and [b]MUST[/b] be created. Additionally, the "ShipListAlways", "ShipListRandom", and "ShipListUnique" formlists [b]MUST[/b] be populated by a [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_[...][/color][/font]-type list, though it doesn't have to be one you create. For example, you could choose to use [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_Faction_UnitedColonies_Limited[/color][/font] in the "ShipListRandom" formlist.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776246363-931927246.jpg[/img]
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758781216-1294962684.jpg[/img]
-
-For the ID, I would recommend something like "SVF_VendorData_<Vendor_Editor_ID>_<Map_Type>", where "<Vendor_Editor_ID>" is the ID of the actor that is the vendor, and "<Map_Type>" is one of the following:
+For the ID, I would recommend something like [font=Courier New][color=#b2b2b2]SVF_VendorData_<Vendor_Editor_ID>_<Map_Type>[/color][/font], where [font=Courier New][color=#b2b2b2]<Vendor_Editor_ID>[/color][/font] is the ID of the actor that is the vendor, and [font=Courier New][color=#b2b2b2]<Map_Type>[/color][/font] is one of the following:
 
 - RandomShipsForSaleMax
 - RandomShipsForSaleMin
@@ -159,10 +225,9 @@ Populate each of the formlists as follows:
 These are the lists used to add the "VendorData" lists to the "VendorMap" lists in the main mod. You [b]MUST[/b] create 1 for each type listed below.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776246393-2023002372.jpg[/img]
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758781216-1294962684.jpg[/img]
-
-For the ID, I would recommend something like "SVF_VendorMapAdd_<Map_Type>_<Mod_FileName>", where "<Map_Type>" is one of the vendor maps:
+For the ID, I would recommend something like [font=Courier New][color=#b2b2b2]SVF_VendorMapAdd_<Map_Type>_<Mod_FileName>[/color][/font], where [font=Courier New][color=#b2b2b2]<Map_Type>[/color][/font] is one of the vendor maps:
 
 - RandomShipsForSaleMax
 - RandomShipsForSaleMin
@@ -172,20 +237,16 @@ For the ID, I would recommend something like "SVF_VendorMapAdd_<Map_Type>_<Mod_F
 - VendorContainers
 - Vendors
 
-To each of these lists, add the respective formlist created in Step 5 (with the exception of the "Vendors" list - you just add the vendor actor itself), and then set the "add to list" box to the appropriate "SVF_VendorMap_[...]" list from the main mod. For example, if you create a "SVF_VendorMapAdd_VendorContainers_MyAwesomeMod" formlist, you would set the "add to list" box to "SVF_VendorMap_VendorContainers".
-
+To each of these lists, add the respective formlist created in Step 5 (with the exception of the "Vendors" list - you just add the vendor actor itself), and then set the "add to list" box to the appropriate [font=Courier New][color=#b2b2b2]SVF_VendorMap_[...][/color][/font] list from the main mod. For example, if you create a [font=Courier New][color=#b2b2b2]SVF_VendorMapAdd_VendorContainers_MyAwesomeMod[/color][/font] formlist, you would set the "add to list" box to [font=Courier New][color=#b2b2b2]SVF_VendorMap_VendorContainers[/color][/font].
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071549-1310188835.jpg[/img]
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071565-1696964893.jpg[/img]
-
 
 
 [size=5][b]Set Vendor To Use SVF - Direct[/b][/size]
 
 [size=4][b][u]Step 1: Load the Starfield Creation Kit:[/u][/b][/size]
 Load up the Starfield Creation Kit, making sure that you have ShipVendorFramework.esm and the mod you wish to add SVF vendor capabilities to active in your mod manager, then double click to make sure that both mods have an "X" next to them.
-
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758706409-1414994907.jpg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776244814-2115491136.jpg[/img]
 
 
 [size=4][b][u]Step 2: Create "ShipVendorList" FormLists:[/u][/b][/size]
@@ -193,34 +254,28 @@ A ship vendor can use up to 3 lists: 1 list for ships that the vendor always sel
 
 Technically, the vendor doesn't need all 3 lists, but for the sake of extensibility, I would HIGHLY recommend you set all 3 of them up. That way, if someone else creates a ship and wishes to sell it at your vendor, they can do so easily.
 
-In the main Ship Vendor Framework mod, I set these lists to have a naming format of "SVF_ShipVendorList_<List_Type>_<List_Designator>". "<List_Type>" is something like "Manufacturer_Deimos", "Faction_UnitedColonies", or simply "Collection". "<List_Designator>" is something like "Generic", "Always", "Unique", things like that. Feel free to look at the existing lists for inspiration.
+In the main Ship Vendor Framework mod, I set these lists to have a naming format of [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_<List_Type>_<List_Designator>[/color][/font]. [font=Courier New][color=#b2b2b2]<List_Type>[/color][/font] is something like "Manufacturer_Deimos", "Faction_UnitedColonies", or simply "Collection". [font=Courier New][color=#b2b2b2]<List_Designator>[/color][/font] is something like "Generic", "Always", "Unique", things like that. Feel free to look at the existing lists for inspiration.
 
 Create each list by going to "Miscellaneous" => "FormList" in the Object Window, right clicking, and selecting "New".
-
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758781216-1294962684.jpg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776244975-219623544.jpg[/img]
 
 Set the ID of the lists, then fill them your desired "Leveled Base Form" entries, much like step 4 of the "Add Ships To Vendor" section, except you will leave the "Add To List" field as "None".
-
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758781226-515829392.jpg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776245247-628091642.jpg[/img]
 
 
 [size=4][b][u]Step 3: Edit Vendor:[/u][/b][/size]
 [b]NOTE:[/b] This step assumes you've already created your vendor.
 
 Once you've created the lists, you need to find your vendor actor in "Actor" => "Actors" in the Object Window.
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072771-1410823434.jpg[/img]
 
 Open up your vendor, go to the "Scripts" area, and double click "sq_shipservicesactorscript". This will open up the script properties.
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072788-104466543.jpg[/img]
 
 At the top of this window, you should notice a group called "ShipVendorFramework" with a few properties underneath. Set the values for the "SVFShipsToSellList{Always,Random,Unique}Dataset" properties to their respective formlists you created in the last step.
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072802-1587812210.jpg[/img]
 
 Set the "VendorContainer" property to your vendor's vendor container. (This is important for the "Rich Ship Vendors" option.)
-
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072814-1588839804.jpg[/img]
 
 Click "OK" to close the Properties window, then click "OK" again to close the Actor window.
@@ -229,6 +284,19 @@ Save your plugin, then export to whatever size master is appropriate. That's it.
 
 
 [size=5][b]NPC Ship Lists[/b][/size]
-[b]NOTE:[/b] All formlist editor IDs start with "SVF_ShipVendorList_". This prefix has been removed from the lists as presented in the following table for the sake of brevity.
+[b]NOTE:[/b] All formlist editor IDs start with [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_[/color][/font]. This prefix has been removed from the lists as presented in the following table for the sake of brevity.
 
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690728-542329203.jpg[/img]
+Vanilla:
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776201894-1653106819.jpg[/img]
+
+Shattered Space (with patch):
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776201400-1499281488.jpg[/img]
+
+DarkStar Astrodynamics (with patch):
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690462-441494414.jpg[/img]
+
+Falkland Systems Ship Services (with patch):
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690440-150465271.jpg[/img]
+
+Watchtower (with patch):
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1765403468-2063053105.jpg[/img]
