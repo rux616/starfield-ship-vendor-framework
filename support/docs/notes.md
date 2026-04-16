@@ -25,7 +25,9 @@ there're a few functions that then set up the ships for sale, populate another a
 things to investigate:
 - how do custom outpost ship vendors work?
 
-List of vanilla ship vendors:
+## ship vendors
+
+### vanilla
 
 | EditorID                    |     FormID      | Location                                     |
 |-----------------------------|:---------------:|----------------------------------------------|
@@ -34,7 +36,7 @@ List of vanilla ship vendors:
 | NeonStroudStore_KioskVendor | `NPC_:00151488` | Neon, Stroud-Ecklund Showroom                |
 | OutpostShipbuilderVendor    | `NPC_:0002F8FD` | Player Outpost (Dynamic)                     |
 | RM_LonAnderssen             | `NPC_:002B2BEC` | Red Mile, Main Building                      |
-| SFBGS001_HV_DumarHasadi     | `NPC_:xx0470E4` | Dazra [Shattered Space]                      |
+| SFFL_DanicaVolkov           | `NPC_:xx04C3EE` | Algorab, Anchorpoint                         |
 | ShipServices_AkilaCity      | `NPC_:002A0EA1` | Akila City, Spaceport                        |
 | ShipServices_Cydonia        | `NPC_:00206704` | Mars, Cydonia Spaceport                      |
 | ShipServices_EleosRetreat   | `NPC_:000D87A4` | Eleos Retreat                                |
@@ -51,16 +53,28 @@ List of vanilla ship vendors:
 | Staryard_NikauHenderson     | `NPC_:0027A992` | Mars, Orbit, Deimos Staryard                 |
 | Staryard_VeronicaYoung      | `NPC_:0027A98C` | Neon, Ryujin Enterprises, Taiyo Astroneering |
 
-NPC Form List
+### other mods
+
+| Editor ID                                 | Name                        |     FormID      | Mod                    | Location                     |
+|-------------------------------------------|-----------------------------|:---------------:|------------------------|------------------------------|
+| ghost_DSA_Master_OutpostShipbuilderVendor | DSA Shipbuilding Console    | `NPC_:xx0041DC` | DarkStar Astrodynamics | Player Outpost (Dynamic)     |
+| aaFalkland_ShipbuilderVendor              | Falkland Sales Rep          | `NPC_:xx0167B5` | Falkland Systems       | Falkland Store, New Atlantis |
+| aaFalkland_ShipbuilderVendorGhost         | Falkland Systems Ship Kiosk | `NPC_:xx016C7E` | Falkland Systems       | Falkland Store, New Atlantis |
+| SFBGS001_HV_DumarHasadi                   | Dumar Hasadi                | `NPC_:xx0470E4` | Shattered Space        | Dazra                        |
+| kgcShip_NPC_Babs                          | B.A.B.S                     | `NPC_:xx033E1D` | Watchtower             | Stardock Alpha               |
+
+## NPC Form Lists
+
+### vanilla
 
 | NPC                                             | Always List                    | Random List                      | Unique List                    |
 |-------------------------------------------------|--------------------------------|----------------------------------|--------------------------------|
-| Dumar Hasadi (Dazra) \*                         | Location_Dazra_Always          | Collection_Generic2              | Location_Dazra_Unique          |
+| Danika Volkov (Anchorpoint)                     | Location_Anchorpoint_Always    | Faction_Unaffiliated_Full        | Location_Anchorpoint_Unique    |
 | Havershaw (Stroud-Eklund Staryard)              | Location_StroudStaryard_Always | Manufacturer_Stroud              | Location_StroudStaryard_Unique |
 | Inaya Rehman (HopeTech HQ)                      | Location_HopeTechHQ_Always     | Manufacturer_HopeTech            | Location_HopeTechHQ_Unique     |
 | Jasmine Durand (The Key)                        | Location_KeyThe_Always         | Faction_CrimsonFleet             | Location_KeyThe_Unique         |
 | Lon Anderssen (Red Mile)                        | Location_RedMile_Always        | Faction_Unaffiliated_BlackMarket | Location_RedMile_Unique        |
-| Lt. Jillian Toft (UC Vigilance) \*\*            | Location_UCVigilance_Always    | Faction_CrimsonFleet             | Location_UCVigilance_Unique    |
+| Lt. Jillian Toft (UC Vigilance) \*              | Location_UCVigilance_Always    | Faction_CrimsonFleet             | Location_UCVigilance_Unique    |
 | Nikau Henderson (Deimos Staryard)               | Location_DeimosStaryard_Always | Manufacturer_Deimos              | Location_DeimosStaryard_Unique |
 | Player Outpost Shipbuilder                      | Location_PlayerOutpost_Always  | Collection_Generic               | Location_PlayerOutpost_Unique  |
 | Ship Services Technician (Akila City)           | Location_AkilaCity_Always      | Faction_FreestarCollective       | Location_AkilaCity_Unique      |
@@ -78,25 +92,39 @@ NPC Form List
 | Stroud Kiosk Vendor (Neon, Stroud-Eklund Store) | Location_StroudStore_Always    | Manufacturer_Stroud              | Location_StroudStore_Unique    |
 | Veronica Young (Neon, Taiyo Store)              | Location_TaiyoStore_Always     | Manufacturer_Taiyo               | Location_TaiyoStore_Unique     |
 
-\* Shattered Space
-\*\* Must complete Crimson Fleet quest line first
+\* Must complete Crimson Fleet quest line first
+
+### other mods
+
+#### Shattered Space [DLC]
+
+| NPC                  | Always List           | Random List         | Unique List           |
+|----------------------|-----------------------|---------------------|-----------------------|
+| Dumar Hasadi (Dazra) | Location_Dazra_Always | Collection_Generic2 | Location_Dazra_Unique |
+
+#### DarkStar Astrodynamics
+
+| NPC                      | Always List                      | Random List                      | Unique List                      |
+|--------------------------|----------------------------------|----------------------------------|----------------------------------|
+| DSA Shipbuilding Console | Mod_DarkStarAstrodynamics_Always | Mod_DarkStarAstrodynamics_Random | Mod_DarkStarAstrodynamics_Unique |
+
+#### Falkland Systems
 
 | NPC                         | Always List                                | Random List                                | Unique List                                |
 |-----------------------------|--------------------------------------------|--------------------------------------------|--------------------------------------------|
 | Falkland Sales Rep          | Location_FalklandSystemsNewAtlantis_Always | Location_FalklandSystemsNewAtlantis_Random | Location_FalklandSystemsNewAtlantis_Unique |
 | Falkland Systems Ship Kiosk | Location_FalklandSystemsNewAtlantis_Always | Location_FalklandSystemsNewAtlantis_Random | Location_FalklandSystemsNewAtlantis_Unique |
 
-| NPC                      | Always List                      | Random List                      | Unique List                      |
-|--------------------------|----------------------------------|----------------------------------|----------------------------------|
-| DSA Shipbuilding Console | Mod_DarkStarAstrodynamics_Always | Mod_DarkStarAstrodynamics_Random | Mod_DarkStarAstrodynamics_Unique |
+#### Watchtower
 
 | NPC     | Always List                   | Random List                    | Unique List                   |
 |---------|-------------------------------|--------------------------------|-------------------------------|
 | B.A.B.S | Location_StardockAlpha_Always | Faction_UnitedColonies_Limited | Location_StardockAlpha_Unique |
 
-game option pretty ordering (vanilla):
+## random ship min/max gameplay option pretty ordering
 - Akila City Ship Services
 - Cydonia Ship Services
+- Danica Volkov
 - Eleos Retreat Ship Services
 - Gagarin Ship Services
 - Havershaw
@@ -116,6 +144,15 @@ game option pretty ordering (vanilla):
 - The Clinic Ship Services
 - The Den Ship Services
 - Veronica Young
+- [ DLC: Shattered Space ]
+- Dumar Hasadi
+- [ Mod: DarkStar Astrodynamics ]
+- DSA Shipbuilder Console
+- [ Mod: Falkland Systems ]
+- Falkland Rep
+- Falkland Ship Kiosk
+- [ Mod: Watchtower ]
+- B.A.B.S
 
 
 ## NPC Script Differences (outside of ship lists)
@@ -232,3 +269,21 @@ procedure to add ref to form list:
 - in form list window, click the "paste selected element" button (or right click -> paste)
 
 note: might need to change RHQ ship services tech, as its container is gagarin's
+
+## watchtower hashes
+
+v1.0.3
+
+| file                                       |  size (bytes) |                               sha256                               |
+|--------------------------------------------|--------------:|:------------------------------------------------------------------:|
+| kinggathcreations_spaceship - main.ba2     | 1,706,171,568 | `6AC9015595D4007A70DB62807885438DECDFBAEE431C05024114B0EAAD859197` |
+| kinggathcreations_spaceship - textures.ba2 |   337,297,754 | `F8D43D4231B93B2F371CD6BAE9E7F1F20D5BC07B73D31786CCA52FF045C4717D` |
+| kinggathcreations_spaceship.esm            |    94,915,474 | `A8563449DD179062BEF61B9BA0558F915DCDC4CDA13D3CF2FFE71E039CF1B4A2` |
+
+v1.0.5a
+
+| file                                       |  size (bytes) |                               sha256                               |
+|--------------------------------------------|--------------:|:------------------------------------------------------------------:|
+| kinggathcreations_spaceship - main.ba2     | 1,163,142,583 | `CBE3E1A0188393D6B83B9A074405CDEB0981559915BE0924E2E5B13900D393F0` |
+| kinggathcreations_spaceship - textures.ba2 |   324,873,555 | `AC7BDABEEE98AD0165E2B4FB8CFCC444D2E65D5FF88FF8DEFCB0CC5468AA3135` |
+| kinggathcreations_spaceship.esm            |    94,543,199 | `18FD1F375A8EFB577A785E051F7E8891DC917730F4217CD89571BA007FF217FE` |
