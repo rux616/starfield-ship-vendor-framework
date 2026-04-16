@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.9.0
     - v1.8.1
     - v1.8.0
     - v1.7.0
@@ -29,10 +30,23 @@ Table Of Contents
 Changelog
 =========
 
+v1.9.0
+------
+- Added some additional logging output to aid in troubleshooting
+- Added Danica Volkov from the Free Lanes update to ship vendors
+- Added the Hellhound (Crimson Fleet unique ship, available after final quest) to Lt. Jillian Toft for players who side with SysDef
+- Moved vendor min/max gameplay options from core patches (that is, the ones I maintain) to main plugin in order to prevent situations where the gameplay options could get split up
+- Updated gameplay option group to have a proper title
+- Fixed DarkStar Astrodynamics patch not correctly appending to form lists like it should have
+- Updated Starvival patch to be compatible with v12.1
+- Updated behavior of Starvival patch so that it attempts to use Starvival's built-in way of adding more credits to vendors, then applies the "Rich Ship Vendors" option afterwards
+- Re-saved and re-exported all plugins in the latest version of Creation Kit (v1.16.236)
+- Greatly expanded the "Add Ships To Vendor" section of the How To documentation with a lot more detail
+
 v1.8.1
 ------
-- Fixed the SVF_Control:SVFControlInitialized() function not doing a thorough enough job, thus not allowing vendors to initialize properly in certain very specific circumstances (thanks to DeityVengy for bringing this to my attention)
-- Adjusted the duration in the ship vendor script before the code declares a timeout while waiting for SVF_Control initialization
+- Fixed the `SVF_Control:SVFControlInitialized()` function not doing a thorough enough job, thus not allowing vendors to initialize properly in certain very specific circumstances (thanks to DeityVengy for bringing this to my attention)
+- Adjusted the duration in the ship vendor script before the code declares a timeout while waiting for `SVF_Control` initialization
 - Slightly adjusted the description of the Falklands Systems and Starvival patch plugins to add the version of the mods they patch (v2 and v11, respectively) for more clarity
 - Slightly adjusted the description of the Falklands Systems patch in the FOMOD to add the version it is for (v2) for more clarity
 - Added a parameter to build system so that built BA2 files aren't automatically cleaned up

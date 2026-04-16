@@ -1,7 +1,7 @@
 [size=5][b]Ship Vendor Framework[/b][/size]
 by rux616
 
-Version: 1.8.1
+Version: 1.9.0
 
 [size=4][b][u]Table Of Contents:[/u][/b][/size]
 - Ship Vendor Framework
@@ -87,10 +87,13 @@ In your StarfieldCustom.ini file, make sure you have the following section:
 This will ensure that the game writes logs. If I request them in order to help you, I will be looking for "Papyrus.X.log" in the "%UserProfile%\Documents\My Games\Starfield\Logs" directory, and "ShipVendorFramework.X.log" in the "%UserProfile%\Documents\My Games\Starfield\Logs\Script\User" directory, where "X" represents a number 0-3.
 
 [size=4][b][u]NPC Ship Lists:[/u][/b][/size]
-[b]NOTE:[/b] All form list editor IDs start with "SVF_ShipVendorList_". This prefix has been removed from the lists as presented in the following tables for the sake of brevity.
+[b]NOTE:[/b] All form list editor IDs start with [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_[/color][/font]. This prefix has been removed from the lists as presented in the following tables for the sake of brevity.
 
-Vanilla + Shattered Space:
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690728-542329203.jpg[/img]
+Vanilla:
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776201894-1653106819.jpg[/img]
+
+Shattered Space (with patch):
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776201400-1499281488.jpg[/img]
 
 DarkStar Astrodynamics (with patch):
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690462-441494414.jpg[/img]
@@ -114,7 +117,7 @@ For patches, the load order should be as follows:
 - (SVF Compatibility Patches, if any)
 
 [size=4][b][u]Requirements:[/u][/b][/size]
-None
+- Must have the Free Lanes update (Starfield v1.16.236+)
 
 [size=4][b][u]Recommendations:[/u][/b][/size]
 None
@@ -132,7 +135,7 @@ When upgrading major versions (for example v1.whatever to v2.whatever), you need
 - Install the new version of the plugin
 
 [size=4][b][u]Mod Manager:[/u][/b][/size]
-[b]NOTE:[/b] Support for NMM will [b]NOT[/b] be provided as its FOMOD implementation is broken. Use either Mod Organizer 2 or Vortex.
+[b]NOTE:[/b] Support for Nexus Mod Manager (NMM) will [b]NOT[/b] be provided as its FOMOD implementation is broken. Use either Mod Organizer 2 or Vortex.
 
 Download and install the archive with either [url=https://github.com/ModOrganizer2/modorganizer/releases]Mod Organizer 2[/url] (version 2.5.2 or later) or [url=https://www.nexusmods.com/site/mods/1]Vortex[/url]. I personally recommend Mod Organizer 2 (with the optional [url=https://kezyma.github.io/?p=rootbuilder]Root Builder[/url] plugin to use with SFSE or any other mod that requires files be put directly in the game's installation folder).
 

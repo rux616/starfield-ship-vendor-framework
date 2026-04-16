@@ -20,8 +20,8 @@
 
 # version info
 $version_major = 1
-$version_minor = 8
-$version_patch = 1
+$version_minor = 9
+$version_patch = 0
 
 # prerelease info
 $version_prerelease = 0
@@ -31,5 +31,5 @@ $is_beta = $false
 $is_alpha = $false
 
 # build info
-$build_number = 59
+$build_number = 66
 $include_build_in_version = $false
