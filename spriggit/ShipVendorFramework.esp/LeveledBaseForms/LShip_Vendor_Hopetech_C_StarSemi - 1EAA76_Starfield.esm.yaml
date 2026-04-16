@@ -1,5 +1,6 @@
 FormKey: 1EAA76:Starfield.esm
 EditorID: LShip_Vendor_Hopetech_C_StarSemi
+FormVersion: 582
 Version2: 5
 MaxCount: 0
 Flags:
@@ -7,14 +8,14 @@ Flags:
 - 0x200
 Entries:
 - Level: 1
-  Unused: 95
+  Unused: 19936
   Reference: 03CFB2:Starfield.esm
   Count: 1
   Conditions:
   - MutagenObjectType: ConditionFloat
     Flags:
     - OR
-    Unknown2: 4684
+    Unknown2: 16630
     Data:
       MutagenObjectType: GetInCellConditionData
       RunOnType: Reference
@@ -22,7 +23,7 @@ Entries:
       FirstParameter: 295336:Starfield.esm
     ComparisonValue: 1
 - Level: 30
-  Unused: 95
+  Unused: 19936
   Reference: 03CFB2:Starfield.esm
   Count: 1
 Model:

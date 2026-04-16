@@ -1,5 +1,6 @@
 FormKey: 00085E:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_ShipServices_Gagarin_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Gagarin Ship Services: Max'

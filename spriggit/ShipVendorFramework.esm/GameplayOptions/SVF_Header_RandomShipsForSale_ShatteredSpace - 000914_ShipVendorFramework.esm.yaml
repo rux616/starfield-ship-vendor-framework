@@ -1,0 +1,19 @@
+FormKey: 000914:ShipVendorFramework.esm
+EditorID: SVF_Header_RandomShipsForSale_ShatteredSpace
+FormVersion: 582
+Name:
+  TargetLanguage: English
+  Value: '    [ DLC: Shattered Space ]'
+Description:
+  TargetLanguage: English
+  Value: >-
+    These settings will only be utilized when Shattered Space and its associated Ship Vendor Framework patch are both enabled.
+
+
+    Current status: <font color="#ED0000">Inactive</font>
+Data:
+  MutagenObjectType: FloatGameplayOptionData
+  Value1: 0
+  Value2: 0
+  Max: 1
+  Step: 1

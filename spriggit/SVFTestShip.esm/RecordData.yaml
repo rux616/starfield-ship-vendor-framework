@@ -7,10 +7,12 @@ ModHeader:
   Flags:
   - Master
   - Light
+  FormVersion: 582
   Author: rux616
   Description: SVF Test Ship
   MasterReferences:
   - Master: Starfield.esm
+  - Master: sfbgs00d.esm
   - Master: ShatteredSpace.esm
   - Master: ShipVendorFramework.esm
   - Master: SVF-ShatteredSpace-Patch.esm

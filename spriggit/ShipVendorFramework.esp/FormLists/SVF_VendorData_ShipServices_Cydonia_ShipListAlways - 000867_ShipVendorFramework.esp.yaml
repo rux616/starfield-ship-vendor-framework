@@ -1,5 +1,6 @@
 FormKey: 000867:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_Cydonia_ShipListAlways
+FormVersion: 582
 Items:
 - 000815:ShipVendorFramework.esp
 AddToList: Null

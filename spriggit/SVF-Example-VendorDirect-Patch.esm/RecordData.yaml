@@ -7,6 +7,7 @@ ModHeader:
   Flags:
   - Master
   - Light
+  FormVersion: 582
   Author: rux616
   Description: >-
     Example plugin for showing how to set up a vendor to use Ship Vendor Framework.
@@ -15,6 +16,7 @@ ModHeader:
     "Direct" method.
   MasterReferences:
   - Master: Starfield.esm
+  - Master: sfbgs00d.esm
   - Master: ShatteredSpace.esm
   - Master: ShipVendorFramework.esm
   Branch: Main

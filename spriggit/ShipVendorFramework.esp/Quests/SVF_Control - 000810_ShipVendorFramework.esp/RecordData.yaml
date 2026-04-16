@@ -1,8 +1,9 @@
 FormKey: 000810:ShipVendorFramework.esp
 EditorID: SVF_Control
+FormVersion: 582
 VirtualMachineAdapter:
   Scripts:
-  - Name: ShipVendorFramework:SVF_Control
+  - Name: shipvendorframework:svf_control
     Properties:
     - MutagenObjectType: ScriptObjectProperty
       Name: MsgErrorVendorMappingsNone
@@ -20,7 +21,7 @@ VirtualMachineAdapter:
       Name: MsgVendorReady
       Object: 0008E7:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
-      Name: NoPickpocketKeyword
+      Name: noPickpocketKeyword
       Object: 0F55DC:Starfield.esm
     - MutagenObjectType: ScriptObjectProperty
       Name: RandomShipsForSaleMax

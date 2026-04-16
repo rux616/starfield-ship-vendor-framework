@@ -1,10 +1,8 @@
 FormKey: 000807:SVF-FalklandSystems-Patch.esp
 EditorID: SVF_ShipVendorList_Location_FalklandSystemsNewAtlantis_Always
+FormVersion: 582
 Items:
 - 00CF4D:FalklandSystems.esm
 - 00666D:FalklandSystems.esm
 - 006B76:FalklandSystems.esm
-- 01BF29:FalklandSystems.esm
-- 01D1FF:FalklandSystems.esm
-- 015CC6:FalklandSystems.esm
 AddToList: Null

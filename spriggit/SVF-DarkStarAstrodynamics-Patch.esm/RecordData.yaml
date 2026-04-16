@@ -7,14 +7,16 @@ ModHeader:
   Flags:
   - Master
   - Light
+  FormVersion: 582
   Author: rux616
   Description: >-
     Patch for "Ship Vendor Framework" by rux616 and "DarkStar Astrodynamics" by WykkydGaming.
 
 
-    Version: 1.0.0
+    Version: 1.1.0
   MasterReferences:
   - Master: Starfield.esm
+  - Master: sfbgs00d.esm
   - Master: ShipVendorFramework.esm
   - Master: DarkStar_Astrodynamics.esm
   Branch: Main

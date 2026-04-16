@@ -1,5 +1,6 @@
 FormKey: 0008B5:ShipVendorFramework.esp
 EditorID: SVF_VendorData_HT_InayaRehman_ShipListRandom
+FormVersion: 582
 Items:
 - 000832:ShipVendorFramework.esp
 AddToList: Null

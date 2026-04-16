@@ -7,14 +7,16 @@ ModHeader:
   Flags:
   - Master
   - Light
+  FormVersion: 582
   Author: rux616
   Description: >-
     Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" v2 by Hjalmere.
 
 
-    Version: 1.1.1
+    Version: 1.2.0
   MasterReferences:
   - Master: Starfield.esm
+  - Master: sfbgs00d.esm
   - Master: FalklandSystems.esm
   - Master: ShipVendorFramework.esm
   Branch: Main

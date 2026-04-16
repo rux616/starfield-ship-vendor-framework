@@ -1,5 +1,6 @@
 FormKey: 0008B3:ShipVendorFramework.esm
 EditorID: SVF_VendorData_RM_LonAnderssen_VendorContainer
+FormVersion: 582
 Items:
 - 003BB4:Starfield.esm
 AddToList: Null

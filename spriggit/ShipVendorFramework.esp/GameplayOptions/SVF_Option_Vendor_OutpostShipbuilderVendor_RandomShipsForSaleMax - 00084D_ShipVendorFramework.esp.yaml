@@ -1,5 +1,6 @@
 FormKey: 00084D:ShipVendorFramework.esp
 EditorID: SVF_Option_Vendor_OutpostShipbuilderVendor_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Outpost Shipbuilder: Max'

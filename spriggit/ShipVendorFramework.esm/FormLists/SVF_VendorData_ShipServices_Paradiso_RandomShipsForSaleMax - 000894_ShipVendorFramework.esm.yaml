@@ -1,5 +1,6 @@
 FormKey: 000894:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_Paradiso_RandomShipsForSaleMax
+FormVersion: 582
 Items:
 - 00086D:ShipVendorFramework.esm
 AddToList: Null

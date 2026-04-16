@@ -1,12 +1,12 @@
 FormKey: 0008E8:ShipVendorFramework.esm
 EditorID: SVF_Group_Main
+FormVersion: 582
 Name:
   TargetLanguage: English
-  Value: Group_Main
+  Value: Ship Vendor Framework
 Options:
   MutagenObjectType: GameplayOptionsGroupLeaf
   GameplayOptions:
-  - 000842:ShipVendorFramework.esm
   - 0008A7:ShipVendorFramework.esm
   - 0008E6:ShipVendorFramework.esm
   - 0008A8:ShipVendorFramework.esm
@@ -15,6 +15,8 @@ Options:
   - 00084F:ShipVendorFramework.esm
   - 000897:ShipVendorFramework.esm
   - 000850:ShipVendorFramework.esm
+  - 000900:ShipVendorFramework.esm
+  - 0008F9:ShipVendorFramework.esm
   - 000896:ShipVendorFramework.esm
   - 000858:ShipVendorFramework.esm
   - 000890:ShipVendorFramework.esm
@@ -53,3 +55,17 @@ Options:
   - 0008A3:ShipVendorFramework.esm
   - 00088F:ShipVendorFramework.esm
   - 000889:ShipVendorFramework.esm
+  - 000914:ShipVendorFramework.esm
+  - 000902:ShipVendorFramework.esm
+  - 000901:ShipVendorFramework.esm
+  - 000918:ShipVendorFramework.esm
+  - 000913:ShipVendorFramework.esm
+  - 000911:ShipVendorFramework.esm
+  - 000917:ShipVendorFramework.esm
+  - 00091A:ShipVendorFramework.esm
+  - 000919:ShipVendorFramework.esm
+  - 00091C:ShipVendorFramework.esm
+  - 00091B:ShipVendorFramework.esm
+  - 000916:ShipVendorFramework.esm
+  - 000904:ShipVendorFramework.esm
+  - 000903:ShipVendorFramework.esm

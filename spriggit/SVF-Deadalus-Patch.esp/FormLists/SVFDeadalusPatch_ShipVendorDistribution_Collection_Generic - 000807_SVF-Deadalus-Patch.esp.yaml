@@ -1,5 +1,6 @@
 FormKey: 000807:SVF-Deadalus-Patch.esp
 EditorID: SVFDeadalusPatch_ShipVendorDistribution_Collection_Generic
+FormVersion: 582
 Items:
 - 000811:deadalus1.esm
 - 000806:deadalus1.esm

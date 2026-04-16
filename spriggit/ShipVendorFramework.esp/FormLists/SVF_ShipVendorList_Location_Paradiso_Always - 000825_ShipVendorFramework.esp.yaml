@@ -1,5 +1,6 @@
 FormKey: 000825:ShipVendorFramework.esp
 EditorID: SVF_ShipVendorList_Location_Paradiso_Always
+FormVersion: 582
 Items:
 - 1EAA1E:Starfield.esm
 AddToList: Null

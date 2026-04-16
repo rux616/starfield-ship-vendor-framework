@@ -1,5 +1,6 @@
 FormKey: 000862:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_AkilaCity_ShipListUnique
+FormVersion: 582
 Items:
 - 000814:ShipVendorFramework.esm
 AddToList: Null

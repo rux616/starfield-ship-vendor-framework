@@ -1,5 +1,6 @@
 FormKey: 00088A:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_NewHomestead_ShipListAlways
+FormVersion: 582
 Items:
 - 000823:ShipVendorFramework.esm
 AddToList: Null

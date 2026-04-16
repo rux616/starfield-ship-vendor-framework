@@ -1,5 +1,6 @@
 FormKey: 0008C8:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_Neon_VendorContainer
+FormVersion: 582
 Items:
 - 1CF70E:Starfield.esm
 AddToList: Null

@@ -1,5 +1,6 @@
 FormKey: 0008BC:ShipVendorFramework.esm
 EditorID: SVF_VendorData_NeonStroudStore_KioskVendor_ShipListRandom
+FormVersion: 582
 Items:
 - 000833:ShipVendorFramework.esm
 AddToList: Null

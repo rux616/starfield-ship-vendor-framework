@@ -4,14 +4,16 @@ SpriggitSource:
 ModKey: SVF-IconicShips-Patch.esp
 GameRelease: Starfield
 ModHeader:
+  FormVersion: 582
   Author: rux616
   Description: >-
     Patch for "Ship Vendor Framework" by rux616 and "Iconic Ships" by ShipTechnician.
 
 
-    Version: 1.1.0
+    Version: 1.2.0
   MasterReferences:
   - Master: Starfield.esm
+  - Master: sfbgs00d.esm
   - Master: ShipVendorFramework.esm
   - Master: nighthawk.esm
   Branch: Main

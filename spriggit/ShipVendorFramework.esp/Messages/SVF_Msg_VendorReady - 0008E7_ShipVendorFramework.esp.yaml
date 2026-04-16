@@ -1,5 +1,6 @@
 FormKey: 0008E7:ShipVendorFramework.esp
 EditorID: SVF_Msg_VendorReady
+FormVersion: 582
 Description:
   TargetLanguage: English
   Value: ship vendor ready

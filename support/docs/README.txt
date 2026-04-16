@@ -2,7 +2,7 @@ Ship Vendor Framework
 =====================
 by rux616
 
-Version: 1.8.1
+Version: 1.9.0
 
 Table Of Contents
 -----------------
@@ -96,10 +96,13 @@ This will ensure that the game writes logs. If I request them in order to help y
 
 NPC Ship Lists
 --------------
-NOTE: All form list editor IDs start with "SVF_ShipVendorList_". This prefix has been removed from the lists as presented in the following tables for the sake of brevity.
+NOTE: All form list editor IDs start with `SVF_ShipVendorList_`. This prefix has been removed from the lists as presented in the following tables for the sake of brevity.
 
-Vanilla + Shattered Space:
-(Image: NPC Ship List Table (Vanilla + Shattered Space))
+Vanilla:
+(Image: NPC Ship List Table (Vanilla))
+
+Shattered Space (with patch):
+(Image: NPC Ship List Table (Shattered Space Patch))
 
 DarkStar Astrodynamics (with patch):
 (Image: NPC Ship List Table (DarkStar Astrodynamics Patch))
@@ -126,7 +129,7 @@ For patches, the load order should be as follows:
 
 Requirements
 ------------
-None
+- Must have the Free Lanes update (Starfield v1.16.236+)
 
 Recommendations
 ---------------
@@ -147,7 +150,7 @@ When upgrading major versions (for example v1.whatever to v2.whatever), you need
 
 Mod Manager
 -----------
-NOTE: Support for NMM will NOT be provided as its FOMOD implementation is broken. Use either Mod Organizer 2 or Vortex.
+NOTE: Support for Nexus Mod Manager (NMM) will NOT be provided as its FOMOD implementation is broken. Use either Mod Organizer 2 or Vortex.
 
 Download and install the archive with either Mod Organizer 2 (https://github.com/ModOrganizer2/modorganizer/releases) (version 2.5.2 or later) or Vortex (https://www.nexusmods.com/site/mods/1). I personally recommend Mod Organizer 2 (with the optional Root Builder (https://kezyma.github.io/?p=rootbuilder) plugin to use with SFSE or any other mod that requires files be put directly in the game's installation folder).
 

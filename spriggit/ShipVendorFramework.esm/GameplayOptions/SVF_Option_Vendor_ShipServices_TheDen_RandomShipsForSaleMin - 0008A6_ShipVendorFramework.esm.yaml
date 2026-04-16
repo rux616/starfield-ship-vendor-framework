@@ -1,5 +1,6 @@
 FormKey: 0008A6:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_ShipServices_TheDen_RandomShipsForSaleMin
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    The Den Ship Services: Min'

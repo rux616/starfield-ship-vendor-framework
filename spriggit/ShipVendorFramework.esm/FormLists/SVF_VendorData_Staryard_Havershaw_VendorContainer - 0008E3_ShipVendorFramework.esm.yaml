@@ -1,5 +1,6 @@
 FormKey: 0008E3:ShipVendorFramework.esm
 EditorID: SVF_VendorData_Staryard_Havershaw_VendorContainer
+FormVersion: 582
 Items:
 - 2083EF:Starfield.esm
 AddToList: Null

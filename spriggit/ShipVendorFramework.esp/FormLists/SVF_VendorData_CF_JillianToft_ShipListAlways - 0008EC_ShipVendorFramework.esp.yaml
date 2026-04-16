@@ -1,5 +1,6 @@
 FormKey: 0008EC:ShipVendorFramework.esp
 EditorID: SVF_VendorData_CF_JillianToft_ShipListAlways
+FormVersion: 582
 Items:
 - 0008EF:ShipVendorFramework.esp
 AddToList: Null

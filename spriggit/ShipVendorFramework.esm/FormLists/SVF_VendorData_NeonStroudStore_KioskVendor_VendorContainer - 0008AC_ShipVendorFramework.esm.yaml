@@ -1,5 +1,6 @@
 FormKey: 0008AC:ShipVendorFramework.esm
 EditorID: SVF_VendorData_NeonStroudStore_KioskVendor_VendorContainer
+FormVersion: 582
 Items:
 - 2083EF:Starfield.esm
 AddToList: Null

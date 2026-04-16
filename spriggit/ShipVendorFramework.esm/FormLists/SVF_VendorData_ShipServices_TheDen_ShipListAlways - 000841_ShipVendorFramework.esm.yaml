@@ -1,5 +1,6 @@
 FormKey: 000841:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_TheDen_ShipListAlways
+FormVersion: 582
 Items:
 - 000899:ShipVendorFramework.esm
 AddToList: Null

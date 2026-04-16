@@ -1,5 +1,6 @@
 FormKey: 000008:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_CF_JasmineDurand_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Jasmine Durand: Max'

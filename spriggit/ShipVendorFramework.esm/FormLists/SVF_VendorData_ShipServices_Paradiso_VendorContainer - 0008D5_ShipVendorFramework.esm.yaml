@@ -1,5 +1,6 @@
 FormKey: 0008D5:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_Paradiso_VendorContainer
+FormVersion: 582
 Items:
 - 1CF7E5:Starfield.esm
 AddToList: Null

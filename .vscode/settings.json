@@ -22,6 +22,7 @@
     "formlists",
     "Freestar",
     "giveth",
+    "Gladius",
     "goldenchrome",
     "GTEMP",
     "Hasadi",
@@ -63,6 +64,7 @@
     "SFBGS",
     "SFSE",
     "shatteredspace",
+    "Shieldbreaker",
     "shipvendors",
     "Skope",
     "Spriggit",
@@ -74,6 +76,8 @@
     "structs",
     "Taiyo",
     "unregistering",
+    "Warhammer",
+    "Warhawk",
     "Wykkyd"
   ],
   "markdownlint.config": {

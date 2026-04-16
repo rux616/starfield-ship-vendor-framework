@@ -1,5 +1,6 @@
 FormKey: 000815:SVFTestShip.esp
 EditorID: SVFTestShip_Asp_Corvette_B_Generic_Warhawk_Template
+FormVersion: 582
 ObjectBounds:
   First: -19.745522, -19.81197, -11.996116
   Second: 19.743217, 25.9595, 6.478513
@@ -7593,8 +7594,8 @@ NavmeshGeometry:
     Triangle: 146
   - Cover: 1557
     Triangle: 404
-  - Cover: 574
-    Triangle: 564
+  - Cover: 1949
+    Triangle: 495
   - Cover: 377
     Triangle: 355
   - Cover: 1014
@@ -7621,12 +7622,12 @@ NavmeshGeometry:
     Triangle: 638
   - Cover: 1370
     Triangle: 515
-  - Cover: 970
-    Triangle: 637
+  - Cover: 1154
+    Triangle: 285
   - Cover: 984
     Triangle: 241
-  - Cover: 1505
-    Triangle: 630
+  - Cover: 1541
+    Triangle: 300
   - Cover: 1478
     Triangle: 196
   - Cover: 870
@@ -7639,8 +7640,8 @@ NavmeshGeometry:
     Triangle: 629
   - Cover: 577
     Triangle: 563
-  - Cover: 1850
-    Triangle: 628
+  - Cover: 1518
+    Triangle: 311
   - Cover: 1545
     Triangle: 300
   - Cover: 1261
@@ -7671,10 +7672,10 @@ NavmeshGeometry:
     Triangle: 489
   - Cover: 182
     Triangle: 134
-  - Cover: 1766
-    Triangle: 613
-  - Cover: 1754
-    Triangle: 261
+  - Cover: 2165
+    Triangle: 337
+  - Cover: 1633
+    Triangle: 608
   - Cover: 1562
     Triangle: 456
   - Cover: 310
@@ -7687,8 +7688,8 @@ NavmeshGeometry:
     Triangle: 352
   - Cover: 413
     Triangle: 51
-  - Cover: 889
-    Triangle: 280
+  - Cover: 1754
+    Triangle: 261
   - Cover: 362
     Triangle: 152
   - Cover: 773
@@ -7697,54 +7698,54 @@ NavmeshGeometry:
     Triangle: 382
   - Cover: 1606
     Triangle: 308
-  - Cover: 993
-    Triangle: 13
-  - Cover: 846
-    Triangle: 606
+  - Cover: 1301
+    Triangle: 382
+  - Cover: 1773
+    Triangle: 598
   - Cover: 736
     Triangle: 19
-  - Cover: 4
-    Triangle: 89
+  - Cover: 846
+    Triangle: 606
   - Cover: 1704
     Triangle: 380
-  - Cover: 1369
-    Triangle: 517
+  - Cover: 1225
+    Triangle: 281
   - Cover: 1956
     Triangle: 594
   - Cover: 718
     Triangle: 66
   - Cover: 1353
     Triangle: 521
-  - Cover: 1406
-    Triangle: 431
+  - Cover: 1424
+    Triangle: 429
   - Cover: 1198
     Triangle: 445
-  - Cover: 553
-    Triangle: 563
+  - Cover: 726
+    Triangle: 64
   - Cover: 590
     Triangle: 68
-  - Cover: 388
-    Triangle: 572
-  - Cover: 1317
-    Triangle: 526
+  - Cover: 366
+    Triangle: 566
+  - Cover: 134
+    Triangle: 119
+  - Cover: 1837
+    Triangle: 636
   - Cover: 1036
     Triangle: 547
-  - Cover: 1862
-    Triangle: 632
   - Cover: 1
     Triangle: 106
   - Cover: 654
     Triangle: 47
   - Cover: 1481
     Triangle: 193
-  - Cover: 532
-    Triangle: 177
-  - Cover: 45
-    Triangle: 91
-  - Cover: 1709
-    Triangle: 600
+  - Cover: 1254
+    Triangle: 232
   - Cover: 1422
     Triangle: 433
+  - Cover: 1709
+    Triangle: 600
+  - Cover: 2081
+    Triangle: 326
   - Cover: 974
     Triangle: 254
   - Cover: 1161
@@ -7753,44 +7754,44 @@ NavmeshGeometry:
     Triangle: 300
   - Cover: 1250
     Triangle: 652
-  - Cover: 438
-    Triangle: 153
   - Cover: 1045
     Triangle: 345
-  - Cover: 285
-    Triangle: 112
-  - Cover: 674
-    Triangle: 576
+  - Cover: 438
+    Triangle: 153
+  - Cover: 614
+    Triangle: 555
+  - Cover: 1793
+    Triangle: 294
   - Cover: 1626
     Triangle: 443
-  - Cover: 1214
-    Triangle: 234
+  - Cover: 285
+    Triangle: 112
   - Cover: 1585
     Triangle: 307
   - Cover: 2153
     Triangle: 459
-  - Cover: 14
-    Triangle: 104
+  - Cover: 2182
+    Triangle: 460
   - Cover: 1342
     Triangle: 567
-  - Cover: 29
-    Triangle: 102
-  - Cover: 54
-    Triangle: 559
+  - Cover: 2170
+    Triangle: 462
+  - Cover: 1360
+    Triangle: 537
   - Cover: 1905
     Triangle: 347
-  - Cover: 2106
-    Triangle: 588
-  - Cover: 546
-    Triangle: 589
+  - Cover: 54
+    Triangle: 559
+  - Cover: 1921
+    Triangle: 500
   - Cover: 93
     Triangle: 108
   - Cover: 2129
     Triangle: 473
-  - Cover: 66
-    Triangle: 97
-  - Cover: 722
-    Triangle: 65
+  - Cover: 1516
+    Triangle: 309
+  - Cover: 37
+    Triangle: 85
   - Cover: 1020
     Triangle: 477
   - Cover: 1089
@@ -7801,18 +7802,18 @@ NavmeshGeometry:
     Triangle: 574
   - Cover: 640
     Triangle: 58
-  - Cover: 1877
-    Triangle: 6
-  - Cover: 1438
-    Triangle: 405
+  - Cover: 1402
+    Triangle: 436
+  - Cover: 472
+    Triangle: 23
   - Cover: 9
     Triangle: 91
   - Cover: 749
     Triangle: 181
+  - Cover: 1334
+    Triangle: 536
   - Cover: 1934
     Triangle: 492
-  - Cover: 1220
-    Triangle: 641
   - Cover: 162
     Triangle: 123
   - Cover: 582
@@ -7825,30 +7826,30 @@ NavmeshGeometry:
     Triangle: 56
   - Cover: 730
     Triangle: 565
-  - Cover: 493
-    Triangle: 165
+  - Cover: 1102
+    Triangle: 488
   - Cover: 538
     Triangle: 583
   - Cover: 149
     Triangle: 54
-  - Cover: 1593
-    Triangle: 205
-  - Cover: 382
-    Triangle: 376
   - Cover: 922
     Triangle: 646
+  - Cover: 382
+    Triangle: 376
+  - Cover: 1593
+    Triangle: 205
   - Cover: 277
     Triangle: 160
   - Cover: 1304
     Triangle: 369
   - Cover: 469
     Triangle: 570
-  - Cover: 390
-    Triangle: 573
+  - Cover: 1061
+    Triangle: 475
   - Cover: 1428
     Triangle: 8
-  - Cover: 1234
-    Triangle: 653
+  - Cover: 369
+    Triangle: 406
   - Cover: 1882
     Triangle: 5
   - Cover: 405
@@ -7857,8 +7858,8 @@ NavmeshGeometry:
     Triangle: 467
   - Cover: 940
     Triangle: 257
-  - Cover: 1052
-    Triangle: 544
+  - Cover: 1917
+    Triangle: 496
   - Cover: 318
     Triangle: 80
   - Cover: 1554
@@ -7871,8 +7872,8 @@ NavmeshGeometry:
     Triangle: 530
   - Cover: 1938
     Triangle: 496
-  - Cover: 474
-    Triangle: 25
+  - Cover: 1145
+    Triangle: 287
   - Cover: 1048
   - Cover: 21
     Triangle: 407
@@ -7884,24 +7885,24 @@ NavmeshGeometry:
     Triangle: 57
   - Cover: 1322
     Triangle: 526
-  - Cover: 1329
-    Triangle: 533
+  - Cover: 1364
+    Triangle: 507
   - Cover: 936
     Triangle: 257
-  - Cover: 1514
-    Triangle: 314
+  - Cover: 685
+    Triangle: 37
   - Cover: 34
     Triangle: 97
   - Cover: 1806
     Triangle: 222
-  - Cover: 73
-    Triangle: 95
+  - Cover: 1514
+    Triangle: 314
   - Cover: 838
     Triangle: 390
   - Cover: 1025
     Triangle: 486
-  - Cover: 1321
-    Triangle: 526
+  - Cover: 1130
+    Triangle: 226
   - Cover: 457
     Triangle: 424
   - Cover: 1005
@@ -7914,126 +7915,126 @@ NavmeshGeometry:
     Triangle: 28
   - Cover: 154
     Triangle: 114
-  - Cover: 49
-    Triangle: 560
-  - Cover: 1344
-    Triangle: 512
-  - Cover: 1345
-    Triangle: 510
   - Cover: 2109
     Triangle: 326
+  - Cover: 1345
+    Triangle: 510
+  - Cover: 1344
+    Triangle: 512
+  - Cover: 49
+    Triangle: 560
   - Cover: 1910
     Triangle: 502
-  - Cover: 1130
-    Triangle: 226
-  - Cover: 685
-    Triangle: 37
-  - Cover: 1364
-    Triangle: 507
+  - Cover: 1321
+    Triangle: 526
+  - Cover: 73
+    Triangle: 95
+  - Cover: 1329
+    Triangle: 533
   - Cover: 853
     Triangle: 315
-  - Cover: 1145
-    Triangle: 287
-  - Cover: 1917
-    Triangle: 496
+  - Cover: 474
+    Triangle: 25
+  - Cover: 1052
+    Triangle: 544
   - Cover: 282
     Triangle: 154
   - Cover: 1022
     Triangle: 479
-  - Cover: 369
-    Triangle: 406
+  - Cover: 1234
+    Triangle: 653
   - Cover: 917
     Triangle: 238
-  - Cover: 1061
-    Triangle: 475
+  - Cover: 390
+    Triangle: 573
   - Cover: 1729
     Triangle: 342
-  - Cover: 1102
-    Triangle: 488
-  - Cover: 1334
-    Triangle: 536
-  - Cover: 472
-    Triangle: 23
-  - Cover: 1402
-    Triangle: 436
+  - Cover: 493
+    Triangle: 165
+  - Cover: 1220
+    Triangle: 641
+  - Cover: 1438
+    Triangle: 405
+  - Cover: 1877
+    Triangle: 6
   - Cover: 326
     Triangle: 144
   - Cover: 930
     Triangle: 277
-  - Cover: 37
-    Triangle: 85
-  - Cover: 1516
-    Triangle: 309
+  - Cover: 722
+    Triangle: 65
+  - Cover: 66
+    Triangle: 97
   - Cover: 198
     Triangle: 138
-  - Cover: 1921
-    Triangle: 500
-  - Cover: 1360
-    Triangle: 537
-  - Cover: 2170
-    Triangle: 462
-  - Cover: 2182
-    Triangle: 460
+  - Cover: 546
+    Triangle: 589
+  - Cover: 2106
+    Triangle: 588
+  - Cover: 29
+    Triangle: 102
+  - Cover: 14
+    Triangle: 104
   - Cover: 649
     Triangle: 575
-  - Cover: 1793
-    Triangle: 294
-  - Cover: 614
-    Triangle: 555
+  - Cover: 674
+    Triangle: 576
+  - Cover: 1214
+    Triangle: 234
   - Cover: 713
     Triangle: 401
-  - Cover: 2081
-    Triangle: 326
+  - Cover: 45
+    Triangle: 91
   - Cover: 1962
     Triangle: 488
-  - Cover: 1254
-    Triangle: 232
-  - Cover: 1837
-    Triangle: 636
-  - Cover: 134
-    Triangle: 119
-  - Cover: 366
-    Triangle: 566
-  - Cover: 726
-    Triangle: 64
+  - Cover: 532
+    Triangle: 177
+  - Cover: 1862
+    Triangle: 632
+  - Cover: 1317
+    Triangle: 526
+  - Cover: 388
+    Triangle: 572
+  - Cover: 553
+    Triangle: 563
   - Cover: 994
     Triangle: 11
-  - Cover: 1424
-    Triangle: 429
+  - Cover: 1406
+    Triangle: 431
   - Cover: 802
     Triangle: 388
-  - Cover: 1225
-    Triangle: 281
-  - Cover: 1773
-    Triangle: 598
-  - Cover: 1301
-    Triangle: 382
+  - Cover: 1369
+    Triangle: 517
+  - Cover: 4
+    Triangle: 89
+  - Cover: 993
+    Triangle: 13
   - Cover: 958
     Triangle: 250
   - Cover: 528
     Triangle: 363
-  - Cover: 1633
-    Triangle: 608
-  - Cover: 2165
-    Triangle: 337
+  - Cover: 889
+    Triangle: 280
+  - Cover: 1766
+    Triangle: 613
   - Cover: 1718
     Triangle: 657
-  - Cover: 1518
-    Triangle: 311
+  - Cover: 1850
+    Triangle: 628
   - Cover: 1757
     Triangle: 267
   - Cover: 1081
     Triangle: 474
-  - Cover: 1541
-    Triangle: 300
-  - Cover: 1154
-    Triangle: 285
+  - Cover: 1505
+    Triangle: 630
+  - Cover: 970
+    Triangle: 637
   - Cover: 766
     Triangle: 386
   - Cover: 2070
     Triangle: 331
-  - Cover: 1949
-    Triangle: 495
+  - Cover: 574
+    Triangle: 564
   - Cover: 912
     Triangle: 650
   - Cover: 597

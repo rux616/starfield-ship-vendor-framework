@@ -1,5 +1,6 @@
 FormKey: 1EAA13:Starfield.esm
 EditorID: LShip_Vendor_Generic_B_Cargo_AsphaltCB
+FormVersion: 582
 Version2: 4
 MaxCount: 0
 Flags:
@@ -7,15 +8,15 @@ Flags:
 - 0x200
 Entries:
 - Level: 18
-  Unused: 95
+  Unused: 19936
   Reference: 3A2E59:Starfield.esm
   Count: 1
 - Level: 32
-  Unused: 95
+  Unused: 19936
   Reference: 3A2E57:Starfield.esm
   Count: 1
 - Level: 46
-  Unused: 95
+  Unused: 19936
   Reference: 3A2E55:Starfield.esm
   Count: 1
 Model:

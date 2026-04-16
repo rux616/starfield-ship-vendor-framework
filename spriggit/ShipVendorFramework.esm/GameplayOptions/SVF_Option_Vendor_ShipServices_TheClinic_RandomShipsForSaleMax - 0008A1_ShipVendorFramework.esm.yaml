@@ -1,5 +1,6 @@
 FormKey: 0008A1:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_ShipServices_TheClinic_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    The Clinic Ship Services: Max'

@@ -1,5 +1,6 @@
 FormKey: 000815:SVF-DarkStarAstrodynamics-Patch.esm
 EditorID: SVF_VendorMapAdd_RandomShipsForSaleMax_DarkStarAstrodynamics
+FormVersion: 582
 Items:
 - 000806:SVF-DarkStarAstrodynamics-Patch.esm
-AddToList: Null
+AddToList: 00084A:ShipVendorFramework.esm

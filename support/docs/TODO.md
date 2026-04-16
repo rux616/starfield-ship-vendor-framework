@@ -110,3 +110,19 @@
 - [X] watchtower vendor (B.A.B.S) has their min/max settings inverted (max, min) in the "Game Settings" menu
 - [X] add Watchtower vendor lists picture
 - [X] add Kestrel from Falkland Systems v2 to patch
+- [X] log player level when new ships are generated
+- [X] log current list of available ships when a vendor is checking whether to refresh lists
+- [X] add compatibility with free lanes
+    - [X] update vendor list graphic
+- [-] add compatibility with terran armada
+    - no compatibility patch needed
+- [X] update Starvival patch to v12.1
+    - [X] update FOMOD description for Starvival patch
+    - [X] update patches description for Starvival patch
+- [X] move vendor random ships min/max settings to main plugin
+    - [X] darkstar astrodynamics
+    - [X] falkland systems
+    - [X] shattered space
+    - [X] watchtower
+- [X] make "gameplay option group" records pretty
+    - [-] reorganize gameplay option records into different group records?

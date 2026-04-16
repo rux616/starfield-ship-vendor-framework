@@ -1,5 +1,6 @@
 FormKey: 000865:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_ShipServices_Neon_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Neon Ship Services: Max'

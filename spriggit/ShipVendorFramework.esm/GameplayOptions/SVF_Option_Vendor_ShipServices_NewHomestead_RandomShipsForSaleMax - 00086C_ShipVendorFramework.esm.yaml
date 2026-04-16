@@ -1,5 +1,6 @@
 FormKey: 00086C:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_ShipServices_NewHomestead_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    New Homestead Ship Services: Max'

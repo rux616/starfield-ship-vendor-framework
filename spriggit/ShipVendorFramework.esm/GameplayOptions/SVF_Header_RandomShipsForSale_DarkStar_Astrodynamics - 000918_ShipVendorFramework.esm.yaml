@@ -1,0 +1,19 @@
+FormKey: 000918:ShipVendorFramework.esm
+EditorID: SVF_Header_RandomShipsForSale_DarkStar_Astrodynamics
+FormVersion: 582
+Name:
+  TargetLanguage: English
+  Value: '    [ Mod: DarkStar Astrodynamics ]'
+Description:
+  TargetLanguage: English
+  Value: >-
+    These settings will only be utilized when DarkStar Astrodynamics and its associated Ship Vendor Framework patch are both enabled.
+
+
+    Current status: <font color="#ED0000">Inactive</font>
+Data:
+  MutagenObjectType: FloatGameplayOptionData
+  Value1: 0
+  Value2: 0
+  Max: 1
+  Step: 1

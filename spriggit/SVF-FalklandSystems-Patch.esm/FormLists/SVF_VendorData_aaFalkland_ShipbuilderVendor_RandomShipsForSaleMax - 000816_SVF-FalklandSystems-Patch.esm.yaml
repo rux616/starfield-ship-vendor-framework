@@ -1,5 +1,6 @@
 FormKey: 000816:SVF-FalklandSystems-Patch.esm
 EditorID: SVF_VendorData_aaFalkland_ShipbuilderVendor_RandomShipsForSaleMax
+FormVersion: 582
 Items:
-- 000806:SVF-FalklandSystems-Patch.esm
+- 000919:ShipVendorFramework.esm
 AddToList: Null

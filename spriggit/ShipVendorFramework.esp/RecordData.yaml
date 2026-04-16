@@ -4,14 +4,16 @@ SpriggitSource:
 ModKey: ShipVendorFramework.esp
 GameRelease: Starfield
 ModHeader:
+  FormVersion: 582
   Author: rux616
   Description: >-
     A framework allowing mod authors to easily add ships for sale without conflicts.
 
 
-    Version: 1.8.1
+    Version: 1.9.0
   MasterReferences:
   - Master: Starfield.esm
+  - Master: sfbgs00d.esm
   TransientTypes:
   - FormType: 136
     Links:

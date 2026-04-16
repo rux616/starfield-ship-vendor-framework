@@ -1,5 +1,6 @@
 FormKey: 00084F:ShipVendorFramework.esp
 EditorID: SVF_Option_Vendor_ShipServices_AkilaCity_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Akila City Ship Services: Max'

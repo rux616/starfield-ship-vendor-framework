@@ -1,5 +1,6 @@
 FormKey: 000838:ShipVendorFramework.esp
 EditorID: SVF_VendorData_ShipServices_RHQ_ShipListRandom
+FormVersion: 582
 Items:
 - 00080D:ShipVendorFramework.esp
 AddToList: Null

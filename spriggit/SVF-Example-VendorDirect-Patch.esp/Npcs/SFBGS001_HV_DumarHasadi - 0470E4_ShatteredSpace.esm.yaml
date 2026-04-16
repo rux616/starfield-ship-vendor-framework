@@ -2,6 +2,7 @@ FormKey: 0470E4:ShatteredSpace.esm
 IsCompressed: True
 MajorRecordFlagsRaw: 262144
 EditorID: SFBGS001_HV_DumarHasadi
+FormVersion: 582
 Version2: 12
 StarfieldMajorRecordFlags:
 - Compressed
@@ -269,8 +270,8 @@ FaceDialPositions:
   Position: -0.13
 - Index: 63
   Position: 0.47
-- Index: 85
-  Position: -0.13
+- Index: 58
+  Position: -0.8
 - Index: 83
   Position: 0.28
 - Index: 74
@@ -281,8 +282,8 @@ FaceDialPositions:
   Position: 0.6
 - Index: 32
   Position: 0.75
-- Index: 58
-  Position: -0.8
+- Index: 85
+  Position: -0.13
 MorphBlends:
 - BlendName: male_af_md1_Neck
   Intensity: 0.59

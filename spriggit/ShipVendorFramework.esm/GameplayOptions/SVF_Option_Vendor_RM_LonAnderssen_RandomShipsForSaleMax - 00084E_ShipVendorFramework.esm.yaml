@@ -1,5 +1,6 @@
 FormKey: 00084E:ShipVendorFramework.esm
 EditorID: SVF_Option_Vendor_RM_LonAnderssen_RandomShipsForSaleMax
+FormVersion: 582
 Name:
   TargetLanguage: English
   Value: '    Lon Anderssen: Max'

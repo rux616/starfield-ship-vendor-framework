@@ -1,5 +1,6 @@
 FormKey: 0008AE:ShipVendorFramework.esm
 EditorID: SVF_VendorData_CF_JasmineDurand_ShipListRandom
+FormVersion: 582
 Items:
 - 000800:ShipVendorFramework.esm
 AddToList: Null

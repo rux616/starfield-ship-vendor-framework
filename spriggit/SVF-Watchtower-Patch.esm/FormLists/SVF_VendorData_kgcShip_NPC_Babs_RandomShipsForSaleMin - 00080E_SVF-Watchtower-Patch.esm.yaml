@@ -1,5 +1,6 @@
 FormKey: 00080E:SVF-Watchtower-Patch.esm
 EditorID: SVF_VendorData_kgcShip_NPC_Babs_RandomShipsForSaleMin
+FormVersion: 582
 Items:
-- 000807:SVF-Watchtower-Patch.esm
+- 000904:ShipVendorFramework.esm
 AddToList: Null

@@ -1,5 +1,6 @@
 FormKey: 000863:ShipVendorFramework.esm
 EditorID: SVF_VendorData_ShipServices_AkilaCity_RandomShipsForSaleMax
+FormVersion: 582
 Items:
 - 00084F:ShipVendorFramework.esm
 AddToList: Null

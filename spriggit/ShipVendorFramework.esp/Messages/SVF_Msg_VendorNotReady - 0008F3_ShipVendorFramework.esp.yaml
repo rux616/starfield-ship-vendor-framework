@@ -1,5 +1,6 @@
 FormKey: 0008F3:ShipVendorFramework.esp
 EditorID: SVF_Msg_VendorNotReady
+FormVersion: 582
 Description:
   TargetLanguage: English
   Value: still creating ships, please wait...
