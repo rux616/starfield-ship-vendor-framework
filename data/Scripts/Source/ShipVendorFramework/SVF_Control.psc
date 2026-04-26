@@ -45,6 +45,9 @@ Group GameplayOptions
 
     GameplayOption Property RichShipVendorsMinimumCreditsOption Auto Const
     { Gameplay option to control the minimum number of credits ship vendors should have when the "rich ship vendors" option is enabled. }
+
+    GameplayOption Property RandomShipsRetriesOption Auto Const
+    { Gameplay option to control the number of retries for generating random ships for sale (for example, if a ship fails to spawn because the player is too low a level). }
 EndGroup
 
 Group Other
@@ -55,7 +58,10 @@ Group Other
     { The NoPickpocket keyword. If the vendor container is not set and the vendor does not have this keyword, it will be added to prevent pick-pocketing. }
 
     int[] Property RichShipVendorsMinimumCreditsValues Auto Const
-    { The values for the minimum credits for rich ship vendors. }
+    { The values for the minimum credits for rich ship vendors. (Pairs with RichShipVendorsOption property.) }
+
+    int[] Property RandomShipsRetriesValues Auto Const
+    { The values for the number of retries for generating random ships for sale. (Pairs with RandomShipsRetriesOption property.) }
 EndGroup
 
 ; default values for the vendor mappings
