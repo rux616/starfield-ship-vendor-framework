@@ -31,7 +31,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
-string Property SVFVersion = "1.9.0" Auto Const Hidden
+string Property SVFVersion = "1.10.0" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
@@ -46,8 +46,8 @@ Group GameplayOptions
     GameplayOption Property RichShipVendorsMinimumCreditsOption Auto Const
     { Gameplay option to control the minimum number of credits ship vendors should have when the "rich ship vendors" option is enabled. }
 
-    GameplayOption Property RandomShipsRetriesOption Auto Const
-    { Gameplay option to control the number of retries for generating random ships for sale (for example, if a ship fails to spawn because the player is too low a level). }
+    GameplayOption Property RandomShipsLimitCreationAttemptsOption Auto Const
+    { Gameplay option to control whether the script should limit creation attempts for random ships for sale (for example, if a ship fails to spawn because the player is too low a level). }
 EndGroup
 
 Group Other

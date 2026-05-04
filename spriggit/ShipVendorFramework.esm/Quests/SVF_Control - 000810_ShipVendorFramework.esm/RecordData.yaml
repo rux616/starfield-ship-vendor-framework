@@ -30,6 +30,9 @@ VirtualMachineAdapter:
       Name: RandomShipsForSaleMin
       Object: 000849:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: RandomShipsLimitCreationAttemptsOption
+      Object: 000909:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: RegenerateUniqueShipsOption
       Object: 0008A7:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
