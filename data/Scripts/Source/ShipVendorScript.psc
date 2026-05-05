@@ -1179,7 +1179,7 @@ Function RefreshShipsToSellArraysLVLB()
 
     ; remove any unique ships that have already been sold
     LeveledSpaceshipBase[] uniqueShipsSoldLocal = svfControl.UniqueShipsSold.GetArray() as LeveledSpaceshipBase[]
-    If svfShipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && svfControl.RegenerateUniqueShipsOption.GetValue() as bool == false
+    If svfShipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
         int uniqueIndex = 0
         i = 0
         While i < uniqueShipsSoldLocal.Length
@@ -1263,7 +1263,7 @@ Function RefreshShipsToSellArraysShipToSell()
 
     ; remove any unique ships that have already been sold
     LeveledSpaceshipBase[] uniqueShipsSoldLocal = svfControl.UniqueShipsSold.GetArray() as LeveledSpaceshipBase[]
-    If shipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && svfControl.RegenerateUniqueShipsOption.GetValue() as bool == false
+    If shipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
         int uniqueIndex = 0
         i = 0
         While i < uniqueShipsSoldLocal.Length
