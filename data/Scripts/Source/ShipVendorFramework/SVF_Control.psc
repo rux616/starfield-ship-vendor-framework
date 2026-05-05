@@ -243,10 +243,38 @@ Function CheckForMods()
 
     string[] modsToCheck = new string[0]
     ; --> modsToCheck list begin <--
+    modsToCheck.Add("DarkStar.esm")
+    modsToCheck.Add("DarkStar_Astrodynamics.esm")
+    modsToCheck.Add("deadalus1.esm")
+    modsToCheck.Add("dominion.esm")
+    modsToCheck.Add("FalklandSystems.esm")
+    modsToCheck.Add("SVF-HideGameplayOptions-Patch.esm")
+    modsToCheck.Add("nighthawk.esm")
+    modsToCheck.Add("L-K_Ships.esm")
+    modsToCheck.Add("LowLandingPad.esm")
+    modsToCheck.Add("outpostvendorcustomships.esm")
+    modsToCheck.Add("ShatteredSpace.esm")
+    modsToCheck.Add("Starvival - Immersive Survival Addon.esm")
+    modsToCheck.Add("vcDenAstrodynamics.esm")
+    modsToCheck.Add("kinggathcreations_spaceship.esm")
     ; --> modsToCheck list end <--
 
     string[] patchesToCheck = new string[0]
     ; --> patchesToCheck list begin <--
+    patchesToCheck.Add("NONE")
+    patchesToCheck.Add("SVF-DarkStarAstrodynamics-Patch.esm")
+    patchesToCheck.Add("SVF-Deadalus-Patch.esm")
+    patchesToCheck.Add("SVF-Dominion-Patch.esm")
+    patchesToCheck.Add("SVF-FalklandSystems-Patch.esm")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("SVF-IconicShips-Patch.esm")
+    patchesToCheck.Add("SVF-LKShips-Patch.esm")
+    patchesToCheck.Add("SVF-LowerLandingPad-Patch.esm")
+    patchesToCheck.Add("SVF-OutpostVendorNewShips-Patch.esm")
+    patchesToCheck.Add("SVF-ShatteredSpace-Patch.esm")
+    patchesToCheck.Add("SVF-Starvival-Patch.esm")
+    patchesToCheck.Add("SVF-TheDenAstrodynamics-Patch.esm")
+    patchesToCheck.Add("SVF-Watchtower-Patch.esm")
     ; --> patchesToCheck list end <--
 
     int i = 0

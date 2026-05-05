@@ -23,6 +23,7 @@
         "Render Markdown to Nexus BBCode",
         "Render Markdown to Plaintext",
         "Serialize Plugins",
+        "Populate Mods and Patches in SVF_Control",
         "Compile Scripts (Starvival Patch)",
         "Compile Scripts (Main)",
         "Create Archives"
@@ -90,6 +91,45 @@
       "dependsOn": ["Populate Known Masters"]
     },
     {
+      "label": "Populate Mods and Patches in SVF_Control",
+      "type": "shell",
+      "command": "python3",
+      "args": [
+        "./support/scripts/populate-mods-patches.py",
+        "--papyrus-file",
+        "./data/Scripts/Source/ShipVendorFramework/SVF_Control.psc",
+        "--mod-patch-pairs",
+        "DarkStar.esm", // "DarkStar" by WykkydGaming
+        "NONE",
+        "DarkStar_Astrodynamics.esm", //"DarkStar Astrodynamics" by WykkydGaming
+        "SVF-DarkStarAstrodynamics-Patch.esm",
+        "deadalus1.esm", // "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03
+        "SVF-Deadalus-Patch.esm",
+        "dominion.esm", // "Dominion" by rhart317
+        "SVF-Dominion-Patch.esm",
+        "FalklandSystems.esm", // "Falkland Systems Ship Services" by Hjalmere
+        "SVF-FalklandSystems-Patch.esm",
+        "SVF-HideGameplayOptions-Patch.esm", // hide options patch
+        "PATCH",
+        "nighthawk.esm", // "Iconic Ships" by ShipTechnician
+        "SVF-IconicShips-Patch.esm",
+        "L-K_Ships.esm", // "L-K Ships" by Lighthorse and KeithVSmith1977
+        "SVF-LKShips-Patch.esm",
+        "LowLandingPad.esm", // "Lower Landing Pad" by SenterPat
+        "SVF-LowerLandingPad-Patch.esm",
+        "outpostvendorcustomships.esm", // "Outpost Vendor New Ships" by nefurun
+        "SVF-OutpostVendorNewShips-Patch.esm",
+        "ShatteredSpace.esm", // "Shattered Space" DLC
+        "SVF-ShatteredSpace-Patch.esm",
+        "Starvival - Immersive Survival Addon.esm", //"Starvival" by lKocMoHaBTl
+        "SVF-Starvival-Patch.esm",
+        "vcDenAstrodynamics.esm", // "The Den Astrodynamics" by VoodooChild
+        "SVF-TheDenAstrodynamics-Patch.esm",
+        "kinggathcreations_spaceship.esm", // "Watchtower" by kinggath_creations
+        "SVF-Watchtower-Patch.esm"
+      ]
+    },
+    {
       "label": "Compile Scripts (Starvival Patch)",
       "type": "shell",
       "command": "./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe",
@@ -114,6 +154,7 @@
         "-Skip7z",
         "-SkipBA2Cleanup",
         "-BA2AlsoMakeXbox",
+        "-BA2AlsoMakePS",
         "-BA2ForceUncompressed",
         "-BA2DisableSharing"
       ]
@@ -129,6 +170,7 @@
         "-Skip7z",
         "-SkipBA2Cleanup",
         "-BA2AlsoMakeXbox",
+        "-BA2AlsoMakePS",
         "-BA2ForceUncompressed",
         "-BA2DisableSharing"
       ]
