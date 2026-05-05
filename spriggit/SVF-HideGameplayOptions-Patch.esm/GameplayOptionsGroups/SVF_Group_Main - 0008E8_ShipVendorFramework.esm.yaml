@@ -1,0 +1,8 @@
+FormKey: 0008E8:ShipVendorFramework.esm
+EditorID: SVF_Group_Main
+FormVersion: 582
+Name:
+  TargetLanguage: English
+  Value: Ship Vendor Framework Options
+Options:
+  MutagenObjectType: GameplayOptionsGroupLeaf
