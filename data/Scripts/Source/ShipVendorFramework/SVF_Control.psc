@@ -256,25 +256,25 @@ Function CheckForMods()
         string logString = ""
         bool modDetected = Game.IsPluginInstalled(modName)
         bool patchDetected = Game.IsPluginInstalled(patchName)
-        int log_level = LL_INFO
+        int logLevel = LL_INFO
         If modDetected == true
-            logString = "Mod detected: " + modName
+            logString = "Mod detected: '" + modName + "'"
             If patchDetected == true
-                logString += "Accompanying patch detected: " + patchName
+                logString += "; Accompanying patch detected: '" + patchName + "'"
             Else
                 If patchName == "NONE"
                     logString += "; No accompanying patch exists"
-                    log_level = LL_WARNING
+                    logLevel = LL_WARNING
                 ElseIf patchName == "N/A"
                     logString += "; No accompanying patch needed"
                 ElseIf patchName == "PATCH"
                     ; do nothing
                 Else
-                    logString += "; Accompanying patch (" + patchName + ") not detected"
-                    log_level = LL_WARNING
+                    logString += "; Accompanying patch ('" + patchName + "') not detected"
+                    logLevel = LL_WARNING
                 EndIf
             EndIf
-            _Log(fnName, logString, log_level)
+            _Log(fnName, logString, logLevel)
         EndIf
         i += 1
     EndWhile
