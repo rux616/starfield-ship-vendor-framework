@@ -125,6 +125,7 @@ int Property SVFEnhancementsVersion = 3 Auto Const Hidden
 ; the current version of the Ship Vendor Framework enhancements active on the vendor
 int svfEnhancementsVersionCurrent = 0
 
+; variables to track state
 bool isOnLoadRunning = false
 bool isOnActivateRunning = false
 bool isOnPlayerLoadGameRunning = false
@@ -1439,6 +1440,7 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
 
     _Log(fnName, "DONE. akShipList=" + akShipList, LL_INFO)
 
+    ; lock the detailed listing behind the debug flag because it can take a little while depending on list size
     If LOG_LEVEL_THRESHOLD == LL_DEBUG
         _Log(fnName, "Leveled Base Ships in akShipList:", LL_DEBUG)
 
