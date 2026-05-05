@@ -1512,7 +1512,7 @@ Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMark
         limitedString = "limited"
         maxAttempts = aiShipsToCreate
     Else
-        limitedString = "non-limited"
+        limitedString = "unlimited"
         maxAttempts = akShipToSellList.Length
     EndIf
     _Log(fnName, "attempting to create " + aiShipsToCreate + " ships (out of " + akShipToSellList.Length + " possible) with " + limitedString + " creation attempts at " + akCreateMarker + " (landing marker " + MyLandingMarker + ")", LL_INFO)
