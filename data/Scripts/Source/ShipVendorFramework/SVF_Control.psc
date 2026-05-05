@@ -242,8 +242,6 @@ Function CheckForMods()
     _Log(fnName, "begin", LL_DEBUG)
 
     string[] modsToCheck = new string[0]
-    modsToCheck.Add("DarkStar.esm")  ; DarkStar by WykkydGaming
-    modsToCheck.Add("Starvival - Immersive Survival Addon.esm")  ; Starvival by lKocMoHaBTl
     ; --> modsToCheck list begin <--
     ; --> modsToCheck list end <--
 
@@ -256,26 +254,26 @@ Function CheckForMods()
         string modName = modsToCheck[i]
         string patchName = patchesToCheck[i]
         string logString = ""
-        ; TODO test what the main game log says when you try to check for a plugin that doesn't exist
-        ; TODO also test for installed but not enabled plugins, and see if there's a way to check specifically for that
         bool modDetected = Game.IsPluginInstalled(modName)
         bool patchDetected = Game.IsPluginInstalled(patchName)
         int log_level = LL_INFO
         If modDetected == true
-            logString = "Mod detected: " + modName + "; "
+            logString = "Mod detected: " + modName
             If patchDetected == true
                 logString += "Accompanying patch detected: " + patchName
             Else
                 If patchName == "NONE"
-                    logString += "No accompanying patch exists"
+                    logString += "; No accompanying patch exists"
+                    log_level = LL_WARNING
                 ElseIf patchName == "N/A"
-                    logString += "No accompanying patch needed"
+                    logString += "; No accompanying patch needed"
+                ElseIf patchName == "PATCH"
+                    ; do nothing
                 Else
-                    logString += "Accompanying patch (" + patchName + ") not detected"
+                    logString += "; Accompanying patch (" + patchName + ") not detected"
                     log_level = LL_WARNING
                 EndIf
             EndIf
-            ; since the potential behavior exhibited is wide ranging, just log a warning rather than try to correct
             _Log(fnName, logString, log_level)
         EndIf
         i += 1
