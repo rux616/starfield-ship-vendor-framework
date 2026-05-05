@@ -58,10 +58,7 @@ Group Other
     { The NoPickpocket keyword. If the vendor container is not set and the vendor does not have this keyword, it will be added to prevent pick-pocketing. }
 
     int[] Property RichShipVendorsMinimumCreditsValues Auto Const
-    { The values for the minimum credits for rich ship vendors. (Pairs with RichShipVendorsOption property.) }
-
-    int[] Property RandomShipsRetriesValues Auto Const
-    { The values for the number of retries for generating random ships for sale. (Pairs with RandomShipsRetriesOption property.) }
+    { The values for the minimum credits for rich ship vendors. (Pairs with RichShipVendorsMinimumCreditsOption property.) }
 EndGroup
 
 ; default values for the vendor mappings
