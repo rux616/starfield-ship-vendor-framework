@@ -20,7 +20,6 @@
 
 
 import argparse
-import enum
 import sys
 
 
