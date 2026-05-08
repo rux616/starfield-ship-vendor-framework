@@ -1,4 +1,4 @@
-Version: 1.9.0
+Version: 1.10.0
 
 Summary
 -----
@@ -40,7 +40,6 @@ Mods that I have created capability patches for:
 - "Iconic Ships" by ShipTechnician [Creations (https://creations.bethesda.net/en/starfield/details/569e938e-228c-42fb-91ba-c6967575bcf3/Iconic_Ships)]
 - "L-K Ships" by Lighthorse and KeithVSmith1977 [Creations (https://creations.bethesda.net/en/starfield/details/f287801b-a863-48fb-b796-1eeaeda4eab3/L_K_Ships) / Nexus (https://www.nexusmods.com/starfield/mods/7433)]
 - "Lower Landing Pad" by SenterPat [Nexus (https://www.nexusmods.com/starfield/mods/8363)]
-- "Outpost Shipbuilder Unlocked ESM" by goldenchrome [Nexus (https://www.nexusmods.com/starfield/mods/5667)]
 - "Outpost Vendor New Ships" by nefurun [Creations (https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships)]
 - "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 [Creations (https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti)]
 - "The Den Astrodynamics" by VoodooChild [Nexus (https://www.nexusmods.com/starfield/mods/8809)]

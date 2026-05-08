@@ -31,7 +31,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
-string Property SVFVersion = "1.9.0" Auto Const Hidden
+string Property SVFVersion = "1.10.0" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
@@ -45,6 +45,9 @@ Group GameplayOptions
 
     GameplayOption Property RichShipVendorsMinimumCreditsOption Auto Const
     { Gameplay option to control the minimum number of credits ship vendors should have when the "rich ship vendors" option is enabled. }
+
+    GameplayOption Property RandomShipsLimitCreationAttemptsOption Auto Const
+    { Gameplay option to control whether the script should limit creation attempts for random ships for sale (for example, if a ship fails to spawn because the player is too low a level). }
 EndGroup
 
 Group Other
@@ -55,7 +58,7 @@ Group Other
     { The NoPickpocket keyword. If the vendor container is not set and the vendor does not have this keyword, it will be added to prevent pick-pocketing. }
 
     int[] Property RichShipVendorsMinimumCreditsValues Auto Const
-    { The values for the minimum credits for rich ship vendors. }
+    { The values for the minimum credits for rich ship vendors. (Pairs with RichShipVendorsMinimumCreditsOption property.) }
 EndGroup
 
 ; default values for the vendor mappings
@@ -239,15 +242,67 @@ Function CheckForMods()
     _Log(fnName, "begin", LL_DEBUG)
 
     string[] modsToCheck = new string[0]
-    modsToCheck.Add("DarkStar.esm")  ; DarkStar by WykkydGaming
-    modsToCheck.Add("Starvival - Immersive Survival Addon.esm")  ; Starvival by lKocMoHaBTl
+    ; --> modsToCheck list begin <--
+    modsToCheck.Add("DarkStar.esm")
+    modsToCheck.Add("DarkStar_Astrodynamics.esm")
+    modsToCheck.Add("deadalus1.esm")
+    modsToCheck.Add("dominion.esm")
+    modsToCheck.Add("FalklandSystems.esm")
+    modsToCheck.Add("SVF-HideGameplayOptions-Patch.esm")
+    modsToCheck.Add("nighthawk.esm")
+    modsToCheck.Add("L-K_Ships.esm")
+    modsToCheck.Add("LowLandingPad.esm")
+    modsToCheck.Add("outpostvendorcustomships.esm")
+    modsToCheck.Add("ShatteredSpace.esm")
+    modsToCheck.Add("Starvival - Immersive Survival Addon.esm")
+    modsToCheck.Add("vcDenAstrodynamics.esm")
+    modsToCheck.Add("kinggathcreations_spaceship.esm")
+    ; --> modsToCheck list end <--
+
+    string[] patchesToCheck = new string[0]
+    ; --> patchesToCheck list begin <--
+    patchesToCheck.Add("NONE")
+    patchesToCheck.Add("SVF-DarkStarAstrodynamics-Patch.esm")
+    patchesToCheck.Add("SVF-Deadalus-Patch.esm")
+    patchesToCheck.Add("SVF-Dominion-Patch.esm")
+    patchesToCheck.Add("SVF-FalklandSystems-Patch.esm")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("SVF-IconicShips-Patch.esm")
+    patchesToCheck.Add("SVF-LKShips-Patch.esm")
+    patchesToCheck.Add("SVF-LowerLandingPad-Patch.esm")
+    patchesToCheck.Add("SVF-OutpostVendorNewShips-Patch.esm")
+    patchesToCheck.Add("SVF-ShatteredSpace-Patch.esm")
+    patchesToCheck.Add("SVF-Starvival-Patch.esm")
+    patchesToCheck.Add("SVF-TheDenAstrodynamics-Patch.esm")
+    patchesToCheck.Add("SVF-Watchtower-Patch.esm")
+    ; --> patchesToCheck list end <--
 
     int i = 0
     While i < modsToCheck.Length
         string modName = modsToCheck[i]
-        If Game.IsPluginInstalled(modName)
-            ; since the potential behavior exhibited is wide ranging, just log a warning rather than try to correct
-            _Log(fnName, "Mod detected: " + modName, LL_WARNING)
+        string patchName = patchesToCheck[i]
+        string logString = ""
+        bool modDetected = Game.IsPluginInstalled(modName)
+        bool patchDetected = Game.IsPluginInstalled(patchName)
+        int logLevel = LL_INFO
+        If modDetected == true
+            logString = "Mod detected: '" + modName + "'"
+            If patchDetected == true
+                logString += "; Accompanying patch detected: '" + patchName + "'"
+            Else
+                If patchName == "NONE"
+                    logString += "; No accompanying patch exists"
+                    logLevel = LL_WARNING
+                ElseIf patchName == "N/A"
+                    logString += "; No accompanying patch needed"
+                ElseIf patchName == "PATCH"
+                    ; do nothing
+                Else
+                    logString += "; Accompanying patch ('" + patchName + "') not detected"
+                    logLevel = LL_WARNING
+                EndIf
+            EndIf
+            _Log(fnName, logString, logLevel)
         EndIf
         i += 1
     EndWhile
@@ -427,15 +482,6 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
     vendorDataMap.RandomShipsForSaleMax = GetValue2(tempForm, RandomShipsForSaleMaxDefault) as int
 
     vendorDataMap.VendorContainer = FormListGetLast(vendorContainersCache[vendorIndex]) as ObjectReference
-
-
-    _Log(fnName, "vendorDataMap.Vendor: " + vendorDataMap.Vendor, LL_INFO)
-    _Log(fnName, "vendorDataMap.ListRandom: " + vendorDataMap.ListRandom, LL_INFO)
-    _Log(fnName, "vendorDataMap.ListAlways: " + vendorDataMap.ListAlways, LL_INFO)
-    _Log(fnName, "vendorDataMap.ListUnique: " + vendorDataMap.ListUnique, LL_INFO)
-    _Log(fnName, "vendorDataMap.RandomShipsForSaleMin: " + vendorDataMap.RandomShipsForSaleMin, LL_INFO)
-    _Log(fnName, "vendorDataMap.RandomShipsForSaleMax: " + vendorDataMap.RandomShipsForSaleMax, LL_INFO)
-    _Log(fnName, "vendorDataMap.VendorContainer: " + vendorDataMap.VendorContainer, LL_INFO)
 
     _Log(fnName, "end", LL_DEBUG)
     Return vendorDataMap

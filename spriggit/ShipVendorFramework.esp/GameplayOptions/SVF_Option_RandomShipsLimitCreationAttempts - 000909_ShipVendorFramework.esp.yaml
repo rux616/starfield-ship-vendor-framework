@@ -1,0 +1,20 @@
+FormKey: 000909:ShipVendorFramework.esp
+EditorID: SVF_Option_RandomShipsLimitCreationAttempts
+FormVersion: 582
+Name:
+  TargetLanguage: English
+  Value: '  Limit Random Ship Creation Attempts'
+Description:
+  TargetLanguage: English
+  Value: >-
+    Controls whether SVF retries failed ship creation attempts when regenerating a vendor's random ship inventory.
+
+
+    <font color="#EDEDED">ON</font>: If a ship can't be created (e.g. player level too low), SVF skips it and moves on.
+
+
+    <font color="#EDEDED">OFF</font>: SVF keeps trying until it hits the requested number of ships or exhausts all options. Can take longer. Default value of this option.
+Data:
+  MutagenObjectType: BoolGameplayOptionData
+  Value1: False
+  Value2: False

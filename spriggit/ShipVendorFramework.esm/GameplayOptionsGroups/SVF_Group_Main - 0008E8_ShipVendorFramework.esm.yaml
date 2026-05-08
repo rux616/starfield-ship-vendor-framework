@@ -3,13 +3,14 @@ EditorID: SVF_Group_Main
 FormVersion: 582
 Name:
   TargetLanguage: English
-  Value: Ship Vendor Framework
+  Value: Ship Vendor Framework Options
 Options:
   MutagenObjectType: GameplayOptionsGroupLeaf
   GameplayOptions:
   - 0008A7:ShipVendorFramework.esm
   - 0008E6:ShipVendorFramework.esm
   - 0008A8:ShipVendorFramework.esm
+  - 000909:ShipVendorFramework.esm
   - 000843:ShipVendorFramework.esm
   - 00089D:ShipVendorFramework.esm
   - 00084F:ShipVendorFramework.esm

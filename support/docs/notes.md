@@ -287,3 +287,73 @@ v1.0.5a
 | kinggathcreations_spaceship - main.ba2     | 1,163,142,583 | `CBE3E1A0188393D6B83B9A074405CDEB0981559915BE0924E2E5B13900D393F0` |
 | kinggathcreations_spaceship - textures.ba2 |   324,873,555 | `AC7BDABEEE98AD0165E2B4FB8CFCC444D2E65D5FF88FF8DEFCB0CC5468AA3135` |
 | kinggathcreations_spaceship.esm            |    94,543,199 | `18FD1F375A8EFB577A785E051F7E8891DC917730F4217CD89571BA007FF217FE` |
+
+## starvival script hashes
+
+commands:
+- `ls outpost*.psc,ship*.psc`
+- `Get-FileHash outpost*.psc,ship*.psc`
+
+v12.1.0
+
+| file                                | size (bytes) |                               sha256                               |
+|-------------------------------------|-------------:|:------------------------------------------------------------------:|
+| outpostshipbuildermenuactivator.psc |       13,369 | `3902022E0B226B4B36AEA4519F168E8E9789093E420D00AB889D2649C9C693B9` |
+| shipvendorinfoscript.psc            |        6,122 | `A8893178AF4B32FB9FCD51DF93DB98D681A80B51F04FEE8927AAB7CD2236C074` |
+| shipvendorscript.psc                |       13,582 | `2DC32C3113EDBCD7E061846847938E616ACBFE1738277E2019C8BA81C2B436F3` |
+
+v12.4.5
+
+| file                                | size (bytes) |                               sha256                               |
+|-------------------------------------|-------------:|:------------------------------------------------------------------:|
+| outpostshipbuildermenuactivator.psc |       13,369 | `3902022E0B226B4B36AEA4519F168E8E9789093E420D00AB889D2649C9C693B9` |
+| shipvendorinfoscript.psc            |        6,122 | `A8893178AF4B32FB9FCD51DF93DB98D681A80B51F04FEE8927AAB7CD2236C074` |
+| shipvendorscript.psc                |       13,582 | `2DC32C3113EDBCD7E061846847938E616ACBFE1738277E2019C8BA81C2B436F3` |
+
+
+## CK command line parameters
+
+-ExportDialogue
+-ExportFaceGenData
+-TagifyMasterfile
+-DetagifyMasterfile
+-ExportText
+-CompileTextExport
+-DelocalizeMasterfile
+-SaveDefaultPlugin
+-CheckInPlugin
+-DumpNeededFiles
+-GenerateSEQ
+-GenerateWarnings
+-GenerateAnimInfo
+-DepersistRefs
+-ImportScalingData
+-GenerateLandTextureThumbnails
+-GenerateInventoryIcons
+-GenerateWorkshopIcons
+-GenerateShipBuilderIcons
+-ExportESM
+-ExportBIData
+-ExportParticle
+-VisitAllCells
+-TestCopyAndCompare
+-LoadESMAndExit
+-CompileMaterials
+-ExportMaterialTextureSettings
+-ExportMaterialTextureUnused
+-BakeFaceCustomizationTextures
+-GenerateShipBlueprintESP
+-RunValidationSuite
+-QueryAllResourceLights
+-DumpValidationSuiteRegistry
+-QueryAllResourceVolumes
+-GenerateCellAndRefCounts
+-GenerateMeshLODAssociations
+-MockWorldSpaceLOD
+-GenerateMeshLODStats
+-GenerateMeshLODFailureReport
+-ProcessCSVMaterialSwaps
+-ProcessCSVMaterialFlatColor
+-UpdateModelData
+-CompileFaceFXAnims
+-TagifyPlugin

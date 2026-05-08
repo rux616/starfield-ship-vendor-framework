@@ -125,6 +125,7 @@ int Property SVFEnhancementsVersion = 3 Auto Const Hidden
 ; the current version of the Ship Vendor Framework enhancements active on the vendor
 int svfEnhancementsVersionCurrent = 0
 
+; variables to track state
 bool isOnLoadRunning = false
 bool isOnActivateRunning = false
 bool isOnPlayerLoadGameRunning = false
@@ -695,8 +696,8 @@ Function InitializeSVFEnhancementsVersion3()
     ; init control script variable
     svfControl = Game.GetFormFromFile(0x000810, "ShipVendorFramework.esm") as ShipVendorFramework:SVF_Control
 
-    ; wait for control script to initialize, but time out after a few seconds
-    int controlInitTimeout = 10
+    ; wait for control script to initialize, but time out after a given number of seconds
+    int controlInitTimeout = 15
     While svfControl.SVFControlInitialized() == false && controlInitTimeout > 0
         _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
         Utility.WaitMenuPause(1.0)
@@ -792,6 +793,13 @@ Function PopulateLocals()
     vendorDataMap = svfControl.GetShipVendorDataMap(baseSelf, Self)
     If vendorDataMap != None
         _Log(fnName, "vendor data map found", LL_INFO)
+        _Log(fnName, "vendorDataMap.Vendor: " + vendorDataMap.Vendor, LL_INFO)
+        _Log(fnName, "vendorDataMap.ListRandom: " + vendorDataMap.ListRandom, LL_INFO)
+        _Log(fnName, "vendorDataMap.ListAlways: " + vendorDataMap.ListAlways, LL_INFO)
+        _Log(fnName, "vendorDataMap.ListUnique: " + vendorDataMap.ListUnique, LL_INFO)
+        _Log(fnName, "vendorDataMap.RandomShipsForSaleMin: " + vendorDataMap.RandomShipsForSaleMin, LL_INFO)
+        _Log(fnName, "vendorDataMap.RandomShipsForSaleMax: " + vendorDataMap.RandomShipsForSaleMax, LL_INFO)
+        _Log(fnName, "vendorDataMap.VendorContainer: " + vendorDataMap.VendorContainer, LL_INFO)
         svfShipsToSellListRandomDatasetLocal = vendorDataMap.ListRandom
         svfShipsToSellListAlwaysDatasetLocal = vendorDataMap.ListAlways
         svfShipsToSellListUniqueDatasetLocal = vendorDataMap.ListUnique
@@ -1172,7 +1180,7 @@ Function RefreshShipsToSellArraysLVLB()
 
     ; remove any unique ships that have already been sold
     LeveledSpaceshipBase[] uniqueShipsSoldLocal = svfControl.UniqueShipsSold.GetArray() as LeveledSpaceshipBase[]
-    If svfShipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && svfControl.RegenerateUniqueShipsOption.GetValue() as bool == false
+    If svfShipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
         int uniqueIndex = 0
         i = 0
         While i < uniqueShipsSoldLocal.Length
@@ -1256,7 +1264,7 @@ Function RefreshShipsToSellArraysShipToSell()
 
     ; remove any unique ships that have already been sold
     LeveledSpaceshipBase[] uniqueShipsSoldLocal = svfControl.UniqueShipsSold.GetArray() as LeveledSpaceshipBase[]
-    If shipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && svfControl.RegenerateUniqueShipsOption.GetValue() as bool == false
+    If shipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
         int uniqueIndex = 0
         i = 0
         While i < uniqueShipsSoldLocal.Length
@@ -1355,6 +1363,9 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
 
         _Log(fnName, "current player level is " + playerRef.GetLevel(), LL_INFO)
 
+        ; get whether creation attempts are limited for random ships
+        bool limitRandomCreationAttempts = svfControl.RandomShipsLimitCreationAttemptsOption.GetValue() as bool
+
         ; refresh priority ships
         _Log(fnName, "clearing priority ships and ship ref to leveled ship mapping list", LL_INFO)
         _Log(fnName, "priority ships being cleared: " + akShipListAlways, LL_INFO)
@@ -1370,7 +1381,7 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         shipsForSaleMappingRandom.Clear()
         int randomShipsToCreateCount = ShipVendorFramework:SVF_Utility.MinInt(vShipsToSellRandom.Length, Utility.RandomInt(shipsForSaleMinLocal, shipsForSaleMaxLocal))
         _Log(fnName, "attempting to create " + randomShipsToCreateCount + " random ships (min=" + shipsForSaleMinLocal + ", max=" + shipsForSaleMaxLocal + ", possible=" + vShipsToSellRandom.Length + ")", LL_INFO)
-        CreateShipsForSale(vShipsToSellRandom, akCreateMarker, encounterLocation, akShipListRandom, shipsForSaleMappingRandom, randomShipsToCreateCount, true)
+        CreateShipsForSale(vShipsToSellRandom, akCreateMarker, encounterLocation, akShipListRandom, shipsForSaleMappingRandom, randomShipsToCreateCount, true, limitRandomCreationAttempts)
 
         ; refresh unique ships
         _Log(fnName, "clearing unique ships and ship ref to leveled ship mapping list", LL_INFO)
@@ -1429,6 +1440,7 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
 
     _Log(fnName, "DONE. akShipList=" + akShipList, LL_INFO)
 
+    ; lock the detailed listing behind the debug flag because it can take a little while depending on list size
     If LOG_LEVEL_THRESHOLD == LL_DEBUG
         _Log(fnName, "Leveled Base Ships in akShipList:", LL_DEBUG)
 
@@ -1472,7 +1484,7 @@ EndFunction
 
 
 ; create ships for sale
-Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMarker, Location akEncLoc, SpaceshipReference[] akShipList, ShipRefToSpaceshipLeveledListMapping[] akRefToLLMap, int aiShipsToCreate = -1, bool abRandomize = false)
+Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMarker, Location akEncLoc, SpaceshipReference[] akShipList, ShipRefToSpaceshipLeveledListMapping[] akRefToLLMap, int aiShipsToCreate = -1, bool abRandomize = false, bool abLimitCreationAttempts = false)
     string fnName = "CreateShipsForSale" Const
     _Log(fnName, "begin", LL_DEBUG)
 
@@ -1494,18 +1506,35 @@ Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMark
     EndIf
 
     ; create the ships
-    _Log(fnName, "attempting to create " + aiShipsToCreate + " ships (out of " + akShipToSellList.Length + " possible) at " + akCreateMarker + " (landing marker " + MyLandingMarker + ")", LL_INFO)
+    string limitedString = None
+    int maxAttempts = 0
+    If abLimitCreationAttempts == true
+        limitedString = "limited"
+        maxAttempts = aiShipsToCreate
+    Else
+        limitedString = "unlimited"
+        maxAttempts = akShipToSellList.Length
+    EndIf
+    _Log(fnName, "attempting to create " + aiShipsToCreate + " ships (out of " + akShipToSellList.Length + " possible) with " + limitedString + " creation attempts at " + akCreateMarker + " (landing marker " + MyLandingMarker + ")", LL_INFO)
+    int numShipsCreated = 0
     int i = 0
     If useSVFDatasets == true
-        While i < aiShipsToCreate
-            CreateShipForSale(akShipToSellList[i] as LeveledSpaceshipBase, akCreateMarker, akEncLoc, akShipList, akRefToLLMap)
+        While i < akShipToSellList.Length && numShipsCreated < aiShipsToCreate && i < maxAttempts
+            If CreateShipForSale(akShipToSellList[i] as LeveledSpaceshipBase, akCreateMarker, akEncLoc, akShipList, akRefToLLMap) == true
+                numShipsCreated += 1
+            EndIf
             i += 1
         EndWhile
     Else
-        While i < aiShipsToCreate
-            CreateShipForSale((akShipToSellList[i] as ShipVendorListScript:ShipToSell).LeveledShip, akCreateMarker, akEncLoc, akShipList, akRefToLLMap)
+        While i < akShipToSellList.Length && numShipsCreated < aiShipsToCreate && i < maxAttempts
+            If CreateShipForSale((akShipToSellList[i] as ShipVendorListScript:ShipToSell).LeveledShip, akCreateMarker, akEncLoc, akShipList, akRefToLLMap) == true
+                numShipsCreated += 1
+            EndIf
             i += 1
         EndWhile
+    EndIf
+    If numShipsCreated < aiShipsToCreate
+        _Log(fnName, "failed to create all requested ships", LL_WARNING)
     EndIf
     _Log(fnName, "created " + akShipList.Length + " ships", LL_INFO)
     _Log(fnName, "ship list=" + akShipList, LL_DEBUG)
@@ -1514,15 +1543,20 @@ Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMark
 EndFunction
 
 
-; create a ship for sale
-Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference akCreateMarker, Location akEncLoc, SpaceshipReference[] akShipList, ShipRefToSpaceshipLeveledListMapping[] akRefToLLMap)
+; create a ship for sale; returns 'true' if the ship was created and 'false' if it was not
+bool Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference akCreateMarker, Location akEncLoc, SpaceshipReference[] akShipList, ShipRefToSpaceshipLeveledListMapping[] akRefToLLMap)
     string fnName = "CreateShipForSale" Const
     _Log(fnName, "begin", LL_DEBUG)
 
+    bool shipCreated = false
+
     _Log(fnName, "attempting to create new ship reference from leveled ship " + akShipToCreate, LL_INFO)
     SpaceshipReference newShip = akCreateMarker.PlaceShipAtMe(akShipToCreate, aiLevelMod = 2, abInitiallyDisabled = true, akEncLoc = akEncLoc)
+
     _Log(fnName, "new ship: " + newShip, LL_DEBUG)
     If newShip != None && newShip.IsBoundGameObjectAvailable()
+        shipCreated = true
+
         akShipList.Add(newShip)
         ; link to landing pad
         newShip.SetLinkedRef(MyLandingMarker, SpaceshipStoredLink)
@@ -1544,6 +1578,7 @@ Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectReference 
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
+    Return shipCreated
 EndFunction
 
 
