@@ -126,13 +126,10 @@
     - [X] watchtower
 - [X] make "gameplay option group" records pretty
     - [-] reorganize gameplay option records into different group records?
-- [ ] add option to retry random ship spawning that fails due to player level being too low
-    - [ ] gameplay option: none (0), 1 (1), 2 (2), 4 (3), unlimited (4)
-        - [ ] determine whether value should be tracked at the control script level or at the ship vendor level (probably ship vendor, with the option being retrieved through the control script, like the rich ship vendor option)
-            - [ ] decision: <...>
-        - [ ] decide whether the value will be reset when _any_ ship is successfully generated or only after the whole process is complete
-            - [ ] decision: <...>
-        - [ ] add int array property to control script/quest to describe values of random ship retry option
-- [ ] add logging to detect patch files and mods they apply to
+- [X] change workings of ship vendor script to continue retrying to spawn a random ship until it spawns the requested number (or reaches the end of the list)
+    - [X] add option for no retries of failed random ship spawning
+- [X] add logging to detect patch files and mods they apply to
     - note: this is probably going to require creating a new external script to populate the info
-        - info needed: target mod plugin, target patch plugin, "human friendly" text
+        - info needed: target mod plugin, target patch plugin
+- [-] add an item that can be used to manually reset the control quest
+    - if the game is at the point where an item has to be used to reset the control quest, the save is probably a lost cause and corrupted beyond recovery anyway
