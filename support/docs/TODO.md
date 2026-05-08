@@ -133,3 +133,5 @@
         - info needed: target mod plugin, target patch plugin
 - [-] add an item that can be used to manually reset the control quest
     - if the game is at the point where an item has to be used to reset the control quest, the save is probably a lost cause and corrupted beyond recovery anyway
+- [X] look at the phalanx ship not spawning at the den for a low level player
+    - ship spawns. the exempted spawns at the deimos staryard work as well
