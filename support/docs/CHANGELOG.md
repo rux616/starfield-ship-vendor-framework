@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.10.0](#v1100)
     - [v1.9.0](#v190)
     - [v1.8.1](#v181)
     - [v1.8.0](#v180)
@@ -29,6 +30,18 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.10.0
+-------
+- Changed the default way SVF generates random ships to be more like vanilla, in that the script will attempt to continue generating ships until it meets the requested number, or has exhausted all options. This can be a little slower, especially while at lower levels, but it's generally not noticeable.
+- Added a gameplay option to control this new behavior, "Limit Random Ship Creation Attempts", defaulting to "OFF"
+- Added more logging to capture whether certain mods are installed (specifically, mods that are either A. known to conflict, or B. have SVF patches supplied by myself)
+- Fixed the "Kestral" ship not showing up in the Falkland Systems patch
+- Fixed the gameplay option separator for Falkland Systems not being marked as "active" when the respective patch is enabled
+- Added plugin to hide all Ship Vendor Framework gameplay options (separate download, not included in main archive)
+- Removed mention of a mod that doesn't need a compatibility patch any more in the readme (thanks to tiberseptm on Nexus Mods for spotting that and bringing it to my attention)
+
+([TOC](#table-of-contents))
 
 v1.9.0
 ------

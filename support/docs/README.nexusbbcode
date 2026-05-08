@@ -1,7 +1,7 @@
 [size=5][b]Ship Vendor Framework[/b][/size]
 by rux616
 
-Version: 1.9.0
+Version: 1.10.0
 
 [size=4][b][u]Table Of Contents:[/u][/b][/size]
 - Ship Vendor Framework
@@ -17,7 +17,8 @@ Version: 1.9.0
     - Load Order
     - Requirements
     - Recommendations
-    - Upgrading
+    - Upgrading (General)
+    - Upgrading to v1.6.0+ from v1.5.4 or earlier
     - Mod Manager
     - Manual
 - License
@@ -64,7 +65,6 @@ Mods that I have created capability patches for (included in the main download):
 - "Iconic Ships" by ShipTechnician [[url=https://creations.bethesda.net/en/starfield/details/569e938e-228c-42fb-91ba-c6967575bcf3/Iconic_Ships]Creations[/url]]
 - "L-K Ships" by Lighthorse and KeithVSmith1977 [[url=https://creations.bethesda.net/en/starfield/details/f287801b-a863-48fb-b796-1eeaeda4eab3/L_K_Ships]Creations[/url] / [url=https://www.nexusmods.com/starfield/mods/7433]Nexus[/url]]
 - "Lower Landing Pad" by SenterPat [[url=https://www.nexusmods.com/starfield/mods/8363]Nexus[/url]]
-- "Outpost Shipbuilder Unlocked ESM" by goldenchrome [[url=https://www.nexusmods.com/starfield/mods/5667]Nexus[/url]]
 - "Outpost Vendor New Ships" by nefurun [[url=https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships]Creations[/url]]
 - "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 [[url=https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti]Creations[/url]]
 - "The Den Astrodynamics" by VoodooChild [[url=https://www.nexusmods.com/starfield/mods/8809]Nexus[/url]]
@@ -122,7 +122,7 @@ For patches, the load order should be as follows:
 [size=4][b][u]Recommendations:[/u][/b][/size]
 None
 
-[size=4][b][u]Upgrading:[/u][/b][/size]
+[size=4][b][u]Upgrading (General):[/u][/b][/size]
 When upgrading non-major versions (for example v2.something to v2.something-else), you don't need to do anything except replace the installed mod files.
 
 When upgrading major versions (for example v1.whatever to v2.whatever), you need to do a clean install:
@@ -133,6 +133,17 @@ When upgrading major versions (for example v1.whatever to v2.whatever), you need
 - You will see a warning about missing the plugin you just uninstalled, choose to continue
 - Save your game again, then quit
 - Install the new version of the plugin
+
+[size=4][b][u]Upgrading to v1.6.0+ from v1.5.4 or earlier:[/u][/b][/size]
+The v1.6.0 update of Ship Vendor Framework gets rid of the following ESM files, as they are obsolete and no longer needed:
+- SVF-Generic-AllShipModulesUnlocked-AllShipVendors-Patch.esm
+- SVF-Generic-AllShipModulesUnlocked-AllShipVendors-ShatteredSpace-Patch.esm
+- SVF-Generic-AllShipModulesUnlocked-OutpostOnly-Patch.esm
+- SVF-Generic-ShipVendors-Patch.esm
+- SVF-Generic-ShipVendors-ShatteredSpace-Patch.esm
+- SVF-LowerLandingPadUnlocked-Patch.esm
+
+If you were using them, you should be able to safely ignore the "missing mod files" message when you load up your game for the first time after installing the new version (for the Lower Landing Pad patch, use the other one). That being said, you should back up your save anyway, just in case.
 
 [size=4][b][u]Mod Manager:[/u][/b][/size]
 [b]NOTE:[/b] Support for Nexus Mod Manager (NMM) will [b]NOT[/b] be provided as its FOMOD implementation is broken. Use either Mod Organizer 2 or Vortex.
