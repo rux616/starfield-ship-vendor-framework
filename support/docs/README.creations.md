@@ -46,7 +46,7 @@ Mods that I have created capability patches for:
 
 Known Issues
 -----
-None
+- When updating this mod via Creations, the process sometimes fails to actually update the mod for unknown reasons. Because of this, when doing an upgrade, I instead recommend that players simply fully remove this mod and then download it again.
 
 Requirements
 -----

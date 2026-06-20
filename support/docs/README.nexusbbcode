@@ -70,7 +70,7 @@ Mods that I have created capability patches for (included in the main download):
 - "Watchtower" by kinggath_creations [[url=https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command]Creations[/url]]
 
 [size=4][b][u]Known Issues:[/u][/b][/size]
-None
+- When updating this mod via Creations, the process sometimes fails to actually update the mod for unknown reasons. Because of this, when doing an upgrade, I instead recommend that players simply fully remove this mod and then download it again.
 
 [size=4][b][u]Enabling Logs:[/u][/b][/size]
 [b]NOTE:[/b] This section only applies to PC users.

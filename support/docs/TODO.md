@@ -141,3 +141,4 @@
 - [X] mark patch for "SGC Daedalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 as outdated and no longer needed
     - [X] check newer version of SGC Daedalus mod to confirm compatibility with SVF
     - confirmed - can remove patch
+- [X] add verbiage somewhere in creations readme about how you may need to delete the mod fully and redownload it to update it
