@@ -13,11 +13,11 @@ Description:
     The minimum number of ships in the "random" category that Jasmine Durand will attempt to sell.
 
 
-    <font color="#EDEDED">4</font>: Default value of this option.
+    <font color="#EDEDED">6</font>: Default value of this option.
 Data:
   MutagenObjectType: FloatGameplayOptionData
-  Value1: 4
-  Value2: 4
+  Value1: 6
+  Value2: 6
   Max: 32
   Step: 1
 Rewards:

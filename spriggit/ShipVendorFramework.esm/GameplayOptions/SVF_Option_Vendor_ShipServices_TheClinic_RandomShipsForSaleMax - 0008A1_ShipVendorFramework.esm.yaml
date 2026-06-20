@@ -13,11 +13,11 @@ Description:
     The maximum number of ships in the "random" category that the Clinic Ship Services Technician will attempt to sell.
 
 
-    <font color="#EDEDED">1</font>: Default value of this option.
+    <font color="#EDEDED">2</font>: Default value of this option.
 Data:
   MutagenObjectType: FloatGameplayOptionData
-  Value1: 1
-  Value2: 1
+  Value1: 2
+  Value2: 2
   Max: 32
   Step: 1
 Rewards:

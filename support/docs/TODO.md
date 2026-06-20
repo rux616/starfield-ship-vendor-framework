@@ -135,6 +135,9 @@
     - if the game is at the point where an item has to be used to reset the control quest, the save is probably a lost cause and corrupted beyond recovery anyway
 - [X] look at the phalanx ship not spawning at the den for a low level player
     - ship spawns. the exempted spawns at the deimos staryard work as well
+- [X] look at revising default random ship numbers now that the spawning behavior is more like vanilla
+    - [X] jasmine durand max should be set to 8
+    - [X] jasmine durand min should be set to 6
 - [X] mark patch for "SGC Daedalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 as outdated and no longer needed
     - [X] check newer version of SGC Daedalus mod to confirm compatibility with SVF
     - confirmed - can remove patch
