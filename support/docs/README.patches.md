@@ -11,7 +11,6 @@ Table Of Contents
     - [SVF Capability Patch - L-K Ships](#svf-capability-patch---l-k-ships)
     - [SVF Capability Patch - Lower Landing Pad](#svf-capability-patch---lower-landing-pad)
     - [SVF Capability Patch - Outpost Vendor New Ships](#svf-capability-patch---outpost-vendor-new-ships)
-    - [SVF Capability Patch - SGC Deadalus and Battlestar](#svf-capability-patch---sgc-deadalus-and-battlestar)
     - [SVF Capability Patch - The Den Astrodynamics](#svf-capability-patch---the-den-astrodynamics)
     - [SVF Capability Patch - Watchtower](#svf-capability-patch---watchtower)
 - [Compatibility Patches](#compatibility-patches)
@@ -109,17 +108,6 @@ Patch for "Ship Vendor Framework" by rux616 and "Outpost Vendor New Ships" by ne
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships
-
-Patch Type:
-- Capability
-
-
-SVF Capability Patch - SGC Deadalus and Battlestar
------
-Patch for "Ship Vendor Framework" by rux616 and "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03.
-
-Mod Source:
-- Creations: https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti
 
 Patch Type:
 - Capability

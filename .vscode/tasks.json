@@ -76,7 +76,6 @@
         "DarkStar_Astrodynamics.esm",
         "outpostvendorcustomships.esm",
         "--small-masters",
-        "deadalus1.esm",
         "dominion.esm",
         "nighthawk.esm",
         "ShipVendorFramework.esm",
@@ -103,8 +102,6 @@
         "NONE",
         "DarkStar_Astrodynamics.esm", //"DarkStar Astrodynamics" by WykkydGaming
         "SVF-DarkStarAstrodynamics-Patch.esm",
-        "deadalus1.esm", // "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03
-        "SVF-Deadalus-Patch.esm",
         "dominion.esm", // "Dominion" by rhart317
         "SVF-Dominion-Patch.esm",
         "FalklandSystems.esm", // "Falkland Systems Ship Services" by Hjalmere
