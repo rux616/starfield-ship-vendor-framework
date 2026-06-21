@@ -142,3 +142,5 @@
     - [X] check newer version of SGC Daedalus mod to confirm compatibility with SVF
     - confirmed - can remove patch
 - [X] add verbiage somewhere in creations readme about how you may need to delete the mod fully and redownload it to update it
+- [X] determine effort required to add a FOMOD option to not install unchecked patches to the "optional" folder
+    - easy, do it
