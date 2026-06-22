@@ -144,3 +144,4 @@
 - [X] add verbiage somewhere in creations readme about how you may need to delete the mod fully and redownload it to update it
 - [X] determine effort required to add a FOMOD option to not install unchecked patches to the "optional" folder
     - easy, do it
+- [X] add starvival and cassiopeia source submodules and update ppj paths

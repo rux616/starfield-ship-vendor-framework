@@ -6,3 +6,9 @@
 	path = support/papyrus-imports/vanilla
 	url = https://github.com/rux616/modding-sf1-scripts-vanilla
 	branch = main
+[submodule "support/papyrus-imports/starvival"]
+	path = support/papyrus-imports/starvival
+	url = https://github.com/rux616/starfield-starvival-scripts
+[submodule "support/papyrus-imports/cassiopeia"]
+	path = support/papyrus-imports/cassiopeia
+	url = https://github.com/rux616/starfield-cassiopeia-scripts

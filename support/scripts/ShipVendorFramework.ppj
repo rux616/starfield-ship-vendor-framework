@@ -9,7 +9,7 @@
     Final="false"
 >
     <Imports>
-        <Import>..\papyrus-imports\vanilla\Source</Import>
+        <Import>..\papyrus-imports\vanilla\Scripts\Source</Import>
     </Imports>
     <Folders>
         <Folder>..\..\data\Scripts\Source</Folder>

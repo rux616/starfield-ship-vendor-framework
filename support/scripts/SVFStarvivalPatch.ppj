@@ -9,10 +9,10 @@
     Final="false"
 >
     <Imports>
-        <Import>..\..\..\..\Mod Organizer 2\mods\Starvival Scripts (Source)\Scripts\Source\User</Import>
-        <Import>..\..\..\..\Mod Organizer 2\mods\Cassiopeia Papyrus Extender\Scripts\Source\User</Import>
+        <Import>..\starvival\Scripts\Source\User</Import>
+        <Import>..\papyrus-imports\cassiopeia\Scripts\Source\User</Import>
         <Import>..\..\data\Scripts\Source</Import>
-        <Import>..\papyrus-imports\vanilla\Source</Import>
+        <Import>..\papyrus-imports\vanilla\Scripts\Source</Import>
     </Imports>
     <Folders>
         <Folder>..\..\data-starvival-patch\Scripts\Source</Folder>
