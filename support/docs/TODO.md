@@ -145,3 +145,7 @@
 - [X] determine effort required to add a FOMOD option to not install unchecked patches to the "optional" folder
     - easy, do it
 - [X] add starvival and cassiopeia source submodules and update ppj paths
+- [X] add github workflow to publish mod to nexus mods
+    - [X] get key
+    - [X] store key in NEXUS_MODS_API_KEY secret
+    - [X] create workflow
