@@ -1016,13 +1016,7 @@ Function PurgeAlreadySoldUniques(SpaceshipReference[] akShipList, SpaceshipRefer
                 uniqueSoldIndex = uniqueShipsSoldLocal.Find(shipsForSaleMapping[mappingIndex].LeveledShip)
                 If uniqueSoldIndex > -1
                     _Log(fnName, "unique ship " + uniqueShipsSoldLocal[uniqueSoldIndex] + " was already bought - removing it from index " + i, LL_INFO)
-                    SpaceshipReference shipToDelete = akShipList[i]
-                    ; make sure to remove the link to the landing marker, otherwise the ship will still show up until
-                    ; the game gets around to actually deleting it
-                    shipToDelete.SetLinkedRef(None, SpaceshipStoredLink)
-                    _Log(fnName, "deleting ship " + shipToDelete, LL_INFO)
-                    Debug.Trace(Self + " PurgeAlreadySoldUniques: deleting ship " + shipToDelete + ", ignore following error message")
-                    shipToDelete.Delete()
+                    DeleteShip(akShipList[i], fnName)
                     uniquesListIndex = akShipListUniques.Find(akShipList[i])
                     If uniquesListIndex > -1
                         _Log(fnName, "ship " + akShipList[i] + " also found at uniques index " + uniquesListIndex, LL_DEBUG)
@@ -1281,24 +1275,36 @@ Function RefreshShipsToSellArraysShipToSell()
 EndFunction
 
 
+Function DeleteShip(SpaceshipReference akShipRef, string asSource)
+    string fnName = "DeleteShip" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akShipRef
+        _Log(fnName, "unlinking " + akShipRef + " from its landing marker, nullifying ownership, and disabling", LL_DEBUG)
+        ; unlink ship from its landing marker
+        akShipRef.SetLinkedRef(None, SpaceshipStoredLink)
+        ; nullify ownership
+        akShipRef.SetActorRefOwner(None)
+        ; disable ship
+        akShipRef.DisableNoWait()
+        _Log(fnName, "deleting ship " + akShipRef, LL_INFO)
+        Debug.Trace(Self + "." + asSource + "(): Attempting to delete " + akShipRef + ". This may throw an error, please ignore it.")
+        akShipRef.Delete()
+    Else
+        _Log(fnName, "akShipRef is None, skipping deletion", LL_WARNING)
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
 Function DeleteShips(SpaceshipReference[] akShipList)
     string fnName = "DeleteShips" Const
     _Log(fnName, "begin", LL_DEBUG)
 
     int i = akShipList.Length - 1
     While i > -1
-        SpaceshipReference theShip = akShipList[i]
-        ; unlink the ship from the landing marker
-        _Log(fnName, "unlinking " + theShip + " from its landing marker, nullifying ownership, and disabling", LL_DEBUG)
-        theShip.SetLinkedRef(None, SpaceshipStoredLink)
-        theShip.SetActorRefOwner(None)
-        theShip.DisableNoWait()
-        ; attempting to use Delete() on a ship reference throws an error in the papyrus log stating that spaceships
-        ; cannot be deleted and the reference will be disabled instead. in the probably unfounded hope that this will
-        ; eventually be fixed, make a note before the error is thrown.
-        _Log(fnName, "attempting to delete " + theShip, LL_DEBUG)
-        Debug.Trace(Self + ".DeleteShips(): Attempting to delete " + theShip + ". This may throw an error, please ignore it.")
-        theShip.Delete()
+        DeleteShip(akShipList[i], fnName)
         i += -1
     EndWhile
     akShipList.Clear()
