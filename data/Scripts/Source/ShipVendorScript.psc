@@ -161,7 +161,7 @@ int Property LL_ERROR = 2 Auto Const Hidden
 
 ; local opinionated log function
 Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel)
-    ShipVendorFramework:SVF_Utility.Log("ShipVendorScript", GetFormID(), asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
+    ShipVendorFramework:SVF_Utility.Log("ShipVendorScript", Self, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 
@@ -870,7 +870,7 @@ EndFunction
 
 
 Event RefCollectionAlias.OnShipSold(RefCollectionAlias akSender, ObjectReference akSenderRef)
-    string fnName = "RefCollectionAlias.OnShipSold<" + Utility.GetCurrentStackID() + ">" Const
+    string fnName = "RefCollectionAlias.OnShipSold[" + ShipVendorFramework.SFV_Utility.GetHexID(akSenderRef) + "]" Const
     _Log(fnName, "begin", LL_DEBUG)
 
     _Log(fnName, "akSender=" + akSender + ", akSenderRef=" + akSenderRef, LL_DEBUG)
@@ -890,7 +890,7 @@ EndEvent
 
 
 Event SpaceshipReference.OnShipBought(SpaceshipReference akSenderRef)
-    string fnName = "SpaceshipReference.OnShipBought<" + Utility.GetCurrentStackID() + ">" Const
+    string fnName = "SpaceshipReference[" + ShipVendorFramework:SFV_Utility.GetHexID(akSenderRef) + "].OnShipBought" Const
     _Log(fnName, "begin", LL_DEBUG)
 
     _Log(fnName, "akSenderRef=" + akSenderRef, LL_DEBUG)
@@ -1453,28 +1453,28 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         _Log(fnName, "    Priority Ships:", LL_DEBUG)
         int i = 0
         While i < akShipListAlways.Length
-            _Log(fnName, "        " + Utility.IntToHex(akShipListAlways[i].GetFormID()) + ": " + akShipListAlways[i].GetBaseObject(), LL_DEBUG)
+            _Log(fnName, "        " + ShipVendorFramework:SVF_Utility.GetHexID(akShipListAlways[i]) + ": " + akShipListAlways[i].GetBaseObject(), LL_DEBUG)
             i += 1
         EndWhile
 
         _Log(fnName, "    Random Ships:", LL_DEBUG)
         i = 0
         While i < akShipListRandom.Length
-            _Log(fnName, "        " + Utility.IntToHex(akShipListRandom[i].GetFormID()) + ": " + akShipListRandom[i].GetBaseObject(), LL_DEBUG)
+            _Log(fnName, "        " + ShipVendorFramework:SVF_Utility.GetHexID(akShipListRandom[i]) + ": " + akShipListRandom[i].GetBaseObject(), LL_DEBUG)
             i += 1
         EndWhile
 
         _Log(fnName, "    Unique Ships:", LL_DEBUG)
         i = 0
         While i < akShipListUnique.Length
-            _Log(fnName, "        " + Utility.IntToHex(akShipListUnique[i].GetFormID()) + ": " + akShipListUnique[i].GetBaseObject(), LL_DEBUG)
+            _Log(fnName, "        " + ShipVendorFramework:SVF_Utility.GetHexID(akShipListUnique[i]) + ": " + akShipListUnique[i].GetBaseObject(), LL_DEBUG)
             i += 1
         EndWhile
 
         _Log(fnName, "    Player-sold Ships:", LL_DEBUG)
         i = 0
         While i < akShipListSoldByPlayer.Length
-            _Log(fnName, "        " + Utility.IntToHex(akShipListSoldByPlayer[i].GetFormID()) + ": " + akShipListSoldByPlayer[i].GetBaseObject(), LL_DEBUG)
+            _Log(fnName, "        " + ShipVendorFramework:SVF_Utility.GetHexID(akShipListSoldByPlayer[i]) + ": " + akShipListSoldByPlayer[i].GetBaseObject(), LL_DEBUG)
             i += 1
         EndWhile
     EndIf

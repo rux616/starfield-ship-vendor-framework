@@ -134,7 +134,7 @@ int Property LL_ERROR = 2 Auto Const Hidden
 
 ; local opinionated log function
 Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel)
-    Log("SVF_Control", GetFormID(), asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
+    Log("SVF_Control", Self, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 
@@ -230,9 +230,9 @@ EndFunction
 
 ; print version and misc debug into to the log
 Function VersionInfo()
-    Log("", 0, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3)
-    Log("", 0, "", "Starfield version: " + Debug.GetVersionNumber(), 3)
-    Log("", 0, "", "Ship Vendor Framework version: " + SVFVersion, 3)
+    Log("", None, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3)
+    Log("", None, "", "Starfield version: " + Debug.GetVersionNumber(), 3)
+    Log("", None, "", "Ship Vendor Framework version: " + SVFVersion, 3)
 EndFunction
 
 
@@ -446,7 +446,7 @@ EndFunction
 
 
 ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akShipVendor)
-    string fnName = "GetShipVendorDataMap[0x" + Utility.IntToHex(akShipVendor.GetFormID()) + "]" Const
+    string fnName = "GetShipVendorDataMap[" + GetHexID(akShipVendor) + "]" Const
     _Log(fnName, "begin", LL_DEBUG)
 
     _Log(fnName, "searching for " + akShipVendorBase + " in Vendors (" + vendorsCache + ")", LL_DEBUG)
