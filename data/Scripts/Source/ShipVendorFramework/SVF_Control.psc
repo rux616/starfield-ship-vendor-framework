@@ -20,6 +20,8 @@ ScriptName ShipVendorFramework:SVF_Control Extends Quest
 
 
 ; imports
+; note for future self: you may be tempted to remove the imports and use the fully qualified names for everything, but
+; that leads to some _really_ long and ugly lines of code, so don't do it
 Import ShipVendorFramework:SVF_DataStructures
 Import ShipVendorFramework:SVF_Utility
 
@@ -69,14 +71,15 @@ Group ShipVendorMappings
     FormList Property Vendors Auto Const                ; list of type Actor
     { The list of vendors to build the data mappings from. }
 
-    FormList Property ShipListsRandom Auto Const        ; list of type FormList
+    FormList Property ShipListsRandom Auto Const        ; list of type FormList (containing leveled base forms)
     { The list of pointer lists that correspond to each vendor for random ship lists. }
 
-    FormList Property ShipListsAlways Auto Const        ; list of type FormList
+    FormList Property ShipListsAlways Auto Const        ; list of type FormList (containing leveled base forms)
     { The list of pointer lists that correspond to each vendor for always available ship lists. }
 
-    FormList Property ShipListsUnique Auto Const        ; list of type FormList
+    FormList Property ShipListsUnique Auto Const        ; list of type FormList (containing leveled base forms)
     { The list of pointer lists that correspond to each vendor for unique ship lists. }
+
     FormList Property RandomShipsForSaleMin Auto Const  ; list of type GameplayOption/GlobalVariable
     { The list of pointer lists that correspond to each vendor which contains the gameplay option or global variable controlling the minimum number of random ships for sale. }
 
@@ -347,6 +350,11 @@ bool Function VendorMappingsNotNone()
         listNone = true
     EndIf
 
+    If VendorContainers == None
+        _Log(fnName, "    VendorContainers is None", LL_ERROR)
+        listNone = true
+    EndIf
+
     _Log(fnName, "end", LL_DEBUG)
     Return !listNone
 EndFunction
@@ -417,8 +425,8 @@ bool Function VendorMappingsNotNoneDeep()
             listNoneDeep = true
         EndIf
 
-        ; NOTE: vendorContainersCache can be None, in which case the vendor actor will be used as the container,
-        ; so we don't check it here
+        ; NOTE: contents of lists in vendorContainersCache can be None, in which case the vendor actor will be used as
+        ; the container, so we don't check it here
 
         i += 1
     EndWhile
@@ -446,6 +454,7 @@ EndFunction
 
 
 ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akShipVendor)
+    ; note that akShipVendor is passed solely for traceability/logging purposes
     string fnName = "GetShipVendorDataMap[" + GetHexID(akShipVendor) + "]" Const
     _Log(fnName, "begin", LL_DEBUG)
 

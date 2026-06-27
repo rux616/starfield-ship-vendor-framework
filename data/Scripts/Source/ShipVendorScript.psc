@@ -105,7 +105,9 @@ bool useSVFDatasets = false
 ; SVF_Control. should be removed after a few months or versions.
 LeveledSpaceshipBase[] uniquesSoldListLocal
 
-; local 'sold' list
+; local 'vendor has sold this' list
+; used to keep track of ships on the "always" list that have been sold by the vendor, so that when the script checks if
+; it needs to force a refresh because the contents of the "always" list has changed, it can account for any sold ships
 LeveledSpaceshipBase[] alwaysSoldList
 
 ; struct to hold the mapping of a ship reference to its originating leveled list
@@ -276,7 +278,7 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         DebugDumpData()
     EndIf
 
-    If initialized == false || svfEnhancementsVersionCurrent != SVFEnhancementsVersion
+    If initialized == false || svfEnhancementsVersionCurrent < SVFEnhancementsVersion
         If initialized == true
             ; if initialized == true, the vendor has already been initialized. but because of the prior logic statement,
             ; the SVF enhancements are not fully initialized
@@ -694,7 +696,7 @@ Function InitializeSVFEnhancementsVersion3()
     _Log(fnName, "Ship Vendor Framework enhancements updating to version " + updatingToVersion, LL_INFO)
 
     ; init control script variable
-    svfControl = Game.GetFormFromFile(0x000810, "ShipVendorFramework.esm") as ShipVendorFramework:SVF_Control
+    svfControl = Game.GetFormFromFile(0x810, "ShipVendorFramework.esm") as ShipVendorFramework:SVF_Control
 
     ; wait for control script to initialize, but time out after a given number of seconds
     int controlInitTimeout = 15
@@ -870,7 +872,7 @@ EndFunction
 
 
 Event RefCollectionAlias.OnShipSold(RefCollectionAlias akSender, ObjectReference akSenderRef)
-    string fnName = "RefCollectionAlias.OnShipSold[" + ShipVendorFramework.SFV_Utility.GetHexID(akSenderRef) + "]" Const
+    string fnName = "RefCollectionAlias.OnShipSold[" + ShipVendorFramework:SVF_Utility.GetHexID(akSenderRef) + "]" Const
     _Log(fnName, "begin", LL_DEBUG)
 
     _Log(fnName, "akSender=" + akSender + ", akSenderRef=" + akSenderRef, LL_DEBUG)
@@ -890,35 +892,41 @@ EndEvent
 
 
 Event SpaceshipReference.OnShipBought(SpaceshipReference akSenderRef)
-    string fnName = "SpaceshipReference[" + ShipVendorFramework:SFV_Utility.GetHexID(akSenderRef) + "].OnShipBought" Const
+    string fnName = "SpaceshipReference[" + ShipVendorFramework:SVF_Utility.GetHexID(akSenderRef) + "].OnShipBought" Const
     _Log(fnName, "begin", LL_DEBUG)
 
     _Log(fnName, "akSenderRef=" + akSenderRef, LL_DEBUG)
     LockGuard ShipsForSaleGuard
+        _Log(fnName, "player purchased ship " + akSenderRef, LL_INFO)
+
         LeveledSpaceshipBase clearedLeveledShip = None
 
-        ; clear the ship reference from the vendor's lists
+        ; clear the ship reference from the vendor's generic list
         _Log(fnName, "clearing ship reference from shipsForSale list", LL_DEBUG)
         ClearShipReference(akSenderRef, shipsForSale, shipsForSaleMapping)
+
+        ; "random" ships
         _Log(fnName, "clearing ship reference from shipsForSaleRandom list", LL_DEBUG)
         clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleRandom, shipsForSaleMappingRandom)
 
+        ; "always" ships
         If clearedLeveledShip == None
             ; ships in the "always" list are added to a local list of sold ships that resets when the vendor does
             _Log(fnName, "clearing ship reference from shipsForSaleAlways list", LL_DEBUG)
             clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleAlways, shipsForSaleMappingAlways)
             If clearedLeveledShip != None
-                _Log(fnName, "'always' ship was bought, adding " + clearedLeveledShip + " to 'always' sold list", LL_INFO)
+                _Log(fnName, "'always' ship was purchased, adding " + clearedLeveledShip + " to 'always' sold list", LL_INFO)
                 alwaysSoldList.Add(clearedLeveledShip)
             EndIf
         EndIf
 
+        ; "unique" ships
         If clearedLeveledShip == None
-            ; ships in the "unique" list are added to a list of uniques sold, either local or external
+            ; ships in the "unique" list are added to a persistent list of uniques sold
             _Log(fnName, "clearing ship reference from shipsForSaleUnique list", LL_DEBUG)
             clearedLeveledShip = ClearShipReference(akSenderRef, shipsForSaleUnique, shipsForSaleMappingUnique)
             If clearedLeveledShip != None
-                _Log(fnName, "'unique' ship was bought, adding " + clearedLeveledShip + " to 'unique' sold list", LL_INFO)
+                _Log(fnName, "'unique' ship was purchased, adding " + clearedLeveledShip + " to 'unique' sold list", LL_INFO)
                 svfControl.UniqueShipsSold.AddForm(clearedLeveledShip)
             EndIf
         EndIf
@@ -974,7 +982,7 @@ Function CheckForInventoryRefresh(bool abForceRefresh = false)
         If abForceRefresh || lastInventoryRefreshTimestamp == 0 || (currentGameTime >= nextRefreshTime)
             _Log(fnName, "refreshing inventory (force=" + abForceRefresh + ")", LL_INFO)
 
-            ; the "always" sold list is cleared when the vendor refreshes their inventory
+            ; the "vendor has sold this 'always' ship" list is cleared when the vendor refreshes their inventory
             alwaysSoldList.Clear()
 
             RefreshShipsToSellArrays()
