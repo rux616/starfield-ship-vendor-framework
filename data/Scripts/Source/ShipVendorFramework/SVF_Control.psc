@@ -88,6 +88,9 @@ Group ShipVendorMappings
 
     FormList Property VendorContainers Auto Const       ; list of type ObjectReference
     { The list of pointer lists that correspond to each vendor which contains the container to use as vendor containers. If the contents of the pointer list is None, the vendor actor will be used. }
+
+    FormList Property VendorKeywords Auto Const         ; list of type FormList (containing keywords)
+    { The list of pointer lists that correspond to each vendor which contain keywords to add to the vendor. }
 EndGroup
 
 Group Messages
@@ -115,6 +118,7 @@ Form[] shipListsUniqueCache
 Form[] randomShipsForSaleMinCache
 Form[] randomShipsForSaleMaxCache
 Form[] vendorContainersCache
+Form[] vendorKeywordsCache
 
 ; sentinel variable to check that the initialization of the script (version updates, sanity checks, etc.) have all
 ; finished
@@ -355,6 +359,11 @@ bool Function VendorMappingsNotNone()
         listNone = true
     EndIf
 
+    If VendorKeywords == None
+        _Log(fnName, "    VendorKeywords is None", LL_ERROR)
+        listNone = true
+    EndIf
+
     _Log(fnName, "end", LL_DEBUG)
     Return !listNone
 EndFunction
@@ -372,7 +381,8 @@ bool Function VendorMappingsSizesMatch()
                        && vendorsCache.Length == shipListsUniqueCache.Length       \
                        && vendorsCache.Length == randomShipsForSaleMinCache.Length \
                        && vendorsCache.Length == randomShipsForSaleMaxCache.Length \
-                       && vendorsCache.Length == vendorContainersCache.Length
+                       && vendorsCache.Length == vendorContainersCache.Length      \
+                       && vendorsCache.Length == vendorKeywordsCache.Length
     if !listSizesMatch
         _Log(fnName, "The vendor mappings lists do not match in size", LL_ERROR)
         _Log(fnName, "    Vendors: " + vendorsCache.Length, LL_ERROR)
@@ -382,6 +392,7 @@ bool Function VendorMappingsSizesMatch()
         _Log(fnName, "    RandomShipsForSaleMin: " + randomShipsForSaleMinCache.Length, LL_ERROR)
         _Log(fnName, "    RandomShipsForSaleMax: " + randomShipsForSaleMaxCache.Length, LL_ERROR)
         _Log(fnName, "    VendorContainers: " + vendorContainersCache.Length, LL_ERROR)
+        _Log(fnName, "    VendorKeywords: " + vendorKeywordsCache.Length, LL_ERROR)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
@@ -428,6 +439,9 @@ bool Function VendorMappingsNotNoneDeep()
         ; NOTE: contents of lists in vendorContainersCache can be None, in which case the vendor actor will be used as
         ; the container, so we don't check it here
 
+        ; NOTE: contents of lists in vendorKeywordsCache can be None, in which case no keywords will be added to the
+        ; vendor, so we don't check it here
+
         i += 1
     EndWhile
 
@@ -448,6 +462,7 @@ Function CacheVendorMappings()
     randomShipsForSaleMinCache = RandomShipsForSaleMin.GetArray()
     randomShipsForSaleMaxCache = RandomShipsForSaleMax.GetArray()
     vendorContainersCache = VendorContainers.GetArray()
+    vendorKeywordsCache = VendorKeywords.GetArray()
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
@@ -489,6 +504,8 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
     vendorDataMap.RandomShipsForSaleMax = GetValue2(tempForm, RandomShipsForSaleMaxDefault) as int
 
     vendorDataMap.VendorContainer = FormListGetLast(vendorContainersCache[vendorIndex]) as ObjectReference
+
+    vendorDataMap.VendorKeywords = FormListGetLast(vendorKeywordsCache[vendorIndex]) as FormList
 
     _Log(fnName, "end", LL_DEBUG)
     Return vendorDataMap

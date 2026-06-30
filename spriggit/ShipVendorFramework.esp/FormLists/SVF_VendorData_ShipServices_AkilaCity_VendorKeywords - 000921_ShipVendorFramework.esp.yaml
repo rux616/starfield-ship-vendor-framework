@@ -1,0 +1,6 @@
+FormKey: 000921:ShipVendorFramework.esp
+EditorID: SVF_VendorData_ShipServices_AkilaCity_VendorKeywords
+FormVersion: 582
+Items:
+- 000930:ShipVendorFramework.esp
+AddToList: Null

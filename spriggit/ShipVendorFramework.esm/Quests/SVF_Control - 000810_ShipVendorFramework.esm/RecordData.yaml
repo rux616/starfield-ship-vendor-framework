@@ -66,6 +66,9 @@ VirtualMachineAdapter:
       Name: VendorContainers
       Object: 0008E9:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: VendorKeywords
+      Object: 000907:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: Vendors
       Object: 00083D:ShipVendorFramework.esm
   Versioning:

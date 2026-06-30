@@ -67,6 +67,9 @@ Group ShipVendorFramework
     ObjectReference Property VendorContainer Auto Const
     { The vendor's container reference. }
 
+    FormList Property VendorKeywords Auto Const
+    { The list of additional keywords for the vendor. }
+
     bool Property SVFUseNewDatasets = false Auto Const Hidden  ; DEPRECATED
     { Mark vendor as using the new Ship Vendor Framework datasets. }
 
@@ -81,6 +84,7 @@ FormList svfShipsToSellListUniqueDatasetLocal
 int shipsForSaleMinLocal
 int shipsForSaleMaxLocal
 ObjectReference vendorContainerLocal
+FormList vendorKeywordsLocal
 
 ; original values of BuysShips/SellsShips so they can be restored if necessary
 bool originalBuysShips
@@ -90,6 +94,9 @@ bool originalSellsShips
 LeveledSpaceshipBase[] svfShipsToSellRandom
 LeveledSpaceshipBase[] svfShipsToSellAlways
 LeveledSpaceshipBase[] svfShipsToSellUnique
+
+; local cache of the vendor keywords
+Keyword[] vendorKeywordsCache
 
 ; track the actual ships available to sell in the various established categories: random, always, unique, and
 ; player-sold
@@ -122,7 +129,7 @@ ShipRefToSpaceshipLeveledListMapping[] shipsForSaleMappingAlways
 ShipRefToSpaceshipLeveledListMapping[] shipsForSaleMappingUnique
 
 ; the desired version of the Ship Vendor Framework enhancements
-int Property SVFEnhancementsVersion = 3 Auto Const Hidden
+int Property SVFEnhancementsVersion = 4 Auto Const Hidden
 
 ; the current version of the Ship Vendor Framework enhancements active on the vendor
 int svfEnhancementsVersionCurrent = 0
@@ -294,6 +301,7 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
     Else
         PopulateLocals()
         UseSVFDatasetsCheck()
+        ApplyKeywords()
 
         CheckForInventoryRefresh()
     EndIf
@@ -363,6 +371,11 @@ Function Initialize(ObjectReference akLandingMarkerRef)
     If svfEnhancementsVersionCurrent < 3
         InitializeSVFEnhancementsVersion3()
         doRefreshCheck = true
+    EndIf
+
+    ; SVF version 3 to 4 update tasks
+    If svfEnhancementsVersionCurrent < 4
+        InitializeSVFEnhancementsVersion4()
     EndIf
 
     RegisterForRemoteEvents()
@@ -737,6 +750,23 @@ Function InitializeSVFEnhancementsVersion3()
 EndFunction
 
 
+Function InitializeSVFEnhancementsVersion4()
+    int updatingToVersion = 4 Const
+    string fnName = "InitializeSVFEnhancementsVersion" + updatingToVersion Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    _Log(fnName, "Ship Vendor Framework enhancements updating to version " + updatingToVersion, LL_INFO)
+
+    PopulateLocals()
+    ApplyKeywords()
+
+    svfEnhancementsVersionCurrent = updatingToVersion
+    _Log(fnName, "Ship Vendor Framework enhancements updated to version " + updatingToVersion, LL_INFO)
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
 Function DebugDumpData()
     string fnName = "DebugDumpData" Const
     _Log(fnName, "begin", LL_DEBUG)
@@ -771,6 +801,8 @@ Function DebugDumpData()
         _Log(fnName, "shipsForSaleMinLocal=" + shipsForSaleMinLocal, LL_DEBUG)
         _Log(fnName, "shipsForSaleMaxLocal=" + shipsForSaleMaxLocal, LL_DEBUG)
         _Log(fnName, "vendorContainerLocal=" + vendorContainerLocal, LL_DEBUG)
+        _Log(fnName, "vendorKeywordsLocal=" + vendorKeywordsLocal, LL_DEBUG)
+        _Log(fnName, "vendorKeywordsCache=" + vendorKeywordsCache, LL_DEBUG)
         LockGuard ShipsForSaleGuard
             _Log(fnName, "shipsForSale=" + shipsForSale, LL_DEBUG)
             _Log(fnName, "shipsForSaleRandom=" + shipsForSaleRandom, LL_DEBUG)
@@ -802,12 +834,14 @@ Function PopulateLocals()
         _Log(fnName, "vendorDataMap.RandomShipsForSaleMin: " + vendorDataMap.RandomShipsForSaleMin, LL_INFO)
         _Log(fnName, "vendorDataMap.RandomShipsForSaleMax: " + vendorDataMap.RandomShipsForSaleMax, LL_INFO)
         _Log(fnName, "vendorDataMap.VendorContainer: " + vendorDataMap.VendorContainer, LL_INFO)
+        _Log(fnName, "vendorDataMap.VendorKeywords: " + vendorDataMap.VendorKeywords, LL_INFO)
         svfShipsToSellListRandomDatasetLocal = vendorDataMap.ListRandom
         svfShipsToSellListAlwaysDatasetLocal = vendorDataMap.ListAlways
         svfShipsToSellListUniqueDatasetLocal = vendorDataMap.ListUnique
         shipsForSaleMinLocal = vendorDataMap.RandomShipsForSaleMin
         shipsForSaleMaxLocal = vendorDataMap.RandomShipsForSaleMax
         vendorContainerLocal = vendorDataMap.VendorContainer
+        vendorKeywordsLocal = vendorDataMap.VendorKeywords
     Else
         _Log(fnName, "vendor data map not found", LL_INFO)
         svfShipsToSellListRandomDatasetLocal = SVFShipsToSellListRandomDataset
@@ -816,6 +850,7 @@ Function PopulateLocals()
         shipsForSaleMinLocal = ShipsForSaleMin
         shipsForSaleMaxLocal = ShipsForSaleMax
         vendorContainerLocal = VendorContainer
+        vendorKeywordsLocal = VendorKeywords
     EndIf
 
     _Log(fnName, "svfShipsToSellListRandomDatasetLocal=" + svfShipsToSellListRandomDatasetLocal, LL_DEBUG)
@@ -824,6 +859,7 @@ Function PopulateLocals()
     _Log(fnName, "shipsForSaleMinLocal=" + shipsForSaleMinLocal, LL_DEBUG)
     _Log(fnName, "shipsForSaleMaxLocal=" + shipsForSaleMaxLocal, LL_DEBUG)
     _Log(fnName, "vendorContainerLocal=" + vendorContainerLocal, LL_DEBUG)
+    _Log(fnName, "vendorKeywordsLocal=" + vendorKeywordsLocal, LL_DEBUG)
 
     ; sanity check the min/max random ships for sale values, switching if needed
     If shipsForSaleMaxLocal < shipsForSaleMinLocal
@@ -860,6 +896,63 @@ Function UseSVFDatasetsCheck()
         ; restore original values
         BuysShips = originalBuysShips
         SellsShips = originalSellsShips
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+; applies any keyword changes to the vendor, including both removals and additions
+Function ApplyKeywords()
+    string fnName = "ApplyKeywords" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    Keyword[] vendorKeywordsCacheCopy = (vendorKeywordsCache as var[]) as Keyword[]
+    vendorKeywordsCache = vendorKeywordsLocal.GetArray() as Keyword[]
+
+    ; remove broken keywords from cache copy
+    ;
+    ; while the removal of mods mid-playthrough is not supported behavior by the game, users gonna user, so in order to
+    ; not generate errors in the main papyrus log file, we check for and remove None keywords that result from mod
+    ; removal. unfortunately, mod removal doesn't result in a clean break, and instead leaves behind broken keyword
+    ; objects in the array, which the game still treats as valid for the purposes of simple "keyword == None" checks.
+    ; thankfully, the string representation of a broken keyword object results in "[Keyword <None>]", so we check
+    ; against _that_ instead.
+    int keywordsRemoved = 0
+    int i = vendorKeywordsCacheCopy.Length - 1
+    string keywordNone = "[Keyword <None>]" Const
+    While i > -1
+        If vendorKeywordsCacheCopy[i] as string == keywordNone
+            vendorKeywordsCacheCopy.Remove(i)
+            keywordsRemoved += 1
+        EndIf
+        i += -1
+    EndWhile
+    _Log(fnName, "removed " + keywordsRemoved + " None keywords from cache copy", LL_WARNING)
+
+    Keyword[] vendorKeywordsDiff = ShipVendorFramework:SVF_Utility.ArrayDiffKYWD(vendorKeywordsCacheCopy, vendorKeywordsCache)
+    If vendorKeywordsDiff.Length > 0
+        _Log(fnName, "vendor keywords changed, removing old keywords: " + vendorKeywordsDiff, LL_INFO)
+        i = 0
+        While i < vendorKeywordsDiff.Length
+            ; remove the keyword from the vendor and reset the keyword so that it will obey inheritance
+            ; this will make sure the vendor doesn't accidentally lose keywords it should have normally
+            Self.RemoveKeyword(vendorKeywordsDiff[i])
+            Self.ResetKeyword(vendorKeywordsDiff[i])
+
+            _Log(fnName, "    " + vendorKeywordsDiff[i] + " removed", LL_DEBUG)
+            i += 1
+        EndWhile
+    EndIf
+
+    If vendorKeywordsCache.Length > 0
+        _Log(fnName, "adding new keywords: " + vendorKeywordsCache, LL_INFO)
+        i = 0
+        While i < vendorKeywordsCache.Length
+            Self.AddKeyword(vendorKeywordsCache[i])
+            _Log(fnName, "    " + vendorKeywordsCache[i] + " added", LL_DEBUG)
+            i += 1
+        EndWhile
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)

@@ -370,6 +370,37 @@ bool Function ArraysEqualShipToSell(ShipVendorListScript:ShipToSell[] avArray1, 
 EndFunction
 
 
+; get the differences between two Keyword arrays
+; returns a new array containing the items in the first array that are not in the second array
+Keyword[] Function ArrayDiffKYWD(Keyword[] avArray1, Keyword[] avArray2) Global
+    string fnName = "ArrayDiffKYWD" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    ; since we'll be removing items from the arrays as we find matches, make a copy first
+    Keyword[] avArray1Copy = (avArray1 as var[]) as Keyword[]
+    Keyword[] avArray2Copy = (avArray2 as var[]) as Keyword[]
+    int i = avArray1Copy.Length - 1  ; start from the back of the array to avoid index issues when removing items
+    While i > -1
+        int findResult = avArray2Copy.RFind(avArray1Copy[i])
+        If findResult == -1
+            _Log(fnName, avArray1Copy[i] + " of array 1 not found in array 2", LL_DEBUG)
+        Else
+            avArray1Copy.Remove(i)
+            avArray2Copy.Remove(findResult)
+        EndIf
+        i += -1
+    EndWhile
+    _Log(fnName, "arrays are equal", LL_DEBUG)
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return avArray1Copy
+EndFunction
+
+
 ; returns the last Form in a FormList, or None if the FormList is empty or None
 Form Function FormListGetLast(Form akFormList) Global
     string fnName = "FormListGetLast" Const

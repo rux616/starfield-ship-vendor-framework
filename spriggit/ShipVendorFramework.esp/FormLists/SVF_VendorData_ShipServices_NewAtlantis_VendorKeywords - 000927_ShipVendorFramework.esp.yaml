@@ -1,0 +1,6 @@
+FormKey: 000927:ShipVendorFramework.esp
+EditorID: SVF_VendorData_ShipServices_NewAtlantis_VendorKeywords
+FormVersion: 582
+Items:
+- 000936:ShipVendorFramework.esp
+AddToList: Null
