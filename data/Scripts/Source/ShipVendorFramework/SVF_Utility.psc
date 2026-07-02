@@ -39,20 +39,17 @@ Function Log(string asScriptName, Form akSource, string asFunctionName, string a
     EndIf
     string logLevelText = ""
     If aiLogLevel == -1
-        logLevelText = "DBG"
+        logLevelText = "DEBUG:   "
         aiLogLevel = 0
     ElseIf aiLogLevel == 0
-        logLevelText = "NFO"
+        logLevelText = "INFO:    "
     ElseIf aiLogLevel == 1
-        logLevelText = "WRN"
+        logLevelText = "WARNING: "
     ElseIf aiLogLevel == 2
-        logLevelText = "ERR"
+        logLevelText = "ERROR:   "
     ElseIf aiLogLevel == 3
         ; forced log, no prefix
         aiLogLevel = 0
-    EndIf
-    If logLevelText != ""
-        logLevelText = logLevelText + ": "
     EndIf
     asLogMessage = logLevelText + asScriptName + asFunctionName + asLogMessage
     ; try to log; if the TraceUser function returns false, the log wasn't open, so open it and try again
