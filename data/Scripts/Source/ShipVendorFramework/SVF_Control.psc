@@ -240,9 +240,9 @@ EndFunction
 
 ; print version and misc debug into to the log
 Function VersionInfo()
-    Log("", None, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3, abAddStackID=False)
-    Log("", None, "", "Starfield version: " + Debug.GetVersionNumber(), 3, abAddStackID=False)
-    Log("", None, "", "Ship Vendor Framework version: " + SVFVersion, 3, abAddStackID=False)
+    Log("", None, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3, abAddStackID=false)
+    Log("", None, "", "Starfield version: " + Debug.GetVersionNumber(), 3, abAddStackID=false)
+    Log("", None, "", "Ship Vendor Framework version: " + SVFVersion, 3, abAddStackID=false)
 EndFunction
 
 
