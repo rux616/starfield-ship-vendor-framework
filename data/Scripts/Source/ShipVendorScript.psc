@@ -1248,47 +1248,19 @@ Function RefreshShipsToSellArraysLVLB()
     int i = 0
 
     ; remove any random ships that are already in the always or unique lists
-    i = svfShipsToSellRandom.Length - 1
-    ; traverse the array from the end to the beginning so that removing elements doesn't mess up the loop
-    While i > -1
-        If svfShipsToSellAlways.Find(svfShipsToSellRandom[i]) > -1
-            _Log(fnName, "random ship " + svfShipsToSellRandom[i] + " (index " + i + ") is already in the always list - removing it", LL_INFO)
-            svfShipsToSellRandom.Remove(i)
-        EndIf
-        If svfShipsToSellUnique.Find(svfShipsToSellRandom[i]) > -1
-            _Log(fnName, "random ship " + svfShipsToSellRandom[i] + " (index " + i + ") is already in the unique list - removing it", LL_INFO)
-            svfShipsToSellRandom.Remove(i)
-        EndIf
-        i += -1
-    EndWhile
+    _Log(fnName, "removing random ships that are already in the 'always' list", LL_INFO)
+    ShipVendorFramework:SVF_Utility.ArraySubtractLVLB(svfShipsToSellRandom, svfShipsToSellAlways, akSource=Self)
+    _Log(fnName, "removing random ships that are already in the 'unique' list", LL_INFO)
+    ShipVendorFramework:SVF_Utility.ArraySubtractLVLB(svfShipsToSellRandom, svfShipsToSellUnique, akSource=Self)
 
     ; remove any priority ships that have already been sold this refresh cycle
-    If svfShipsToSellAlways.Length > 0 && alwaysSoldList.Length > 0
-        int alwaysIndex = 0
-        i = 0
-        While i < alwaysSoldList.Length
-            alwaysIndex = svfShipsToSellAlways.Find(alwaysSoldList[i])
-            If alwaysIndex > -1
-                _Log(fnName, "priority ship " + alwaysSoldList[i] + " was already bought - removing it from refreshed priority 'to sell' list", LL_INFO)
-                svfShipsToSellAlways.Remove(alwaysIndex)
-            EndIf
-            i += 1
-        EndWhile
-    EndIf
+    _Log(fnName, "removing priority ships that have already been bought from refreshed priority 'to sell' list", LL_INFO)
+    ShipVendorFramework:SVF_Utility.ArraySubtractLVLB(svfShipsToSellAlways, alwaysSoldList, akSource=Self)
 
     ; remove any unique ships that have already been sold
-    LeveledSpaceshipBase[] uniqueShipsSoldLocal = svfControl.UniqueShipsSold.GetArray() as LeveledSpaceshipBase[]
-    If svfShipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
-        int uniqueIndex = 0
-        i = 0
-        While i < uniqueShipsSoldLocal.Length
-            uniqueIndex = svfShipsToSellUnique.Find(uniqueShipsSoldLocal[i])
-            If uniqueIndex > -1
-                _Log(fnName, "unique ship " + uniqueShipsSoldLocal[i] + " was already bought - removing it from refreshed uniques 'to sell' list", LL_INFO)
-                svfShipsToSellUnique.Remove(uniqueIndex)
-            EndIf
-            i += 1
-        EndWhile
+    If (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
+        _Log(fnName, "removing unique ships that have already been bought from refreshed unique 'to sell' list", LL_INFO)
+        ShipVendorFramework:SVF_Utility.ArraySubtractLVLB(svfShipsToSellUnique, svfControl.UniqueShipsSold.GetArray() as LeveledSpaceshipBase[], akSource=Self)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
@@ -1330,49 +1302,28 @@ Function RefreshShipsToSellArraysShipToSell()
     ; removing elements doesn't mess up the loop
     int playerLevel = playerRef.GetLevel()
     i = shipsToSellRandom.Length - 1
+    _Log(fnName, "removing random ships that the player does not meet the level requirements for", LL_INFO)
     While i > -1
         If shipsToSellRandom[i].minLevel > playerLevel
-            _Log(fnName, "player does not meet level requirements of random ship " + shipsToSellRandom[i] + " (index " + i + ") - removing it", LL_INFO)
-            shipsToSellRandom.Remove(i)
-        EndIf
-        If shipsToSellAlways.Length > 0 && shipsToSellAlways.FindStruct("LeveledShip", shipsToSellRandom[i].LeveledShip) > -1
-            _Log(fnName, "random ship " + shipsToSellRandom[i] + " (index " + i + ") is already in the always list - removing it", LL_INFO)
-            shipsToSellRandom.Remove(i)
-        EndIf
-        If shipsToSellUnique.Length > 0 && shipsToSellUnique.FindStruct("LeveledShip", shipsToSellRandom[i].LeveledShip) > -1
-            _Log(fnName, "random ship " + shipsToSellRandom[i] + " (index " + i + ") is already in the unique list - removing it", LL_INFO)
+            ; note: keep this text in sync with the output from SVF_Utility.ArraySubtractShipToSell() for consistency
+            _Log(fnName, "ship " + shipsToSellRandom[i] + " found at index " + i + "; removing", LL_INFO)
             shipsToSellRandom.Remove(i)
         EndIf
         i += -1
     EndWhile
+    _Log(fnName, "removing random ships that are already in the 'always' list", LL_INFO)
+    ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellRandom, shipsToSellAlways as var[], akSource=Self)
+    _Log(fnName, "removing random ships that are already in the 'unique' list", LL_INFO)
+    ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellRandom, shipsToSellUnique as var[], akSource=Self)
 
     ; remove any priority ships that have already been sold this refresh cycle
-    If shipsToSellAlways.Length > 0 && alwaysSoldList.Length > 0
-        int alwaysIndex = 0
-        i = 0
-        While i < alwaysSoldList.Length
-            alwaysIndex = shipsToSellAlways.FindStruct("LeveledShip", alwaysSoldList[i])
-            If alwaysIndex > -1
-                _Log(fnName, "priority ship " + alwaysSoldList[i] + " was already bought - removing it from refreshed priority 'to sell' list", LL_INFO)
-                shipsToSellAlways.Remove(alwaysIndex)
-            EndIf
-            i += 1
-        EndWhile
-    EndIf
+    _Log(fnName, "removing priority ships that have already been bought from refreshed priority 'to sell' list", LL_INFO)
+    ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellAlways, alwaysSoldList as var[], akSource=Self)
 
     ; remove any unique ships that have already been sold
-    LeveledSpaceshipBase[] uniqueShipsSoldLocal = svfControl.UniqueShipsSold.GetArray() as LeveledSpaceshipBase[]
-    If shipsToSellUnique.Length > 0 && uniqueShipsSoldLocal.Length > 0 && (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
-        int uniqueIndex = 0
-        i = 0
-        While i < uniqueShipsSoldLocal.Length
-            uniqueIndex = shipsToSellUnique.FindStruct("LeveledShip", uniqueShipsSoldLocal[i])
-            If uniqueIndex > -1
-                _Log(fnName, "unique ship " + uniqueShipsSoldLocal[i] + " was already bought - removing it from refreshed uniques 'to sell' list", LL_INFO)
-                shipsToSellUnique.Remove(uniqueIndex)
-            EndIf
-            i += 1
-        EndWhile
+    If (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
+        _Log(fnName, "removing unique ships that have already been bought from refreshed unique 'to sell' list", LL_INFO)
+        ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellUnique, svfControl.UniqueShipsSold.GetArray() as var[], akSource=Self)
     EndIf
 
     _Log(fnName, "begin", LL_DEBUG)

@@ -402,6 +402,73 @@ Keyword[] Function ArrayDiffKYWD(Keyword[] avArray1, Keyword[] avArray2) Global
 EndFunction
 
 
+; MUTATIVE - searches the first array for items from the second array, and then removes them from the first array
+Function ArraySubtractLVLB(LeveledSpaceshipBase[] akArray1, LeveledSpaceshipBase[] akArray2, Form akSource) Global
+    string fnName = "ArraySubtractLVLB[" + GetHexID(akSource) + "]" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akArray1.Length > 0 && akArray2.Length > 0
+        int foundIndex = 0
+        int i = 0
+        While i < akArray2.Length
+            foundIndex = akArray1.Find(akArray2[i])
+            If foundIndex > -1
+                _Log(fnName, "ship " + akArray2[i] + " found at index " + i + "; removing", LL_INFO)
+                akArray1.Remove(foundIndex)
+            EndIf
+            i += 1
+        EndWhile
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+; MUTATIVE - searches the first array for items from the second array, and then removes them from the first array
+Function ArraySubtractShipToSell(ShipVendorListScript:ShipToSell[] akArray1, var[] akArray2, Form akSource) Global
+    string fnName = "ArraySubtractShipToSell[" + GetHexID(akSource) + "]" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akArray1.Length > 0 && akArray2.Length > 0
+        int foundIndex = 0
+        int i = 0
+        If akArray2 is ShipVendorListScript:ShipToSell[]
+            ShipVendorListScript:ShipToSell[] akArray2Local = akArray2 as ShipVendorListScript:ShipToSell[]
+            While i < akArray2Local.Length
+                foundIndex = akArray1.FindStruct("LeveledShip", akArray2Local[i].LeveledShip)
+                If foundIndex > -1
+                    _Log(fnName, "ship " + akArray2Local[i] + " found at index " + i + "; removing", LL_INFO)
+                    akArray1.Remove(foundIndex)
+                EndIf
+                i += 1
+            EndWhile
+        ElseIf akArray2 is LeveledSpaceshipBase[]
+            LeveledSpaceshipBase[] akArray2Local = akArray2 as LeveledSpaceshipBase[]
+            While i < akArray2Local.Length
+                foundIndex = akArray1.FindStruct("LeveledShip", akArray2Local[i])
+                If foundIndex > -1
+                    _Log(fnName, "ship " + akArray2Local[i] + " found at index " + i + "; removing", LL_INFO)
+                    akArray1.Remove(foundIndex)
+                EndIf
+                i += 1
+            EndWhile
+        Else
+            _Log(fnName, "unknown type!", LL_ERROR)
+        EndIf
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
 ; returns the last Form in a FormList, or None if the FormList is empty or None
 Form Function FormListGetLast(Form akFormList) Global
     string fnName = "FormListGetLast" Const
