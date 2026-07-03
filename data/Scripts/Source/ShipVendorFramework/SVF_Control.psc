@@ -168,6 +168,7 @@ Function Initialize()
 
     string fnName = "Initialize" Const
     _Log(fnName, "begin", LL_DEBUG)
+    float startTime = Utility.GetCurrentRealTime()
     _Log(fnName, "SVF Control version: current=" + svfControlVersionCurrent + ", desired=" + SVFControlVersion, LL_INFO)
 
     If svfControlVersionCurrent < 1
@@ -201,6 +202,8 @@ Function Initialize()
     svfControlInitialized = true
     _Log(fnName, "SVF Control initialization complete", LL_INFO)
 
+    float endTime = Utility.GetCurrentRealTime()
+    _Log(fnName, "finished in " + (endTime - startTime) + " seconds", LL_INFO)
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
@@ -237,9 +240,9 @@ EndFunction
 
 ; print version and misc debug into to the log
 Function VersionInfo()
-    Log("", None, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3)
-    Log("", None, "", "Starfield version: " + Debug.GetVersionNumber(), 3)
-    Log("", None, "", "Ship Vendor Framework version: " + SVFVersion, 3)
+    Log("", None, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3, abAddStackID=False)
+    Log("", None, "", "Starfield version: " + Debug.GetVersionNumber(), 3, abAddStackID=False)
+    Log("", None, "", "Ship Vendor Framework version: " + SVFVersion, 3, abAddStackID=False)
 EndFunction
 
 

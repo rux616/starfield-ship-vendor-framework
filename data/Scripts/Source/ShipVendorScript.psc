@@ -275,6 +275,7 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
     isHandleOnLoadRunning = true
     string fnName = "HandleOnLoad" Const
     _Log(fnName, "begin", LL_DEBUG)
+    float startTime = Utility.GetCurrentRealTime()
 
     ; needed to satisfy the guard
     dummyInt = 0
@@ -318,6 +319,8 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         ShowVendorReadyMessage()
     EndIf
 
+    float endTime = Utility.GetCurrentRealTime()
+    _Log(fnName, "finished in " + (endTime - startTime) + " seconds", LL_INFO)
     _Log(fnName, "end", LL_DEBUG)
     isHandleOnLoadRunning = false
 EndFunction

@@ -25,7 +25,7 @@ ScriptName ShipVendorFramework:SVF_Utility
 ; aiLogLevel values: -1 = debug, 0 = info, 1 = warning, 2 = error, 3 = forced (always log regardless of threshold)
 ; aiLogLevelThreshold: messages will only be logged if their level is greater than or equal to this threshold
 ; aiLogLevelThreshold values: -1 = debug (all), 0 = info (default), 1 = warning, 2 = error, 3 = none (suppress)
-Function Log(string asScriptName, Form akSource, string asFunctionName, string asLogMessage, int aiLogLevel = 0, int aiLogLevelThreshold = 0, string asLogName = "ShipVendorFramework") Global
+Function Log(string asScriptName, Form akSource, string asFunctionName, string asLogMessage, int aiLogLevel = 0, int aiLogLevelThreshold = 0, string asLogName = "ShipVendorFramework", bool abAddStackID = False) Global
     aiLogLevel = ClampInt(aiLogLevel, -1, 3)
     aiLogLevelThreshold = ClampInt(aiLogLevelThreshold, -1, 3)
     If aiLogLevel < aiLogLevelThreshold
@@ -50,6 +50,10 @@ Function Log(string asScriptName, Form akSource, string asFunctionName, string a
     ElseIf aiLogLevel == 3
         ; forced log, no prefix
         aiLogLevel = 0
+    EndIf
+    If abAddStackID == True
+        ; calling GetCurrentStackID for every log action can get quite costly, so only do this during debugging
+        logLevelText = logLevelText + "{StackID:" + Utility.GetCurrentStackID() + "} "
     EndIf
     asLogMessage = logLevelText + asScriptName + asFunctionName + asLogMessage
     ; try to log; if the TraceUser function returns false, the log wasn't open, so open it and try again
