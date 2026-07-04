@@ -403,7 +403,7 @@ EndFunction
 
 
 ; MUTATIVE - searches the first array for items from the second array, and then removes them from the first array
-Function ArraySubtractLVLB(LeveledSpaceshipBase[] akArray1, LeveledSpaceshipBase[] akArray2, Form akSource) Global
+Function ArraySubtractLVLB(LeveledSpaceshipBase[] akArray1, LeveledSpaceshipBase[] akArray2, Form akSource, int aiRemovalLogLevel = 0) Global
     string fnName = "ArraySubtractLVLB[" + GetHexID(akSource) + "]" Const
     int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
@@ -417,7 +417,7 @@ Function ArraySubtractLVLB(LeveledSpaceshipBase[] akArray1, LeveledSpaceshipBase
         While i < akArray2.Length
             foundIndex = akArray1.Find(akArray2[i])
             If foundIndex > -1
-                _Log(fnName, "ship " + akArray2[i] + " found at index " + i + "; removing", LL_INFO)
+                _Log(fnName, "ship " + akArray2[i] + " found at index " + i + "; removing", aiRemovalLogLevel)
                 akArray1.Remove(foundIndex)
             EndIf
             i += 1
@@ -429,7 +429,7 @@ EndFunction
 
 
 ; MUTATIVE - searches the first array for items from the second array, and then removes them from the first array
-Function ArraySubtractShipToSell(ShipVendorListScript:ShipToSell[] akArray1, var[] akArray2, Form akSource) Global
+Function ArraySubtractShipToSell(ShipVendorListScript:ShipToSell[] akArray1, var[] akArray2, Form akSource, int aiRemovalLogLevel = 0) Global
     string fnName = "ArraySubtractShipToSell[" + GetHexID(akSource) + "]" Const
     int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
@@ -445,7 +445,7 @@ Function ArraySubtractShipToSell(ShipVendorListScript:ShipToSell[] akArray1, var
             While i < akArray2Local.Length
                 foundIndex = akArray1.FindStruct("LeveledShip", akArray2Local[i].LeveledShip)
                 If foundIndex > -1
-                    _Log(fnName, "ship " + akArray2Local[i] + " found at index " + i + "; removing", LL_INFO)
+                    _Log(fnName, "ship " + akArray2Local[i] + " found at index " + i + "; removing", aiRemovalLogLevel)
                     akArray1.Remove(foundIndex)
                 EndIf
                 i += 1
@@ -455,7 +455,7 @@ Function ArraySubtractShipToSell(ShipVendorListScript:ShipToSell[] akArray1, var
             While i < akArray2Local.Length
                 foundIndex = akArray1.FindStruct("LeveledShip", akArray2Local[i])
                 If foundIndex > -1
-                    _Log(fnName, "ship " + akArray2Local[i] + " found at index " + i + "; removing", LL_INFO)
+                    _Log(fnName, "ship " + akArray2Local[i] + " found at index " + i + "; removing", aiRemovalLogLevel)
                     akArray1.Remove(foundIndex)
                 EndIf
                 i += 1
