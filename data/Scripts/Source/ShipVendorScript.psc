@@ -1146,14 +1146,23 @@ Function CheckForNewShips()
 
     ; general algorithm is as follows:
     ; 1. make copies of the "always" and "unique" ships-to-sell lists
-    ; 2. refresh the ships-to-sell lists from the datasets
-    ; 3. compare the new lists to the copies made in step 1
+    ; 2. remove any ships that have already been sold from the copies so that we can compare the new lists to the old lists without false positives
+    ; 3. refresh the ships-to-sell lists from the datasets
+    ; 4. compare the new lists to the copies made in step 1
+    ; 5. if there are any differences, refresh the inventory
 
     bool refreshAlways
     bool refreshUnique
     If useSVFDatasets == true
         LeveledSpaceshipBase[] svfShipsToSellAlwaysCopy = (svfShipsToSellAlways as var[]) as LeveledSpaceshipBase[]
         LeveledSpaceshipBase[] svfShipsToSellUniqueCopy = (svfShipsToSellUnique as var[]) as LeveledSpaceshipBase[]
+
+        _Log(fnName, "removing priority ships that have already been bought from priority 'to sell' list copy", LL_DEBUG)
+        ShipVendorFramework:SVF_Utility.ArraySubtractLVLB(svfShipsToSellAlwaysCopy, alwaysSoldList, akSource=Self, aiRemovalLogLevel=LL_DEBUG)
+        If (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
+            _Log(fnName, "removing unique ships that have already been bought from unique 'to sell' list copy", LL_DEBUG)
+            ShipVendorFramework:SVF_Utility.ArraySubtractLVLB(svfShipsToSellUniqueCopy, svfControl.UniqueShipsSold.GetArray() as LeveledSpaceshipBase[], akSource=Self, aiRemovalLogLevel=LL_DEBUG)
+        EndIf
 
         RefreshShipsToSellArrays()
 
@@ -1162,6 +1171,13 @@ Function CheckForNewShips()
     Else
         ShipVendorListScript:ShipToSell[] shipsToSellAlwaysCopy = (shipsToSellAlways as var[]) as ShipVendorListScript:ShipToSell[]
         ShipVendorListScript:ShipToSell[] shipsToSellUniqueCopy = (shipsToSellUnique as var[]) as ShipVendorListScript:ShipToSell[]
+
+        _Log(fnName, "removing priority ships that have already been bought from priority 'to sell' list copy", LL_DEBUG)
+        ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellAlwaysCopy, alwaysSoldList as var[], akSource=Self, aiRemovalLogLevel=LL_DEBUG)
+        If (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
+            _Log(fnName, "removing unique ships that have already been bought from unique 'to sell' list copy", LL_DEBUG)
+            ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellUniqueCopy, svfControl.UniqueShipsSold.GetArray() as var[], akSource=Self, aiRemovalLogLevel=LL_DEBUG)
+        EndIf
 
         RefreshShipsToSellArrays()
 
