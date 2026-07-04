@@ -1157,16 +1157,16 @@ Function CheckForNewShips()
 
         RefreshShipsToSellArrays()
 
-        refreshAlways = !ShipVendorFramework:SVF_Utility.ArraysEqualLVLB(svfShipsToSellAlwaysCopy, svfShipsToSellAlways, abConsiderOrder=true)
-        refreshUnique = !ShipVendorFramework:SVF_Utility.ArraysEqualLVLB(svfShipsToSellUniqueCopy, svfShipsToSellUnique, abConsiderOrder=true)
+        refreshAlways = !ShipVendorFramework:SVF_Utility.ArraysEqualLVLB(svfShipsToSellAlwaysCopy, svfShipsToSellAlways, abConsiderOrder=false)
+        refreshUnique = !ShipVendorFramework:SVF_Utility.ArraysEqualLVLB(svfShipsToSellUniqueCopy, svfShipsToSellUnique, abConsiderOrder=false)
     Else
         ShipVendorListScript:ShipToSell[] shipsToSellAlwaysCopy = (shipsToSellAlways as var[]) as ShipVendorListScript:ShipToSell[]
         ShipVendorListScript:ShipToSell[] shipsToSellUniqueCopy = (shipsToSellUnique as var[]) as ShipVendorListScript:ShipToSell[]
 
         RefreshShipsToSellArrays()
 
-        refreshAlways = !ShipVendorFramework:SVF_Utility.ArraysEqualShipToSell(shipsToSellAlwaysCopy, shipsToSellAlways, abConsiderOrder=true)
-        refreshUnique = !ShipVendorFramework:SVF_Utility.ArraysEqualShipToSell(shipsToSellUniqueCopy, shipsToSellUnique, abConsiderOrder=true)
+        refreshAlways = !ShipVendorFramework:SVF_Utility.ArraysEqualShipToSell(shipsToSellAlwaysCopy, shipsToSellAlways, abConsiderOrder=false)
+        refreshUnique = !ShipVendorFramework:SVF_Utility.ArraysEqualShipToSell(shipsToSellUniqueCopy, shipsToSellUnique, abConsiderOrder=false)
     EndIf
 
     ; if there are any differences between the original and refreshed lists, refresh the inventory
