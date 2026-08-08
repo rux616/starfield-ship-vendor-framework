@@ -935,7 +935,14 @@ Function ApplyKeywords()
         EndIf
         i += -1
     EndWhile
-    _Log(fnName, "removed " + keywordsRemoved + " None keywords from cache copy", LL_WARNING)
+
+    int logLevel
+    If keywordsRemoved > 0
+        logLevel = LL_WARNING
+    Else
+        logLevel = LL_INFO
+    EndIf
+    _Log(fnName, "removed " + keywordsRemoved + " None keywords from cache copy", logLevel)
 
     Keyword[] vendorKeywordsDiff = ShipVendorFramework:SVF_Utility.ArrayDiffKYWD(vendorKeywordsCacheCopy, vendorKeywordsCache)
     If vendorKeywordsDiff.Length > 0
