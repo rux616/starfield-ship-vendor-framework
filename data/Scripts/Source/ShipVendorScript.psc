@@ -911,7 +911,11 @@ Function ApplyKeywords()
     _Log(fnName, "begin", LL_DEBUG)
 
     Keyword[] vendorKeywordsCacheCopy = (vendorKeywordsCache as var[]) as Keyword[]
-    vendorKeywordsCache = vendorKeywordsLocal.GetArray() as Keyword[]
+    If vendorKeywordsLocal != None
+        vendorKeywordsCache = vendorKeywordsLocal.GetArray() as Keyword[]
+    Else
+        vendorKeywordsCache = new Keyword[0]
+    EndIf
 
     ; remove broken keywords from cache copy
     ;
