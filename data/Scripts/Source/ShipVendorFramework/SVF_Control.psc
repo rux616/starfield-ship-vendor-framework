@@ -155,6 +155,8 @@ EndEvent
 
 
 Event Actor.OnPlayerLoadGame(Actor akPlayer)
+    svfControlInitialized = false
+
     string fnName = "Actor.OnPlayerLoadGame" Const
     _Log(fnName, "begin", LL_DEBUG)
     VersionInfo()
@@ -164,8 +166,6 @@ EndEvent
 
 
 Function Initialize()
-    svfControlInitialized = false
-
     string fnName = "Initialize" Const
     _Log(fnName, "begin", LL_DEBUG)
     float startTime = Utility.GetCurrentRealTime()
