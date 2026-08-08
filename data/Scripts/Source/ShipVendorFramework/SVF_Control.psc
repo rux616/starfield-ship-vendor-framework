@@ -476,6 +476,19 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
     string fnName = "GetShipVendorDataMap[" + GetHexID(akShipVendor) + "]" Const
     _Log(fnName, "begin", LL_DEBUG)
 
+    ; check if the control script is initializing and pause here if it is (return None after a timeout period)
+    int controlInitTimeout = 10
+    While SVFControlInitialized() == false && controlInitTimeout > 0
+        _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
+        Utility.WaitMenuPause(1.0)
+        controlInitTimeout -= 1
+    EndWhile
+
+    If controlInitTimeout <= 0
+        _Log(fnName, "SVF Control initialization timed out", LL_WARNING)
+        Return None
+    EndIf
+
     _Log(fnName, "searching for " + akShipVendorBase + " in Vendors (" + vendorsCache + ")", LL_DEBUG)
     int vendorIndex = vendorsCache.Find(akShipVendorBase)
     If vendorIndex < 0
