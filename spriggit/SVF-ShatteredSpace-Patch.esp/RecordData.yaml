@@ -7,13 +7,12 @@ ModHeader:
   FormVersion: 582
   Author: rux616
   Description: >-
-    Patch for "Ship Vendor Framework" by rux616 and the Shattered Space expansion.
+    Patch for "Ship Vendor Framework" by rux616 and the Shattered Space DLC.
 
 
-    Version: 2.3.0
+    Version: 2.4.0
   MasterReferences:
   - Master: Starfield.esm
-  - Master: sfbgs00d.esm
   - Master: ShatteredSpace.esm
   - Master: ShipVendorFramework.esm
   Branch: Main

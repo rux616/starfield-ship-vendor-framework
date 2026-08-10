@@ -266,6 +266,7 @@ Function CheckForMods()
     modsToCheck.Add("Starvival - Immersive Survival Addon.esm")
     modsToCheck.Add("vcDenAstrodynamics.esm")
     modsToCheck.Add("kinggathcreations_spaceship.esm")
+    modsToCheck.Add("SFBGS00D.esm")
     ; --> modsToCheck list end <--
 
     string[] patchesToCheck = new string[0]
@@ -283,6 +284,7 @@ Function CheckForMods()
     patchesToCheck.Add("SVF-Starvival-Patch.esm")
     patchesToCheck.Add("SVF-TheDenAstrodynamics-Patch.esm")
     patchesToCheck.Add("SVF-Watchtower-Patch.esm")
+    patchesToCheck.Add("SVF-FreeLanes-Patch.esm")
     ; --> patchesToCheck list end <--
 
     int i = 0

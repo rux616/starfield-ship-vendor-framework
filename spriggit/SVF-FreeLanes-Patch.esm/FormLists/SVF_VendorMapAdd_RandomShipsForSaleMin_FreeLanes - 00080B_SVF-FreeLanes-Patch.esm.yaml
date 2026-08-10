@@ -1,0 +1,6 @@
+FormKey: 00080B:SVF-FreeLanes-Patch.esm
+EditorID: SVF_VendorMapAdd_RandomShipsForSaleMin_FreeLanes
+FormVersion: 582
+Items:
+- 000803:SVF-FreeLanes-Patch.esm
+AddToList: 000849:ShipVendorFramework.esm

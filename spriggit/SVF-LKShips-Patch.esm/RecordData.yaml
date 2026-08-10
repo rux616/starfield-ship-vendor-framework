@@ -13,10 +13,9 @@ ModHeader:
     Patch for "Ship Vendor Framework" by rux616 and "L-K Ships" by Lighthorse and KeithVSmith1977.
 
 
-    Version: 1.2.0
+    Version: 1.3.0
   MasterReferences:
   - Master: Starfield.esm
-  - Master: sfbgs00d.esm
   - Master: L-K_Ships.esm
   - Master: ShipVendorFramework.esm
   Branch: Main

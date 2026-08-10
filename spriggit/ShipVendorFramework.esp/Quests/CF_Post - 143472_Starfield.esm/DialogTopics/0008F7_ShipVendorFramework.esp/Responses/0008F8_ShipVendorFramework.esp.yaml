@@ -12,7 +12,7 @@ Flags:
 DialogGroup: 0008FF:ShipVendorFramework.esp
 Responses:
 - Emotion: 0C866C:Starfield.esm
-  WEMFile: 34198982
+  WEMFile: 17421766
   TROTs:
   - VoiceType: 262CC8:Starfield.esm
     EmotionOut: 7.7000003
