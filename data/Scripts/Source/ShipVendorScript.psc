@@ -143,6 +143,18 @@ bool isInitializeRunning = false
 
 bool showMessageWhenReady = false
 
+; holds the leveled ship that is currently being created by CreateShipForSale() so that if the ship creation stalls
+; and corrupts the save, a message can be displayed to the player to point to this record
+LeveledSpaceshipBase currentlyCreatingShip
+
+; timer IDs
+int Property TIMER_ID_NOT_READY = 1 Auto Const Hidden
+int Property TIMER_ID_SAVE_CORRUPTION = 2 Auto Const Hidden
+
+; timer lengths
+float Property TIMER_LENGTH_NOT_READY = 5.0 Auto Const Hidden
+float Property TIMER_LENGTH_SAVE_CORRUPTION = 10.0 Auto Const Hidden
+
 ; the control script for the Ship Vendor Framework
 ShipVendorFramework:SVF_Control svfControl
 
@@ -260,11 +272,13 @@ Event OnTimer(int aiTimerID)
     _Log(fnName, "begin (" + aiTimerID + ")", LL_DEBUG)
 
     ; if the timer ID matches the vendor's form ID, check the status and show the message if not ready
-    If aiTimerID == GetFormID()
+    If aiTimerID == TIMER_ID_NOT_READY
         ShipVendorFramework:SVF_DataStructures:ShipVendorStatus status = GetStatus(abShowMessage=false)
         If status.IsReady == false
             ShowVendorNotReadyMessage()
         EndIf
+    ElseIf aiTimerID == TIMER_ID_SAVE_CORRUPTION
+        ShowBadShipSaveCorruptionMessage()
     EndIf
 
     _Log(fnName, "end (" + aiTimerID + ")", LL_DEBUG)
@@ -455,9 +469,8 @@ Function ShowVendorNotReadyMessage()
     _Log(fnName, "begin", LL_DEBUG)
 
     ; set timer to show the message repeatedly until the vendor is ready
-    float timerLength = 5.0 Const
-    _Log(fnName, "registering timer for " + timerLength + " seconds", LL_DEBUG)
-    StartTimer(timerLength, aiTimerID=GetFormID())
+    _Log(fnName, "registering timer for " + TIMER_LENGTH_NOT_READY + " seconds", LL_DEBUG)
+    StartTimer(TIMER_LENGTH_NOT_READY, aiTimerID=TIMER_ID_NOT_READY)
 
     Message theMessage
     If svfControl != None
@@ -492,10 +505,35 @@ Function ShowVendorReadyMessage()
     theMessage.Show()
 
     ; set timer to show the message repeatedly until the vendor is ready
-    CancelTimer(aiTimerID=GetFormID())
+    CancelTimer(aiTimerID=TIMER_ID_NOT_READY)
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
+
+
+Function ShowBadShipSaveCorruptionMessage()
+    string fnName = "ShowBadShipSaveCorruptionMessage" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    Message theMessage
+    If svfControl != None
+        _Log(fnName, "svfControl is initialized", LL_DEBUG)
+        theMessage = svfControl.MsgBadShipCorruption
+    Else
+        ; if svfControl isn't initialized yet, svfControl.<property> would error out, so get the message directly
+        _Log(fnName, "svfControl is NOT initialized", LL_DEBUG)
+        theMessage = (Game.GetFormFromFile(0x90D, "ShipVendorFramework.esm") as Message)  ; SVF_Msg_BadShipCorruption
+    EndIf
+    int baseVendorID = Self.GetBaseObject().GetFormID()
+    int leveledShipID = currentlyCreatingShip.GetFormID()
+    int playerLevel = playerRef.GetLevel()
+    theMessage.Show(baseVendorID, leveledShipID, playerLevel)
+
+    Game.QuitToMainMenu()
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
 
 string Function GetStatusText(ShipVendorFramework:SVF_DataStructures:ShipVendorStatus aiStatus)
     string fnName = "GetStatusText" Const
@@ -1638,8 +1676,19 @@ bool Function CreateShipForSale(LeveledSpaceshipBase akShipToCreate, ObjectRefer
 
     bool shipCreated = false
 
+    ; if there is a bad ship introduced, attempting to create it can cause the script to indefinitely hang, resulting
+    ; in save corruption. since we can't fix it, set up a watchdog to at least let the player know.
+    _Log(fnName, "setting up watchdog timer", LL_DEBUG)
+    currentlyCreatingShip = akShipToCreate
+    StartTimer(TIMER_LENGTH_SAVE_CORRUPTION, TIMER_ID_SAVE_CORRUPTION)
+
     _Log(fnName, "attempting to create new ship reference from leveled ship " + akShipToCreate, LL_INFO)
     SpaceshipReference newShip = akCreateMarker.PlaceShipAtMe(akShipToCreate, aiLevelMod = 2, abInitiallyDisabled = true, akEncLoc = akEncLoc)
+
+    ; if the script has reached here, the ship has been created and the watchdog is no longer needed, so tear it down
+    CancelTimer(TIMER_ID_SAVE_CORRUPTION)
+    currentlyCreatingShip = None
+    _Log(fnName, "ship creation function has returned; watchdog timer cancelled", LL_DEBUG)
 
     _Log(fnName, "new ship: " + newShip, LL_DEBUG)
     If newShip != None && newShip.IsBoundGameObjectAvailable()

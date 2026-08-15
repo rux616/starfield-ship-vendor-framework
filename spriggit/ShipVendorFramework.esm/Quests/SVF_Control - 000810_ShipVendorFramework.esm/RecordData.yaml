@@ -6,6 +6,9 @@ VirtualMachineAdapter:
   - Name: shipvendorframework:svf_control
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: MsgBadShipCorruption
+      Object: 00090D:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: MsgErrorVendorMappingsNone
       Object: 0008FA:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty

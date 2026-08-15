@@ -291,3 +291,4 @@
     - [X] get key
     - [X] store key in NEXUS_MODS_API_KEY secret
     - [X] create workflow
+- [X] create some sort of watchdog process that watches the creation of ships and alarms if it gets stuck

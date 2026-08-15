@@ -108,6 +108,9 @@ Group Messages
 
     Message Property MsgVendorReady Auto Const
     { Message to show when the vendor is ready to sell ships. }
+
+    Message Property MsgBadShipCorruption Auto Const
+    { Message to show when corruption occurs due to a bad ship. }
 EndGroup
 
 ; cached vendor mappings

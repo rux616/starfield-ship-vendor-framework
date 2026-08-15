@@ -12,6 +12,7 @@ Table Of Contents
     - Summary
     - How To Add Ships (Lite)
     - Compatibility
+    - Dealing with Corruption
     - Known Issues
     - Enabling Logs
     - NPC Ship Lists
@@ -74,6 +75,18 @@ Mods that I have created capability patches for (included in the main download):
 - "Outpost Vendor New Ships" by nefurun [Creations (https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships)]
 - "The Den Astrodynamics" by VoodooChild [Nexus (https://www.nexusmods.com/starfield/mods/8809)]
 - "Watchtower" by kinggath_creations [Creations (https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command)]
+
+
+Dealing with Corruption
+-----------------------
+First things first, this is not exclusive to the Ship Vendor Framework. The same thing can happen in the vanilla ship vendor script. What's different is that the SVF attempts to notify the user and the "Corruption Detected" message gives helpful information to troubleshoot this. Unfortunately, it's only half the information that is needed. The other half is your load order. I need both to help you narrow down what ship/mod is bad.
+
+If you get the "Corruption Detected" message, don't panic! Yes, your current session is unfortunately toast, but you kept multiple saves because this is a Bethesda game and It Just Works, right? _RIGHT?_ Anyway, the last non-corrupted save is likely going to be A) the one before you entered the current area if you've been playing your current session a while, or B) your most recent save that you loaded into if you just started playing after installing additional mods.
+
+Technical details:
+The modified ship vendor script in SVF sets up a watchdog timer just before attempting to spawn a ship. In normal circumstances, the function that spawns the ship finishes in well under a second, usually within about 300 milliseconds, after which the timer is cancelled before it triggers. However, if the ship that the script tries to spawn is bad, the spawn function never finishes, thus hanging the script indefinitely and ultimately corrupting everything, which is where the timer comes into play. The timer is independent of that process and will trigger if left too long. This is what will show the "corruption detected" message.
+
+The "Vendor ID" and "Ship ID" numbers are simply a hexadecimal form ID translated into decimal. So for instance, the Form ID for Nikau Henderson is 0027A992 in hexadecimal, but 2599314 in decimal.
 
 Known Issues
 ------------

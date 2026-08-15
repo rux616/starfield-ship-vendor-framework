@@ -1,0 +1,35 @@
+FormKey: 00090D:ShipVendorFramework.esp
+EditorID: SVF_Msg_BadShipCorruption
+FormVersion: 582
+Description:
+  TargetLanguage: English
+  Value: >-
+    <p align='center'><font color='#ED0000'>!!! WARNING !!! WARNING !!! WARNING !!! WARNING !!!</font>
+
+    Corruption detected!
+
+    <font color='#ED0000'>!!! WARNING !!! WARNING !!! WARNING !!! WARNING !!!</font></p>
+
+    Ship Vendor Framework has detected a bad ship that is in the process of corrupting your current session. THIS IS UNRECOVERABLE.
+
+
+    Please screenshot this message, have your load order handy, and seek help from the Ship Vender Framework author. Contact details can be found in the readme, and more information can be found in the "Dealing with Corruption" section.
+
+
+    Vendor ID: %.0f
+
+    Ship ID: %.0f
+
+    Player Level: %.0f
+
+
+    The game will now quit to the main menu.
+Name:
+  TargetLanguage: English
+  Value: 'SVF: Corruption Detected'
+Flags:
+- MessageBox
+BNAM: 4294967295
+ShortTitle:
+  TargetLanguage: English
+  Value: Corruption Detected
