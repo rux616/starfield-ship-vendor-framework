@@ -40,6 +40,8 @@ The system that Bethesda designed for selling ships is interesting, but it lacks
 
 That's where this mod comes in. I've designed a system such that mod authors can easily add ships for sale to the various ship vendors without either conflicting with other mods that do the same or requiring the set up of a script. It will also refresh the vendor's list of ships if a change is detected in the vendor's "always" or "unique" lists. (A ship vendor's inventory is composed of three lists: always a.k.a. priority, random, and unique.)
 
+Additionally, mod authors can also add keywords to ship vendors, again without conflicting with other mods or requiring the use of a script. Special groups exist to target "all", "non-outpost", and "outpost" ship vendors, or specific ship vendors can be targeted individually. (Note that by default, the "outpost" ship vendor list consists of just the main vanilla outpost ship vendor, but others can be added.)
+
 As with Ship Builder Categories, this mod is intended to be a community resource and so will always have manual donations disabled and remain opted out of the Nexus Mods Donation Point system.
 
 **NOTE:** Vendors refresh their ship inventory every 7 days by default.

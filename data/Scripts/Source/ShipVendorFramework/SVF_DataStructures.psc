@@ -39,6 +39,15 @@ Struct ShipVendorDataMap
     FormList VendorKeywords
 EndStruct
 
+; struct to pass additional keyword lists to a ship vendor
+Struct AdditionalKeywordLists
+    FormList AllVendors
+
+    ; this form list will be populated by the "outpost vendors" keyword list or the "non-outpost vendors" keyword list,
+    ; depending on whether the actor base in question is in the list of outpost vendors
+    FormList Supplemental
+EndStruct
+
 ; struct to hold the mapping of a ship reference to its originating leveled ship
 ; this is unused at the moment, but if a v2 of the framework is made, the plan is to have it replace the
 ; "ShipRefToSpaceshipLeveledListMapping" struct in ShipVendorScript

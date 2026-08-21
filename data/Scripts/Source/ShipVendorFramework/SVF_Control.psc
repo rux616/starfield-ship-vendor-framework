@@ -113,6 +113,20 @@ Group Messages
     { Message to show when corruption occurs due to a bad ship. }
 EndGroup
 
+Group Keywords
+    FormList Property KeywordListAllVendors Auto Const
+    { Form List containing keywords to add to all vendors. }
+
+    FormList Property KeywordListNonOutpostVendors Auto Const
+    { Form List containing keywords to add to all vendors that are not outpost vendors. }
+
+    FormList Property KeywordListOutpostVendors Auto Const
+    { Form List containing keywords to add to all vendors that are outpost vendors. }
+
+    FormList Property VendorListOutpostVendors Auto Const
+    { Form List containing all vendors that are outpost vendors. }
+EndGroup
+
 ; cached vendor mappings
 Form[] vendorsCache
 Form[] shipListsRandomCache
@@ -122,6 +136,9 @@ Form[] randomShipsForSaleMinCache
 Form[] randomShipsForSaleMaxCache
 Form[] vendorContainersCache
 Form[] vendorKeywordsCache
+
+; other caches
+Form[] vendorListOutpostVendorsCache
 
 ; sentinel variable to check that the initialization of the script (version updates, sanity checks, etc.) have all
 ; finished
@@ -471,6 +488,7 @@ Function CacheVendorMappings()
     randomShipsForSaleMaxCache = RandomShipsForSaleMax.GetArray()
     vendorContainersCache = VendorContainers.GetArray()
     vendorKeywordsCache = VendorKeywords.GetArray()
+    vendorListOutpostVendorsCache = VendorListOutpostVendors.GetArray()
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
@@ -490,7 +508,7 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
     EndWhile
 
     If controlInitTimeout <= 0
-        _Log(fnName, "SVF Control initialization timed out", LL_WARNING)
+        _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
         Return None
     EndIf
 
@@ -530,4 +548,39 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
 
     _Log(fnName, "end", LL_DEBUG)
     Return vendorDataMap
+EndFunction
+
+
+AdditionalKeywordLists Function GetAdditionalKeywordLists(Form akShipVendorBase, Form akShipVendor)
+    ; note that akShipVendor is passed solely for traceability/logging purposes
+    string fnName = "GetAdditionalKeywordLists[" + GetHexID(akShipVendor) + "]" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    ; check if the control script is initializing and pause here if it is (return None after a timeout period)
+    int controlInitTimeout = 10
+    While SVFControlInitialized() == false && controlInitTimeout > 0
+        _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
+        Utility.WaitMenuPause(1.0)
+        controlInitTimeout -= 1
+    EndWhile
+
+    If controlInitTimeout <= 0
+        _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
+        Return None
+    EndIf
+
+    AdditionalKeywordLists keywordLists = new AdditionalKeywordLists
+
+    keywordLists.AllVendors = KeywordListAllVendors
+
+    If vendorListOutpostVendorsCache.Find(akShipVendorBase) >= 0
+        _Log(fnName, akShipVendorBase + " is an outpost vendor", LL_DEBUG)
+        keywordLists.Supplemental = KeywordListOutpostVendors
+    Else
+        _Log(fnName, akShipVendorBase + " is not an outpost vendor", LL_DEBUG)
+        keywordLists.Supplemental = KeywordListNonOutpostVendors
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return keywordLists
 EndFunction

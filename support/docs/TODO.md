@@ -147,6 +147,9 @@
         - if there are mods out there using the vendor data map method, then maybe, otherwise no
         - could also set up a system that disables malformed/malfunctioning parts of the vendor data map system
         - decision: since no third party mods are using the VDM method, no need to make things harder than they need to be
+    - [X] add "non-outpost vendors" keyword list
+    - [X] add "outpost-only" keyword list
+    - [X] add "all vendors" keyword list
 - [X] update patches that add vendors with keyword support
     - [X] shattered space
     - [X] darkstar astrodynamics

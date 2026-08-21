@@ -85,6 +85,8 @@ int shipsForSaleMinLocal
 int shipsForSaleMaxLocal
 ObjectReference vendorContainerLocal
 FormList vendorKeywordsLocal
+FormList allVendorKeywordsLocal
+FormList supplementalVendorKeywordsLocal
 
 ; original values of BuysShips/SellsShips so they can be restored if necessary
 bool originalBuysShips
@@ -97,6 +99,8 @@ LeveledSpaceshipBase[] svfShipsToSellUnique
 
 ; local cache of the vendor keywords
 Keyword[] vendorKeywordsCache
+Keyword[] allVendorKeywordsCache
+Keyword[] supplementalVendorKeywordsCache
 
 ; track the actual ships available to sell in the various established categories: random, always, unique, and
 ; player-sold
@@ -798,6 +802,11 @@ Function InitializeSVFEnhancementsVersion4()
 
     _Log(fnName, "Ship Vendor Framework enhancements updating to version " + updatingToVersion, LL_INFO)
 
+    ; do a base initialization of the vendor keyword caches
+    vendorKeywordsCache = new Keyword[0]
+    allVendorKeywordsCache = new Keyword[0]
+    supplementalVendorKeywordsCache = new Keyword[0]
+
     PopulateLocals()
     ApplyKeywords()
 
@@ -843,7 +852,11 @@ Function DebugDumpData()
         _Log(fnName, "shipsForSaleMaxLocal=" + shipsForSaleMaxLocal, LL_DEBUG)
         _Log(fnName, "vendorContainerLocal=" + vendorContainerLocal, LL_DEBUG)
         _Log(fnName, "vendorKeywordsLocal=" + vendorKeywordsLocal, LL_DEBUG)
+        _Log(fnName, "allVendorKeywordsLocal=" + allVendorKeywordsLocal, LL_DEBUG)
+        _Log(fnName, "supplementalVendorKeywordsLocal=" + supplementalVendorKeywordsLocal, LL_DEBUG)
         _Log(fnName, "vendorKeywordsCache=" + vendorKeywordsCache, LL_DEBUG)
+        _Log(fnName, "allVendorKeywordsCache=" + allVendorKeywordsCache, LL_DEBUG)
+        _Log(fnName, "supplementalVendorKeywordsCache=" + supplementalVendorKeywordsCache, LL_DEBUG)
         LockGuard ShipsForSaleGuard
             _Log(fnName, "shipsForSale=" + shipsForSale, LL_DEBUG)
             _Log(fnName, "shipsForSaleRandom=" + shipsForSaleRandom, LL_DEBUG)
@@ -894,6 +907,12 @@ Function PopulateLocals()
         vendorKeywordsLocal = VendorKeywords
     EndIf
 
+    _Log(fnName, "getting additional keyword lists for " + Self + " (base: " + (baseSelf as ActorBase) + ")", LL_DEBUG)
+    ShipVendorFramework:SVF_DataStructures:AdditionalKeywordLists keywordLists
+    keywordLists = svfControl.GetAdditionalKeywordLists(baseSelf, Self)
+    allVendorKeywordsLocal = keywordLists.AllVendors
+    supplementalVendorKeywordsLocal = keywordLists.Supplemental
+
     _Log(fnName, "svfShipsToSellListRandomDatasetLocal=" + svfShipsToSellListRandomDatasetLocal, LL_DEBUG)
     _Log(fnName, "svfShipsToSellListAlwaysDatasetLocal=" + svfShipsToSellListAlwaysDatasetLocal, LL_DEBUG)
     _Log(fnName, "svfShipsToSellListUniqueDatasetLocal=" + svfShipsToSellListUniqueDatasetLocal, LL_DEBUG)
@@ -901,6 +920,8 @@ Function PopulateLocals()
     _Log(fnName, "shipsForSaleMaxLocal=" + shipsForSaleMaxLocal, LL_DEBUG)
     _Log(fnName, "vendorContainerLocal=" + vendorContainerLocal, LL_DEBUG)
     _Log(fnName, "vendorKeywordsLocal=" + vendorKeywordsLocal, LL_DEBUG)
+    _Log(fnName, "allVendorKeywordsLocal=" + allVendorKeywordsLocal, LL_DEBUG)
+    _Log(fnName, "supplementalVendorKeywordsLocal=" + supplementalVendorKeywordsLocal, LL_DEBUG)
 
     ; sanity check the min/max random ships for sale values, switching if needed
     If shipsForSaleMaxLocal < shipsForSaleMinLocal
@@ -948,21 +969,61 @@ Function ApplyKeywords()
     string fnName = "ApplyKeywords" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    Keyword[] vendorKeywordsCacheCopy = (vendorKeywordsCache as var[]) as Keyword[]
-    If vendorKeywordsLocal != None
-        vendorKeywordsCache = vendorKeywordsLocal.GetArray() as Keyword[]
-    Else
+    string listNameVendor = "vendor-specific" Const
+    string listNameAllVendor = "all-vendor" Const
+    string listNameSupplementalVendor = "supplemental-vendor" Const
+
+    _Log(fnName, "purging broken keywords from vendor keyword caches", LL_DEBUG)
+    Keyword[] vendorKeywordsCacheCopy = PurgeBrokenKeywords(vendorKeywordsCache, listNameVendor)
+    Keyword[] allVendorKeywordsCacheCopy = PurgeBrokenKeywords(allVendorKeywordsCache, listNameAllVendor)
+    Keyword[] supplementalVendorKeywordsCacheCopy = PurgeBrokenKeywords(supplementalVendorKeywordsCache, listNameSupplementalVendor)
+
+    _Log(fnName, "getting current vendor keyword lists", LL_DEBUG)
+    ; there is a chance that any of the keywords lists could be None, so handle that potential scenario
+    If vendorKeywordsLocal == None
         vendorKeywordsCache = new Keyword[0]
+    Else
+        vendorKeywordsCache = vendorKeywordsLocal.GetArray() as Keyword[]
+    EndIf
+    If allVendorKeywordsLocal == None
+        allVendorKeywordsCache = new Keyword[0]
+    Else
+        allVendorKeywordsCache = allVendorKeywordsLocal.GetArray() as Keyword[]
+    EndIf
+    If supplementalVendorKeywordsLocal == None
+        supplementalVendorKeywordsCache = new Keyword[0]
+    Else
+        supplementalVendorKeywordsCache = supplementalVendorKeywordsLocal.GetArray() as Keyword[]
     EndIf
 
-    ; remove broken keywords from cache copy
-    ;
-    ; while the removal of mods mid-playthrough is not supported behavior by the game, users gonna user, so in order to
-    ; not generate errors in the main papyrus log file, we check for and remove None keywords that result from mod
-    ; removal. unfortunately, mod removal doesn't result in a clean break, and instead leaves behind broken keyword
-    ; objects in the array, which the game still treats as valid for the purposes of simple "keyword == None" checks.
-    ; thankfully, the string representation of a broken keyword object results in "[Keyword <None>]", so we check
-    ; against _that_ instead.
+    _Log(fnName, "removing old keywords", LL_DEBUG)
+    RemoveOldKeywords(vendorKeywordsCacheCopy, vendorKeywordsCache, listNameVendor)
+    RemoveOldKeywords(allVendorKeywordsCacheCopy, allVendorKeywordsCache, listNameAllVendor)
+    RemoveOldKeywords(supplementalVendorKeywordsCacheCopy, supplementalVendorKeywordsCache, listNameSupplementalVendor)
+
+    _Log(fnName, "adding new keywords", LL_DEBUG)
+    AddNewKeywords(vendorKeywordsCache, listNameVendor)
+    AddNewKeywords(allVendorKeywordsCache, listNameAllVendor)
+    AddNewKeywords(supplementalVendorKeywordsCache, listNameSupplementalVendor)
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+; while the removal of mods mid-playthrough is not technically supported behavior by the game, users are gonna user, so
+; we need to set up some defenses for that scenario. this removal isn't clean in most cases and if a mod had keywords
+; that were in an array, those keyword objects get broken by the mod's removal. in order to avoid generating errors in
+; the main papyrus log file when attempting to access them, these broken keywords need to be removed. unfortunately,
+; the game still treats them as valid for the purposes of simple "<keyword> == None" and "<keyword>" checks (which kind
+; of makes sense, as the object is still a keyword object, regardless of whether it references invalid data), but
+; thankfully the string representation of a broken keyword object results in the unique string "[Keyword <None>]", so
+; we check against that instead.
+Keyword[] Function PurgeBrokenKeywords(Keyword[] akVendorKeywordsCache, string asListName)
+    string fnName = "PurgeBrokenKeywords" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    Keyword[] vendorKeywordsCacheCopy = (akVendorKeywordsCache as var[]) as Keyword[]
+
     int keywordsRemoved = 0
     int i = vendorKeywordsCacheCopy.Length - 1
     string keywordNone = "[Keyword <None>]" Const
@@ -980,12 +1041,21 @@ Function ApplyKeywords()
     Else
         logLevel = LL_INFO
     EndIf
-    _Log(fnName, "removed " + keywordsRemoved + " None keywords from cache copy", logLevel)
+    _Log(fnName, "removed " + keywordsRemoved + " None keywords from " + asListName + " cache copy", logLevel)
 
-    Keyword[] vendorKeywordsDiff = ShipVendorFramework:SVF_Utility.ArrayDiffKYWD(vendorKeywordsCacheCopy, vendorKeywordsCache)
+    _Log(fnName, "end", LL_DEBUG)
+    Return vendorKeywordsCacheCopy
+EndFunction
+
+
+Function RemoveOldKeywords(Keyword[] akOldKeywords, Keyword[] akNewKeywords, string asListName)
+    string fnName = "RemoveOldKeywords" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    Keyword[] vendorKeywordsDiff = ShipVendorFramework:SVF_Utility.ArrayDiffKYWD(akOldKeywords, akNewKeywords)
     If vendorKeywordsDiff.Length > 0
-        _Log(fnName, "vendor keywords changed, removing old keywords: " + vendorKeywordsDiff, LL_INFO)
-        i = 0
+        _Log(fnName, asListName + " keywords changed, removing old keywords: " + vendorKeywordsDiff, LL_INFO)
+        int i = 0
         While i < vendorKeywordsDiff.Length
             ; remove the keyword from the vendor and reset the keyword so that it will obey inheritance
             ; this will make sure the vendor doesn't accidentally lose keywords it should have normally
@@ -997,12 +1067,20 @@ Function ApplyKeywords()
         EndWhile
     EndIf
 
-    If vendorKeywordsCache.Length > 0
-        _Log(fnName, "adding new keywords: " + vendorKeywordsCache, LL_INFO)
-        i = 0
-        While i < vendorKeywordsCache.Length
-            Self.AddKeyword(vendorKeywordsCache[i])
-            _Log(fnName, "    " + vendorKeywordsCache[i] + " added", LL_DEBUG)
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+Function AddNewKeywords(Keyword[] akNewKeywords, string asListName)
+    string fnName = "AddNewKeywords" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akNewKeywords.Length > 0
+        _Log(fnName, "adding new " + asListName + " keywords: " + akNewKeywords, LL_INFO)
+        int i = 0
+        While i < akNewKeywords.Length
+            Self.AddKeyword(akNewKeywords[i])
+            _Log(fnName, "    " + akNewKeywords[i] + " added", LL_DEBUG)
             i += 1
         EndWhile
     EndIf
