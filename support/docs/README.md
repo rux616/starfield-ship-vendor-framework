@@ -171,6 +171,8 @@ None
 
 Upgrading (General)
 -------------------
+**NOTE:** Regardless of whether it is a minor or major version upgrade, it is recommended to do a full replacement of the mod files in your mod manager so that old files get cleaned up. (For example, in Mod Organizer 2, when you install a mod with the same name, you get an option to "Merge", "Replace", or "Rename"; choose "Replace".)
+
 When upgrading non-major versions (for example v2.something to v2.something-else), you don't need to do anything except replace the installed mod files.
 
 When upgrading major versions (for example v1.whatever to v2.whatever), you need to do a clean install:
