@@ -1,52 +1,50 @@
 Table Of Contents
 =================
 - [Table Of Contents](#table-of-contents)
-- [Expansion Patches](#expansion-patches)
-    - [SVF Expansion Patch - Shattered Space](#svf-expansion-patch---shattered-space)
 - [Capability Patches](#capability-patches)
-    - [SVF Capability Patch - DarkStar Astrodynamics](#svf-capability-patch---darkstar-astrodynamics)
-    - [SVF Capability Patch - Dominion](#svf-capability-patch---dominion)
-    - [SVF Capability Patch - Falkland Systems v2](#svf-capability-patch---falkland-systems-v2)
-    - [SVF Capability Patch - Iconic Ships](#svf-capability-patch---iconic-ships)
-    - [SVF Capability Patch - L-K Ships](#svf-capability-patch---l-k-ships)
-    - [SVF Capability Patch - Lower Landing Pad](#svf-capability-patch---lower-landing-pad)
-    - [SVF Capability Patch - Outpost Vendor New Ships](#svf-capability-patch---outpost-vendor-new-ships)
-    - [SVF Capability Patch - The Den Astrodynamics](#svf-capability-patch---the-den-astrodynamics)
-    - [SVF Capability Patch - Watchtower](#svf-capability-patch---watchtower)
+    - [Update: Free Lanes](#update-free-lanes)
+    - [DLC: Shattered Space](#dlc-shattered-space)
+    - [Mod: Dominion](#mod-dominion)
+    - [Mod: Falkland Systems v2](#mod-falkland-systems-v2)
+    - [Mod: Iconic Ships](#mod-iconic-ships)
+    - [Mod: L-K Ships](#mod-l-k-ships)
+    - [Mod: Lower Landing Pad](#mod-lower-landing-pad)
+    - [Mod: Outpost Vendor New Ships](#mod-outpost-vendor-new-ships)
+    - [Mod: The Den Astrodynamics](#mod-the-den-astrodynamics)
+    - [Mod: Watchtower](#mod-watchtower)
 - [Compatibility Patches](#compatibility-patches)
-    - [SVF Compatibility Patch - Starvival v12.1](#svf-compatibility-patch---starvival-v121)
-
-
-Expansion Patches
-=================
-
-SVF Expansion Patch - Shattered Space
------
-Patch for "Ship Vendor Framework" by rux616 and the Shattered Space expansion.
-
-Mod Source:
-- Bethesda Game Studios
-
-Patch Type:
-- Expansion
+    - [Mod: DarkStar Astrodynamics v5](#mod-darkstar-astrodynamics-v5)
+    - [Mod: Starvival v12.1](#mod-starvival-v121)
+- [Misc Patches](#misc-patches)
+    - [Option: Hide Gameplay Options](#option-hide-gameplay-options)
 
 
 Capability Patches
 ==================
 
-SVF Capability Patch - DarkStar Astrodynamics
+Update: Free Lanes
 -----
-Patch for "Ship Vendor Framework" by rux616 and "DarkStar Astrodynamics" by WykkydGaming.
+Patch for "Ship Vendor Framework" by rux616 and the Free Lanes update.
 
 Mod Source:
-- Creations: https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics
-- Nexus: https://www.nexusmods.com/starfield/mods/9458
+- Bethesda Game Studios
 
 Patch Type:
 - Capability
 
 
-SVF Capability Patch - Dominion
+DLC: Shattered Space
+-----
+Patch for "Ship Vendor Framework" by rux616 and the Shattered Space DLC.
+
+Mod Source:
+- Bethesda Game Studios
+
+Patch Type:
+- Capability
+
+
+Mod: Dominion
 -----
 Patch for "Ship Vendor Framework" by rux616 and "Dominion" by rhart317.
 
@@ -57,7 +55,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Falkland Systems v2
+Mod: Falkland Systems v2
 -----
 Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" v2 by Hjalmere.
 
@@ -68,7 +66,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Iconic Ships
+Mod: Iconic Ships
 -----
 Patch for "Ship Vendor Framework" by rux616 and "Iconic Ships" by ShipTechnician.
 
@@ -79,7 +77,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - L-K Ships
+Mod: L-K Ships
 -----
 Patch for "Ship Vendor Framework" by rux616 and "L-K Ships" by Lighthorse and KeithVSmith1977.
 
@@ -91,7 +89,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Lower Landing Pad
+Mod: Lower Landing Pad
 -----
 Patch for "Ship Vendor Framework" by rux616 and "Lower Landing Pad" by SenterPat.
 
@@ -102,7 +100,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Outpost Vendor New Ships
+Mod: Outpost Vendor New Ships
 -----
 Patch for "Ship Vendor Framework" by rux616 and "Outpost Vendor New Ships" by nefurun.
 
@@ -113,7 +111,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - The Den Astrodynamics
+Mod: The Den Astrodynamics
 -----
 Patch for "Ship Vendor Framework" by rux616 and "The Den Astrodynamics" by VoodooChild.
 
@@ -124,7 +122,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Watchtower
+Mod: Watchtower
 -----
 Patch for "Ship Vendor Framework" by rux616 and "Watchtower" by kinggath_creations.
 
@@ -138,7 +136,19 @@ Patch Type:
 Compatibility Patches
 =====================
 
-SVF Compatibility Patch - Starvival v12.1
+Mod: DarkStar Astrodynamics v5
+-----
+Patch for "Ship Vendor Framework" by rux616 and "DarkStar Astrodynamics" v5 by WykkydGaming.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics
+- Nexus: https://www.nexusmods.com/starfield/mods/9458
+
+Patch Type:
+- Compatibility
+
+
+Mod: Starvival v12.1
 -----
 Patch for "Ship Vendor Framework" by rux616 and "Starvival" v12.1 by lKocMoHaBTl.
 
@@ -148,3 +158,14 @@ Mod Source:
 
 Patch Type:
 - Compatibility
+
+
+Misc Patches
+============
+
+Option: Hide Gameplay Options
+-----
+A small patch to hide all the Gameplay Options from Ship Vendor Framework.
+
+Patch Type:
+- Option

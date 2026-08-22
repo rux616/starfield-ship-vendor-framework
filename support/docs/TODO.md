@@ -296,3 +296,5 @@
     - [X] create workflow
 - [X] create some sort of watchdog process that watches the creation of ships and alarms if it gets stuck
 - [X] update readme "how to update" section to specifically call out that the user should REPLACE the mod every install
+- [X] decompile darkstar astrodynamics v5.0.0 scripts to see exactly what changed and determine what that means for compatibility
+    - [X] add override script to DSA patch
