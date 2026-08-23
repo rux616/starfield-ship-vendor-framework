@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <PapyrusProject
     xmlns="PapyrusProject.xsd"
-    Output="..\..\data-Starvival-patch\Scripts"
+    Output="..\..\data-DarkStarAstrodynamics-patch\Scripts"
     Flags="Starfield_Papyrus_Flags.flg"
     Asm="Keep"
     Optimize="false"
@@ -9,12 +9,10 @@
     Final="false"
 >
     <Imports>
-        <Import>..\papyrus-imports\starvival\Scripts\Source\User</Import>
-        <Import>..\papyrus-imports\cassiopeia\Scripts\Source\User</Import>
         <Import>..\..\data\Scripts\Source</Import>
         <Import>..\papyrus-imports\vanilla\Scripts\Source</Import>
     </Imports>
     <Folders>
-        <Folder>..\..\data-Starvival-patch\Scripts\Source</Folder>
+        <Folder>..\..\data-DarkStarAstrodynamics-patch\Scripts\Source</Folder>
     </Folders>
 </PapyrusProject>
