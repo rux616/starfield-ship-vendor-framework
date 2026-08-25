@@ -286,6 +286,25 @@
             - [-] [YTS-27 Corsair](https://www.nexusmods.com/starfield/mods/13429)
         - [X] creations
             - nope. site is too ass to be able to find everything.
+- [X] create keyword patches
+    - [X] vanilla
+        - [X] all vendors
+        - [X] non-outpost vendors
+        - [X] outpost vendors
+    - [X] darkstar astrodynamics
+        - [X] all vendors
+        - [X] non-outpost vendors
+        - [X] outpost vendors
+    - [X] falkland systems
+        - [X] all vendors
+        - [X] non-outpost vendors
+        - [X] outpost vendors
+    - [X] watchtower
+        - [X] all vendors
+        - [X] non-outpost vendors
+        - [X] outpost vendors
+    - [X] add patches to fomod
+    - [X] document in patches readme
 - [X] add verbiage somewhere in creations readme about how you may need to delete the mod fully and redownload it to update it
 - [X] determine effort required to add a FOMOD option to not install unchecked patches to the "optional" folder
     - easy, do it

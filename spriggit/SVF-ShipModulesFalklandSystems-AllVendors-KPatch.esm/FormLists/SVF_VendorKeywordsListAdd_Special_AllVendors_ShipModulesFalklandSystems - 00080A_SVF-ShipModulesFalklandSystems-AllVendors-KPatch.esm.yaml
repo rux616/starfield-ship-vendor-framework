@@ -1,0 +1,14 @@
+FormKey: 00080A:SVF-ShipModulesFalklandSystems-AllVendors-KPatch.esm
+EditorID: SVF_VendorKeywordsListAdd_Special_AllVendors_ShipModulesFalklandSystems
+FormVersion: 582
+Items:
+- 017DBF:FalklandSystems.esm
+- 023644:FalklandSystems.esm
+- 017DBD:FalklandSystems.esm
+- 000863:FalklandSystems.esm
+- 01ABFA:FalklandSystems.esm
+- 010FD4:FalklandSystems.esm
+- 016DC8:FalklandSystems.esm
+- 0069E6:FalklandSystems.esm
+- 0069E7:FalklandSystems.esm
+AddToList: 000905:ShipVendorFramework.esm

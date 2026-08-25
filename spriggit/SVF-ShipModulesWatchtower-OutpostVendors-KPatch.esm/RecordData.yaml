@@ -1,0 +1,29 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.40
+ModKey: SVF-ShipModulesWatchtower-OutpostVendors-KPatch.esm
+GameRelease: Starfield
+ModHeader:
+  Flags:
+  - Master
+  - Light
+  FormVersion: 582
+  Author: rux616
+  Description: >-
+    Patch to add all ship module keywords from "Watchtower" by kinggath_creations to outpost ship vendors.
+
+
+    Version: 1.0.0
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: sfbgs00d.esm
+  - Master: kinggathcreations_spaceship.esm
+  - Master: ShipVendorFramework.esm
+  - Master: SFBGS008.esm
+  - Master: SFBGS007.esm
+  - Master: sfbgs004.esm
+  - Master: SFBGS047.esm
+  - Master: SFBGS006.esm
+  - Master: sfbgs003.esm
+  Branch: Main
+  InteriorCellCount: 0

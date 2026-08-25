@@ -1,0 +1,11 @@
+FormKey: 00080A:SVF-ShipModulesWatchtower-AllVendors-KPatch.esm
+EditorID: SVF_VendorKeywordsListAdd_Special_AllVendors_ShipModulesWatchtower
+FormVersion: 582
+Items:
+- 0828B9:kinggathcreations_spaceship.esm
+- 085C61:kinggathcreations_spaceship.esm
+- 08666F:kinggathcreations_spaceship.esm
+- 085C62:kinggathcreations_spaceship.esm
+- 02D433:kinggathcreations_spaceship.esm
+- 042782:kinggathcreations_spaceship.esm
+AddToList: 000905:ShipVendorFramework.esm
