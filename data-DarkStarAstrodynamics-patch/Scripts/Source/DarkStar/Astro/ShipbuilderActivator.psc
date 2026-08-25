@@ -69,7 +69,7 @@ Function ApplyDarkStarKeywords()
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
-EndIf
+EndFunction
 
 
 ; override parent function
