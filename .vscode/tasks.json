@@ -142,7 +142,34 @@
         "vcDenAstrodynamics.esm", // "The Den Astrodynamics" by VoodooChild
         "SVF-TheDenAstrodynamics-Patch.esm",
         "kinggathcreations_spaceship.esm", // "Watchtower" by kinggath_creations
-        "SVF-Watchtower-Patch.esm"
+        "SVF-Watchtower-Patch.esm",
+        "SFBGS00D.esm", // "Free Lanes" update
+        "SVF-FreeLanes-Patch.esm",
+        // various keyword patches
+        "SVF-ShipModulesDarkStarAstrodynamics-AllVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesDarkStarAstrodynamics-NonOutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesDarkStarAstrodynamics-OutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesFalklandSystems-AllVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesFalklandSystems-NonOutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesFalklandSystems-OutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesVanilla-AllVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesVanilla-NonOutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesVanilla-OutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesWatchtower-AllVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesWatchtower-NonOutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesWatchtower-OutpostVendors-KPatch.esm",
+        "PATCH"
       ]
     },
     {

@@ -1,0 +1,7 @@
+FormKey: 00080A:SVF-ShipModulesDarkStarAstrodynamics-AllVendors-KPatch.esm
+EditorID: SVF_VendorKeywordsListAdd_Special_AllVendors_ShipModulesDarkStarAstrodynamics
+FormVersion: 582
+Items:
+- 000010:DarkStar_Astrodynamics.esm
+- 0001A1:DarkStar_Astrodynamics.esm
+AddToList: 000905:ShipVendorFramework.esm

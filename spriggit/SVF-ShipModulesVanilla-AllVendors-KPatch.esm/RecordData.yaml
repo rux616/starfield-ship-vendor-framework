@@ -1,0 +1,21 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Starfield
+  Version: 0.40
+ModKey: SVF-ShipModulesVanilla-AllVendors-KPatch.esm
+GameRelease: Starfield
+ModHeader:
+  Flags:
+  - Master
+  - Light
+  FormVersion: 582
+  Author: rux616
+  Description: >-
+    Patch to add all ship module keywords from vanilla to all ship vendors.
+
+
+    Version: 1.0.0
+  MasterReferences:
+  - Master: Starfield.esm
+  - Master: ShipVendorFramework.esm
+  Branch: Main
+  InteriorCellCount: 0
