@@ -141,6 +141,14 @@
 - [X] mark patch for "SGC Daedalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 as outdated and no longer needed
     - [X] check newer version of SGC Daedalus mod to confirm compatibility with SVF
     - confirmed - can remove patch
+- [-] rename "Outpost Vendor Custom Ships" mod patch to "Outpost Vendor New Ships"
+    - was already called "Outpost Vendor New Ships" everywhere /shrug
+- [-] create "Stroud Premium Edition" patch
+    - [-] add gameplay setting options [main mod]
+    - [-] add gameplay setting option override [patch]
+    - [-] determine vendor container
+    - [-] add lists
+    - not needed because it just references the Stroud-Eklund kiosk from the Neon store
 - [X] add way to allow added keywords to ship vendors
     - [X] check what the consequences are to altering the ShipVendorDataMap struct -> verify that no critical data is being held there and that it's just used to transport data between control script and vendor script
     - [-] make keyword map independent of main data map?
@@ -286,6 +294,16 @@
             - [-] [YTS-27 Corsair](https://www.nexusmods.com/starfield/mods/13429)
         - [X] creations
             - nope. site is too ass to be able to find everything.
+    - [X] update vendor keyword list naming (SVF_VendorKeywordsList_<vendor_editor_id> to SVF_VendorKeywordsList_Vendor_<vendor_editor_id>)
+        - [X] DarkStar Astrodynamics
+        - [X] Falkland Systems
+        - [X] Free Lanes
+        - [X] Lower Landing Pad
+        - [X] Shattered Space
+        - [X] Watchtower
+    - [X] add vendors to outpost vendor list
+        - [X] DarkStar Astrodynamics
+        - [X] Lower Landing Pad
 - [X] create keyword patches
     - [X] vanilla
         - [X] all vendors
@@ -313,7 +331,27 @@
     - [X] get key
     - [X] store key in NEXUS_MODS_API_KEY secret
     - [X] create workflow
+- [X] note Free Lanes update as a requirement in the readme files
+- [-] add some defensive checks for FormLists to ensure that items in them are what's expected
+    - nah, if things are there that aren't supposed to be, it'll error out in either the user log or the main log or both
+- [X] audit CheckForNewShips function in ShipVendorScript to make sure it's not erroneously regenerating ships due to "unique" or "always" ships being purchased
+    - [X] utilize the new SVF_Utility.ArraySubtract* functions on the lists to make sure they match up with
 - [X] create some sort of watchdog process that watches the creation of ships and alarms if it gets stuck
 - [X] update readme "how to update" section to specifically call out that the user should REPLACE the mod every install
 - [X] decompile darkstar astrodynamics v5.0.0 scripts to see exactly what changed and determine what that means for compatibility
     - [X] add override script to DSA patch
+- [X] check compatibility patch for The Den Astrodynamics with new version (v1.1 or v1.2)
+    - compatible
+- [X] check compatibility with Starvival v12.5
+    - compatible
+- [X] pull out free lanes stuff into its own patch
+    - [X] fomod
+        - [-] add Free Lanes patch to other mods that require free lanes(?)
+    - [X] plugins
+        - [X] ShipVendorFramework
+        - [X] SVF-FreeLanes-Patch
+    - [X] docs
+        - [X] changelog
+        - [X] readme (update requirements of SVF to specify a minimum Starfield version of v1.11.36)
+        - [X] creations readme
+        - [X] patches readme
