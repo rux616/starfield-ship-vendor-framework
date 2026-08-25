@@ -149,11 +149,11 @@ Load Order
 ----------
 For best results, I would recommend keeping this mod and all its patches in a single block, all following any other mods that are being patched.
 
-For patches, the load order should be as follows:
+For patches, the load order is recommended to be as follows:
 - ShipVendorFramework.esm
-- (SVF Expansion Patches, if any)
 - (SVF Capability Patches, if any)
 - (SVF Compatibility Patches, if any)
+- (SVF Keyword Patches, if any)
 
 ([TOC](#table-of-contents))
 
