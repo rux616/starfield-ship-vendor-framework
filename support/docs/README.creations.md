@@ -52,7 +52,7 @@ Known Issues
 
 Requirements
 -----
-None
+- Starfield v1.11.36 (released 2024-05-15) or later
 
 Enabling Logs
 -----

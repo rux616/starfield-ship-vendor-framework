@@ -159,7 +159,7 @@ For patches, the load order should be as follows:
 
 Requirements
 ------------
-- Must have the Free Lanes update (Starfield v1.16.236+)
+- Starfield v1.11.36 (released 2024-05-15) or later
 
 ([TOC](#table-of-contents))
 
