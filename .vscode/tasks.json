@@ -20,12 +20,10 @@
       "dependsOn": [
         "Update Versions",
         "Sanitize FOMOD XML Files",
-        "Render Markdown to Nexus BBCode",
-        "Render Markdown to Plaintext",
+        "Render Text Files",
         "Serialize Plugins",
         "Compile Papyrus Scripts",
         "Create Archives"
-        // "Clean Up BA2 Archives"
       ]
     },
     {
@@ -40,10 +38,17 @@
       "command": "./support/common/scripts/sanitize-fomod-xml.ps1"
     },
     {
+      "label": "Render Text Files",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Render Markdown to Nexus BBCode", "Render Markdown to Plaintext"],
+      "problemMatcher": []
+    },
+    {
       "label": "Render Markdown to Nexus BBCode",
       "type": "shell",
       "command": "./support/common/scripts/markdown-to-nexusbbcode.ps1",
-      "args": ["./support/docs/README.md", "./support/docs/HOWTO.md"]
+      "args": ["./support/docs/README.md", "./support/docs/HOWTO.md"],
+      "problemMatcher": []
     },
     {
       "label": "Render Markdown to Plaintext",
@@ -54,7 +59,8 @@
         "./support/docs/HOWTO.md",
         "./support/docs/README.md",
         "./support/docs/README.patches.md"
-      ]
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Populate Known Masters",
@@ -77,6 +83,7 @@
         "dominion.esm",
         "nighthawk.esm",
         "ShipVendorFramework.esm",
+        "SVF-FreeLanes-Patch.esm",
         "SVF-ShatteredSpace-Patch.esm"
       ]
     },
@@ -95,6 +102,7 @@
         "Compile Scripts (Starvival Patch)",
         "Compile Scripts (Main)"
       ],
+      "problemMatcher": []
     },
     {
       "label": "Compile Scripts (DarkStar Astrodynamics Patch)",
@@ -178,6 +186,7 @@
       "command": "./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe",
       "args": ["./support/scripts/ShipVendorFramework.ppj"],
       "dependsOn": ["Populate Mods and Patches in SVF_Control"],
+      "problemMatcher": []
     },
     {
       "label": "Create Archives (DarkStar Astrodynamics Patch BA2)",
@@ -204,7 +213,7 @@
       "command": "./support/common/scripts/build-archives.ps1",
       "args": [
         "-DataDir",
-        "./data-starvival-patch",
+        "./data-Starvival-patch",
         "-PluginName",
         "SVF-Starvival-Patch",
         "-Starfield",
@@ -214,7 +223,8 @@
         "-BA2AlsoMakePS",
         "-BA2ForceUncompressed",
         "-BA2DisableSharing"
-      ]
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Create Archives (Main BA2)",
@@ -230,7 +240,8 @@
         "-BA2AlsoMakePS",
         "-BA2ForceUncompressed",
         "-BA2DisableSharing"
-      ]
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Create Archives",
