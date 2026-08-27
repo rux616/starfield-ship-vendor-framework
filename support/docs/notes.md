@@ -294,21 +294,21 @@ commands:
 - `ls outpost*.psc,ship*.psc`
 - `Get-FileHash outpost*.psc,ship*.psc`
 
-v12.1.0
+v12.4.6
 
 | file                                | size (bytes) |                               sha256                               |
 |-------------------------------------|-------------:|:------------------------------------------------------------------:|
-| outpostshipbuildermenuactivator.psc |       13,369 | `3902022E0B226B4B36AEA4519F168E8E9789093E420D00AB889D2649C9C693B9` |
+| outpostshipbuildermenuactivator.psc |       13,343 | `AE6FBB5ADD935B467B8CBE17B16582188E1C502EE757C9A43AF71960E6612E87` |
 | shipvendorinfoscript.psc            |        6,122 | `A8893178AF4B32FB9FCD51DF93DB98D681A80B51F04FEE8927AAB7CD2236C074` |
-| shipvendorscript.psc                |       13,582 | `2DC32C3113EDBCD7E061846847938E616ACBFE1738277E2019C8BA81C2B436F3` |
+| shipvendorscript.psc                |       13,469 | `A7A12E96C8C48FED4FCA279B5230130665EFA2C1096D3706F05FD43416B3F882` |
 
-v12.4.5
+v12.5.0
 
 | file                                | size (bytes) |                               sha256                               |
 |-------------------------------------|-------------:|:------------------------------------------------------------------:|
-| outpostshipbuildermenuactivator.psc |       13,369 | `3902022E0B226B4B36AEA4519F168E8E9789093E420D00AB889D2649C9C693B9` |
+| outpostshipbuildermenuactivator.psc |       13,343 | `AE6FBB5ADD935B467B8CBE17B16582188E1C502EE757C9A43AF71960E6612E87` |
 | shipvendorinfoscript.psc            |        6,122 | `A8893178AF4B32FB9FCD51DF93DB98D681A80B51F04FEE8927AAB7CD2236C074` |
-| shipvendorscript.psc                |       13,582 | `2DC32C3113EDBCD7E061846847938E616ACBFE1738277E2019C8BA81C2B436F3` |
+| shipvendorscript.psc                |       13,469 | `A7A12E96C8C48FED4FCA279B5230130665EFA2C1096D3706F05FD43416B3F882` |
 
 
 ## CK command line parameters
