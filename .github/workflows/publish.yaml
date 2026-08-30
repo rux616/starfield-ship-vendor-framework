@@ -15,7 +15,7 @@ jobs:
       ARCHIVE_NAME: ${{ join(vars.MOD_NAME, '_') }}_v${{ github.ref_name }}.7z
     steps:
       - name: Checkout Code
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           submodules: "true"
       # compile scripts
@@ -62,7 +62,7 @@ jobs:
           -SkipBA2
       # upload to nexus mods
       - name: Upload to Nexus Mods
-        uses: Nexus-Mods/upload-action@f6e1e2ea683dfe8f88cccf642c6e0e69ab66825e # v1.0.0-beta.8
+        uses: Nexus-Mods/upload-action@c96019556046053aa26044b44396cd38929daf23 # v1.0.0-beta.10
         with:
           api_key: ${{ secrets.NEXUS_MODS_API_KEY }}
           file_id: ${{ vars.NEXUS_FILE_ID }}
