@@ -12,7 +12,7 @@ Table Of Contents
     - [Step 2: Create Min/Max Gameplay Options (Optional)](#step-2-create-minmax-gameplay-options-optional)
     - [Step 3: Create Gameplay Option Group (Optional)](#step-3-create-gameplay-option-group-optional)
     - [Step 4: Create "ShipVendorList" FormLists](#step-4-create-shipvendorlist-formlists)
-    - [Step 5: Create "VendorData" FormLists](#step-5-create-vendordata-formlists)
+    - [Step 6: Create "VendorData" FormLists](#step-6-create-vendordata-formlists)
     - [Step 7: Create "VendorMapAdd" FormLists](#step-7-create-vendormapadd-formlists)
 - [Set Vendor To Use SVF - Direct](#set-vendor-to-use-svf---direct)
     - [Step 1: Load the Starfield Creation Kit](#step-1-load-the-starfield-creation-kit-2)
@@ -220,12 +220,12 @@ Set the ID of the lists, then fill them your desired "Leveled Base Form" entries
 ([TOC](#table-of-contents))
 
 
-Step 5: Create "VendorData" FormLists
+Step 6: Create "VendorData" FormLists
 -------------------------------------
 These formlists are pointers to the data that Ship Vendor Framework needs to work with a specified vendor and **MUST** be created. Additionally, the "ShipListAlways", "ShipListRandom", and "ShipListUnique" formlists **MUST** be populated by a `SVF_ShipVendorList_[...]`-type list, though it doesn't have to be one you create. For example, you could choose to use `SVF_ShipVendorList_Faction_UnitedColonies_Limited` in the "ShipListRandom" formlist.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
-![Create New FormList](/support/packaging/svf-how-to-vendor-map-5a-create-formlist.jpg)
+![Create New FormList](/support/packaging/svf-how-to-vendor-map-6a-create-formlist.jpg)
 
 For the ID, I would recommend something like `SVF_VendorData_<Vendor_Editor_ID>_<Map_Type>`, where `<Vendor_Editor_ID>` is the ID of the actor that is the vendor, and `<Map_Type>` is one of the following:
 
@@ -239,16 +239,16 @@ For the ID, I would recommend something like `SVF_VendorData_<Vendor_Editor_ID>_
 Populate each of the formlists as follows:
 
 - RandomShipsForSaleMax/RandomShipsForSaleMin: the gameplay options you created in step 2
-    - ![Populate RandomShipsForSale(...) FormLists](/support/packaging/svf-how-to-vendor-map-5b-populate-randomshipsforsale-formlists.jpg)
+    - ![Populate RandomShipsForSale(...) FormLists](/support/packaging/svf-how-to-vendor-map-6b-populate-randomshipsforsale-formlists.jpg)
 - ShipListAlways/ShipListRandom/ShipListUnique: the ShipVendorList formlist you created in step 4, or one of the existing ones
-    - ![Populate ShipList(...) FormLists](/support/packaging/svf-how-to-vendor-map-5c-populate-shiplist-formlists.jpg)
+    - ![Populate ShipList(...) FormLists](/support/packaging/svf-how-to-vendor-map-6c-populate-shiplist-formlists.jpg)
 - VendorContainer: the object reference of your vendor's container (a note about this: at least as of CK v1.15.222.0, you can't just drag and drop the reference, you need to engage in some shenanigans to do it)
     - Make sure you have the "Cell View" window open (you can make sure it's shown by going to the "View" menu and selecting "Cell View"
-    - ![Open Cell View](/support/packaging/svf-how-to-vendor-map-5d-open-cell-view.jpg)
+    - ![Open Cell View](/support/packaging/svf-how-to-vendor-map-6d-open-cell-view.jpg)
     - Filter the Cell View window however you need to in order to find your vendor's vendor container
-    - ![Filter Cell View](/support/packaging/svf-how-to-vendor-map-5e-filter-cell-view.jpg)
+    - ![Filter Cell View](/support/packaging/svf-how-to-vendor-map-6e-filter-cell-view.jpg)
     - Open the VendorContainer formlist you created, drag the vendor container reference into the list box (above the Conditions box), then click the "Paste selected element" button on the right side of the list box (it looks like a clipboard)
-    - ![Populate VendorContainer FormList](/support/packaging/svf-how-to-vendor-map-5f-populate-vendorcontainer-formlist.jpg)
+    - ![Populate VendorContainer FormList](/support/packaging/svf-how-to-vendor-map-6f-populate-vendorcontainer-formlist.jpg)
     - Yes, this is stupidly convoluted. No, I have no idea when or even if Bethesda will ever fix it. If you have a proven better way, please let me know.
 
 ([TOC](#table-of-contents))

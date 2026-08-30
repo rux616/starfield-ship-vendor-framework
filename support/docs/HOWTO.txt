@@ -12,8 +12,8 @@ Table Of Contents
     - Step 2: Create Min/Max Gameplay Options (Optional)
     - Step 3: Create Gameplay Option Group (Optional)
     - Step 4: Create "ShipVendorList" FormLists
-    - Step 5: Create "VendorData" FormLists
-    - Step 6: Create "VendorMapAdd" FormLists
+    - Step 6: Create "VendorData" FormLists
+    - Step 7: Create "VendorMapAdd" FormLists
 - Set Vendor To Use SVF - Direct
     - Step 1: Load the Starfield Creation Kit
     - Step 2: Create "ShipVendorList" FormLists
@@ -187,7 +187,7 @@ Set the ID of the lists, then fill them your desired "Leveled Base Form" entries
 (Image: Populate ShipVendorList FormList)
 
 
-Step 5: Create "VendorData" FormLists
+Step 6: Create "VendorData" FormLists
 -------------------------------------
 These formlists are pointers to the data that Ship Vendor Framework needs to work with a specified vendor and MUST be created. Additionally, the "ShipListAlways", "ShipListRandom", and "ShipListUnique" formlists MUST be populated by a `SVF_ShipVendorList_[...]`-type list, though it doesn't have to be one you create. For example, you could choose to use `SVF_ShipVendorList_Faction_UnitedColonies_Limited` in the "ShipListRandom" formlist.
 
