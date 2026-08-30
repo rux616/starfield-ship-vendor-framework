@@ -21,7 +21,8 @@
 # the keys should be the GitHub in-repo file paths, and the values should be the corresponding Nexus Mods URLs
 $nexus_image_map = @{
     # readme
-    "/support/packaging/svf-npc-form-list.jpg"                                              = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776201894-1653106819.jpg"
+    "/support/packaging/svf-npc-form-list.jpg"                                              = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1787910135-1696394439.jpg"
+    "/support/packaging/svf-npc-form-list-FreeLanes.jpg"                                    = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1787910080-1463907282.jpg"
     "/support/packaging/svf-npc-form-list-ShatteredSpace.jpg"                               = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776201400-1499281488.jpg"
     "/support/packaging/svf-npc-form-list-DarkStarAstrodynamics.jpg"                        = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690462-441494414.jpg"
     "/support/packaging/svf-npc-form-list-FalklandSystems.jpg"                              = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758690440-150465271.jpg"

@@ -115,6 +115,9 @@ NOTE: All form list editor IDs start with `SVF_ShipVendorList_`. This prefix has
 Vanilla:
 (Image: NPC Ship List Table (Vanilla))
 
+Free Lanes (with patch):
+(Image: NPC Ship List Table (Free Lanes Patch))
+
 Shattered Space (with patch):
 (Image: NPC Ship List Table (Shattered Space Patch))
 

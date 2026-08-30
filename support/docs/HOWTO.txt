@@ -217,7 +217,7 @@ Populate each of the formlists as follows:
     - Yes, this is stupidly convoluted. No, I have no idea when or even if Bethesda will ever fix it. If you have a proven better way, please let me know.
 
 
-Step 6: Create "VendorMapAdd" FormLists
+Step 7: Create "VendorMapAdd" FormLists
 ---------------------------------------
 These are the lists used to add the "VendorData" lists to the "VendorMap" lists in the main mod. You MUST create 1 for each type listed below.
 
@@ -287,6 +287,9 @@ NOTE: All formlist editor IDs start with `SVF_ShipVendorList_`. This prefix has 
 
 Vanilla:
 (Image: NPC Ship List Table (Vanilla))
+
+Free Lanes (with patch):
+(Image: NPC Ship List Table (Free Lanes Patch))
 
 Shattered Space (with patch):
 (Image: NPC Ship List Table (Shattered Space Patch))

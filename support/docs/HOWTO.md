@@ -336,6 +336,9 @@ NPC Ship Lists
 Vanilla:
 ![NPC Ship List Table (Vanilla)](/support/packaging/svf-npc-form-list.jpg)
 
+Free Lanes (with patch):
+![NPC Ship List Table (Free Lanes Patch)](/support/packaging/svf-npc-form-list-FreeLanes.jpg)
+
 Shattered Space (with patch):
 ![NPC Ship List Table (Shattered Space Patch)](/support/packaging/svf-npc-form-list-ShatteredSpace.jpg)
 
