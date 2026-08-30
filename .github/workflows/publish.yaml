@@ -12,79 +12,52 @@ jobs:
     runs-on: windows-latest
     env:
       MOD_NAME_CONDENSED: ${{ join(vars.MOD_NAME, '') }}
-      ARCHIVE_NAME: ${{ join(vars.MOD_NAME, '_') }}_v${{ github.ref_name }}.7z
+      RELEASE_ARCHIVE: ./builds/${{ join(vars.MOD_NAME, '_') }}_v${{ github.ref_name }}.7z
     steps:
       - name: Checkout Code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           submodules: "true"
-      # compile scripts
-      - name: Compile Starvival Scripts
+      - name: Install VS Code Task Runner # https://pypi.org/project/vscode-task-runner/
+        run: pipx install "vscode-task-runner==3.1.0"
+      - name: Compile Papyrus Scripts
+        run: vtr "Compile Papyrus Scripts"
+      - name: Create Archives
+        run: vtr "Create Archives"
+      - name: Generate Release Notes
+        run: |
+          {
+            echo 'CHANGELOG_FULL<<EOF'
+            gh pr list --search '${{ github.ref_name }}' --state merged --json body --jq '.[].body'
+            echo 'EOF'
+          } >>"$GITHUB_ENV"
+      - name: Create GitHub Release
         run: >
-          ./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe
-          "./support/scripts/SVFStarvivalPatch.ppj"
-      - name: Compile Main Scripts
-        run: >
-          ./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe
-          "./support/scripts/${{ env.MOD_NAME_CONDENSED }}.ppj"
-      # create archives
-      - name: Create Starvival Patch BA2
-        shell: pwsh
-        run: >
-          ./support/common/scripts/build-archives.ps1
-          -DataDir
-          "./data-starvival-patch"
-          -PluginName
-          "SVF-Starvival-Patch"
-          -Starfield
-          -Skip7z
-          -SkipBA2Cleanup
-          -BA2ForceUncompressed
-          -BA2DisableSharing
-      - name: Create Main BA2
-        shell: pwsh
-        run: >
-          ./support/common/scripts/build-archives.ps1
-          -ModName
-          "${{ vars.MOD_NAME }}"
-          -Starfield
-          -Skip7z
-          -SkipBA2Cleanup
-          -BA2ForceUncompressed
-          -BA2DisableSharing
-      - name: Create Archive
-        shell: pwsh
-        run: >
-          ./support/common/scripts/build-archives.ps1
-          -ModName
-          "${{ vars.MOD_NAME }}"
-          -Starfield
-          -SkipBA2
-      # upload to nexus mods
+          gh release create
+          ${{ github.ref_name }}
+          "${{ env.RELEASE_ARCHIVE }}"
+          --notes "${{ env.CHANGELOG_FULL }}"
+      - name: Transform Release Notes For Nexus Mods
+        run: |
+          {
+            echo 'CHANGELOG_NEXUS<<EOF'
+            "${{ env.CHANGELOG_FULL }}" | Select-Object -Skip 2 | ForEach-Object { $_Substring(2) }
+            echo 'EOF'
+          } >>"$GITHUB_ENV"
       - name: Upload to Nexus Mods
         uses: Nexus-Mods/upload-action@c96019556046053aa26044b44396cd38929daf23 # v1.0.0-beta.10
         with:
           api_key: ${{ secrets.NEXUS_MODS_API_KEY }}
           file_id: ${{ vars.NEXUS_FILE_ID }}
-          filename: ./builds/${{ env.ARCHIVE_NAME }}
+          filename: ${{ env.RELEASE_ARCHIVE }}
           version: ${{ github.ref_name }}
           display_name: ${{ vars.MOD_NAME }}
+          description: See changelog for full details.
+          category: main
           archive_existing_version: true
           primary_mod_manager_download: true
-          description: See changelog for full details.
-      # grab the body of the merged PR, which should be the changelog entry
-      - name: Generate Release Notes
-        run: >
-          gh pr list
-          --search '${{ github.ref_name }}'
-          --state merged
-          --json body
-          --jq '.[].body'
-          > release_notes.txt
-      # publish github release
-      - name: Create GitHub Release
-        run: >
-          gh release create
-          ${{ github.ref_name }}
-          "./builds/${{ env.ARCHIVE_NAME }}"
-          --notes-file release_notes.txt
+          allow_mod_manager_download: true
+          show_requirements_pop_up: false
+          update_mod_version: true
+          mod_id: ${{ vars.NEXUS_MOD_ID }}
+          changelog: ${{ env.CHANGELOG_NEXUS }}
