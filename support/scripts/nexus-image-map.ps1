@@ -64,9 +64,9 @@ $nexus_image_map = @{
     "/support/packaging/svf-how-to-vendor-map-5d-open-cell-view.jpg"                        = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784428-6105545.jpg"
     "/support/packaging/svf-how-to-vendor-map-5e-filter-cell-view.jpg"                      = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784439-1101570346.jpg"
     "/support/packaging/svf-how-to-vendor-map-5f-populate-vendorcontainer-formlist.jpg"     = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784452-137422332.jpg"
-    "/support/packaging/svf-how-to-vendor-map-6a-create-formlist.jpg"                       = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776246393-2023002372.jpg"
-    "/support/packaging/svf-how-to-vendor-map-6b-add-vendordata-to-vandormapadd-1.jpg"      = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071549-1310188835.jpg"
-    "/support/packaging/svf-how-to-vendor-map-6c-add-vendordata-to-vandormapadd-2.jpg"      = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071565-1696964893.jpg"
+    "/support/packaging/svf-how-to-vendor-map-7a-create-formlist.jpg"                       = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776246393-2023002372.jpg"
+    "/support/packaging/svf-how-to-vendor-map-7b-add-vendordata-to-vandormapadd-1.jpg"      = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071549-1310188835.jpg"
+    "/support/packaging/svf-how-to-vendor-map-7c-add-vendordata-to-vandormapadd-2.jpg"      = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071565-1696964893.jpg"
     ## vendor set up - direct
     "/support/packaging/svf-how-to-vendor-direct-1a.jpg"                                    = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776244814-2115491136.jpg"
     "/support/packaging/svf-how-to-vendor-direct-2a-create-formlist.jpg"                    = "https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776244975-219623544.jpg"

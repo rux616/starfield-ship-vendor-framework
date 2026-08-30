@@ -13,7 +13,7 @@ Table Of Contents
     - [Step 3: Create Gameplay Option Group (Optional)](#step-3-create-gameplay-option-group-optional)
     - [Step 4: Create "ShipVendorList" FormLists](#step-4-create-shipvendorlist-formlists)
     - [Step 5: Create "VendorData" FormLists](#step-5-create-vendordata-formlists)
-    - [Step 6: Create "VendorMapAdd" FormLists](#step-6-create-vendormapadd-formlists)
+    - [Step 7: Create "VendorMapAdd" FormLists](#step-7-create-vendormapadd-formlists)
 - [Set Vendor To Use SVF - Direct](#set-vendor-to-use-svf---direct)
     - [Step 1: Load the Starfield Creation Kit](#step-1-load-the-starfield-creation-kit-2)
     - [Step 2: Create "ShipVendorList" FormLists](#step-2-create-shipvendorlist-formlists)
@@ -254,12 +254,12 @@ Populate each of the formlists as follows:
 ([TOC](#table-of-contents))
 
 
-Step 6: Create "VendorMapAdd" FormLists
+Step 7: Create "VendorMapAdd" FormLists
 ---------------------------------------
 These are the lists used to add the "VendorData" lists to the "VendorMap" lists in the main mod. You **MUST** create 1 for each type listed below.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
-![Create New FormList](/support/packaging/svf-how-to-vendor-map-6a-create-formlist.jpg)
+![Create New FormList](/support/packaging/svf-how-to-vendor-map-7a-create-formlist.jpg)
 
 For the ID, I would recommend something like `SVF_VendorMapAdd_<Map_Type>_<Mod_FileName>`, where `<Map_Type>` is one of the vendor maps:
 
@@ -272,8 +272,8 @@ For the ID, I would recommend something like `SVF_VendorMapAdd_<Map_Type>_<Mod_F
 - Vendors
 
 To each of these lists, add the respective formlist created in Step 5 (with the exception of the "Vendors" list - you just add the vendor actor itself), and then set the "add to list" box to the appropriate `SVF_VendorMap_[...]` list from the main mod. For example, if you create a `SVF_VendorMapAdd_VendorContainers_MyAwesomeMod` formlist, you would set the "add to list" box to `SVF_VendorMap_VendorContainers`.
-![Example "VendorMapAdd" FormList (Not Vendor)](/support/packaging/svf-how-to-vendor-map-6b-add-vendordata-to-vandormapadd-1.jpg)
-![Example "VendorMapAdd" FormList (Vendor)](/support/packaging/svf-how-to-vendor-map-6c-add-vendordata-to-vandormapadd-2.jpg)
+![Example "VendorMapAdd" FormList (Not Vendor)](/support/packaging/svf-how-to-vendor-map-7b-add-vendordata-to-vandormapadd-1.jpg)
+![Example "VendorMapAdd" FormList (Vendor)](/support/packaging/svf-how-to-vendor-map-7c-add-vendordata-to-vandormapadd-2.jpg)
 
 ([TOC](#table-of-contents))
 

@@ -12,7 +12,7 @@
     - Step 3: Create Gameplay Option Group (Optional)
     - Step 4: Create "ShipVendorList" FormLists
     - Step 5: Create "VendorData" FormLists
-    - Step 6: Create "VendorMapAdd" FormLists
+    - Step 7: Create "VendorMapAdd" FormLists
 - Set Vendor To Use SVF - Direct
     - Step 1: Load the Starfield Creation Kit
     - Step 2: Create "ShipVendorList" FormLists
@@ -221,7 +221,7 @@ Populate each of the formlists as follows:
     - Yes, this is stupidly convoluted. No, I have no idea when or even if Bethesda will ever fix it. If you have a proven better way, please let me know.
 
 
-[size=4][b][u]Step 6: Create "VendorMapAdd" FormLists:[/u][/b][/size]
+[size=4][b][u]Step 7: Create "VendorMapAdd" FormLists:[/u][/b][/size]
 These are the lists used to add the "VendorData" lists to the "VendorMap" lists in the main mod. You [b]MUST[/b] create 1 for each type listed below.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
