@@ -323,6 +323,7 @@
         - [X] outpost vendors
     - [X] add patches to fomod
     - [X] document in patches readme
+- [X] update HOWTO docs with keyword stuff
 - [X] add verbiage somewhere in creations readme about how you may need to delete the mod fully and redownload it to update it
 - [X] determine effort required to add a FOMOD option to not install unchecked patches to the "optional" folder
     - easy, do it
@@ -342,6 +343,7 @@
     - [X] add override script to DSA patch
 - [X] check compatibility patch for The Den Astrodynamics with new version (v1.1 or v1.2)
     - compatible
+- [X] reach out to author of [ShiverSpeak - Trackers Alliance Ship Tech and More](https://www.nexusmods.com/starfield/mods/13744) with an offer of help to improve their implementation
 - [X] check compatibility with Starvival v12.5
     - compatible
 - [X] pull out free lanes stuff into its own patch
