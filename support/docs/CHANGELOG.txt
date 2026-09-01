@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.11.0
     - v1.10.0
     - v1.9.0
     - v1.8.1
@@ -30,6 +31,29 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.11.0
+-------
+- Removed the Capability Patch for the mod "SGC Deadalus and Battlestar" as it is no longer needed due to the mod now requiring SVF
+- Raised the default minimum number of random ships that Jasmine Durand sells to 6 to match vanilla
+- Raised the default maximum number of random ships that Jasmine Durand sells to 8 to match vanilla
+- Raised the default maximum number of random ships that the Red Devils HQ Ship Technician sells to 2
+- Raised the default maximum number of random ships that the Clinic Ship Technician sells to 2
+- Added verbiage in the README about a known issue with updating via the Creations interface
+- Added an option in the FOMOD installer to specify whether to copy unused patches to the "optional" subfolder (default: true)
+- Added a GitHub workflow to automatically publish new versions to both GitHub and Nexus Mods
+- Changed some logging code to centralize formatting of the hex ID
+- Revised some comments and code structure to enhance code readability and maintainability
+- Added some extra logging capability like recording the stack ID and time spent on certain functions
+- Fixed a bug where purchasing certain kinds of ships would always trigger a ship refresh the next time the vendor is loaded, regardless if it was warranted or not
+- Added the ability for the vendors to have keywords added to them dynamically via SVF mechanisms (this could allow vendors, for example, to sell more ship modules than they otherwise might)
+- Added some keyword patch plugins for adding some ship module keywords for different mods (and vanilla) to various vendors
+- Added some gating in the control script so that attempting to get a VDM record while it is initializing will block (with timeout) until the control script finishes initializing
+- Pulled out the Free Lanes capability into its own patch and adjusted docs to reflect the changes
+- Include a small option patch that will hide all the Gameplay Options from Ship Vendor Framework
+- Added watchdog timer to check for game session corruption due to a bad ship spawn
+- Changed the DarkStar Astrodynamics capability patch to a compatibility patch due to changes made in v5.0.0; now includes an override script in an associated archive
+- Updated "How To" documentation to reflect the new dynamically added keyword ability
 
 v1.10.0
 -------
