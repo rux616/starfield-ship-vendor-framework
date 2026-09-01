@@ -46,6 +46,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: VendorContainer
       Object: 0973C1:ShatteredSpace.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VendorKeywords
+      Object: 000806:SVF-Example-VendorDirect-Patch.esp
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
@@ -270,8 +273,8 @@ FaceDialPositions:
   Position: -0.13
 - Index: 63
   Position: 0.47
-- Index: 85
-  Position: -0.13
+- Index: 73
+  Position: 0.3
 - Index: 83
   Position: 0.28
 - Index: 76
@@ -282,8 +285,8 @@ FaceDialPositions:
   Position: 0.6
 - Index: 32
   Position: 0.75
-- Index: 73
-  Position: 0.3
+- Index: 85
+  Position: -0.13
 MorphBlends:
 - BlendName: male_af_md1_Neck
   Intensity: 0.59
