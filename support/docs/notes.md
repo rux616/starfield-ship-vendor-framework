@@ -36,7 +36,6 @@ things to investigate:
 | NeonStroudStore_KioskVendor | `NPC_:00151488` | Neon, Stroud-Ecklund Showroom                |
 | OutpostShipbuilderVendor    | `NPC_:0002F8FD` | Player Outpost (Dynamic)                     |
 | RM_LonAnderssen             | `NPC_:002B2BEC` | Red Mile, Main Building                      |
-| SFFL_DanicaVolkov           | `NPC_:xx04C3EE` | Algorab, Anchorpoint                         |
 | ShipServices_AkilaCity      | `NPC_:002A0EA1` | Akila City, Spaceport                        |
 | ShipServices_Cydonia        | `NPC_:00206704` | Mars, Cydonia Spaceport                      |
 | ShipServices_EleosRetreat   | `NPC_:000D87A4` | Eleos Retreat                                |
@@ -61,6 +60,7 @@ things to investigate:
 | aaFalkland_ShipbuilderVendor              | Falkland Sales Rep          | `NPC_:xx0167B5` | Falkland Systems       | Falkland Store, New Atlantis |
 | aaFalkland_ShipbuilderVendorGhost         | Falkland Systems Ship Kiosk | `NPC_:xx016C7E` | Falkland Systems       | Falkland Store, New Atlantis |
 | SFBGS001_HV_DumarHasadi                   | Dumar Hasadi                | `NPC_:xx0470E4` | Shattered Space        | Dazra                        |
+| SFFL_DanicaVolkov                         | Danika Volkov               | `NPC_:xx04C3EE` | Free Lanes Update      | Algorab, Anchorpoint         |
 | kgcShip_NPC_Babs                          | B.A.B.S                     | `NPC_:xx033E1D` | Watchtower             | Stardock Alpha               |
 
 ## NPC Form Lists
@@ -69,7 +69,6 @@ things to investigate:
 
 | NPC                                             | Always List                    | Random List                      | Unique List                    |
 |-------------------------------------------------|--------------------------------|----------------------------------|--------------------------------|
-| Danika Volkov (Anchorpoint)                     | Location_Anchorpoint_Always    | Faction_Unaffiliated_Full        | Location_Anchorpoint_Unique    |
 | Havershaw (Stroud-Eklund Staryard)              | Location_StroudStaryard_Always | Manufacturer_Stroud              | Location_StroudStaryard_Unique |
 | Inaya Rehman (HopeTech HQ)                      | Location_HopeTechHQ_Always     | Manufacturer_HopeTech            | Location_HopeTechHQ_Unique     |
 | Jasmine Durand (The Key)                        | Location_KeyThe_Always         | Faction_CrimsonFleet             | Location_KeyThe_Unique         |
@@ -95,6 +94,12 @@ things to investigate:
 \* Must complete Crimson Fleet quest line first
 
 ### other mods
+
+#### Free Lanes [Update]
+
+| NPC                         | Always List                 | Random List               | Unique List                 |
+|-----------------------------|-----------------------------|---------------------------|-----------------------------|
+| Danika Volkov (Anchorpoint) | Location_Anchorpoint_Always | Faction_Unaffiliated_Full | Location_Anchorpoint_Unique |
 
 #### Shattered Space [DLC]
 
@@ -181,7 +186,7 @@ things to investigate:
 
 how to deal with these? could create a custom override system based on formlists. `BuysShips` and `SellsShips` can't be included in the form lists because those variables are used by some dialog checks directly
 
-use gameplayoption forms
+use GameplayOption forms
 - [svf]
     - rich ship vendors
     - debug logging (?)
@@ -298,17 +303,17 @@ v12.4.6
 
 | file                                | size (bytes) |                               sha256                               |
 |-------------------------------------|-------------:|:------------------------------------------------------------------:|
-| outpostshipbuildermenuactivator.psc |       13,343 | `AE6FBB5ADD935B467B8CBE17B16582188E1C502EE757C9A43AF71960E6612E87` |
-| shipvendorinfoscript.psc            |        6,122 | `A8893178AF4B32FB9FCD51DF93DB98D681A80B51F04FEE8927AAB7CD2236C074` |
-| shipvendorscript.psc                |       13,469 | `A7A12E96C8C48FED4FCA279B5230130665EFA2C1096D3706F05FD43416B3F882` |
+| OutpostShipbuilderMenuActivator.psc |       13,343 | `AE6FBB5ADD935B467B8CBE17B16582188E1C502EE757C9A43AF71960E6612E87` |
+| ShipVendorInfoScript.psc            |        6,122 | `A8893178AF4B32FB9FCD51DF93DB98D681A80B51F04FEE8927AAB7CD2236C074` |
+| ShipVendorScript.psc                |       13,469 | `A7A12E96C8C48FED4FCA279B5230130665EFA2C1096D3706F05FD43416B3F882` |
 
 v12.5.0
 
 | file                                | size (bytes) |                               sha256                               |
 |-------------------------------------|-------------:|:------------------------------------------------------------------:|
-| outpostshipbuildermenuactivator.psc |       13,343 | `AE6FBB5ADD935B467B8CBE17B16582188E1C502EE757C9A43AF71960E6612E87` |
-| shipvendorinfoscript.psc            |        6,122 | `A8893178AF4B32FB9FCD51DF93DB98D681A80B51F04FEE8927AAB7CD2236C074` |
-| shipvendorscript.psc                |       13,469 | `A7A12E96C8C48FED4FCA279B5230130665EFA2C1096D3706F05FD43416B3F882` |
+| OutpostShipbuilderMenuActivator.psc |       13,343 | `AE6FBB5ADD935B467B8CBE17B16582188E1C502EE757C9A43AF71960E6612E87` |
+| ShipVendorInfoScript.psc            |        6,122 | `A8893178AF4B32FB9FCD51DF93DB98D681A80B51F04FEE8927AAB7CD2236C074` |
+| ShipVendorScript.psc                |       13,469 | `A7A12E96C8C48FED4FCA279B5230130665EFA2C1096D3706F05FD43416B3F882` |
 
 
 ## CK command line parameters

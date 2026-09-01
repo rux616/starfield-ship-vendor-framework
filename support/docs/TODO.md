@@ -343,6 +343,8 @@
     - [X] add override script to DSA patch
 - [X] check compatibility patch for The Den Astrodynamics with new version (v1.1 or v1.2)
     - compatible
+- [ ] determine what was causing the ships in Community Spaceship Expansion SVF patch v1.0 to hang (and where exactly)
+    - [ ] LVLB:FExxxE18, DWN_CSE_SVF_LShip_Vendor_Deimos_A_Pelican, which resolved to GBFM:FExxxD6A, DWN_CSE_SVF_EncShip_Vendor_Deimos_A_Pelican01
 - [X] reach out to author of [ShiverSpeak - Trackers Alliance Ship Tech and More](https://www.nexusmods.com/starfield/mods/13744) with an offer of help to improve their implementation
 - [X] check compatibility with Starvival v12.5
     - compatible
