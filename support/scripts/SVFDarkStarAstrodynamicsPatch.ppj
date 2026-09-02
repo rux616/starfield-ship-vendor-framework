@@ -1,0 +1,18 @@
+<?xml version='1.0'?>
+<PapyrusProject
+    xmlns="PapyrusProject.xsd"
+    Output="..\..\data-DarkStarAstrodynamics-patch\Scripts"
+    Flags="Starfield_Papyrus_Flags.flg"
+    Asm="Keep"
+    Optimize="false"
+    Release="false"
+    Final="false"
+>
+    <Imports>
+        <Import>..\..\data\Scripts\Source</Import>
+        <Import>..\papyrus-imports\vanilla\Scripts\Source</Import>
+    </Imports>
+    <Folders>
+        <Folder>..\..\data-DarkStarAstrodynamics-patch\Scripts\Source</Folder>
+    </Folders>
+</PapyrusProject>

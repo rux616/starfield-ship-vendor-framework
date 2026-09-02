@@ -46,6 +46,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: VendorContainer
       Object: 0973C1:ShatteredSpace.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VendorKeywords
+      Object: 000806:SVF-Example-VendorDirect-Patch.esp
 ObjectBounds:
   First: -0.31000048, -0.31000048, -4.7683716E-07
   Second: 0.31000048, 0.31000048, 1.8000004
@@ -139,17 +142,17 @@ Name:
   Value: Dumar Hasadi
 GearedUpWeapons: 1
 HeadParts:
-- 253FA5:Starfield.esm
-- 253FA3:Starfield.esm
 - 062F07:Starfield.esm
-- 24A03D:Starfield.esm
-- 3BE58D:Starfield.esm
-- 1227D6:Starfield.esm
-- 3A681E:Starfield.esm
-- 15D074:Starfield.esm
-- 24A023:Starfield.esm
-- 24A022:Starfield.esm
 - 064D88:Starfield.esm
+- 1227D6:Starfield.esm
+- 15D074:Starfield.esm
+- 24A022:Starfield.esm
+- 24A023:Starfield.esm
+- 24A03D:Starfield.esm
+- 253FA3:Starfield.esm
+- 253FA5:Starfield.esm
+- 3A681E:Starfield.esm
+- 3BE58D:Starfield.esm
 NAM5: 0xFF00
 HeightMin: 1
 HeightMax: 1
@@ -224,8 +227,8 @@ BodyMorphRegionValues:
 FaceDialPositions:
 - Index: 29
   Position: -0.11
-- Index: 76
-  Position: 0.64
+- Index: 58
+  Position: -0.8
 - Index: 39
   Position: -0.23
 - Index: 31
@@ -270,14 +273,14 @@ FaceDialPositions:
   Position: -0.13
 - Index: 63
   Position: 0.47
-- Index: 58
-  Position: -0.8
-- Index: 83
-  Position: 0.28
-- Index: 74
-  Position: -0.41
 - Index: 73
   Position: 0.3
+- Index: 83
+  Position: 0.28
+- Index: 76
+  Position: 0.64
+- Index: 74
+  Position: -0.41
 - Index: 54
   Position: 0.6
 - Index: 32

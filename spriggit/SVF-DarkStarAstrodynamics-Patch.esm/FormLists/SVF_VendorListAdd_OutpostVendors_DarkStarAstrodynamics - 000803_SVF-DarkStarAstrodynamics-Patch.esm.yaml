@@ -1,0 +1,6 @@
+FormKey: 000803:SVF-DarkStarAstrodynamics-Patch.esm
+EditorID: SVF_VendorListAdd_OutpostVendors_DarkStarAstrodynamics
+FormVersion: 582
+Items:
+- 0041DC:DarkStar_Astrodynamics.esm
+AddToList: 00090A:ShipVendorFramework.esm

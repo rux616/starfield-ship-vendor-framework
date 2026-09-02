@@ -12,12 +12,14 @@ Table Of Contents
     - [Step 2: Create Min/Max Gameplay Options (Optional)](#step-2-create-minmax-gameplay-options-optional)
     - [Step 3: Create Gameplay Option Group (Optional)](#step-3-create-gameplay-option-group-optional)
     - [Step 4: Create "ShipVendorList" FormLists](#step-4-create-shipvendorlist-formlists)
-    - [Step 5: Create "VendorData" FormLists](#step-5-create-vendordata-formlists)
-    - [Step 6: Create "VendorMapAdd" FormLists](#step-6-create-vendormapadd-formlists)
+    - [Step 5: Create "VendorKeywordsList" FormList](#step-5-create-vendorkeywordslist-formlist)
+    - [Step 6: Create "VendorData" FormLists](#step-6-create-vendordata-formlists)
+    - [Step 7: Create "VendorMapAdd" FormLists](#step-7-create-vendormapadd-formlists)
 - [Set Vendor To Use SVF - Direct](#set-vendor-to-use-svf---direct)
     - [Step 1: Load the Starfield Creation Kit](#step-1-load-the-starfield-creation-kit-2)
     - [Step 2: Create "ShipVendorList" FormLists](#step-2-create-shipvendorlist-formlists)
-    - [Step 3: Edit Vendor](#step-3-edit-vendor)
+    - [Step 3: Create "VendorKeywordsList" FormList](#step-3-create-vendorkeywordslist-formlist)
+    - [Step 4: Edit Vendor](#step-4-edit-vendor)
 - [NPC Ship Lists](#npc-ship-lists)
 
 
@@ -220,12 +222,25 @@ Set the ID of the lists, then fill them your desired "Leveled Base Form" entries
 ([TOC](#table-of-contents))
 
 
-Step 5: Create "VendorData" FormLists
+Step 5: Create "VendorKeywordsList" FormList
+--------------------------------------------
+Ship vendors can have keywords dynamically added to them via a "VendorKeywordsList" formlist, which is used by the SVF scripts to determine which keywords to use. The idea is that at some point later on, a user or other mod author may wish to add keywords (likely ship module keywords) to a vendor. This mechanism helps to facilitate this without conflicts.
+
+Create the list by going to "Miscellaneous" => "FormList" in the Object Window, right clicking, and selecting "New".
+![Create New FormList](/support/packaging/svf-how-to-vendor-map-5a-create-formlist.jpg)
+
+Set the ID of the list; I would suggest naming this list something like `SVF_VendorKeywordsList_Vendor_<Vendor_Editor_ID>`. At this point, you can either add keywords to the list or not. Adding your own keywords directly to your vendor and leaving this list empty and available for other mod authors to utilize is the recommended approach.
+![Populate VendorKeywordsList FormList](/support/packaging/svf-how-to-vendor-map-5b-populate-vendorkeywordslist.jpg)
+
+([TOC](#table-of-contents))
+
+
+Step 6: Create "VendorData" FormLists
 -------------------------------------
 These formlists are pointers to the data that Ship Vendor Framework needs to work with a specified vendor and **MUST** be created. Additionally, the "ShipListAlways", "ShipListRandom", and "ShipListUnique" formlists **MUST** be populated by a `SVF_ShipVendorList_[...]`-type list, though it doesn't have to be one you create. For example, you could choose to use `SVF_ShipVendorList_Faction_UnitedColonies_Limited` in the "ShipListRandom" formlist.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
-![Create New FormList](/support/packaging/svf-how-to-vendor-map-5a-create-formlist.jpg)
+![Create New FormList](/support/packaging/svf-how-to-vendor-map-6a-create-formlist.jpg)
 
 For the ID, I would recommend something like `SVF_VendorData_<Vendor_Editor_ID>_<Map_Type>`, where `<Vendor_Editor_ID>` is the ID of the actor that is the vendor, and `<Map_Type>` is one of the following:
 
@@ -235,31 +250,34 @@ For the ID, I would recommend something like `SVF_VendorData_<Vendor_Editor_ID>_
 - ShipListRandom
 - ShipListUnique
 - VendorContainer
+- VendorKeywords
 
 Populate each of the formlists as follows:
 
 - RandomShipsForSaleMax/RandomShipsForSaleMin: the gameplay options you created in step 2
-    - ![Populate RandomShipsForSale(...) FormLists](/support/packaging/svf-how-to-vendor-map-5b-populate-randomshipsforsale-formlists.jpg)
+    - ![Populate RandomShipsForSale(...) FormLists](/support/packaging/svf-how-to-vendor-map-6b-populate-randomshipsforsale.jpg)
 - ShipListAlways/ShipListRandom/ShipListUnique: the ShipVendorList formlist you created in step 4, or one of the existing ones
-    - ![Populate ShipList(...) FormLists](/support/packaging/svf-how-to-vendor-map-5c-populate-shiplist-formlists.jpg)
+    - ![Populate ShipList(...) FormLists](/support/packaging/svf-how-to-vendor-map-6c-populate-shiplists.jpg)
 - VendorContainer: the object reference of your vendor's container (a note about this: at least as of CK v1.15.222.0, you can't just drag and drop the reference, you need to engage in some shenanigans to do it)
     - Make sure you have the "Cell View" window open (you can make sure it's shown by going to the "View" menu and selecting "Cell View"
-    - ![Open Cell View](/support/packaging/svf-how-to-vendor-map-5d-open-cell-view.jpg)
+    - ![Open Cell View](/support/packaging/svf-how-to-vendor-map-6d-open-cell-view.jpg)
     - Filter the Cell View window however you need to in order to find your vendor's vendor container
-    - ![Filter Cell View](/support/packaging/svf-how-to-vendor-map-5e-filter-cell-view.jpg)
+    - ![Filter Cell View](/support/packaging/svf-how-to-vendor-map-6e-filter-cell-view.jpg)
     - Open the VendorContainer formlist you created, drag the vendor container reference into the list box (above the Conditions box), then click the "Paste selected element" button on the right side of the list box (it looks like a clipboard)
-    - ![Populate VendorContainer FormList](/support/packaging/svf-how-to-vendor-map-5f-populate-vendorcontainer-formlist.jpg)
+    - ![Populate VendorContainer FormList](/support/packaging/svf-how-to-vendor-map-6f-populate-vendorcontainer.jpg)
     - Yes, this is stupidly convoluted. No, I have no idea when or even if Bethesda will ever fix it. If you have a proven better way, please let me know.
+- VendorKeywords: the formlist you created in step 5
+    - ![Populate VendorKeywords FormList](/support/packaging/svf-how-to-vendor-map-6g-populate-vendorkeywords.jpg)
 
 ([TOC](#table-of-contents))
 
 
-Step 6: Create "VendorMapAdd" FormLists
+Step 7: Create "VendorMapAdd" FormLists
 ---------------------------------------
 These are the lists used to add the "VendorData" lists to the "VendorMap" lists in the main mod. You **MUST** create 1 for each type listed below.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
-![Create New FormList](/support/packaging/svf-how-to-vendor-map-6a-create-formlist.jpg)
+![Create New FormList](/support/packaging/svf-how-to-vendor-map-7a-create-formlist.jpg)
 
 For the ID, I would recommend something like `SVF_VendorMapAdd_<Map_Type>_<Mod_FileName>`, where `<Map_Type>` is one of the vendor maps:
 
@@ -269,11 +287,12 @@ For the ID, I would recommend something like `SVF_VendorMapAdd_<Map_Type>_<Mod_F
 - ShipListsRandom
 - ShipListsUnique
 - VendorContainers
+- VendorKeywords
 - Vendors
 
-To each of these lists, add the respective formlist created in Step 5 (with the exception of the "Vendors" list - you just add the vendor actor itself), and then set the "add to list" box to the appropriate `SVF_VendorMap_[...]` list from the main mod. For example, if you create a `SVF_VendorMapAdd_VendorContainers_MyAwesomeMod` formlist, you would set the "add to list" box to `SVF_VendorMap_VendorContainers`.
-![Example "VendorMapAdd" FormList (Not Vendor)](/support/packaging/svf-how-to-vendor-map-6b-add-vendordata-to-vandormapadd-1.jpg)
-![Example "VendorMapAdd" FormList (Vendor)](/support/packaging/svf-how-to-vendor-map-6c-add-vendordata-to-vandormapadd-2.jpg)
+To each of these lists, add the respective formlist created in Step 6 (with the exception of the "Vendors" list - you just add the vendor actor itself), and then set the "add to list" box to the appropriate `SVF_VendorMap_[...]` list from the main mod. For example, if you create a `SVF_VendorMapAdd_VendorContainers_MyAwesomeMod` formlist, you would set the "add to list" box to `SVF_VendorMap_VendorContainers`.
+![Example "VendorMapAdd" FormList (Not Vendor)](/support/packaging/svf-how-to-vendor-map-7b-add-vendordata-to-vandormapadd-1.jpg)
+![Example "VendorMapAdd" FormList (Vendor)](/support/packaging/svf-how-to-vendor-map-7c-add-vendordata-to-vandormapadd-2.jpg)
 
 ([TOC](#table-of-contents))
 
@@ -306,21 +325,37 @@ Set the ID of the lists, then fill them your desired "Leveled Base Form" entries
 ([TOC](#table-of-contents))
 
 
-Step 3: Edit Vendor
+Step 3: Create "VendorKeywordsList" FormList
+--------------------------------------------
+Ship vendors can have keywords dynamically added to them via a "VendorKeywordsList" formlist, which is used by the SVF scripts to determine which keywords to use. The idea is that at some point later on, a user or other mod author may wish to add keywords (likely ship module keywords) to a vendor. This mechanism helps to facilitate this without conflicts.
+
+Create the list by going to "Miscellaneous" => "FormList" in the Object Window, right clicking, and selecting "New".
+![Create New FormList](/support/packaging/svf-how-to-vendor-direct-3a-create-formlist.jpg)
+
+Set the ID of the list; I would suggest naming this list something like `SVF_VendorKeywordsList_Vendor_<Vendor_Editor_ID>`. At this point, you can either add keywords to the list or not. Adding your own keywords directly to your vendor and leaving this list empty and available for other mod authors to utilize is the recommended approach.
+![Populate VendorKeywordsList FormList](/support/packaging/svf-how-to-vendor-direct-3b-populate-vendorkeywordslist.jpg)
+
+([TOC](#table-of-contents))
+
+
+Step 4: Edit Vendor
 -------------------
 **NOTE:** This step assumes you've already created your vendor.
 
 Once you've created the lists, you need to find your vendor actor in "Actor" => "Actors" in the Object Window.
-![Find The Vendor Actor](/support/packaging/svf-how-to-vendor-direct-3a-find-actor.jpg)
+![Find The Vendor Actor](/support/packaging/svf-how-to-vendor-direct-4a-find-actor.jpg)
 
 Open up your vendor, go to the "Scripts" area, and double click "sq_shipservicesactorscript". This will open up the script properties.
-![Open Script Properties](/support/packaging/svf-how-to-vendor-direct-3b-open-script-properties.jpg)
+![Open Script Properties](/support/packaging/svf-how-to-vendor-direct-4b-open-script-properties.jpg)
 
-At the top of this window, you should notice a group called "ShipVendorFramework" with a few properties underneath. Set the values for the "SVFShipsToSellList{Always,Random,Unique}Dataset" properties to their respective formlists you created in the last step.
-![Set "Dataset" Properties](/support/packaging/svf-how-to-vendor-direct-3c-script-properties-datasets.jpg)
+At the top of this window, you should notice a group called "ShipVendorFramework" with a few properties underneath. Set the values for the "SVFShipsToSellList{Always,Random,Unique}Dataset" properties to their respective formlists you created earlier.
+![Set "Dataset" Properties](/support/packaging/svf-how-to-vendor-direct-4c-script-properties-datasets.jpg)
 
 Set the "VendorContainer" property to your vendor's vendor container. (This is important for the "Rich Ship Vendors" option.)
-![Set "VendorContainers" Property](/support/packaging/svf-how-to-vendor-direct-3d-script-properties-vendorcontainer.jpg)
+![Set "VendorContainers" Property](/support/packaging/svf-how-to-vendor-direct-4d-script-properties-vendorcontainer.jpg)
+
+Set the "VendorKeywords" property to your vendor's keywords list you created earlier.
+![Set "VendorKeywords" Property](/support/packaging/svf-how-to-vendor-direct-4e-script-properties-vendorkeywords.jpg)
 
 Click "OK" to close the Properties window, then click "OK" again to close the Actor window.
 
@@ -335,6 +370,9 @@ NPC Ship Lists
 
 Vanilla:
 ![NPC Ship List Table (Vanilla)](/support/packaging/svf-npc-form-list.jpg)
+
+Free Lanes (with patch):
+![NPC Ship List Table (Free Lanes Patch)](/support/packaging/svf-npc-form-list-FreeLanes.jpg)
 
 Shattered Space (with patch):
 ![NPC Ship List Table (Shattered Space Patch)](/support/packaging/svf-npc-form-list-ShatteredSpace.jpg)

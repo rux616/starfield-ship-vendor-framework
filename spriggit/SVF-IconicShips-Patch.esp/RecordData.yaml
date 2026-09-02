@@ -10,10 +10,9 @@ ModHeader:
     Patch for "Ship Vendor Framework" by rux616 and "Iconic Ships" by ShipTechnician.
 
 
-    Version: 1.2.0
+    Version: 1.3.0
   MasterReferences:
   - Master: Starfield.esm
-  - Master: sfbgs00d.esm
   - Master: ShipVendorFramework.esm
   - Master: nighthawk.esm
   Branch: Main

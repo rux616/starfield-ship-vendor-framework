@@ -1,54 +1,62 @@
-Table Of Contents
-=================
-- Table Of Contents
-- Expansion Patches
-    - SVF Expansion Patch - Shattered Space
+Table Of Contents:
 - Capability Patches
-    - SVF Capability Patch - DarkStar Astrodynamics
-    - SVF Capability Patch - Dominion
-    - SVF Capability Patch - Falkland Systems v2
-    - SVF Capability Patch - Iconic Ships
-    - SVF Capability Patch - L-K Ships
-    - SVF Capability Patch - Lower Landing Pad
-    - SVF Capability Patch - Outpost Vendor New Ships
-    - SVF Capability Patch - SGC Deadalus and Battlestar
-    - SVF Capability Patch - The Den Astrodynamics
-    - SVF Capability Patch - Watchtower
+    - Update: Free Lanes
+    - DLC: Shattered Space
+    - Mod: Dominion
+    - Mod: Falkland Systems v2
+    - Mod: Iconic Ships
+    - Mod: L-K Ships
+    - Mod: Lower Landing Pad
+    - Mod: Outpost Vendor New Ships
+    - Mod: The Den Astrodynamics
+    - Mod: Watchtower
 - Compatibility Patches
-    - SVF Compatibility Patch - Starvival v12.1
+    - Mod: DarkStar Astrodynamics v5
+    - Mod: Starvival v12.1
+- Keyword Patches
+    - Vanilla
+        - Ship Modules - All Vendors
+        - Ship Modules - Non-Outpost Vendors
+        - Ship Modules - Outpost Vendors
+    - Mod: DarkStar Astrodynamics
+        - Ship Modules - All Vendors
+        - Ship Modules - Non-Outpost Vendors
+        - Ship Modules - Outpost Vendors
+    - Mod: Falkland Systems v2
+        - Ship Modules - All Vendors
+        - Ship Modules - Non-Outpost Vendors
+        - Ship Modules - Outpost Vendors
+    - Mod: Watchtower
+        - Ship Modules - All Vendors
+        - Ship Modules - Non-Outpost Vendors
+        - Ship Modules - Outpost Vendors
+- Misc Patches
+    - Option: Hide Gameplay Options
 
 
-Expansion Patches
-=================
+# Capability Patches
 
-SVF Expansion Patch - Shattered Space
------
-Patch for "Ship Vendor Framework" by rux616 and the Shattered Space expansion.
+## Update: Free Lanes
+Patch for "Ship Vendor Framework" by rux616 and the Free Lanes update.
 
 Mod Source:
 - Bethesda Game Studios
 
 Patch Type:
-- Expansion
+- Capability
 
 
-Capability Patches
-==================
-
-SVF Capability Patch - DarkStar Astrodynamics
------
-Patch for "Ship Vendor Framework" by rux616 and "DarkStar Astrodynamics" by WykkydGaming.
+## DLC: Shattered Space
+Patch for "Ship Vendor Framework" by rux616 and the Shattered Space DLC.
 
 Mod Source:
-- Creations: https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics
-- Nexus: https://www.nexusmods.com/starfield/mods/9458
+- Bethesda Game Studios
 
 Patch Type:
 - Capability
 
 
-SVF Capability Patch - Dominion
------
+## Mod: Dominion
 Patch for "Ship Vendor Framework" by rux616 and "Dominion" by rhart317.
 
 Mod Source:
@@ -58,8 +66,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Falkland Systems v2
------
+## Mod: Falkland Systems v2
 Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" v2 by Hjalmere.
 
 Mod Source:
@@ -69,8 +76,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Iconic Ships
------
+## Mod: Iconic Ships
 Patch for "Ship Vendor Framework" by rux616 and "Iconic Ships" by ShipTechnician.
 
 Mod Source:
@@ -80,8 +86,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - L-K Ships
------
+## Mod: L-K Ships
 Patch for "Ship Vendor Framework" by rux616 and "L-K Ships" by Lighthorse and KeithVSmith1977.
 
 Mod Source:
@@ -92,8 +97,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Lower Landing Pad
------
+## Mod: Lower Landing Pad
 Patch for "Ship Vendor Framework" by rux616 and "Lower Landing Pad" by SenterPat.
 
 Mod Source:
@@ -103,8 +107,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Outpost Vendor New Ships
------
+## Mod: Outpost Vendor New Ships
 Patch for "Ship Vendor Framework" by rux616 and "Outpost Vendor New Ships" by nefurun.
 
 Mod Source:
@@ -114,19 +117,7 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - SGC Deadalus and Battlestar
------
-Patch for "Ship Vendor Framework" by rux616 and "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03.
-
-Mod Source:
-- Creations: https://creations.bethesda.net/en/starfield/details/0993fb17-f960-4869-b417-485d129567f8/SGC_Deadalus__amp__Battlestar_added_to_New_Atlanti
-
-Patch Type:
-- Capability
-
-
-SVF Capability Patch - The Den Astrodynamics
------
+## Mod: The Den Astrodynamics
 Patch for "Ship Vendor Framework" by rux616 and "The Den Astrodynamics" by VoodooChild.
 
 Mod Source:
@@ -136,22 +127,30 @@ Patch Type:
 - Capability
 
 
-SVF Capability Patch - Watchtower
------
+## Mod: Watchtower
 Patch for "Ship Vendor Framework" by rux616 and "Watchtower" by kinggath_creations.
 
 Mod Source:
-- https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command
+- Creations: https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command
 
 Patch Type:
 - Capability
 
 
-Compatibility Patches
-=====================
+# Compatibility Patches
 
-SVF Compatibility Patch - Starvival v12.1
------
+## Mod: DarkStar Astrodynamics v5
+Patch for "Ship Vendor Framework" by rux616 and "DarkStar Astrodynamics" v5 by WykkydGaming.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics
+- Nexus: https://www.nexusmods.com/starfield/mods/9458
+
+Patch Type:
+- Compatibility
+
+
+## Mod: Starvival v12.1
 Patch for "Ship Vendor Framework" by rux616 and "Starvival" v12.1 by lKocMoHaBTl.
 
 Mod Source:
@@ -160,3 +159,145 @@ Mod Source:
 
 Patch Type:
 - Compatibility
+
+
+# Keyword Patches
+
+## Vanilla
+
+### Ship Modules - All Vendors
+Patch to add all ship module keywords from vanilla to all ship vendors.
+
+Mod Source:
+- Bethesda Game Studios
+
+Patch Type:
+Keyword
+
+
+### Ship Modules - Non-Outpost Vendors
+Patch to add all ship module keywords from vanilla to non-outpost ship vendors.
+
+Mod Source:
+- Bethesda Game Studios
+
+Patch Type:
+Keyword
+
+
+### Ship Modules - Outpost Vendors
+Patch to add all ship module keywords from vanilla to outpost ship vendors.
+
+Mod Source:
+- Bethesda Game Studios
+
+Patch Type:
+Keyword
+
+
+## Mod: DarkStar Astrodynamics
+
+### Ship Modules - All Vendors
+Patch to add all ship module keywords from "DarkStar Astrodynamics" by WykkydGaming to all ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics
+- Nexus: https://www.nexusmods.com/starfield/mods/9458
+
+Patch Type:
+Keyword
+
+
+### Ship Modules - Non-Outpost Vendors
+Patch to add all ship module keywords from "DarkStar Astrodynamics" by WykkydGaming to non-outpost ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics
+- Nexus: https://www.nexusmods.com/starfield/mods/9458
+
+Patch Type:
+Keyword
+
+
+### Ship Modules - Outpost Vendors
+Patch to add all ship module keywords from "DarkStar Astrodynamics" by WykkydGaming to outpost ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics
+- Nexus: https://www.nexusmods.com/starfield/mods/9458
+
+Patch Type:
+Keyword
+
+
+## Mod: Falkland Systems v2
+
+### Ship Modules - All Vendors
+Patch to add all ship module keywords from "Falkland Systems Ship Services" v2 by Hjalmere to all ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/6cbf2c64-b736-4d95-bf06-38183a94b359/Falkland_Systems_Ship_Services
+
+Patch Type:
+Keyword
+
+
+### Ship Modules - Non-Outpost Vendors
+Patch to add all ship module keywords from "Falkland Systems Ship Services" v2 by Hjalmere to non-outpost ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/6cbf2c64-b736-4d95-bf06-38183a94b359/Falkland_Systems_Ship_Services
+
+Patch Type:
+Keyword
+
+
+### Ship Modules - Outpost Vendors
+Patch to add all ship module keywords from "Falkland Systems Ship Services" v2 by Hjalmere to outpost ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/6cbf2c64-b736-4d95-bf06-38183a94b359/Falkland_Systems_Ship_Services
+
+Patch Type:
+Keyword
+
+
+## Mod: Watchtower
+
+### Ship Modules - All Vendors
+Patch to add all ship module keywords from "Watchtower" by kinggath_creations to all ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command
+
+Patch Type:
+Keyword
+
+
+### Ship Modules - Non-Outpost Vendors
+Patch to add all ship module keywords from "Watchtower" by kinggath_creations to non-outpost ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command
+
+Patch Type:
+Keyword
+
+
+### Ship Modules - Outpost Vendors
+Patch to add all ship module keywords from "Watchtower" by kinggath_creations to outpost ship vendors.
+
+Mod Source:
+- Creations: https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command
+
+Patch Type:
+Keyword
+
+
+# Misc Patches
+
+## Option: Hide Gameplay Options
+A small patch to hide all the Gameplay Options from Ship Vendor Framework.
+
+Patch Type:
+- Option

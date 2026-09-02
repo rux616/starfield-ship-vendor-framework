@@ -11,12 +11,14 @@
     - Step 2: Create Min/Max Gameplay Options (Optional)
     - Step 3: Create Gameplay Option Group (Optional)
     - Step 4: Create "ShipVendorList" FormLists
-    - Step 5: Create "VendorData" FormLists
-    - Step 6: Create "VendorMapAdd" FormLists
+    - Step 5: Create "VendorKeywordsList" FormList
+    - Step 6: Create "VendorData" FormLists
+    - Step 7: Create "VendorMapAdd" FormLists
 - Set Vendor To Use SVF - Direct
     - Step 1: Load the Starfield Creation Kit
     - Step 2: Create "ShipVendorList" FormLists
-    - Step 3: Edit Vendor
+    - Step 3: Create "VendorKeywordsList" FormList
+    - Step 4: Edit Vendor
 - NPC Ship Lists
 
 
@@ -190,7 +192,17 @@ Set the ID of the lists, then fill them your desired "Leveled Base Form" entries
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758781226-515829392.jpg[/img]
 
 
-[size=4][b][u]Step 5: Create "VendorData" FormLists:[/u][/b][/size]
+[size=4][b][u]Step 5: Create "VendorKeywordsList" FormList:[/u][/b][/size]
+Ship vendors can have keywords dynamically added to them via a "VendorKeywordsList" formlist, which is used by the SVF scripts to determine which keywords to use. The idea is that at some point later on, a user or other mod author may wish to add keywords (likely ship module keywords) to a vendor. This mechanism helps to facilitate this without conflicts.
+
+Create the list by going to "Miscellaneous" => "FormList" in the Object Window, right clicking, and selecting "New".
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1788165136-743324726.jpg[/img]
+
+Set the ID of the list; I would suggest naming this list something like [font=Courier New][color=#b2b2b2]SVF_VendorKeywordsList_Vendor_<Vendor_Editor_ID>[/color][/font]. At this point, you can either add keywords to the list or not. Adding your own keywords directly to your vendor and leaving this list empty and available for other mod authors to utilize is the recommended approach.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1788164953-541152137.jpg[/img]
+
+
+[size=4][b][u]Step 6: Create "VendorData" FormLists:[/u][/b][/size]
 These formlists are pointers to the data that Ship Vendor Framework needs to work with a specified vendor and [b]MUST[/b] be created. Additionally, the "ShipListAlways", "ShipListRandom", and "ShipListUnique" formlists [b]MUST[/b] be populated by a [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_[...][/color][/font]-type list, though it doesn't have to be one you create. For example, you could choose to use [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_Faction_UnitedColonies_Limited[/color][/font] in the "ShipListRandom" formlist.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
@@ -204,6 +216,7 @@ For the ID, I would recommend something like [font=Courier New][color=#b2b2b2]SV
 - ShipListRandom
 - ShipListUnique
 - VendorContainer
+- VendorKeywords
 
 Populate each of the formlists as follows:
 
@@ -219,9 +232,11 @@ Populate each of the formlists as follows:
     - Open the VendorContainer formlist you created, drag the vendor container reference into the list box (above the Conditions box), then click the "Paste selected element" button on the right side of the list box (it looks like a clipboard)
     - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1758784452-137422332.jpg[/img]
     - Yes, this is stupidly convoluted. No, I have no idea when or even if Bethesda will ever fix it. If you have a proven better way, please let me know.
+- VendorKeywords: the formlist you created in step 5
+    - [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1788252558-625154506.jpg[/img]
 
 
-[size=4][b][u]Step 6: Create "VendorMapAdd" FormLists:[/u][/b][/size]
+[size=4][b][u]Step 7: Create "VendorMapAdd" FormLists:[/u][/b][/size]
 These are the lists used to add the "VendorData" lists to the "VendorMap" lists in the main mod. You [b]MUST[/b] create 1 for each type listed below.
 
 Go to "Miscellaneous" => "FormList" in the Object Window, right click, and select "New".
@@ -235,9 +250,10 @@ For the ID, I would recommend something like [font=Courier New][color=#b2b2b2]SV
 - ShipListsRandom
 - ShipListsUnique
 - VendorContainers
+- VendorKeywords
 - Vendors
 
-To each of these lists, add the respective formlist created in Step 5 (with the exception of the "Vendors" list - you just add the vendor actor itself), and then set the "add to list" box to the appropriate [font=Courier New][color=#b2b2b2]SVF_VendorMap_[...][/color][/font] list from the main mod. For example, if you create a [font=Courier New][color=#b2b2b2]SVF_VendorMapAdd_VendorContainers_MyAwesomeMod[/color][/font] formlist, you would set the "add to list" box to [font=Courier New][color=#b2b2b2]SVF_VendorMap_VendorContainers[/color][/font].
+To each of these lists, add the respective formlist created in Step 6 (with the exception of the "Vendors" list - you just add the vendor actor itself), and then set the "add to list" box to the appropriate [font=Courier New][color=#b2b2b2]SVF_VendorMap_[...][/color][/font] list from the main mod. For example, if you create a [font=Courier New][color=#b2b2b2]SVF_VendorMapAdd_VendorContainers_MyAwesomeMod[/color][/font] formlist, you would set the "add to list" box to [font=Courier New][color=#b2b2b2]SVF_VendorMap_VendorContainers[/color][/font].
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071549-1310188835.jpg[/img]
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759071565-1696964893.jpg[/img]
 
@@ -263,7 +279,17 @@ Set the ID of the lists, then fill them your desired "Leveled Base Form" entries
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776245247-628091642.jpg[/img]
 
 
-[size=4][b][u]Step 3: Edit Vendor:[/u][/b][/size]
+[size=4][b][u]Step 3: Create "VendorKeywordsList" FormList:[/u][/b][/size]
+Ship vendors can have keywords dynamically added to them via a "VendorKeywordsList" formlist, which is used by the SVF scripts to determine which keywords to use. The idea is that at some point later on, a user or other mod author may wish to add keywords (likely ship module keywords) to a vendor. This mechanism helps to facilitate this without conflicts.
+
+Create the list by going to "Miscellaneous" => "FormList" in the Object Window, right clicking, and selecting "New".
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1788168592-125820815.jpg[/img]
+
+Set the ID of the list; I would suggest naming this list something like [font=Courier New][color=#b2b2b2]SVF_VendorKeywordsList_Vendor_<Vendor_Editor_ID>[/color][/font]. At this point, you can either add keywords to the list or not. Adding your own keywords directly to your vendor and leaving this list empty and available for other mod authors to utilize is the recommended approach.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1788168611-1885851381.jpg[/img]
+
+
+[size=4][b][u]Step 4: Edit Vendor:[/u][/b][/size]
 [b]NOTE:[/b] This step assumes you've already created your vendor.
 
 Once you've created the lists, you need to find your vendor actor in "Actor" => "Actors" in the Object Window.
@@ -272,11 +298,14 @@ Once you've created the lists, you need to find your vendor actor in "Actor" => 
 Open up your vendor, go to the "Scripts" area, and double click "sq_shipservicesactorscript". This will open up the script properties.
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072788-104466543.jpg[/img]
 
-At the top of this window, you should notice a group called "ShipVendorFramework" with a few properties underneath. Set the values for the "SVFShipsToSellList{Always,Random,Unique}Dataset" properties to their respective formlists you created in the last step.
+At the top of this window, you should notice a group called "ShipVendorFramework" with a few properties underneath. Set the values for the "SVFShipsToSellList{Always,Random,Unique}Dataset" properties to their respective formlists you created earlier.
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072802-1587812210.jpg[/img]
 
 Set the "VendorContainer" property to your vendor's vendor container. (This is important for the "Rich Ship Vendors" option.)
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1759072814-1588839804.jpg[/img]
+
+Set the "VendorKeywords" property to your vendor's keywords list you created earlier.
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1788167662-656101961.jpg[/img]
 
 Click "OK" to close the Properties window, then click "OK" again to close the Actor window.
 
@@ -287,7 +316,10 @@ Save your plugin, then export to whatever size master is appropriate. That's it.
 [b]NOTE:[/b] All formlist editor IDs start with [font=Courier New][color=#b2b2b2]SVF_ShipVendorList_[/color][/font]. This prefix has been removed from the lists as presented in the following table for the sake of brevity.
 
 Vanilla:
-[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776201894-1653106819.jpg[/img]
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1787910135-1696394439.jpg[/img]
+
+Free Lanes (with patch):
+[img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1787910080-1463907282.jpg[/img]
 
 Shattered Space (with patch):
 [img]https://staticdelivery.nexusmods.com/mods/2295/images/969/969-1776201400-1499281488.jpg[/img]

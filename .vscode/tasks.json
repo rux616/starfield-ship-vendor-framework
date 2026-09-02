@@ -20,14 +20,10 @@
       "dependsOn": [
         "Update Versions",
         "Sanitize FOMOD XML Files",
-        "Render Markdown to Nexus BBCode",
-        "Render Markdown to Plaintext",
+        "Render Text Files",
         "Serialize Plugins",
-        "Populate Mods and Patches in SVF_Control",
-        "Compile Scripts (Starvival Patch)",
-        "Compile Scripts (Main)",
+        "Compile Papyrus Scripts",
         "Create Archives"
-        // "Clean Up BA2 Archives"
       ]
     },
     {
@@ -42,10 +38,17 @@
       "command": "./support/common/scripts/sanitize-fomod-xml.ps1"
     },
     {
+      "label": "Render Text Files",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Render Markdown to Nexus BBCode", "Render Markdown to Plaintext"],
+      "problemMatcher": []
+    },
+    {
       "label": "Render Markdown to Nexus BBCode",
       "type": "shell",
       "command": "./support/common/scripts/markdown-to-nexusbbcode.ps1",
-      "args": ["./support/docs/README.md", "./support/docs/HOWTO.md"]
+      "args": ["./support/docs/README.md", "./support/docs/HOWTO.md"],
+      "problemMatcher": []
     },
     {
       "label": "Render Markdown to Plaintext",
@@ -56,7 +59,8 @@
         "./support/docs/HOWTO.md",
         "./support/docs/README.md",
         "./support/docs/README.patches.md"
-      ]
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Populate Known Masters",
@@ -76,10 +80,10 @@
         "DarkStar_Astrodynamics.esm",
         "outpostvendorcustomships.esm",
         "--small-masters",
-        "deadalus1.esm",
         "dominion.esm",
         "nighthawk.esm",
         "ShipVendorFramework.esm",
+        "SVF-FreeLanes-Patch.esm",
         "SVF-ShatteredSpace-Patch.esm"
       ]
     },
@@ -89,6 +93,28 @@
       "command": "./support/common/scripts/serialize-plugins.ps1",
       "args": ["-Starfield", "-YAML"],
       "dependsOn": ["Populate Known Masters"]
+    },
+    {
+      "label": "Compile Papyrus Scripts",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Compile Scripts (DarkStar Astrodynamics Patch)",
+        "Compile Scripts (Starvival Patch)",
+        "Compile Scripts (Main)"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Compile Scripts (DarkStar Astrodynamics Patch)",
+      "type": "shell",
+      "command": "./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe",
+      "args": ["./support/scripts/SVFDarkStarAstrodynamicsPatch.ppj"]
+    },
+    {
+      "label": "Compile Scripts (Starvival Patch)",
+      "type": "shell",
+      "command": "./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe",
+      "args": ["./support/scripts/SVFStarvivalPatch.ppj"]
     },
     {
       "label": "Populate Mods and Patches in SVF_Control",
@@ -103,8 +129,6 @@
         "NONE",
         "DarkStar_Astrodynamics.esm", //"DarkStar Astrodynamics" by WykkydGaming
         "SVF-DarkStarAstrodynamics-Patch.esm",
-        "deadalus1.esm", // "SGC Deadalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03
-        "SVF-Deadalus-Patch.esm",
         "dominion.esm", // "Dominion" by rhart317
         "SVF-Dominion-Patch.esm",
         "FalklandSystems.esm", // "Falkland Systems Ship Services" by Hjalmere
@@ -126,20 +150,62 @@
         "vcDenAstrodynamics.esm", // "The Den Astrodynamics" by VoodooChild
         "SVF-TheDenAstrodynamics-Patch.esm",
         "kinggathcreations_spaceship.esm", // "Watchtower" by kinggath_creations
-        "SVF-Watchtower-Patch.esm"
+        "SVF-Watchtower-Patch.esm",
+        "SFBGS00D.esm", // "Free Lanes" update
+        "SVF-FreeLanes-Patch.esm",
+        // various keyword patches
+        "SVF-ShipModulesDarkStarAstrodynamics-AllVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesDarkStarAstrodynamics-NonOutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesDarkStarAstrodynamics-OutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesFalklandSystems-AllVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesFalklandSystems-NonOutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesFalklandSystems-OutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesVanilla-AllVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesVanilla-NonOutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesVanilla-OutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesWatchtower-AllVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesWatchtower-NonOutpostVendors-KPatch.esm",
+        "PATCH",
+        "SVF-ShipModulesWatchtower-OutpostVendors-KPatch.esm",
+        "PATCH"
       ]
-    },
-    {
-      "label": "Compile Scripts (Starvival Patch)",
-      "type": "shell",
-      "command": "./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe",
-      "args": ["./support/scripts/SVFStarvivalPatch.ppj"]
     },
     {
       "label": "Compile Scripts (Main)",
       "type": "shell",
       "command": "./support/papyrus-imports/vanilla/bin/PapyrusCompiler/PapyrusCompiler.exe",
-      "args": ["./support/scripts/ShipVendorFramework.ppj"]
+      "args": ["./support/scripts/ShipVendorFramework.ppj"],
+      "dependsOn": ["Populate Mods and Patches in SVF_Control"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Create Archives (DarkStar Astrodynamics Patch BA2)",
+      "type": "shell",
+      "command": "./support/common/scripts/build-archives.ps1",
+      "args": [
+        "-DataDir",
+        "./data-DarkStarAstrodynamics-patch",
+        "-PluginName",
+        "SVF-DarkStarAstrodynamics-Patch",
+        "-Starfield",
+        "-Skip7z",
+        "-SkipBA2Cleanup",
+        "-BA2AlsoMakeXbox",
+        "-BA2AlsoMakePS",
+        "-BA2ForceUncompressed",
+        "-BA2DisableSharing"
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Create Archives (Starvival Patch BA2)",
@@ -147,7 +213,7 @@
       "command": "./support/common/scripts/build-archives.ps1",
       "args": [
         "-DataDir",
-        "./data-starvival-patch",
+        "./data-Starvival-patch",
         "-PluginName",
         "SVF-Starvival-Patch",
         "-Starfield",
@@ -157,7 +223,8 @@
         "-BA2AlsoMakePS",
         "-BA2ForceUncompressed",
         "-BA2DisableSharing"
-      ]
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Create Archives (Main BA2)",
@@ -173,7 +240,8 @@
         "-BA2AlsoMakePS",
         "-BA2ForceUncompressed",
         "-BA2DisableSharing"
-      ]
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Create Archives",
@@ -181,7 +249,12 @@
       "command": "./support/common/scripts/build-archives.ps1",
       "args": ["-ModName", "Ship Vendor Framework", "-Starfield", "-SkipBA2", "-SkipBA2Cleanup"],
       "dependsOrder": "sequence",
-      "dependsOn": ["Create Archives (Starvival Patch BA2)", "Create Archives (Main BA2)"]
+      "dependsOn": [
+        "Create Archives (DarkStar Astrodynamics Patch BA2)",
+        "Create Archives (Starvival Patch BA2)",
+        "Create Archives (Main BA2)"
+      ],
+      "problemMatcher": []
     },
     {
       "label": "Clean Up BA2 Archives",

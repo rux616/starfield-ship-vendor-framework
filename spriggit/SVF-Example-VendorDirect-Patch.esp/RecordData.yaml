@@ -11,9 +11,11 @@ ModHeader:
 
 
     "Direct" method.
+
+
+    Version: 1.2.0
   MasterReferences:
   - Master: Starfield.esm
-  - Master: sfbgs00d.esm
   - Master: ShatteredSpace.esm
   - Master: ShipVendorFramework.esm
   Branch: Main

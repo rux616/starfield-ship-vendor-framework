@@ -1,0 +1,88 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      # matches various semantic versioning tags, including pre-release versions, optionally with preceding 'v'
+      - "v?[0-9]+.[0-9]+.[0-9]+" # matches 1.0.0
+      - "v?[0-9]+.[0-9]+.[0-9]+-[a-zA-Z0-9]+" # matches 1.0.0-alpha
+      - "v?[0-9]+.[0-9]+.[0-9]+-[a-zA-Z0-9]+.[0-9]+" # matches 1.0.0-alpha.1
+
+jobs:
+  Publish:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Set variables
+        run: |
+          $tag = '${{ github.ref_name }}'
+          $release_version = if ($tag[0] -eq "v") { $tag.substring(1) } else { $tag }
+          "RELEASE_VERSION=$release_version" >>$env:GITHUB_ENV
+
+          @(
+            "RELEASE_ARCHIVE="
+            "./builds/"
+            '${{ vars.MOD_NAME }}' -replace " ", "_"
+            "-v${release_version}.7z"
+          ) | Join-String >>$env:GITHUB_ENV
+      - name: Enable git long paths
+        run: git config --global core.longpaths true
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          submodules: "true"
+      - name: Install VS Code Task Runner # https://pypi.org/project/vscode-task-runner/
+        run: pipx install "vscode-task-runner==3.1.0"
+      - name: Compile Papyrus scripts
+        run: vtr "Compile Papyrus Scripts"
+      - name: Create archives
+        run: vtr "Create Archives"
+      - name: Generate release notes
+        run: |
+          $changelog = gh pr list --search 'v${{ env.RELEASE_VERSION }}' --state merged --json body --jq '.[].body'
+          $changelog >changelog_github.md
+          $changelog | Select-Object -Skip 2 | ForEach-Object { $_.Substring(2) } >changelog_nexus.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub release
+        run: >
+          gh release create
+          '${{ env.RELEASE_VERSION }}'
+          '${{ env.RELEASE_ARCHIVE }}'
+          --title 'v${{ env.RELEASE_VERSION }}'
+          --notes-file ".\changelog_github.md"
+        env:
+          GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Upload to Nexus Mods
+        uses: Nexus-Mods/upload-action@c96019556046053aa26044b44396cd38929daf23 # v1.0.0-beta.10
+        with:
+          api_key: ${{ secrets.NEXUS_MODS_API_KEY }}
+          file_id: ${{ vars.NEXUS_FILE_ID }}
+          filename: ${{ env.RELEASE_ARCHIVE }}
+          version: ${{ env.RELEASE_VERSION }}
+          display_name: ${{ vars.MOD_NAME }}
+          description: See changelog for full details.
+          category: main
+          archive_existing_version: true
+          primary_mod_manager_download: true
+          allow_mod_manager_download: true
+          show_requirements_pop_up: false
+          update_mod_version: true
+          # disabling these because dealing with character escaping nonsense is a giant pain
+          # instead, the changelog gets set in a separate step
+          # mod_id:
+          # changelog:
+      - name: Set Nexus Mods changelog
+        run: |
+          $changelog = @{
+            Headers = @{apikey = '${{ secrets.NEXUS_MODS_API_KEY }}'}
+            Body = @{
+              version = '${{ env.RELEASE_VERSION }}'
+              changelog = Get-Content ".\changelog_nexus.md" | Join-String -Separator "`n"
+            } | ConvertTo-Json -Compress
+            ContentType = "application/json"
+            Method = "POST"
+            Uri = 'https://api.nexusmods.com/v3/mods/${{ vars.NEXUS_MOD_ID }}/changelogs'
+          }
+          Invoke-WebRequest @changelog

@@ -11,3 +11,5 @@ data*/scripts/**/*.pex
 *.ba2
 # exclude .spriggit file as it's dynamically generated for this project
 spriggit/.spriggit
+# exclude .key files
+*.key

@@ -35,6 +35,17 @@ Struct ShipVendorDataMap
     int RandomShipsForSaleMax
 
     ObjectReference VendorContainer
+
+    FormList VendorKeywords
+EndStruct
+
+; struct to pass additional keyword lists to a ship vendor
+Struct AdditionalKeywordLists
+    FormList AllVendors
+
+    ; this form list will be populated by the "outpost vendors" keyword list or the "non-outpost vendors" keyword list,
+    ; depending on whether the actor base in question is in the list of outpost vendors
+    FormList Supplemental
 EndStruct
 
 ; struct to hold the mapping of a ship reference to its originating leveled ship

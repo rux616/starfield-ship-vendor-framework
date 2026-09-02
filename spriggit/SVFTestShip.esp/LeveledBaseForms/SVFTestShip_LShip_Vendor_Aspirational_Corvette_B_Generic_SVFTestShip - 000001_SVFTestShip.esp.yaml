@@ -1,0 +1,14 @@
+FormKey: 000001:SVFTestShip.esp
+EditorID: SVFTestShip_LShip_Vendor_Aspirational_Corvette_B_Generic_SVFTestShip
+FormVersion: 582
+MaxCount: 0
+Flags:
+- CalculateForEachItemInCount
+- 0x200
+Entries:
+- Level: 1
+  Unused: 19936
+  Reference: 000815:SVFTestShip.esp
+  Count: 1
+Model:
+  LightLayer: 1

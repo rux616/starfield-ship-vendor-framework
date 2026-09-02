@@ -1,0 +1,6 @@
+FormKey: 00080F:SVF-FreeLanes-Patch.esp
+EditorID: SVF_VendorMapAdd_VendorContainers_FreeLanes
+FormVersion: 582
+Items:
+- 000807:SVF-FreeLanes-Patch.esp
+AddToList: 0008E9:ShipVendorFramework.esm

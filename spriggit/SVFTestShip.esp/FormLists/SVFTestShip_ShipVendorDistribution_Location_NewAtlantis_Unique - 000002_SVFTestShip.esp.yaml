@@ -1,0 +1,6 @@
+FormKey: 000002:SVFTestShip.esp
+EditorID: SVFTestShip_ShipVendorDistribution_Location_NewAtlantis_Unique
+FormVersion: 582
+Items:
+- 000001:SVFTestShip.esp
+AddToList: 000822:ShipVendorFramework.esm

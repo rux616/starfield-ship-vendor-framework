@@ -25,34 +25,35 @@ ScriptName ShipVendorFramework:SVF_Utility
 ; aiLogLevel values: -1 = debug, 0 = info, 1 = warning, 2 = error, 3 = forced (always log regardless of threshold)
 ; aiLogLevelThreshold: messages will only be logged if their level is greater than or equal to this threshold
 ; aiLogLevelThreshold values: -1 = debug (all), 0 = info (default), 1 = warning, 2 = error, 3 = none (suppress)
-Function Log(string asScriptName, int aiSource, string asFunctionName, string asLogMessage, int aiLogLevel = 0, int aiLogLevelThreshold = 0, string asLogName = "ShipVendorFramework") Global
+Function Log(string asScriptName, Form akSource, string asFunctionName, string asLogMessage, int aiLogLevel = 0, int aiLogLevelThreshold = 0, string asLogName = "ShipVendorFramework", bool abAddStackID = false) Global
     aiLogLevel = ClampInt(aiLogLevel, -1, 3)
     aiLogLevelThreshold = ClampInt(aiLogLevelThreshold, -1, 3)
     If aiLogLevel < aiLogLevelThreshold
         Return
     EndIf
-    If asScriptName != "" && aiSource != 0
-        asScriptName = asScriptName + "[0x" + Utility.IntToHex(aiSource) + "]"
+    If asScriptName != "" && akSource != None
+        asScriptName = asScriptName + "[" + GetHexID(akSource) + "]"
     EndIf
     If asFunctionName != ""
         asFunctionName = "." + asFunctionName + "(): "
     EndIf
     string logLevelText = ""
     If aiLogLevel == -1
-        logLevelText = "DBG"
+        logLevelText = "DEBUG:   "
         aiLogLevel = 0
     ElseIf aiLogLevel == 0
-        logLevelText = "NFO"
+        logLevelText = "INFO:    "
     ElseIf aiLogLevel == 1
-        logLevelText = "WRN"
+        logLevelText = "WARNING: "
     ElseIf aiLogLevel == 2
-        logLevelText = "ERR"
+        logLevelText = "ERROR:   "
     ElseIf aiLogLevel == 3
         ; forced log, no prefix
         aiLogLevel = 0
     EndIf
-    If logLevelText != ""
-        logLevelText = logLevelText + ": "
+    If abAddStackID == true
+        ; calling GetCurrentStackID for every log action can get quite costly, so only do this during debugging
+        logLevelText = logLevelText + "{StackID:" + Utility.GetCurrentStackID() + "} "
     EndIf
     asLogMessage = logLevelText + asScriptName + asFunctionName + asLogMessage
     ; try to log; if the TraceUser function returns false, the log wasn't open, so open it and try again
@@ -71,7 +72,7 @@ Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel) Global
     int LL_WARNING = 1 Const
     int LL_ERROR = 2 Const
     int LOG_LEVEL_THRESHOLD = LL_INFO Const
-    Log("SVF_Utility", 0, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
+    Log("SVF_Utility", None, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 
@@ -367,6 +368,104 @@ bool Function ArraysEqualShipToSell(ShipVendorListScript:ShipToSell[] avArray1, 
 
     _Log(fnName, "end", LL_DEBUG)
     Return true
+EndFunction
+
+
+; get the differences between two Keyword arrays
+; returns a new array containing the items in the first array that are not in the second array
+Keyword[] Function ArrayDiffKYWD(Keyword[] avArray1, Keyword[] avArray2) Global
+    string fnName = "ArrayDiffKYWD" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    ; since we'll be removing items from the arrays as we find matches, make a copy first
+    Keyword[] avArray1Copy = (avArray1 as var[]) as Keyword[]
+    Keyword[] avArray2Copy = (avArray2 as var[]) as Keyword[]
+    int i = avArray1Copy.Length - 1  ; start from the back of the array to avoid index issues when removing items
+    While i > -1
+        int findResult = avArray2Copy.RFind(avArray1Copy[i])
+        If findResult == -1
+            _Log(fnName, avArray1Copy[i] + " of array 1 not found in array 2", LL_DEBUG)
+        Else
+            avArray1Copy.Remove(i)
+            avArray2Copy.Remove(findResult)
+        EndIf
+        i += -1
+    EndWhile
+    _Log(fnName, "arrays are equal", LL_DEBUG)
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return avArray1Copy
+EndFunction
+
+
+; MUTATIVE - searches the first array for items from the second array, and then removes them from the first array
+Function ArraySubtractLVLB(LeveledSpaceshipBase[] akArray1, LeveledSpaceshipBase[] akArray2, Form akSource, int aiRemovalLogLevel = 0) Global
+    string fnName = "ArraySubtractLVLB[" + GetHexID(akSource) + "]" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akArray1.Length > 0 && akArray2.Length > 0
+        int foundIndex = 0
+        int i = 0
+        While i < akArray2.Length
+            foundIndex = akArray1.Find(akArray2[i])
+            If foundIndex > -1
+                _Log(fnName, "ship " + akArray2[i] + " found at index " + i + "; removing", aiRemovalLogLevel)
+                akArray1.Remove(foundIndex)
+            EndIf
+            i += 1
+        EndWhile
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
+; MUTATIVE - searches the first array for items from the second array, and then removes them from the first array
+Function ArraySubtractShipToSell(ShipVendorListScript:ShipToSell[] akArray1, var[] akArray2, Form akSource, int aiRemovalLogLevel = 0) Global
+    string fnName = "ArraySubtractShipToSell[" + GetHexID(akSource) + "]" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akArray1.Length > 0 && akArray2.Length > 0
+        int foundIndex = 0
+        int i = 0
+        If akArray2 is ShipVendorListScript:ShipToSell[]
+            ShipVendorListScript:ShipToSell[] akArray2Local = akArray2 as ShipVendorListScript:ShipToSell[]
+            While i < akArray2Local.Length
+                foundIndex = akArray1.FindStruct("LeveledShip", akArray2Local[i].LeveledShip)
+                If foundIndex > -1
+                    _Log(fnName, "ship " + akArray2Local[i] + " found at index " + i + "; removing", aiRemovalLogLevel)
+                    akArray1.Remove(foundIndex)
+                EndIf
+                i += 1
+            EndWhile
+        ElseIf akArray2 is LeveledSpaceshipBase[]
+            LeveledSpaceshipBase[] akArray2Local = akArray2 as LeveledSpaceshipBase[]
+            While i < akArray2Local.Length
+                foundIndex = akArray1.FindStruct("LeveledShip", akArray2Local[i])
+                If foundIndex > -1
+                    _Log(fnName, "ship " + akArray2Local[i] + " found at index " + i + "; removing", aiRemovalLogLevel)
+                    akArray1.Remove(foundIndex)
+                EndIf
+                i += 1
+            EndWhile
+        Else
+            _Log(fnName, "unknown type!", LL_ERROR)
+        EndIf
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 

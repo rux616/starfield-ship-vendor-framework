@@ -20,6 +20,8 @@ ScriptName ShipVendorFramework:SVF_Control Extends Quest
 
 
 ; imports
+; note for future self: you may be tempted to remove the imports and use the fully qualified names for everything, but
+; that leads to some _really_ long and ugly lines of code, so don't do it
 Import ShipVendorFramework:SVF_DataStructures
 Import ShipVendorFramework:SVF_Utility
 
@@ -31,7 +33,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
-string Property SVFVersion = "1.10.0" Auto Const Hidden
+string Property SVFVersion = "1.11.0" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
@@ -69,14 +71,15 @@ Group ShipVendorMappings
     FormList Property Vendors Auto Const                ; list of type Actor
     { The list of vendors to build the data mappings from. }
 
-    FormList Property ShipListsRandom Auto Const        ; list of type FormList
+    FormList Property ShipListsRandom Auto Const        ; list of type FormList (containing leveled base forms)
     { The list of pointer lists that correspond to each vendor for random ship lists. }
 
-    FormList Property ShipListsAlways Auto Const        ; list of type FormList
+    FormList Property ShipListsAlways Auto Const        ; list of type FormList (containing leveled base forms)
     { The list of pointer lists that correspond to each vendor for always available ship lists. }
 
-    FormList Property ShipListsUnique Auto Const        ; list of type FormList
+    FormList Property ShipListsUnique Auto Const        ; list of type FormList (containing leveled base forms)
     { The list of pointer lists that correspond to each vendor for unique ship lists. }
+
     FormList Property RandomShipsForSaleMin Auto Const  ; list of type GameplayOption/GlobalVariable
     { The list of pointer lists that correspond to each vendor which contains the gameplay option or global variable controlling the minimum number of random ships for sale. }
 
@@ -85,6 +88,9 @@ Group ShipVendorMappings
 
     FormList Property VendorContainers Auto Const       ; list of type ObjectReference
     { The list of pointer lists that correspond to each vendor which contains the container to use as vendor containers. If the contents of the pointer list is None, the vendor actor will be used. }
+
+    FormList Property VendorKeywords Auto Const         ; list of type FormList (containing keywords)
+    { The list of pointer lists that correspond to each vendor which contain keywords to add to the vendor. }
 EndGroup
 
 Group Messages
@@ -102,6 +108,23 @@ Group Messages
 
     Message Property MsgVendorReady Auto Const
     { Message to show when the vendor is ready to sell ships. }
+
+    Message Property MsgBadShipCorruption Auto Const
+    { Message to show when corruption occurs due to a bad ship. }
+EndGroup
+
+Group Keywords
+    FormList Property KeywordListAllVendors Auto Const
+    { Form List containing keywords to add to all vendors. }
+
+    FormList Property KeywordListNonOutpostVendors Auto Const
+    { Form List containing keywords to add to all vendors that are not outpost vendors. }
+
+    FormList Property KeywordListOutpostVendors Auto Const
+    { Form List containing keywords to add to all vendors that are outpost vendors. }
+
+    FormList Property VendorListOutpostVendors Auto Const
+    { Form List containing all vendors that are outpost vendors. }
 EndGroup
 
 ; cached vendor mappings
@@ -112,6 +135,10 @@ Form[] shipListsUniqueCache
 Form[] randomShipsForSaleMinCache
 Form[] randomShipsForSaleMaxCache
 Form[] vendorContainersCache
+Form[] vendorKeywordsCache
+
+; other caches
+Form[] vendorListOutpostVendorsCache
 
 ; sentinel variable to check that the initialization of the script (version updates, sanity checks, etc.) have all
 ; finished
@@ -134,7 +161,7 @@ int Property LL_ERROR = 2 Auto Const Hidden
 
 ; local opinionated log function
 Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel)
-    Log("SVF_Control", GetFormID(), asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
+    Log("SVF_Control", Self, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 
@@ -148,6 +175,8 @@ EndEvent
 
 
 Event Actor.OnPlayerLoadGame(Actor akPlayer)
+    svfControlInitialized = false
+
     string fnName = "Actor.OnPlayerLoadGame" Const
     _Log(fnName, "begin", LL_DEBUG)
     VersionInfo()
@@ -157,10 +186,9 @@ EndEvent
 
 
 Function Initialize()
-    svfControlInitialized = false
-
     string fnName = "Initialize" Const
     _Log(fnName, "begin", LL_DEBUG)
+    float startTime = Utility.GetCurrentRealTime()
     _Log(fnName, "SVF Control version: current=" + svfControlVersionCurrent + ", desired=" + SVFControlVersion, LL_INFO)
 
     If svfControlVersionCurrent < 1
@@ -194,6 +222,8 @@ Function Initialize()
     svfControlInitialized = true
     _Log(fnName, "SVF Control initialization complete", LL_INFO)
 
+    float endTime = Utility.GetCurrentRealTime()
+    _Log(fnName, "finished in " + (endTime - startTime) + " seconds", LL_INFO)
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
@@ -230,9 +260,9 @@ EndFunction
 
 ; print version and misc debug into to the log
 Function VersionInfo()
-    Log("", 0, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3)
-    Log("", 0, "", "Starfield version: " + Debug.GetVersionNumber(), 3)
-    Log("", 0, "", "Ship Vendor Framework version: " + SVFVersion, 3)
+    Log("", None, "", "Log level: " + LOG_LEVEL_THRESHOLD, 3, abAddStackID=false)
+    Log("", None, "", "Starfield version: " + Debug.GetVersionNumber(), 3, abAddStackID=false)
+    Log("", None, "", "Ship Vendor Framework version: " + SVFVersion, 3, abAddStackID=false)
 EndFunction
 
 
@@ -245,7 +275,6 @@ Function CheckForMods()
     ; --> modsToCheck list begin <--
     modsToCheck.Add("DarkStar.esm")
     modsToCheck.Add("DarkStar_Astrodynamics.esm")
-    modsToCheck.Add("deadalus1.esm")
     modsToCheck.Add("dominion.esm")
     modsToCheck.Add("FalklandSystems.esm")
     modsToCheck.Add("SVF-HideGameplayOptions-Patch.esm")
@@ -257,13 +286,25 @@ Function CheckForMods()
     modsToCheck.Add("Starvival - Immersive Survival Addon.esm")
     modsToCheck.Add("vcDenAstrodynamics.esm")
     modsToCheck.Add("kinggathcreations_spaceship.esm")
+    modsToCheck.Add("SFBGS00D.esm")
+    modsToCheck.Add("SVF-ShipModulesDarkStarAstrodynamics-AllVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesDarkStarAstrodynamics-NonOutpostVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesDarkStarAstrodynamics-OutpostVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesFalklandSystems-AllVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesFalklandSystems-NonOutpostVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesFalklandSystems-OutpostVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesVanilla-AllVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesVanilla-NonOutpostVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesVanilla-OutpostVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesWatchtower-AllVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesWatchtower-NonOutpostVendors-KPatch.esm")
+    modsToCheck.Add("SVF-ShipModulesWatchtower-OutpostVendors-KPatch.esm")
     ; --> modsToCheck list end <--
 
     string[] patchesToCheck = new string[0]
     ; --> patchesToCheck list begin <--
     patchesToCheck.Add("NONE")
     patchesToCheck.Add("SVF-DarkStarAstrodynamics-Patch.esm")
-    patchesToCheck.Add("SVF-Deadalus-Patch.esm")
     patchesToCheck.Add("SVF-Dominion-Patch.esm")
     patchesToCheck.Add("SVF-FalklandSystems-Patch.esm")
     patchesToCheck.Add("PATCH")
@@ -275,6 +316,19 @@ Function CheckForMods()
     patchesToCheck.Add("SVF-Starvival-Patch.esm")
     patchesToCheck.Add("SVF-TheDenAstrodynamics-Patch.esm")
     patchesToCheck.Add("SVF-Watchtower-Patch.esm")
+    patchesToCheck.Add("SVF-FreeLanes-Patch.esm")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
+    patchesToCheck.Add("PATCH")
     ; --> patchesToCheck list end <--
 
     int i = 0
@@ -349,6 +403,16 @@ bool Function VendorMappingsNotNone()
         listNone = true
     EndIf
 
+    If VendorContainers == None
+        _Log(fnName, "    VendorContainers is None", LL_ERROR)
+        listNone = true
+    EndIf
+
+    If VendorKeywords == None
+        _Log(fnName, "    VendorKeywords is None", LL_ERROR)
+        listNone = true
+    EndIf
+
     _Log(fnName, "end", LL_DEBUG)
     Return !listNone
 EndFunction
@@ -366,7 +430,8 @@ bool Function VendorMappingsSizesMatch()
                        && vendorsCache.Length == shipListsUniqueCache.Length       \
                        && vendorsCache.Length == randomShipsForSaleMinCache.Length \
                        && vendorsCache.Length == randomShipsForSaleMaxCache.Length \
-                       && vendorsCache.Length == vendorContainersCache.Length
+                       && vendorsCache.Length == vendorContainersCache.Length      \
+                       && vendorsCache.Length == vendorKeywordsCache.Length
     if !listSizesMatch
         _Log(fnName, "The vendor mappings lists do not match in size", LL_ERROR)
         _Log(fnName, "    Vendors: " + vendorsCache.Length, LL_ERROR)
@@ -376,6 +441,7 @@ bool Function VendorMappingsSizesMatch()
         _Log(fnName, "    RandomShipsForSaleMin: " + randomShipsForSaleMinCache.Length, LL_ERROR)
         _Log(fnName, "    RandomShipsForSaleMax: " + randomShipsForSaleMaxCache.Length, LL_ERROR)
         _Log(fnName, "    VendorContainers: " + vendorContainersCache.Length, LL_ERROR)
+        _Log(fnName, "    VendorKeywords: " + vendorKeywordsCache.Length, LL_ERROR)
     EndIf
 
     _Log(fnName, "end", LL_DEBUG)
@@ -419,8 +485,11 @@ bool Function VendorMappingsNotNoneDeep()
             listNoneDeep = true
         EndIf
 
-        ; NOTE: vendorContainersCache can be None, in which case the vendor actor will be used as the container,
-        ; so we don't check it here
+        ; NOTE: contents of lists in vendorContainersCache can be None, in which case the vendor actor will be used as
+        ; the container, so we don't check it here
+
+        ; NOTE: contents of lists in vendorKeywordsCache can be None, in which case no keywords will be added to the
+        ; vendor, so we don't check it here
 
         i += 1
     EndWhile
@@ -442,14 +511,30 @@ Function CacheVendorMappings()
     randomShipsForSaleMinCache = RandomShipsForSaleMin.GetArray()
     randomShipsForSaleMaxCache = RandomShipsForSaleMax.GetArray()
     vendorContainersCache = VendorContainers.GetArray()
+    vendorKeywordsCache = VendorKeywords.GetArray()
+    vendorListOutpostVendorsCache = VendorListOutpostVendors.GetArray()
 
     _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
 ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akShipVendor)
-    string fnName = "GetShipVendorDataMap[0x" + Utility.IntToHex(akShipVendor.GetFormID()) + "]" Const
+    ; note that akShipVendor is passed solely for traceability/logging purposes
+    string fnName = "GetShipVendorDataMap[" + GetHexID(akShipVendor) + "]" Const
     _Log(fnName, "begin", LL_DEBUG)
+
+    ; check if the control script is initializing and pause here if it is (return None after a timeout period)
+    int controlInitTimeout = 10
+    While SVFControlInitialized() == false && controlInitTimeout > 0
+        _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
+        Utility.WaitMenuPause(1.0)
+        controlInitTimeout -= 1
+    EndWhile
+
+    If controlInitTimeout <= 0
+        _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
+        Return None
+    EndIf
 
     _Log(fnName, "searching for " + akShipVendorBase + " in Vendors (" + vendorsCache + ")", LL_DEBUG)
     int vendorIndex = vendorsCache.Find(akShipVendorBase)
@@ -483,6 +568,43 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
 
     vendorDataMap.VendorContainer = FormListGetLast(vendorContainersCache[vendorIndex]) as ObjectReference
 
+    vendorDataMap.VendorKeywords = FormListGetLast(vendorKeywordsCache[vendorIndex]) as FormList
+
     _Log(fnName, "end", LL_DEBUG)
     Return vendorDataMap
+EndFunction
+
+
+AdditionalKeywordLists Function GetAdditionalKeywordLists(Form akShipVendorBase, Form akShipVendor)
+    ; note that akShipVendor is passed solely for traceability/logging purposes
+    string fnName = "GetAdditionalKeywordLists[" + GetHexID(akShipVendor) + "]" Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    ; check if the control script is initializing and pause here if it is (return None after a timeout period)
+    int controlInitTimeout = 10
+    While SVFControlInitialized() == false && controlInitTimeout > 0
+        _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
+        Utility.WaitMenuPause(1.0)
+        controlInitTimeout -= 1
+    EndWhile
+
+    If controlInitTimeout <= 0
+        _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
+        Return None
+    EndIf
+
+    AdditionalKeywordLists keywordLists = new AdditionalKeywordLists
+
+    keywordLists.AllVendors = KeywordListAllVendors
+
+    If vendorListOutpostVendorsCache.Find(akShipVendorBase) >= 0
+        _Log(fnName, akShipVendorBase + " is an outpost vendor", LL_DEBUG)
+        keywordLists.Supplemental = KeywordListOutpostVendors
+    Else
+        _Log(fnName, akShipVendorBase + " is not an outpost vendor", LL_DEBUG)
+        keywordLists.Supplemental = KeywordListNonOutpostVendors
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return keywordLists
 EndFunction

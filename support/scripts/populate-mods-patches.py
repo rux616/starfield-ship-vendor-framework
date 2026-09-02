@@ -1,4 +1,4 @@
-# Copyright 2024 Dan Cassidy
+# Copyright 2026 Dan Cassidy
 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,7 +16,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 
 
-# write known masters to a .spriggit file
+# write mod/patch pairs to a specified papyrus file
 
 
 import argparse
@@ -32,7 +32,7 @@ def main(
     mod_files: list[str],
     patch_files: list[str],
 ) -> int:
-    # do a quick check on the lists to ensure they are the same size
+    # do some quick basic checks on some of the inputs
     if len(mod_files) != len(patch_files):
         print("[ERROR] The number of mod files and patch files must be the same.")
         return 1
@@ -52,6 +52,7 @@ def main(
         return 1
     print(f"loaded '{papyrus_file}' into memory")
 
+    # insert mod and patch files into papyrus file data
     for var_name, file_list in [
         (mod_file_variable, mod_files),
         (patch_file_variable, patch_files),
@@ -75,6 +76,7 @@ def main(
         )
         print(f"inserted {len(file_list)} entries for variable '{var_name}'")
 
+    # write updated data back to papyrus file
     with open(papyrus_file, "w", encoding="utf-8") as f:
         f.write(data)
     print(f"wrote updated data to '{papyrus_file}'")
@@ -90,28 +92,31 @@ if __name__ == "__main__":
     parser.add_argument("--papyrus-file", help="Path to papyrus file", metavar="PAPYRUS_FILE", default="")
     parser.add_argument(
         "--marker-template",
-        help=f"Templated marker string to check for in the papyrus file. Value '<VAR>' will be replaced with the specific variable and '<BOOKEND>' will be replaced with 'begin' or 'end'. Default: '%(default)s'",
+        help='Templated marker string to check for in the papyrus file. Value "<VAR>" will be replaced with the specific variable and "<BOOKEND>" will be replaced with "begin" or "end". Default: "%(default)s"',
         metavar="MARKER_TEMPLATE",
         default="; --> <VAR> list <BOOKEND> <--",
     )
     parser.add_argument(
         "--list-add-code_template",
-        help="Templated code to add each mod/patch file to the list variable. Value '<VAR>' will be replaced with the specific variable, and '<FILE>' will be replaced by the mod/patch file.",
+        help='Templated code to add each mod/patch file to the list variable. Value "<VAR>" will be replaced with the specific variable, and "<FILE>" will be replaced by the mod/patch file. Default: "%(default)s"',
         metavar="LIST_ADD_CODE_TEMPLATE",
         default='<VAR>.Add("<FILE>")',
     )
     parser.add_argument(
-        "--mod-file-variable", help="Papyrus variable name for mod files", metavar="MOD_VARIABLE", default="modsToCheck"
+        "--mod-file-variable",
+        help='Papyrus variable name for mod files. Default: "%(default)s"',
+        metavar="MOD_VARIABLE",
+        default="modsToCheck",
     )
     parser.add_argument(
         "--patch-file-variable",
-        help="Papyrus variable name for patch files",
+        help='Papyrus variable name for patch files. Default: "%(default)s"',
         metavar="PATCH_VARIABLE",
         default="patchesToCheck",
     )
     parser.add_argument(
         "--mod-patch-pairs",
-        help='list of mod/patch pairs. Every mod and patch should be their own entry, but the order should be mod, patch, mod, patch, etc. "patch" values can be "NONE" to indicate a patch does not exist, "N/A" to indicate that a patch is not needed, or "PATCH" to indicate that the mod is a patch itself. Example: --mod-patch-pairs "Mod1.esm" "Patch1.esm" "Mod2.esm" "NONE" "Mod3.esm" "N/A"',
+        help='list of mod/patch pairs. Every mod and patch should be their own entry, but the order should be mod, patch, mod, patch, etc. In addition to the specific name of a patch ESM file, "patch" values can also be "NONE" to indicate a patch does not exist, "N/A" to indicate that a patch is not needed, or "PATCH" to indicate that the mod is a patch itself. Example: --mod-patch-pairs "Mod1.esm" "Patch1.esm" "Mod2.esm" "NONE" "Mod3.esm" "N/A" "Mod4.esm" "Patch4.esm"',
         nargs="+",
         metavar="MOD_OR_PATCH",
         default=[],

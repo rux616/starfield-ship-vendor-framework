@@ -13,11 +13,11 @@ Description:
     The maximum number of ships in the "random" category that Jasmine Durand will attempt to sell.
 
 
-    <font color="#EDEDED">6</font>: Default value of this option.
+    <font color="#EDEDED">8</font>: Default value of this option.
 Data:
   MutagenObjectType: FloatGameplayOptionData
-  Value1: 6
-  Value2: 6
+  Value1: 8
+  Value2: 8
   Max: 32
   Step: 1
 Rewards:

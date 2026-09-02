@@ -16,8 +16,6 @@ Options:
   - 00084F:ShipVendorFramework.esm
   - 000897:ShipVendorFramework.esm
   - 000850:ShipVendorFramework.esm
-  - 000900:ShipVendorFramework.esm
-  - 0008F9:ShipVendorFramework.esm
   - 000896:ShipVendorFramework.esm
   - 000858:ShipVendorFramework.esm
   - 000890:ShipVendorFramework.esm
@@ -56,6 +54,9 @@ Options:
   - 0008A3:ShipVendorFramework.esm
   - 00088F:ShipVendorFramework.esm
   - 000889:ShipVendorFramework.esm
+  - 00093F:ShipVendorFramework.esm
+  - 000900:ShipVendorFramework.esm
+  - 0008F9:ShipVendorFramework.esm
   - 000914:ShipVendorFramework.esm
   - 000902:ShipVendorFramework.esm
   - 000901:ShipVendorFramework.esm

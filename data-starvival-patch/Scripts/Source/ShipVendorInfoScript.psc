@@ -45,7 +45,7 @@ int Property LL_ERROR = 2 Auto Const Hidden
 
 ; local opinionated log function
 Function _Log(string asFunctionName, string asLogMessage, int aiLogLevel)
-    ShipVendorFramework:SVF_Utility.Log("ShipVendorInfoScript", GetFormID(), asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
+    ShipVendorFramework:SVF_Utility.Log("ShipVendorInfoScript", Self, asFunctionName, asLogMessage, aiLogLevel, LOG_LEVEL_THRESHOLD)
 EndFunction
 
 

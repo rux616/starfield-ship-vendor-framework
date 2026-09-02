@@ -135,3 +135,227 @@
     - if the game is at the point where an item has to be used to reset the control quest, the save is probably a lost cause and corrupted beyond recovery anyway
 - [X] look at the phalanx ship not spawning at the den for a low level player
     - ship spawns. the exempted spawns at the deimos staryard work as well
+- [X] look at revising default random ship numbers now that the spawning behavior is more like vanilla
+    - [X] jasmine durand max should be set to 8
+    - [X] jasmine durand min should be set to 6
+- [X] mark patch for "SGC Daedalus & Battlestar added to New Atlantis & Outpost Ship Vendor" by Rechi03 as outdated and no longer needed
+    - [X] check newer version of SGC Daedalus mod to confirm compatibility with SVF
+    - confirmed - can remove patch
+- [-] rename "Outpost Vendor Custom Ships" mod patch to "Outpost Vendor New Ships"
+    - was already called "Outpost Vendor New Ships" everywhere /shrug
+- [-] create "Stroud Premium Edition" patch
+    - [-] add gameplay setting options [main mod]
+    - [-] add gameplay setting option override [patch]
+    - [-] determine vendor container
+    - [-] add lists
+    - not needed because it just references the Stroud-Eklund kiosk from the Neon store
+- [X] add way to allow added keywords to ship vendors
+    - [X] check what the consequences are to altering the ShipVendorDataMap struct -> verify that no critical data is being held there and that it's just used to transport data between control script and vendor script
+    - [-] make keyword map independent of main data map?
+        - if there are mods out there using the vendor data map method, then maybe, otherwise no
+        - could also set up a system that disables malformed/malfunctioning parts of the vendor data map system
+        - decision: since no third party mods are using the VDM method, no need to make things harder than they need to be
+    - [X] add "non-outpost vendors" keyword list
+    - [X] add "outpost-only" keyword list
+    - [X] add "all vendors" keyword list
+- [X] update patches that add vendors with keyword support
+    - [X] shattered space
+    - [X] darkstar astrodynamics
+    - [X] falkland
+    - [X] watchtower
+    - [X] scour nexus and creations for mods that add custom vendors and check what method is used and whether they need to be updated
+        - [X] nexus
+            - [-] [Aardvark Shipyards - Sales Lot](https://www.nexusmods.com/starfield/mods/10957)
+            - [-] [Adventurer Class C](https://www.nexusmods.com/starfield/mods/10997)
+            - [-] [Aloha Oe Ship](https://www.nexusmods.com/starfield/mods/11636)
+            - [-] [Argamaks Reconnaissance Ship](https://www.nexusmods.com/starfield/mods/12041)
+            - [-] [Arquitens-class light cruiser](https://www.nexusmods.com/starfield/mods/12484)
+            - [-] [Arrowhead](https://www.nexusmods.com/starfield/mods/10773)
+            - [-] [ATC Ships](https://www.nexusmods.com/starfield/mods/12979)
+            - [-] [Bluemoon](https://www.nexusmods.com/starfield/mods/14557)
+            - [-] [Bosco's Galactic Customs](https://www.nexusmods.com/starfield/mods/11714)
+            - [-] [Cheap As Chips Ships](https://www.nexusmods.com/starfield/mods/15908)
+            - [-] [Classic 1701 Enterprise](https://www.nexusmods.com/starfield/mods/13199)
+            - [-] [Community Spaceship Expansion](https://www.nexusmods.com/starfield/mods/14174)
+            - [-] [Company Gunship - Ship Vendor Framework](https://www.nexusmods.com/starfield/mods/14475)
+            - [-] [Constellation Ark-Class Expedition Cruiser - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11994)
+            - [-] [Constellation's Next Frontier](https://www.nexusmods.com/starfield/mods/14143)
+            - [-] [Courier Light Freighter](https://www.nexusmods.com/starfield/mods/11917)
+            - [-] [CSS DeepStar VI](https://www.nexusmods.com/starfield/mods/13951)
+            - [-] [Dagalleon Military Cruiser](https://www.nexusmods.com/starfield/mods/11922)
+            - [-] [Deimos Staryards 'The Scintillant' - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11966)
+            - [-] [Dominator VG](https://www.nexusmods.com/starfield/mods/11712)
+            - [-] [Explorer Class B](https://www.nexusmods.com/starfield/mods/10999)
+            - [-] [Federal Corvette](https://www.nexusmods.com/starfield/mods/13588)
+            - [-] [Flathead Ship](https://www.nexusmods.com/starfield/mods/12866)
+            - [-] [Fortuitous Skies Exploration Craft](https://www.nexusmods.com/starfield/mods/12002)
+            - [-] [Freightmaster Fleet](https://www.nexusmods.com/starfield/mods/10881)
+            - [-] [Gargantuan Destroyer](https://www.nexusmods.com/starfield/mods/11923)
+            - [-] [Gazer Exploration Cruiser](https://www.nexusmods.com/starfield/mods/11904)
+            - [-] [Graf's Corellian Castoffs - YT1300-Series Ships for Sale](https://www.nexusmods.com/starfield/mods/10797)
+            - [-] [Halo Reach Pelican](https://www.nexusmods.com/starfield/mods/13333)
+            - [-] [Hansdampf's Lost Ships](https://www.nexusmods.com/starfield/mods/12206)
+            - [-] [Harbinger](https://www.nexusmods.com/starfield/mods/10740)
+            - [-] [Hong's Advanced Ship Pack](https://www.nexusmods.com/starfield/mods/11503)
+            - [-] [HopeTech Archer-Class Destroyer - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11989)
+            - [-] [HopeTech Astral Engine - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11968)
+            - [-] [HopeTech Astral Engine Model EJ - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11987)
+            - [-] [HopeTech Freight Crate](https://www.nexusmods.com/starfield/mods/16619)
+            - [-] [Imperial Courier](https://www.nexusmods.com/starfield/mods/15781)
+            - [-] [In Amber Clad](https://www.nexusmods.com/starfield/mods/12958)
+            - [-] [JJ U.S.S. Enterprise 1701](https://www.nexusmods.com/starfield/mods/12559)
+            - [-] [KenShin's Ship Repository](https://www.nexusmods.com/starfield/mods/13542)
+            - [-] [Krote IV - Class C Ship](https://www.nexusmods.com/starfield/mods/13754)
+            - [-] [Legendary Ships](https://www.nexusmods.com/starfield/mods/12077)
+            - [-] [Liberty Cruiser Redux - TERRAN ARMADA Edition - Evie's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/16974)
+            - [-] [Liberty Cruiser Ship - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11903)
+            - [-] [Lorment Destroyer](https://www.nexusmods.com/starfield/mods/12017)
+            - [-] [Mass Effect Andromeda Tempest Ship](https://www.nexusmods.com/starfield/mods/10578)
+            - [-] [My Ship Transfers](https://www.nexusmods.com/starfield/mods/14939)
+            - [-] [NG Starchaser](https://www.nexusmods.com/starfield/mods/16609)
+            - [-] [Nomad Warrior Series Ships](https://www.nexusmods.com/starfield/mods/14472)
+            - [-] [Nova Galactic Heavy Outpost Platform-Retrievable (HOP-R) - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11916)
+            - [-] [Nova Galactic NASA Prism-LTE - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11906)
+            - [-] [Nova Galactic NASA Prism-XXL - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11907)
+            - [-] [Nova Galactic Venerator - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11967)
+            - [-] [Pegasus](https://www.nexusmods.com/starfield/mods/14517)
+            - [-] [Privateer-RN](https://www.nexusmods.com/starfield/mods/11909)
+            - [-] [Raomer Civilian Ship](https://www.nexusmods.com/starfield/mods/11956)
+            - [-] [SES Super Destroyer (A Helldivers II Inspired Ship)](https://www.nexusmods.com/starfield/mods/13427)
+            - [-] [Ship Blueprint - The Archangel](https://www.nexusmods.com/starfield/mods/10774)
+            - [-] [Ship Bundle - UC War Chest Series - Evie's Ship Shop](https://www.nexusmods.com/starfield/mods/17718)
+            - [-] [Ship Vendor Framework (SVF) - RU](https://www.nexusmods.com/starfield/mods/14859)
+            - [-] [Ship Vendor Framework (SVF) FR](https://www.nexusmods.com/starfield/mods/15585)
+            - [-] [Ship Vendor Framework - Deutsch](https://www.nexusmods.com/starfield/mods/11316)
+            - [-] [Ship Vendor Framework - Russian Translation](https://www.nexusmods.com/starfield/mods/11222)
+            - [-] [Ships Plus](https://www.nexusmods.com/starfield/mods/11443)
+            - [-] [ShiverSpeak - Trackers Alliance Ship Tech and More](https://www.nexusmods.com/starfield/mods/13744)
+            - [-] [Shotel Fighter](https://www.nexusmods.com/starfield/mods/11955)
+            - [-] [SR2 Normandy](https://www.nexusmods.com/starfield/mods/11857)
+            - [-] [Star Wars - CEC VCX-100 Light Freighter (Ghost)](https://www.nexusmods.com/starfield/mods/16311)
+            - [-] [Star Wars - CEC VCX-210 Light Freighter](https://www.nexusmods.com/starfield/mods/16317)
+            - [-] [Star Wars - CEC YT Series](https://www.nexusmods.com/starfield/mods/16169)
+            - [-] [Star Wars - D5 Mantis Patrol Craft](https://www.nexusmods.com/starfield/mods/16070)
+            - [-] [Star Wars - Incom X4 Gunship](https://www.nexusmods.com/starfield/mods/16214)
+            - [-] [Star Wars - Kuat Drive Yards AIATi](https://www.nexusmods.com/starfield/mods/16072)
+            - [-] [Star Wars - Ship Vendor Framework Patcher (and Balancer)](https://www.nexusmods.com/starfield/mods/14269)
+            - [-] [Star Wars - Sienar Light Freighter Echelon IV](https://www.nexusmods.com/starfield/mods/16047)
+            - [-] [Star Wars - X-900 Phantom](https://www.nexusmods.com/starfield/mods/16119)
+            - [-] [Star Wars Tie Fighter (TIE LN)](https://www.nexusmods.com/starfield/mods/14226)
+            - [-] [Starbreaker](https://www.nexusmods.com/starfield/mods/13386)
+            - [-] [Starfield Fleet Expansion](https://www.nexusmods.com/starfield/mods/10727)
+            - [-] [Starfield Fleet Expansion - Deutsch](https://www.nexusmods.com/starfield/mods/11317)
+            - [-] [Starfield Shipwright's Promethean Accord](https://www.nexusmods.com/starfield/mods/14222)
+            - [-] [Starkeel Ship Series](https://www.nexusmods.com/starfield/mods/11936)
+            - [-] [Stroud-Eklund Decatur-Class Frigate - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11913)
+            - [-] [Supra et Ultra](https://www.nexusmods.com/starfield/mods/14658)
+            - [-] [T-2 Ramsidian Yacht](https://www.nexusmods.com/starfield/mods/15935)
+            - [-] [The Mourning](https://www.nexusmods.com/starfield/mods/12242)
+            - [-] [The Outrider (YT-2442)](https://www.nexusmods.com/starfield/mods/17470)
+            - [-] [The U.N.S.A Meleys](https://www.nexusmods.com/starfield/mods/12481)
+            - [-] [The Weaver](https://www.nexusmods.com/starfield/mods/10808)
+            - [-] [TIG Ship - Abyss Trekker](https://www.nexusmods.com/starfield/mods/12758)
+            - [-] [Tonnehaul Medium Freighter](https://www.nexusmods.com/starfield/mods/11973)
+            - [-] [Twilight's Eye (end game ship)](https://www.nexusmods.com/starfield/mods/13655)
+            - [-] [UC Arbitrator Class Heavy Escort Cruiser - UC War Chest Series - Evie's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/17406)
+            - [-] [UC Bastion-Class Battlecruiser - UC War Chest Series - Evie's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/17630)
+            - [-] [UC Misthios - Privateer Frigate Ship](https://www.nexusmods.com/starfield/mods/12499)
+            - [-] [UC Myrmidon - Destroyer Class Ship](https://www.nexusmods.com/starfield/mods/12428)
+            - [-] [UC Navigator Corps Acropolis-Class Operations Cruiser - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/12612)
+            - [-] [UC Navigator Corps Atlas-Class Surveyor - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/12610)
+            - [-] [UC Navigator Corps Corbita-Class Freighter - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/12611)
+            - [-] [UC Orion](https://www.nexusmods.com/starfield/mods/15757)
+            - [-] [UC Pegasus - Battlestar Class Cruiser](https://www.nexusmods.com/starfield/mods/12338)
+            - [-] [UC Requital Class Corvette - UC War Chest Series - Evie's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/17073)
+            - [-] [UC Sabre - Strike Fighter](https://www.nexusmods.com/starfield/mods/12308)
+            - [-] [UC SysDef Destroyer-Class Warship - K3V's Fleet Builds](https://www.nexusmods.com/starfield/mods/12175)
+            - [-] [UC SysDef Razorleaf-Class Frigate - Eag's Ship Shop Standalone Ship](https://www.nexusmods.com/starfield/mods/11963)
+            - [-] [UC Vigilance (Buyable)](https://www.nexusmods.com/starfield/mods/12240)
+            - [-] [UC Warglaive - Heavy Recon Ship](https://www.nexusmods.com/starfield/mods/12369)
+            - [-] [UCCSS Odyssey](https://www.nexusmods.com/starfield/mods/10846)
+            - [-] [Venator Class Star Destroyer](https://www.nexusmods.com/starfield/mods/12479)
+            - [-] [Warhawk](https://www.nexusmods.com/starfield/mods/10693)
+            - [-] [WH Bristling Sardine](https://www.nexusmods.com/starfield/mods/11012)
+            - [-] [WH Butcher Bird](https://www.nexusmods.com/starfield/mods/10865)
+            - [-] [WH Cormorant](https://www.nexusmods.com/starfield/mods/11225)
+            - [-] [WH Gila Monster](https://www.nexusmods.com/starfield/mods/10884)
+            - [-] [WH Goldfish](https://www.nexusmods.com/starfield/mods/10937)
+            - [-] [WH Javelin](https://www.nexusmods.com/starfield/mods/11070)
+            - [-] [WH Mosquito](https://www.nexusmods.com/starfield/mods/10960)
+            - [-] [WH Nautilus](https://www.nexusmods.com/starfield/mods/11000)
+            - [-] [WH Salamander](https://www.nexusmods.com/starfield/mods/10851)
+            - [-] [WH Speedster](https://www.nexusmods.com/starfield/mods/11043)
+            - [-] [WH Titan](https://www.nexusmods.com/starfield/mods/10947)
+            - [-] [WH Twintail](https://www.nexusmods.com/starfield/mods/10852)
+            - [-] [WH Whaleshark](https://www.nexusmods.com/starfield/mods/10888)
+            - [-] [Windaddict's Customs - Shipyard Vendor](https://www.nexusmods.com/starfield/mods/13736)
+            - [-] [X-wing and Advanced TIE Ship Vendor Framework Patch](https://www.nexusmods.com/starfield/mods/12542)
+            - [-] [Xeno Ark MK I](https://www.nexusmods.com/starfield/mods/14656)
+            - [-] [YTS-27 Corsair](https://www.nexusmods.com/starfield/mods/13429)
+        - [X] creations
+            - nope. site is too ass to be able to find everything.
+    - [X] update vendor keyword list naming (SVF_VendorKeywordsList_<vendor_editor_id> to SVF_VendorKeywordsList_Vendor_<vendor_editor_id>)
+        - [X] DarkStar Astrodynamics
+        - [X] Falkland Systems
+        - [X] Free Lanes
+        - [X] Lower Landing Pad
+        - [X] Shattered Space
+        - [X] Watchtower
+    - [X] add vendors to outpost vendor list
+        - [X] DarkStar Astrodynamics
+        - [X] Lower Landing Pad
+- [X] create keyword patches
+    - [X] vanilla
+        - [X] all vendors
+        - [X] non-outpost vendors
+        - [X] outpost vendors
+    - [X] darkstar astrodynamics
+        - [X] all vendors
+        - [X] non-outpost vendors
+        - [X] outpost vendors
+    - [X] falkland systems
+        - [X] all vendors
+        - [X] non-outpost vendors
+        - [X] outpost vendors
+    - [X] watchtower
+        - [X] all vendors
+        - [X] non-outpost vendors
+        - [X] outpost vendors
+    - [X] add patches to fomod
+    - [X] document in patches readme
+- [X] update HOWTO docs with keyword stuff
+- [X] add verbiage somewhere in creations readme about how you may need to delete the mod fully and redownload it to update it
+- [X] determine effort required to add a FOMOD option to not install unchecked patches to the "optional" folder
+    - easy, do it
+- [X] add starvival and cassiopeia source submodules and update ppj paths
+- [X] add github workflow to publish mod to nexus mods
+    - [X] get key
+    - [X] store key in NEXUS_MODS_API_KEY secret
+    - [X] create workflow
+- [X] note Free Lanes update as a requirement in the readme files
+- [-] add some defensive checks for FormLists to ensure that items in them are what's expected
+    - nah, if things are there that aren't supposed to be, it'll error out in either the user log or the main log or both
+- [X] audit CheckForNewShips function in ShipVendorScript to make sure it's not erroneously regenerating ships due to "unique" or "always" ships being purchased
+    - [X] utilize the new SVF_Utility.ArraySubtract* functions on the lists to make sure they match up with
+- [X] create some sort of watchdog process that watches the creation of ships and alarms if it gets stuck
+- [X] update readme "how to update" section to specifically call out that the user should REPLACE the mod every install
+- [X] decompile darkstar astrodynamics v5.0.0 scripts to see exactly what changed and determine what that means for compatibility
+    - [X] add override script to DSA patch
+- [X] check compatibility patch for The Den Astrodynamics with new version (v1.1 or v1.2)
+    - compatible
+- [ ] determine what was causing the ships in Community Spaceship Expansion SVF patch v1.0 to hang (and where exactly)
+    - [ ] LVLB:FExxxE18, DWN_CSE_SVF_LShip_Vendor_Deimos_A_Pelican, which resolved to GBFM:FExxxD6A, DWN_CSE_SVF_EncShip_Vendor_Deimos_A_Pelican01
+- [X] reach out to author of [ShiverSpeak - Trackers Alliance Ship Tech and More](https://www.nexusmods.com/starfield/mods/13744) with an offer of help to improve their implementation
+- [X] check compatibility with Starvival v12.5
+    - compatible
+- [X] pull out free lanes stuff into its own patch
+    - [X] fomod
+        - [-] add Free Lanes patch to other mods that require free lanes(?)
+    - [X] plugins
+        - [X] ShipVendorFramework
+        - [X] SVF-FreeLanes-Patch
+    - [X] docs
+        - [X] changelog
+        - [X] readme (update requirements of SVF to specify a minimum Starfield version of v1.11.36)
+        - [X] creations readme
+        - [X] patches readme

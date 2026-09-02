@@ -6,6 +6,18 @@ VirtualMachineAdapter:
   - Name: shipvendorframework:svf_control
     Properties:
     - MutagenObjectType: ScriptObjectProperty
+      Name: KeywordListAllVendors
+      Object: 000905:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: KeywordListNonOutpostVendors
+      Object: 000908:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: KeywordListOutpostVendors
+      Object: 000906:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MsgBadShipCorruption
+      Object: 00090D:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
       Name: MsgErrorVendorMappingsNone
       Object: 0008FA:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
@@ -65,6 +77,12 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: VendorContainers
       Object: 0008E9:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VendorKeywords
+      Object: 000907:ShipVendorFramework.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VendorListOutpostVendors
+      Object: 00090A:ShipVendorFramework.esp
     - MutagenObjectType: ScriptObjectProperty
       Name: Vendors
       Object: 00083D:ShipVendorFramework.esp

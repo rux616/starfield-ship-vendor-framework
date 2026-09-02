@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <PapyrusProject
     xmlns="PapyrusProject.xsd"
-    Output="..\..\data-starvival-patch\Scripts"
+    Output="..\..\data-Starvival-patch\Scripts"
     Flags="Starfield_Papyrus_Flags.flg"
     Asm="Keep"
     Optimize="false"
@@ -9,12 +9,12 @@
     Final="false"
 >
     <Imports>
-        <Import>..\..\..\..\Mod Organizer 2\mods\Starvival Scripts (Source)\Scripts\Source\User</Import>
-        <Import>..\..\..\..\Mod Organizer 2\mods\Cassiopeia Papyrus Extender\Scripts\Source\User</Import>
+        <Import>..\papyrus-imports\starvival\Scripts\Source\User</Import>
+        <Import>..\papyrus-imports\cassiopeia\Scripts\Source\User</Import>
         <Import>..\..\data\Scripts\Source</Import>
-        <Import>..\papyrus-imports\vanilla\Source</Import>
+        <Import>..\papyrus-imports\vanilla\Scripts\Source</Import>
     </Imports>
     <Folders>
-        <Folder>..\..\data-starvival-patch\Scripts\Source</Folder>
+        <Folder>..\..\data-Starvival-patch\Scripts\Source</Folder>
     </Folders>
 </PapyrusProject>

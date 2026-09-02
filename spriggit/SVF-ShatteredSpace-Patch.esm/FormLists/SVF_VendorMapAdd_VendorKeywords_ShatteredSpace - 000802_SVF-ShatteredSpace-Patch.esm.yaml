@@ -1,0 +1,6 @@
+FormKey: 000802:SVF-ShatteredSpace-Patch.esm
+EditorID: SVF_VendorMapAdd_VendorKeywords_ShatteredSpace
+FormVersion: 582
+Items:
+- 000800:SVF-ShatteredSpace-Patch.esm
+AddToList: 000907:ShipVendorFramework.esm

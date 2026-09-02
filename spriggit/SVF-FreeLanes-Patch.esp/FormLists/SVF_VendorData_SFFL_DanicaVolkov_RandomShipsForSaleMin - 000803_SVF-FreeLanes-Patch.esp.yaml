@@ -1,0 +1,6 @@
+FormKey: 000803:SVF-FreeLanes-Patch.esp
+EditorID: SVF_VendorData_SFFL_DanicaVolkov_RandomShipsForSaleMin
+FormVersion: 582
+Items:
+- 000900:ShipVendorFramework.esm
+AddToList: Null
