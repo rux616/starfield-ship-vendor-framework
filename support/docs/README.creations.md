@@ -1,4 +1,4 @@
-Version: 1.11.0
+Version: 1.11.1
 
 **NOTE:** Version 1.11.0 and later moves support for the Free Lanes update to a separate patch.
 
