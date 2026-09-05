@@ -11,8 +11,8 @@ Table Of Contents:
     - Mod: The Den Astrodynamics
     - Mod: Watchtower
 - Compatibility Patches
-    - Mod: DarkStar Astrodynamics v5
-    - Mod: Starvival v12.1
+    - Mod: DarkStar Astrodynamics v5+
+    - Mod: Starvival v12.1+
 - Keyword Patches
     - Vanilla
         - Ship Modules - All Vendors
@@ -37,6 +37,8 @@ Table Of Contents:
 # Capability Patches
 
 ## Update: Free Lanes
+SVF Capability Patch - Free Lanes
+
 Patch for "Ship Vendor Framework" by rux616 and the Free Lanes update.
 
 Mod Source:
@@ -47,6 +49,8 @@ Patch Type:
 
 
 ## DLC: Shattered Space
+SVF Capability Patch - Shattered Space
+
 Patch for "Ship Vendor Framework" by rux616 and the Shattered Space DLC.
 
 Mod Source:
@@ -57,6 +61,8 @@ Patch Type:
 
 
 ## Mod: Dominion
+SVF Capability Patch - Dominion
+
 Patch for "Ship Vendor Framework" by rux616 and "Dominion" by rhart317.
 
 Mod Source:
@@ -67,6 +73,8 @@ Patch Type:
 
 
 ## Mod: Falkland Systems v2
+SVF Capability Patch - Falkland Systems v2
+
 Patch for "Ship Vendor Framework" by rux616 and "Falkland Systems Ship Services" v2 by Hjalmere.
 
 Mod Source:
@@ -77,6 +85,8 @@ Patch Type:
 
 
 ## Mod: Iconic Ships
+SVF Capability Patch - Iconic Ships
+
 Patch for "Ship Vendor Framework" by rux616 and "Iconic Ships" by ShipTechnician.
 
 Mod Source:
@@ -87,6 +97,8 @@ Patch Type:
 
 
 ## Mod: L-K Ships
+SVF Capability Patch - L-K Ships
+
 Patch for "Ship Vendor Framework" by rux616 and "L-K Ships" by Lighthorse and KeithVSmith1977.
 
 Mod Source:
@@ -98,6 +110,8 @@ Patch Type:
 
 
 ## Mod: Lower Landing Pad
+SVF Capability Patch - Lower Landing Pad
+
 Patch for "Ship Vendor Framework" by rux616 and "Lower Landing Pad" by SenterPat.
 
 Mod Source:
@@ -108,6 +122,8 @@ Patch Type:
 
 
 ## Mod: Outpost Vendor New Ships
+SVF Capability Patch - Outpost Vendor New Ships
+
 Patch for "Ship Vendor Framework" by rux616 and "Outpost Vendor New Ships" by nefurun.
 
 Mod Source:
@@ -118,6 +134,8 @@ Patch Type:
 
 
 ## Mod: The Den Astrodynamics
+SVF Capability Patch - The Den Astrodynamics
+
 Patch for "Ship Vendor Framework" by rux616 and "The Den Astrodynamics" by VoodooChild.
 
 Mod Source:
@@ -128,6 +146,8 @@ Patch Type:
 
 
 ## Mod: Watchtower
+SVF Capability Patch - Watchtower
+
 Patch for "Ship Vendor Framework" by rux616 and "Watchtower" by kinggath_creations.
 
 Mod Source:
@@ -139,8 +159,10 @@ Patch Type:
 
 # Compatibility Patches
 
-## Mod: DarkStar Astrodynamics v5
-Patch for "Ship Vendor Framework" by rux616 and "DarkStar Astrodynamics" v5 by WykkydGaming.
+## Mod: DarkStar Astrodynamics v5+
+SVF Compatibility Patch - DarkStar Astrodynamics v5+
+
+Patch for "Ship Vendor Framework" by rux616 and "DarkStar Astrodynamics" v5+ by WykkydGaming.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics
@@ -150,8 +172,10 @@ Patch Type:
 - Compatibility
 
 
-## Mod: Starvival v12.1
-Patch for "Ship Vendor Framework" by rux616 and "Starvival" v12.1 by lKocMoHaBTl.
+## Mod: Starvival v12.1+
+SVF Compatibility Patch - Starvival v12.1+
+
+Patch for "Ship Vendor Framework" by rux616 and "Starvival" v12.1+ by lKocMoHaBTl.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon
@@ -166,6 +190,8 @@ Patch Type:
 ## Vanilla
 
 ### Ship Modules - All Vendors
+SVF Keyword Patch - Vanilla Ship Modules - All Vendors
+
 Patch to add all ship module keywords from vanilla to all ship vendors.
 
 Mod Source:
@@ -176,6 +202,8 @@ Keyword
 
 
 ### Ship Modules - Non-Outpost Vendors
+SVF Keyword Patch - Vanilla Ship Modules - Non-Outpost Vendors
+
 Patch to add all ship module keywords from vanilla to non-outpost ship vendors.
 
 Mod Source:
@@ -186,6 +214,8 @@ Keyword
 
 
 ### Ship Modules - Outpost Vendors
+SVF Keyword Patch - Vanilla Ship Modules - Outpost Vendors
+
 Patch to add all ship module keywords from vanilla to outpost ship vendors.
 
 Mod Source:
@@ -198,6 +228,8 @@ Keyword
 ## Mod: DarkStar Astrodynamics
 
 ### Ship Modules - All Vendors
+SVF Keyword Patch - DarkStar Astrodynamics Ship Modules - All Vendors
+
 Patch to add all ship module keywords from "DarkStar Astrodynamics" by WykkydGaming to all ship vendors.
 
 Mod Source:
@@ -209,6 +241,8 @@ Keyword
 
 
 ### Ship Modules - Non-Outpost Vendors
+SVF Keyword Patch - DarkStar Astrodynamics Ship Modules - Non-Outpost Vendors
+
 Patch to add all ship module keywords from "DarkStar Astrodynamics" by WykkydGaming to non-outpost ship vendors.
 
 Mod Source:
@@ -220,6 +254,8 @@ Keyword
 
 
 ### Ship Modules - Outpost Vendors
+SVF Keyword Patch - DarkStar Astrodynamics Ship Modules - Outpost Vendors
+
 Patch to add all ship module keywords from "DarkStar Astrodynamics" by WykkydGaming to outpost ship vendors.
 
 Mod Source:
@@ -233,6 +269,8 @@ Keyword
 ## Mod: Falkland Systems v2
 
 ### Ship Modules - All Vendors
+SVF Keyword Patch - Falkland Systems v2 Ship Modules - All Vendors
+
 Patch to add all ship module keywords from "Falkland Systems Ship Services" v2 by Hjalmere to all ship vendors.
 
 Mod Source:
@@ -243,6 +281,8 @@ Keyword
 
 
 ### Ship Modules - Non-Outpost Vendors
+SVF Keyword Patch - Falkland Systems v2 Ship Modules - Non-Outpost Vendors
+
 Patch to add all ship module keywords from "Falkland Systems Ship Services" v2 by Hjalmere to non-outpost ship vendors.
 
 Mod Source:
@@ -253,6 +293,8 @@ Keyword
 
 
 ### Ship Modules - Outpost Vendors
+SVF Keyword Patch - Falkland Systems v2 Ship Modules - Outpost Vendors
+
 Patch to add all ship module keywords from "Falkland Systems Ship Services" v2 by Hjalmere to outpost ship vendors.
 
 Mod Source:
@@ -265,6 +307,8 @@ Keyword
 ## Mod: Watchtower
 
 ### Ship Modules - All Vendors
+SVF Keyword Patch - Watchtower Ship Modules - All Vendors
+
 Patch to add all ship module keywords from "Watchtower" by kinggath_creations to all ship vendors.
 
 Mod Source:
@@ -275,6 +319,8 @@ Keyword
 
 
 ### Ship Modules - Non-Outpost Vendors
+SVF Keyword Patch - Watchtower Ship Modules - Non-Outpost Vendors
+
 Patch to add all ship module keywords from "Watchtower" by kinggath_creations to non-outpost ship vendors.
 
 Mod Source:
@@ -285,6 +331,8 @@ Keyword
 
 
 ### Ship Modules - Outpost Vendors
+SVF Keyword Patch - Watchtower Ship Modules - Outpost Vendors
+
 Patch to add all ship module keywords from "Watchtower" by kinggath_creations to outpost ship vendors.
 
 Mod Source:
@@ -297,6 +345,8 @@ Keyword
 # Misc Patches
 
 ## Option: Hide Gameplay Options
+SVF Option Patch - Hide Gameplay Options
+
 A small patch to hide all the Gameplay Options from Ship Vendor Framework.
 
 Patch Type:

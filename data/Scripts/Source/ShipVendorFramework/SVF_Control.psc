@@ -33,7 +33,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
-string Property SVFVersion = "1.11.0" Auto Const Hidden
+string Property SVFVersion = "1.11.1" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
@@ -283,6 +283,8 @@ Function CheckForMods()
     modsToCheck.Add("LowLandingPad.esm")
     modsToCheck.Add("outpostvendorcustomships.esm")
     modsToCheck.Add("ShatteredSpace.esm")
+    modsToCheck.Add("ShipVendorFix.esm")
+    modsToCheck.Add("ShipVendorFixFrameworkPatch.esm")
     modsToCheck.Add("Starvival - Immersive Survival Addon.esm")
     modsToCheck.Add("vcDenAstrodynamics.esm")
     modsToCheck.Add("kinggathcreations_spaceship.esm")
@@ -313,6 +315,8 @@ Function CheckForMods()
     patchesToCheck.Add("SVF-LowerLandingPad-Patch.esm")
     patchesToCheck.Add("SVF-OutpostVendorNewShips-Patch.esm")
     patchesToCheck.Add("SVF-ShatteredSpace-Patch.esm")
+    patchesToCheck.Add("N/A")
+    patchesToCheck.Add("NONE")
     patchesToCheck.Add("SVF-Starvival-Patch.esm")
     patchesToCheck.Add("SVF-TheDenAstrodynamics-Patch.esm")
     patchesToCheck.Add("SVF-Watchtower-Patch.esm")

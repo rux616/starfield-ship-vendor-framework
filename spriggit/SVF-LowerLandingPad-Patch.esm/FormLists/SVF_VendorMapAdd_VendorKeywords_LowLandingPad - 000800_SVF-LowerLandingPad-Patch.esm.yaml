@@ -3,4 +3,4 @@ EditorID: SVF_VendorMapAdd_VendorKeywords_LowLandingPad
 FormVersion: 582
 Items:
 - 000801:SVF-LowerLandingPad-Patch.esm
-AddToList: Null
+AddToList: 000907:ShipVendorFramework.esm

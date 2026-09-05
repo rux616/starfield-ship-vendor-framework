@@ -2,7 +2,7 @@ Ship Vendor Framework
 =====================
 by rux616
 
-Version: 1.11.0
+Version: 1.11.1
 
 Table Of Contents
 -----------------
@@ -17,8 +17,8 @@ Table Of Contents
     - Enabling Logs
     - NPC Ship Lists
 - Installation
-    - Load Order
     - Requirements
+    - Load Order
     - Recommendations
     - Upgrading (General)
     - Upgrading to v1.6.0+ from v1.5.4 or earlier
@@ -66,15 +66,20 @@ Mods that are known to conflict:
 - "DarkStar" by WykkydGaming [Creations (https://creations.bethesda.net/en/starfield/details/f082c443-5f3e-4528-b03e-10c319d01ddf/DarkStar)]: No patch. There are no lists for mod authors to add ships to, the "Rich Ship Vendors" option doesn't work with the DarkStar ship vendors, and not all ships may be immediately available to purchase if the "buy ships" option is accessed too soon after the vendor's ship inventory is refreshed or the vendor is initially created. (I would recommend using DarkStar Astrodynamics instead.)
 - "DarkStar Astrodynamics" by WykkydGaming [Creations (https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics) / Nexus (https://www.nexusmods.com/starfield/mods/9458)]: Use SVF Compatibility Patch - DarkStar Astrodynamics.
 - "Rich Outpost Shipbuilder" by LilithMotherOfAll [Nexus (https://www.nexusmods.com/starfield/mods/5492)]: No patch. Uninstall this mod if you have it. Ship Vendor Framework now has this functionality built in.
+- "Ship Vendor Fix" by VollmetalDragon [Creations (https://creations.bethesda.net/en/starfield/details/180cc11d-4776-48c1-9ce5-829d81b360f4/Ship_Vendor_Fix) / Nexus (https://www.nexusmods.com/starfield/mods/18077)]: Support is natively built in to Ship Vendor Framework, but Ship Vendor Framework MUST be loaded AFTER Ship Vendor Fix.
 - "Starvival" by lKocMoHaBTl [Creations (https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon) / Nexus (https://www.nexusmods.com/starfield/mods/6890)]: Use SVF Compatibility Patch - Starvival.
 
-Mods that I have created capability patches for (included in the main download):
+Mods that I have created patches for (included in the main download):
+- "DarkStar Astrodynamics" by WykkydGaming [Creations (https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics) / Nexus (https://www.nexusmods.com/starfield/mods/9458)]
 - "Dominion" by rhart317 [Creations (https://creations.bethesda.net/en/starfield/details/97f792d0-d078-4a50-aa32-f03cc054e241/Dominion)]
 - "Falkland Systems Ship Services" by Hjalmere [Creations (https://creations.bethesda.net/en/starfield/details/6cbf2c64-b736-4d95-bf06-38183a94b359/Falkland_Systems_Ship_Services)]
+- "Free Lanes" update (Starfield v1.16.236) by Bethesda Game Studios [Bethesda.net (https://bethesda.net/en-US/game/starfield/news/starfield-free-lanes-update-notes)]
 - "Iconic Ships" by ShipTechnician [Creations (https://creations.bethesda.net/en/starfield/details/569e938e-228c-42fb-91ba-c6967575bcf3/Iconic_Ships)]
 - "L-K Ships" by Lighthorse and KeithVSmith1977 [Creations (https://creations.bethesda.net/en/starfield/details/f287801b-a863-48fb-b796-1eeaeda4eab3/L_K_Ships) / Nexus (https://www.nexusmods.com/starfield/mods/7433)]
 - "Lower Landing Pad" by SenterPat [Nexus (https://www.nexusmods.com/starfield/mods/8363)]
 - "Outpost Vendor New Ships" by nefurun [Creations (https://creations.bethesda.net/en/starfield/details/b5723c97-fb67-46ed-9833-07d4e1d8ced1/Outpost_Vendor_New_Ships)]
+- "Shattered Space" by Bethesda Game Studios [Creations (https://creations.bethesda.net/en/starfield/details/b6b52ca2-3f1f-4316-bef8-dcb0bb2dcc32/Starfield__Shattered_Space) / Steam (https://store.steampowered.com/app/2721670/Starfield__Shattered_Space/)]
+- "Starvival" by lKocMoHaBTl [Creations (https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon) / Nexus (https://www.nexusmods.com/starfield/mods/6890)]
 - "The Den Astrodynamics" by VoodooChild [Nexus (https://www.nexusmods.com/starfield/mods/8809)]
 - "Watchtower" by kinggath_creations [Creations (https://creations.bethesda.net/en/starfield/details/5d455df7-d99f-4619-a383-f2b39aa21e00/Watchtower__Orbital_Strike__Fleet_Command)]
 
@@ -134,6 +139,10 @@ Watchtower (with patch):
 Installation
 ============
 
+Requirements
+------------
+- Starfield v1.11.36 (released 2024-05-15) or later
+
 Load Order
 ----------
 For best results, I would recommend keeping this mod and all its patches in a single block, all following any other mods that are being patched.
@@ -143,10 +152,6 @@ For patches, the load order is recommended to be as follows:
 - (SVF Capability Patches, if any)
 - (SVF Compatibility Patches, if any)
 - (SVF Keyword Patches, if any)
-
-Requirements
-------------
-- Starfield v1.11.36 (released 2024-05-15) or later
 
 Recommendations
 ---------------
@@ -192,20 +197,20 @@ Unsupported. I want nothing to do with your hand-crafted artisanal potential dum
 
 License
 =======
-- All code files are copyright Dan Cassidy (see individual files for exact years), and are licensed under the GPL v3.0 or later (https://www.gnu.org/licenses/gpl-3.0.en.html). The sole exceptions to this are the "OutpostShipbuilderMenuActivator", "ShipBuilderMenuActivator", "ShipVendorInfoScript", and "ShipVendorScript" files, as they are built upon the base that BGS provided and so are covered by their licenses.
+- All code created for this mod is copyright Dan Cassidy (see individual files for exact years), and is licensed under the GPL v3.0 or later (https://www.gnu.org/licenses/gpl-3.0.en.html).
 - All non-code files are copyright 2024, 2025 Dan Cassidy, and are licensed under the CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/) license.
 
 
 Credits and Acknowledgements
 ============================
-Bethesda Game Studios: For Starfield itself and the Starfield Creation Kit
-ElminsterAU: For xEdit and BSArch
-Lively: For helping explain some of the odd nuances of an infrequently-used-by-me FOMOD feature
-Mod Organizer 2 team: For Mod Organizer 2
-Nexus Mods: For mod hosting and for the Vortex Mod Manager
-Noggog: For Spriggit
-perchik71: For Creation Kit Platform Extended
-Scrivener07: For some advice and clarification on papyrus matters
+- Bethesda Game Studios: For Starfield itself and the Starfield Creation Kit
+- ElminsterAU: For xEdit and BSArch
+- Lively: For helping explain some of the odd nuances of an infrequently-used-by-me FOMOD feature
+- Mod Organizer 2 team: For Mod Organizer 2
+- Nexus Mods: For mod hosting and for the Vortex Mod Manager
+- Noggog: For Spriggit
+- perchik71: For Creation Kit Platform Extended
+- Scrivener07: For some advice and clarification on papyrus matters
 
 
 Contact

@@ -10,7 +10,7 @@ ModHeader:
     Patch for "Ship Vendor Framework" by rux616 and "Lower Landing Pad" by SenterPat.
 
 
-    Version: 1.4.0
+    Version: 1.4.1
   MasterReferences:
   - Master: Starfield.esm
   - Master: LowLandingPad.esm
