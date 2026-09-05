@@ -162,6 +162,9 @@ float Property TIMER_LENGTH_SAVE_CORRUPTION = 10.0 Auto Const Hidden
 ; the control script for the Ship Vendor Framework
 ShipVendorFramework:SVF_Control svfControl
 
+; Ship Vendor Fix compatibility - ship trash cell
+ObjectReference shipTrashCellMarker
+
 ; the player reference
 Actor playerRef
 
@@ -171,7 +174,7 @@ Guard LoadGuard
 
 ; the log level threshold for the script; messages with a level less than this threshold will not be logged
 ; -1 = debug (all), 0 = info (default), 1 = warning, 2 = error, 3 = none (suppress)
-int Property LOG_LEVEL_THRESHOLD = 0 Auto Const Hidden
+int Property LOG_LEVEL_THRESHOLD = -1 Auto Const Hidden
 
 ; log levels
 ; "debug" log level
@@ -302,6 +305,13 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         _Log(fnName, "starting stack profiling", LL_DEBUG)
         Debug.StartStackProfiling()
         DebugDumpData()
+    EndIf
+
+    ; Ship Vendor Fix compatibility - load the ship trash cell marker
+    If Game.IsPluginInstalled("ShipVendorFix.esm") == true
+        shipTrashCellMarker = Game.GetFormFromFile(0x815, "ShipVendorFix.esm") as ObjectReference
+    Else
+        shipTrashCellMarker = None
     EndIf
 
     If initialized == false || svfEnhancementsVersionCurrent < SVFEnhancementsVersion
@@ -1483,8 +1493,18 @@ Function DeleteShip(SpaceshipReference akShipRef, string asSource)
         akShipRef.SetLinkedRef(None, SpaceshipStoredLink)
         ; nullify ownership
         akShipRef.SetActorRefOwner(None)
+        ; Ship Vendor Fix compatibility - move the ship into trash cell
+        If shipTrashCellMarker != None
+            _Log(fnName, "moving " + akShipRef + " to trash cell marker", LL_DEBUG)
+            akShipRef.MoveTo(shipTrashCellMarker)
+        EndIf
         ; disable ship
         akShipRef.DisableNoWait()
+        ; Ship Vendor Fix compatibility - kill the ship
+        If shipTrashCellMarker != None
+            _Log(fnName, "killing " + akShipRef + " in trash cell marker", LL_DEBUG)
+            akShipRef.Kill()
+        EndIf
         _Log(fnName, "deleting ship " + akShipRef, LL_INFO)
         Debug.Trace(Self + "." + asSource + "(): Attempting to delete " + akShipRef + ". This may throw an error, please ignore it.")
         akShipRef.Delete()

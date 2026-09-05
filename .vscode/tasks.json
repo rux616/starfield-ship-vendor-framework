@@ -145,6 +145,10 @@
         "SVF-OutpostVendorNewShips-Patch.esm",
         "ShatteredSpace.esm", // "Shattered Space" DLC
         "SVF-ShatteredSpace-Patch.esm",
+        "ShipVendorFix.esm", // "Ship Vendor Fix" by VollmetalDragon
+        "N/A",
+        "ShipVendorFixFrameworkPatch.esm", // "Ship Vendor Fix and Framework Patch" by VollmetalDragon
+        "NONE",
         "Starvival - Immersive Survival Addon.esm", //"Starvival" by lKocMoHaBTl
         "SVF-Starvival-Patch.esm",
         "vcDenAstrodynamics.esm", // "The Den Astrodynamics" by VoodooChild
