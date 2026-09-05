@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.11.1](#v1111)
     - [v1.11.0](#v1110)
     - [v1.10.0](#v1100)
     - [v1.9.0](#v190)
@@ -31,6 +32,14 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.11.1
+-------
+- Fixed error in GitHub release action that would result in the release using the wrong tag (would remove the "v" from in front of the tag)
+- Fixed Lower Landing Pad capability patch
+- Added built-in support for the "Ship Vendor Fix" mod by VollmetalDragon - note that Ship Vendor Framework **MUST** be loaded after Ship Vendor Fix
+
+([TOC](#table-of-contents))
 
 v1.11.0
 -------
