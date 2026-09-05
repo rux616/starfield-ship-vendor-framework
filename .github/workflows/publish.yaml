@@ -48,7 +48,7 @@ jobs:
       - name: Create GitHub release
         run: >
           gh release create
-          '${{ env.RELEASE_VERSION }}'
+          'v${{ env.RELEASE_VERSION }}'
           '${{ env.RELEASE_ARCHIVE }}'
           --title 'v${{ env.RELEASE_VERSION }}'
           --notes-file ".\changelog_github.md"
