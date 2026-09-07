@@ -1,0 +1,22 @@
+FormKey: 000949:ShipVendorFramework.esm
+MajorRecordFlagsRaw: 8389120
+EditorID: SVF_ShipTrashCellMarker
+FormVersion: 582
+StarfieldMajorRecordFlags:
+- 0x200
+- 0x800000
+ObjectBounds:
+  First: -0.26391602, -0.29296875, 0
+  Second: 0.26391602, 0.25732422, 0.2286377
+Components:
+- MutagenObjectType: KeywordFormComponent
+- MutagenObjectType: ObjectWindowFilterComponent
+  INTV: 0x01000000
+  FLTR: Markers/XMarkers/
+Model:
+  File: markerx.nif
+  LightLayer: 1
+MaxAngle: 1
+UnknownDNAMFloat: 1
+DNAMDataTypeState:
+- Break0

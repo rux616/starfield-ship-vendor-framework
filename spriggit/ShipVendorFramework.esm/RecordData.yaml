@@ -21,4 +21,4 @@ ModHeader:
     Links:
     - 1F88DD:Starfield.esm
   Branch: Main
-  InteriorCellCount: 0
+  InteriorCellCount: 1

@@ -1,0 +1,45 @@
+FormKey: 000945:ShipVendorFramework.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262148
+EditorID: SVFShipTrashCell
+FormVersion: 582
+StarfieldMajorRecordFlags:
+- NotPlayable
+- Compressed
+Flags:
+- IsInteriorCell
+- PlayerFollowersCannotTravelHere
+Lighting:
+  AmbientColor: '#00000000'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00000000'
+  DirectionalFade: 1
+  FogPower: 1
+  FogFarColor: '#00000000'
+  FogMax: 1
+  Unknown1: 1951
+  NearHeightRange: 10000
+  ForColorHighNear: '#00000000'
+  ForColorHighFar: '#00000000'
+  HighDensityScale: 1
+  FogNearScale: 1
+  FogFarScale: 1
+  FogHighNearScale: 1
+  FogHighFarScale: 1
+  FarHeightRange: 10000
+  InteriorType: -1892474366
+LightingTemplate: Null
+WaterHeight: 3.4028235E+38
+XILS: 1
+Location: 000947:ShipVendorFramework.esp
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 000960:ShipVendorFramework.esp
+  MajorRecordFlagsRaw: 1024
+  FormVersion: 582
+  StarfieldMajorRecordFlags:
+  - 0x400
+  Base: 000949:ShipVendorFramework.esp
+MajorFlags:
+- IsUnique
+- 0x40000
