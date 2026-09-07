@@ -33,7 +33,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
-string Property SVFVersion = "1.11.1" Auto Const Hidden
+string Property SVFVersion = "1.12.0" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
@@ -61,6 +61,9 @@ Group Other
 
     int[] Property RichShipVendorsMinimumCreditsValues Auto Const
     { The values for the minimum credits for rich ship vendors. (Pairs with RichShipVendorsMinimumCreditsOption property.) }
+
+    ObjectReference Property ShipTrashCellMarker Auto Const
+    { The ship trash cell marker. }
 EndGroup
 
 ; default values for the vendor mappings

@@ -162,9 +162,6 @@ float Property TIMER_LENGTH_SAVE_CORRUPTION = 10.0 Auto Const Hidden
 ; the control script for the Ship Vendor Framework
 ShipVendorFramework:SVF_Control svfControl
 
-; Ship Vendor Fix compatibility - ship trash cell
-ObjectReference shipTrashCellMarker
-
 ; the player reference
 Actor playerRef
 
@@ -174,7 +171,7 @@ Guard LoadGuard
 
 ; the log level threshold for the script; messages with a level less than this threshold will not be logged
 ; -1 = debug (all), 0 = info (default), 1 = warning, 2 = error, 3 = none (suppress)
-int Property LOG_LEVEL_THRESHOLD = -1 Auto Const Hidden
+int Property LOG_LEVEL_THRESHOLD = 0 Auto Const Hidden
 
 ; log levels
 ; "debug" log level
@@ -305,13 +302,6 @@ Function HandleOnLoad() RequiresGuard(LoadGuard)
         _Log(fnName, "starting stack profiling", LL_DEBUG)
         Debug.StartStackProfiling()
         DebugDumpData()
-    EndIf
-
-    ; Ship Vendor Fix compatibility - load the ship trash cell marker
-    If Game.IsPluginInstalled("ShipVendorFix.esm") == true
-        shipTrashCellMarker = Game.GetFormFromFile(0x815, "ShipVendorFix.esm") as ObjectReference
-    Else
-        shipTrashCellMarker = None
     EndIf
 
     If initialized == false || svfEnhancementsVersionCurrent < SVFEnhancementsVersion
@@ -738,7 +728,14 @@ Function InitializeSVFEnhancementsVersion2()
             EndWhile
         EndLockGuard
 
-        _Log(fnName, "found " + shipsToPurge.Length + " linked ships to purge", LL_WARNING)
+        int logLevel
+        If linkedShips.Length > 0
+            logLevel = LL_WARNING
+        Else
+            logLevel = LL_INFO
+        EndIf
+        _Log(fnName, "found " + shipsToPurge.Length + " linked ships to purge", logLevel)
+
         DeleteShips(shipsToPurge)
     EndIf
 
@@ -1488,24 +1485,26 @@ Function DeleteShip(SpaceshipReference akShipRef, string asSource)
     _Log(fnName, "begin", LL_DEBUG)
 
     If akShipRef
-        _Log(fnName, "unlinking " + akShipRef + " from its landing marker, nullifying ownership, and disabling", LL_DEBUG)
+        _Log(fnName, "unlinking " + akShipRef + " from its landing marker, nullifying ownership, moving to trash cell, disabling, and killing", LL_DEBUG)
         ; unlink ship from its landing marker
         akShipRef.SetLinkedRef(None, SpaceshipStoredLink)
         ; nullify ownership
         akShipRef.SetActorRefOwner(None)
-        ; Ship Vendor Fix compatibility - move the ship into trash cell
-        If shipTrashCellMarker != None
-            _Log(fnName, "moving " + akShipRef + " to trash cell marker", LL_DEBUG)
-            akShipRef.MoveTo(shipTrashCellMarker)
+        ; move the ship into trash cell
+        ObjectReference shipTrashCellMarker
+        If svfControl == None
+            ; svfControl may not be initialized when DeleteShip() is called, so get the marker from file if needed
+             shipTrashCellMarker = Game.GetFormFromFile(0x960, "ShipVendorFramework.esm") as ObjectReference
+        Else
+            shipTrashCellMarker = svfControl.ShipTrashCellMarker
         EndIf
+        _Log(fnName, "moving ship " + akShipRef + " to trash cell marker " + shipTrashCellMarker, LL_DEBUG)
+        akShipRef.MoveTo(shipTrashCellMarker)
         ; disable ship
         akShipRef.DisableNoWait()
-        ; Ship Vendor Fix compatibility - kill the ship
-        If shipTrashCellMarker != None
-            _Log(fnName, "killing " + akShipRef + " in trash cell marker", LL_DEBUG)
-            akShipRef.Kill()
-        EndIf
-        _Log(fnName, "deleting ship " + akShipRef, LL_INFO)
+        ; kill the ship
+        akShipRef.Kill()
+        _Log(fnName, "deleting ship " + akShipRef, LL_INFO)  ; keep here to make sure it's close in time to the trace
         Debug.Trace(Self + "." + asSource + "(): Attempting to delete " + akShipRef + ". This may throw an error, please ignore it.")
         akShipRef.Delete()
     Else
@@ -1757,10 +1756,10 @@ Function CreateShipsForSale(var[] akShipToSellList, ObjectReference akCreateMark
             i += 1
         EndWhile
     EndIf
+    _Log(fnName, "created " + akShipList.Length + " ships", LL_INFO)
     If numShipsCreated < aiShipsToCreate
         _Log(fnName, "failed to create all requested ships", LL_WARNING)
     EndIf
-    _Log(fnName, "created " + akShipList.Length + " ships", LL_INFO)
     _Log(fnName, "ship list=" + akShipList, LL_DEBUG)
 
     _Log(fnName, "end", LL_DEBUG)

@@ -13,7 +13,7 @@ ModHeader:
     A framework allowing mod authors to easily add ships for sale without conflicts.
 
 
-    Version: 1.11.1
+    Version: 1.12.0
   MasterReferences:
   - Master: Starfield.esm
   TransientTypes:
@@ -21,4 +21,4 @@ ModHeader:
     Links:
     - 1F88DD:Starfield.esm
   Branch: Main
-  InteriorCellCount: 0
+  InteriorCellCount: 1

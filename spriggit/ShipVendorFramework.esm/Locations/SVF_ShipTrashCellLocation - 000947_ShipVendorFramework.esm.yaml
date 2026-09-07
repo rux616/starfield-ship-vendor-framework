@@ -1,0 +1,11 @@
+FormKey: 000947:ShipVendorFramework.esm
+EditorID: SVF_ShipTrashCellLocation
+FormVersion: 582
+Owner:
+  FactionRank: 0
+  EncounterFlags:
+  - UseParentsLockedLevel
+MusicType: 01BA72:Starfield.esm
+WorldLocationRadius: 0
+ActorFadeMult: 1
+RandomConversionTimer: 0

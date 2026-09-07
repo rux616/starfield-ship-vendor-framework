@@ -2,7 +2,7 @@ Ship Vendor Framework
 =====================
 by rux616
 
-Version: 1.11.1
+Version: 1.12.0
 
 Table Of Contents
 -----------------
@@ -70,7 +70,7 @@ Mods that are known to conflict:
 - "DarkStar" by WykkydGaming [[Creations](https://creations.bethesda.net/en/starfield/details/f082c443-5f3e-4528-b03e-10c319d01ddf/DarkStar)]: No patch. There are no lists for mod authors to add ships to, the "Rich Ship Vendors" option doesn't work with the DarkStar ship vendors, and not all ships may be immediately available to purchase if the "buy ships" option is accessed too soon after the vendor's ship inventory is refreshed or the vendor is initially created. (I would recommend using DarkStar Astrodynamics instead.)
 - "DarkStar Astrodynamics" by WykkydGaming [[Creations](https://creations.bethesda.net/en/starfield/details/cfca357a-7226-4cae-bd16-3575069dcf2e/DarkStar_Astrodynamics) / [Nexus](https://www.nexusmods.com/starfield/mods/9458)]: Use SVF Compatibility Patch - DarkStar Astrodynamics.
 - "Rich Outpost Shipbuilder" by LilithMotherOfAll [[Nexus](https://www.nexusmods.com/starfield/mods/5492)]: No patch. Uninstall this mod if you have it. Ship Vendor Framework now has this functionality built in.
-- "Ship Vendor Fix" by VollmetalDragon [[Creations](https://creations.bethesda.net/en/starfield/details/180cc11d-4776-48c1-9ce5-829d81b360f4/Ship_Vendor_Fix) / [Nexus](https://www.nexusmods.com/starfield/mods/18077)]: Support is natively built in to Ship Vendor Framework, but Ship Vendor Framework **MUST** be loaded **AFTER** Ship Vendor Fix.
+- "Ship Vendor Fix" by VollmetalDragon [[Creations](https://creations.bethesda.net/en/starfield/details/180cc11d-4776-48c1-9ce5-829d81b360f4/Ship_Vendor_Fix) / [Nexus](https://www.nexusmods.com/starfield/mods/18077)]: No patch. Unneeded if you are using Ship Vendor Framework as the functionality is already built in.
 - "Starvival" by lKocMoHaBTl [[Creations](https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon) / [Nexus](https://www.nexusmods.com/starfield/mods/6890)]: Use SVF Compatibility Patch - Starvival.
 
 Mods that I have created patches for (included in the main download):

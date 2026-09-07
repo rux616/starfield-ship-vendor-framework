@@ -72,6 +72,9 @@ VirtualMachineAdapter:
       Name: ShipListsUnique
       Object: 000840:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
+      Name: ShipTrashCellMarker
+      Object: 000960:ShipVendorFramework.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: UniqueShipsSold
       Object: 0008AA:ShipVendorFramework.esm
     - MutagenObjectType: ScriptObjectProperty
