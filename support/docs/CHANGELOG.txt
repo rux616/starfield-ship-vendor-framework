@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.12.0
     - v1.11.1
     - v1.11.0
     - v1.10.0
@@ -32,6 +33,11 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.12.0
+-------
+- Ships are now deleted using the method from Ship Vendor Fix, which includes the additional steps of moving the ship to a trash cell and killing it
+- Changed log level back to INFO for ShipVendorScript
 
 v1.11.1
 -------
