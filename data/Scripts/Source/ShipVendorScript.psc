@@ -531,6 +531,9 @@ Function ShowBadShipSaveCorruptionMessage()
     int baseVendorID = Self.GetBaseObject().GetFormID()
     int leveledShipID = currentlyCreatingShip.GetFormID()
     int playerLevel = playerRef.GetLevel()
+    string logMessage = "CORRUPTION DETECTED! Base Vendor ID: " + ShipVendorFramework:SVF_Utility.GetHexID(Self.GetBaseObject()) + ", Ship ID: " + SHipVendorFramework:SVF_Utility.GetHexID(currentlyCreatingShip) + ", Player Level: " + playerLevel
+    _Log(fnName, logMessage, LL_ERROR)
+    Debug.Trace(Self + "." + fnName + "(): " + logMessage, LL_ERROR)
     theMessage.Show(baseVendorID, leveledShipID, playerLevel)
 
     Game.QuitToMainMenu()
