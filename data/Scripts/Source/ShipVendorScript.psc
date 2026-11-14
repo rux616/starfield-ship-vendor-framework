@@ -1446,31 +1446,27 @@ Function RefreshShipsToSellArraysShipToSell()
     EndIf
 
     int i = 0
-
-    ; remove any random ships that are already in the always or unique lists, or that the player
-    ; isn't a high enough level for; traversing the array from the end to the beginning so that
-    ; removing elements doesn't mess up the loop
     int playerLevel = playerRef.GetLevel()
-    i = shipsToSellRandom.Length - 1
+
+    ; remove any random ships that are already in the always or unique lists, or that the player isn't a high enough
+    ; level for; traversing the array from the end to the beginning so that removing elements doesn't mess up the loop
     _Log(fnName, "removing random ships that the player does not meet the level requirements for", LL_INFO)
-    While i > -1
-        If shipsToSellRandom[i].minLevel > playerLevel
-            ; note: keep this text in sync with the output from SVF_Utility.ArraySubtractShipToSell() for consistency
-            _Log(fnName, "ship " + shipsToSellRandom[i] + " found at index " + i + "; removing", LL_INFO)
-            shipsToSellRandom.Remove(i)
-        EndIf
-        i += -1
-    EndWhile
+    ShipVendorFramework:SVF_Utility.RemoveLevelUnmetShipToSell(shipsToSellRandom, playerLevel)
     _Log(fnName, "removing random ships that are already in the 'always' list", LL_INFO)
     ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellRandom, shipsToSellAlways as var[], akSource=Self)
     _Log(fnName, "removing random ships that are already in the 'unique' list", LL_INFO)
     ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellRandom, shipsToSellUnique as var[], akSource=Self)
 
-    ; remove any priority ships that have already been sold this refresh cycle
+    ; remove any priority ships that have already been sold this refresh cycle or that the player isn't a high enough
+    ; level for
+    _Log(fnName, "removing priority ships that the player does not meet the level requirements for", LL_INFO)
+    ShipVendorFramework:SVF_Utility.RemoveLevelUnmetShipToSell(shipsToSellAlways, playerLevel)
     _Log(fnName, "removing priority ships that have already been bought from refreshed priority 'to sell' list", LL_INFO)
     ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellAlways, alwaysSoldList as var[], akSource=Self)
 
-    ; remove any unique ships that have already been sold
+    ; remove any unique ships that have already been sold or that the player isn't a high enough level for
+    _Log(fnName, "removing unique ships that the player does not meet the level requirements for", LL_INFO)
+    ShipVendorFramework:SVF_Utility.RemoveLevelUnmetShipToSell(shipsToSellUnique, playerLevel)
     If (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
         _Log(fnName, "removing unique ships that have already been bought from refreshed unique 'to sell' list", LL_INFO)
         ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellUnique, svfControl.UniqueShipsSold.GetArray() as var[], akSource=Self)
