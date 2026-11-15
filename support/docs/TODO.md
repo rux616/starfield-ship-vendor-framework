@@ -359,3 +359,4 @@
         - [X] readme (update requirements of SVF to specify a minimum Starfield version of v1.11.36)
         - [X] creations readme
         - [X] patches readme
+- [X] add error logs for corruption when found

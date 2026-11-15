@@ -33,7 +33,7 @@ int Property SVFControlVersion = 1 Auto Const Hidden
 int svfControlVersionCurrent = 0
 
 ; The Ship Vendor Framework version.
-string Property SVFVersion = "1.12.0" Auto Const Hidden
+string Property SVFVersion = "1.12.1" Auto Const Hidden
 
 Actor Property PlayerRef Auto Hidden ; hide this for now since the CK can't assign actors to script properties
 { The player reference. }
@@ -535,10 +535,10 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
     While SVFControlInitialized() == false && controlInitTimeout > 0
         _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
         Utility.WaitMenuPause(1.0)
-        controlInitTimeout -= 1
+        controlInitTimeout += -1
     EndWhile
 
-    If controlInitTimeout <= 0
+    If controlInitTimeout <= 0 && SVFControlInitialized() == false
         _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
         Return None
     EndIf
@@ -587,24 +587,20 @@ AdditionalKeywordLists Function GetAdditionalKeywordLists(Form akShipVendorBase,
     string fnName = "GetAdditionalKeywordLists[" + GetHexID(akShipVendor) + "]" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    ; check if the control script is initializing and pause here if it is (return None after a timeout period)
-    int controlInitTimeout = 10
-    While SVFControlInitialized() == false && controlInitTimeout > 0
-        _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
-        Utility.WaitMenuPause(1.0)
-        controlInitTimeout -= 1
-    EndWhile
+    Form[] vendorListOutpostVendorsLocal = None
 
-    If controlInitTimeout <= 0
-        _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
-        Return None
+    ; if the control script is initialized, use the cache, otherwise get it manually
+    If SVFControlInitialized() == true
+        vendorListOutpostVendorsLocal = vendorListOutpostVendorsCache
+    Else
+        vendorListOutpostVendorsLocal = VendorListOutpostVendors.GetArray()
     EndIf
 
     AdditionalKeywordLists keywordLists = new AdditionalKeywordLists
 
     keywordLists.AllVendors = KeywordListAllVendors
 
-    If vendorListOutpostVendorsCache.Find(akShipVendorBase) >= 0
+    If vendorListOutpostVendorsLocal.Find(akShipVendorBase) >= 0
         _Log(fnName, akShipVendorBase + " is an outpost vendor", LL_DEBUG)
         keywordLists.Supplemental = KeywordListOutpostVendors
     Else

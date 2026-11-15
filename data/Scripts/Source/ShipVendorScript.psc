@@ -531,6 +531,9 @@ Function ShowBadShipSaveCorruptionMessage()
     int baseVendorID = Self.GetBaseObject().GetFormID()
     int leveledShipID = currentlyCreatingShip.GetFormID()
     int playerLevel = playerRef.GetLevel()
+    string logMessage = "CORRUPTION DETECTED! Base Vendor ID: " + ShipVendorFramework:SVF_Utility.GetHexID(Self.GetBaseObject()) + ", Ship ID: " + SHipVendorFramework:SVF_Utility.GetHexID(currentlyCreatingShip) + ", Player Level: " + playerLevel
+    _Log(fnName, logMessage, LL_ERROR)
+    Debug.Trace(Self + "." + fnName + "(): " + logMessage, LL_ERROR)
     theMessage.Show(baseVendorID, leveledShipID, playerLevel)
 
     Game.QuitToMainMenu()
@@ -768,11 +771,11 @@ Function InitializeSVFEnhancementsVersion3()
     While svfControl.SVFControlInitialized() == false && controlInitTimeout > 0
         _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
         Utility.WaitMenuPause(1.0)
-        controlInitTimeout -= 1
+        controlInitTimeout += -1
     EndWhile
 
     ; spit out a log message if control script initialization timed out
-    If controlInitTimeout == 0 && svfControl.SVFControlInitialized() == false
+    If controlInitTimeout <= 0 && svfControl.SVFControlInitialized() == false
         _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
     EndIf
 
@@ -780,7 +783,7 @@ Function InitializeSVFEnhancementsVersion3()
     int i = uniquesSoldListLocal.Length - 1
     While i >= 0
         svfControl.UniqueShipsSold.AddForm(uniquesSoldListLocal[i])
-        i -= 1
+        i += -1
     EndWhile
     uniquesSoldListLocal.Clear()
     uniquesSoldListLocal = None
@@ -1082,8 +1085,8 @@ Function AddNewKeywords(Keyword[] akNewKeywords, string asListName)
     string fnName = "AddNewKeywords" Const
     _Log(fnName, "begin", LL_DEBUG)
 
+    _Log(fnName, "adding new " + asListName + " keywords: " + akNewKeywords, LL_INFO)
     If akNewKeywords.Length > 0
-        _Log(fnName, "adding new " + asListName + " keywords: " + akNewKeywords, LL_INFO)
         int i = 0
         While i < akNewKeywords.Length
             Self.AddKeyword(akNewKeywords[i])
@@ -1372,30 +1375,9 @@ Function RefreshShipsToSellArraysLVLB()
     _Log(fnName, "begin", LL_DEBUG)
 
     ; fill arrays using datasets
-    If svfShipsToSellListRandomDatasetLocal != None
-        _Log(fnName, "random ships dataset found", LL_DEBUG)
-        svfShipsToSellRandom = svfShipsToSellListRandomDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "svfShipsToSellRandom=" + svfShipsToSellRandom, LL_DEBUG)
-    Else
-        svfShipsToSellRandom.Clear()
-    EndIf
-    If svfShipsToSellListAlwaysDatasetLocal != None
-        _Log(fnName, "priority ships dataset found", LL_DEBUG)
-        svfShipsToSellAlways = svfShipsToSellListAlwaysDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "svfShipsToSellAlways=" + svfShipsToSellAlways, LL_DEBUG)
-    Else
-        svfShipsToSellAlways.Clear()
-    EndIf
-    If svfShipsToSellListUniqueDatasetLocal != None
-        _Log(fnName, "unique ships dataset found", LL_DEBUG)
-        svfShipsToSellUnique = svfShipsToSellListUniqueDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "svfShipsToSellUnique=" + svfShipsToSellUnique, LL_DEBUG)
-    Else
-        svfShipsToSellUnique.Clear()
-    EndIf
-
-    ; variable to keep track of various list indices
-    int i = 0
+    svfShipsToSellRandom = ShipVendorFramework:SVF_Utility.FillArrayLVLB(svfShipsToSellRandom, svfShipsToSellListRandomDatasetLocal, "random")
+    svfShipsToSellAlways = ShipVendorFramework:SVF_Utility.FillArrayLVLB(svfShipsToSellAlways, svfShipsToSellListAlwaysDatasetLocal, "priority")
+    svfShipsToSellUnique = ShipVendorFramework:SVF_Utility.FillArrayLVLB(svfShipsToSellUnique, svfShipsToSellListUniqueDatasetLocal, "unique")
 
     ; remove any random ships that are already in the always or unique lists
     _Log(fnName, "removing random ships that are already in the 'always' list", LL_INFO)
@@ -1422,61 +1404,38 @@ Function RefreshShipsToSellArraysShipToSell()
     string fnName = "RefreshShipsToSellArraysShipToSell" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    ; fill arrays using datasets using `(... as var[]) as ...[]` to copy the array to get it done faster
-    If ShipsToSellListRandomDataset != None
-        _Log(fnName, "random ships dataset found", LL_DEBUG)
-        shipsToSellRandom = (ShipsToSellListRandomDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "shipsToSellRandom=" + shipsToSellRandom, LL_DEBUG)
-    Else
-        shipsToSellRandom.Clear()
-    EndIf
-    If ShipsToSellListAlwaysDataset != None
-        _Log(fnName, "priority ships dataset found", LL_DEBUG)
-        shipsToSellAlways = (ShipsToSellListAlwaysDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "shipsToSellAlways=" + shipsToSellAlways, LL_DEBUG)
-    Else
-        shipsToSellAlways.Clear()
-    EndIf
-    If ShipsToSellListUniqueDataset != None
-        _Log(fnName, "unique ships dataset found", LL_DEBUG)
-        shipsToSellUnique = (ShipsToSellListUniqueDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "shipsToSellUnique=" + shipsToSellUnique, LL_DEBUG)
-    Else
-        shipsToSellUnique.Clear()
-    EndIf
+    ; fill arrays using datasets
+    shipsToSellRandom = ShipVendorFramework:SVF_Utility.FillArrayShipToSell(shipsToSellRandom, ShipsToSellListRandomDataset, "random")
+    shipsToSellAlways = ShipVendorFramework:SVF_Utility.FillArrayShipToSell(shipsToSellAlways, ShipsToSellListAlwaysDataset, "priority")
+    shipsToSellUnique = ShipVendorFramework:SVF_Utility.FillArrayShipToSell(shipsToSellUnique, ShipsToSellListUniqueDataset, "unique")
 
-    int i = 0
-
-    ; remove any random ships that are already in the always or unique lists, or that the player
-    ; isn't a high enough level for; traversing the array from the end to the beginning so that
-    ; removing elements doesn't mess up the loop
     int playerLevel = playerRef.GetLevel()
-    i = shipsToSellRandom.Length - 1
+
+    ; remove any random ships that are already in the always or unique lists, or that the player isn't a high enough
+    ; level for; traversing the array from the end to the beginning so that removing elements doesn't mess up the loop
     _Log(fnName, "removing random ships that the player does not meet the level requirements for", LL_INFO)
-    While i > -1
-        If shipsToSellRandom[i].minLevel > playerLevel
-            ; note: keep this text in sync with the output from SVF_Utility.ArraySubtractShipToSell() for consistency
-            _Log(fnName, "ship " + shipsToSellRandom[i] + " found at index " + i + "; removing", LL_INFO)
-            shipsToSellRandom.Remove(i)
-        EndIf
-        i += -1
-    EndWhile
+    ShipVendorFramework:SVF_Utility.RemoveLevelUnmetShipToSell(shipsToSellRandom, playerLevel)
     _Log(fnName, "removing random ships that are already in the 'always' list", LL_INFO)
     ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellRandom, shipsToSellAlways as var[], akSource=Self)
     _Log(fnName, "removing random ships that are already in the 'unique' list", LL_INFO)
     ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellRandom, shipsToSellUnique as var[], akSource=Self)
 
-    ; remove any priority ships that have already been sold this refresh cycle
+    ; remove any priority ships that have already been sold this refresh cycle or that the player isn't a high enough
+    ; level for
+    _Log(fnName, "removing priority ships that the player does not meet the level requirements for", LL_INFO)
+    ShipVendorFramework:SVF_Utility.RemoveLevelUnmetShipToSell(shipsToSellAlways, playerLevel)
     _Log(fnName, "removing priority ships that have already been bought from refreshed priority 'to sell' list", LL_INFO)
     ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellAlways, alwaysSoldList as var[], akSource=Self)
 
-    ; remove any unique ships that have already been sold
+    ; remove any unique ships that have already been sold or that the player isn't a high enough level for
+    _Log(fnName, "removing unique ships that the player does not meet the level requirements for", LL_INFO)
+    ShipVendorFramework:SVF_Utility.RemoveLevelUnmetShipToSell(shipsToSellUnique, playerLevel)
     If (svfControl.RegenerateUniqueShipsOption.GetValue() as bool) == false
         _Log(fnName, "removing unique ships that have already been bought from refreshed unique 'to sell' list", LL_INFO)
         ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellUnique, svfControl.UniqueShipsSold.GetArray() as var[], akSource=Self)
     EndIf
 
-    _Log(fnName, "begin", LL_DEBUG)
+    _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
@@ -1640,9 +1599,6 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         EndWhile
 
         ; combine ship ref to leveled ship mappings
-        ; create a temporary array because when using `as var[]` on an empty array (which `shipsForSaleMapping` would be
-        ; at this point), it returns None, which causes an error when attempting to pass it to `AppendToArray`
-        ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingTemp
         _Log(fnName, "combining ship ref to leveled ship mappings", LL_INFO)
         _Log(fnName, "shipsForSaleMapping=" + shipsForSaleMapping, LL_DEBUG)
         _Log(fnName, "shipsForSaleMappingAlways=" + shipsForSaleMappingAlways, LL_DEBUG)
@@ -1651,11 +1607,6 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingAlways as var[]) as ShipRefToSpaceshipLeveledListMapping[]
         shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingRandom as var[]) as ShipRefToSpaceshipLeveledListMapping[]
         shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingUnique as var[]) as ShipRefToSpaceshipLeveledListMapping[]
-        i = 0
-        While i < ShipsForSaleMappingTemp.Length
-            shipsForSaleMapping.Add(ShipsForSaleMappingTemp[i])
-            i += 1
-        EndWhile
 
         ; update the timestamp
         lastInventoryRefreshTimestamp = Utility.GetCurrentGameTime()

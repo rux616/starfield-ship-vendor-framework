@@ -6,6 +6,7 @@ Table Of Contents
 - Ship Vendor Framework
     - Table Of Contents
 - Changelog
+    - v1.12.1
     - v1.12.0
     - v1.11.1
     - v1.11.0
@@ -33,6 +34,18 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.12.1
+-------
+- Fixed a bug where the level requirements for "Always" and "Unique" ships in vanilla-style activator-based datasets weren't being checked (credit to taosecurity)
+- Introduced a few new convenience functions to DRY out the code a bit
+- Fixed an incorrect debug message at the end of a function that implied that it was at the beginning of the "RefreshShipsToSellArraysShipToSell" function (credit to taosecurity)
+- Fixed a potential timeout race where if the control script finishes initializing at the last second, a couple different functions could have mistakenly taken that as the script actually timing out. There is quite a wide safety margin in the timeout counter and so I don't think I've ever seen that triggered, but it's better to be defensive, especially in Papyrus. (credit to taosecurity)
+- Changed `-=` operators to `+=` operators for consistency
+- Removed the control script init wait for the `SVF_Control.GetAdditionalKeywordLists()` function because it's not needed
+- Removed an unused temp variable (credit to taosecurity)
+- Added log output when the script detects corruption
+- Checked Starvival v13.0 and updated plugin text to note compatibility
 
 v1.12.0
 -------

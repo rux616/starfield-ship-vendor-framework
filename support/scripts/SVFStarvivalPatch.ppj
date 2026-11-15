@@ -9,7 +9,7 @@
     Final="false"
 >
     <Imports>
-        <Import>..\papyrus-imports\starvival\Scripts\Source\User</Import>
+        <Import>..\papyrus-imports\starvival\Scripts\Source</Import>
         <Import>..\papyrus-imports\cassiopeia\Scripts\Source\User</Import>
         <Import>..\..\data\Scripts\Source</Import>
         <Import>..\papyrus-imports\vanilla\Scripts\Source</Import>

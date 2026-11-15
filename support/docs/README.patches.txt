@@ -12,7 +12,7 @@ Table Of Contents:
     - Mod: Watchtower
 - Compatibility Patches
     - Mod: DarkStar Astrodynamics v5+
-    - Mod: Starvival v12.1+
+    - Mod: Starvival v13+
 - Keyword Patches
     - Vanilla
         - Ship Modules - All Vendors
@@ -172,10 +172,10 @@ Patch Type:
 - Compatibility
 
 
-## Mod: Starvival v12.1+
-SVF Compatibility Patch - Starvival v12.1+
+## Mod: Starvival v13+
+SVF Compatibility Patch - Starvival v13+
 
-Patch for "Ship Vendor Framework" by rux616 and "Starvival" v12.1+ by lKocMoHaBTl.
+Patch for "Ship Vendor Framework" by rux616 and "Starvival" v13+ by lKocMoHaBTl.
 
 Mod Source:
 - Creations: https://creations.bethesda.net/en/starfield/details/cb70aedd-4793-4e05-be51-b5a4987d6b71/Starvival___Immersive_Survival_Addon

@@ -469,6 +469,74 @@ Function ArraySubtractShipToSell(ShipVendorListScript:ShipToSell[] akArray1, var
 EndFunction
 
 
+; fills a LVLB array from a form list
+LeveledSpaceshipBase[] Function FillArrayLVLB(LeveledSpaceshipBase[] akToFill, FormList akDataset, string asDatasetName) Global
+    string fnName = "FillArrayLVLB" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akDataset != None
+        _Log(fnName, asDatasetName + " ships dataset found", LL_DEBUG)
+        akToFill = akDataset.GetArray() as LeveledSpaceshipBase[]
+        _Log(fnName, "akToFill=" + akToFill, LL_DEBUG)
+    Else
+        akToFill.Clear()
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return akToFill
+EndFunction
+
+
+; fills a ShipToSell array from a dataset
+ShipVendorListScript:ShipToSell[] Function FillArrayShipToSell(ShipVendorListScript:ShipToSell[] akToFill, ShipVendorListScript akDataset, string asDatasetName) Global
+    string fnName = "FillShipsToSellArrayShipToSell" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akDataset != None
+        _Log(fnName, asDatasetName + " ships dataset found", LL_DEBUG)
+        akToFill = (akDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
+        _Log(fnName, "akToFill=" + akToFill, LL_DEBUG)
+    Else
+        akToFill.Clear()
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return akToFill
+EndFunction
+
+
+; MUTATIVE - remove ships from the given array where the player level requirements are not met
+; this function is only needed for ShipToSell datasets, because the game handles the LVLB datasets automatically
+Function RemoveLevelUnmetShipToSell(ShipVendorListScript:ShipToSell[] akShipList, int aiPlayerLevel) Global
+    string fnName = "RemoveLevelUnmetShipToSell" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    int i = akShipList.Length - 1
+    While i > -1
+        If akShipList[i].minLevel > aiPlayerLevel
+            ; note: keep this text in sync with the output from SVF_Utility.ArraySubtractShipToSell() for consistency
+            _Log(fnName, "ship " + akShipList[i] + " found at index " + i + "; removing", LL_INFO)
+            akShipList.Remove(i)
+        EndIf
+        i += -1
+    EndWhile
+
+    _Log(fnName, "end", LL_DEBUG)
+EndFunction
+
+
 ; returns the last Form in a FormList, or None if the FormList is empty or None
 Form Function FormListGetLast(Form akFormList) Global
     string fnName = "FormListGetLast" Const
