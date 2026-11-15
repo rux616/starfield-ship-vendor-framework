@@ -1435,7 +1435,7 @@ Function RefreshShipsToSellArraysShipToSell()
         ShipVendorFramework:SVF_Utility.ArraySubtractShipToSell(shipsToSellUnique, svfControl.UniqueShipsSold.GetArray() as var[], akSource=Self)
     EndIf
 
-    _Log(fnName, "begin", LL_DEBUG)
+    _Log(fnName, "end", LL_DEBUG)
 EndFunction
 
 
