@@ -6,6 +6,7 @@ Table Of Contents
 - [Ship Vendor Framework](#ship-vendor-framework)
     - [Table Of Contents](#table-of-contents)
 - [Changelog](#changelog)
+    - [v1.12.2](#v1122)
     - [v1.12.1](#v1121)
     - [v1.12.0](#v1120)
     - [v1.11.1](#v1111)
@@ -34,6 +35,12 @@ Table Of Contents
 
 Changelog
 =========
+
+v1.12.2
+-------
+- Fixed incorrect plugin text in ModuleConfig file
+
+([TOC](#table-of-contents))
 
 v1.12.1
 -------
