@@ -38,7 +38,7 @@ Changelog
 
 v1.12.2
 -------
-- Fixed incorrect plugin text in ModuleCOnfig file
+- Fixed incorrect plugin text in ModuleConfig file
 
 ([TOC](#table-of-contents))
 
