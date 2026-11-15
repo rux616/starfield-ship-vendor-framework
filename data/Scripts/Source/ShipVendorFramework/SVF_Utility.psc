@@ -470,7 +470,7 @@ EndFunction
 
 
 ; fills a LVLB array from a form list
-LeveledSpaceshipBase[] Function FillArrayLVLB(LeveledSpaceshipBase[] akToFill, FormList akDataset, String asDatasetName) Global
+LeveledSpaceshipBase[] Function FillArrayLVLB(LeveledSpaceshipBase[] akToFill, FormList akDataset, string asDatasetName) Global
     string fnName = "FillArrayLVLB" Const
     int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
@@ -492,7 +492,7 @@ EndFunction
 
 
 ; fills a ShipToSell array from a dataset
-ShipVendorListScript:ShipToSell[] Function FillArrayShipToSell(ShipVendorListScript:ShipToSell[] akToFill, ShipVendorListScript akDataset, String asDatasetName) Global
+ShipVendorListScript:ShipToSell[] Function FillArrayShipToSell(ShipVendorListScript:ShipToSell[] akToFill, ShipVendorListScript akDataset, string asDatasetName) Global
     string fnName = "FillShipsToSellArrayShipToSell" Const
     int LL_DEBUG = -1 Const
     int LL_INFO = 0 Const
