@@ -1375,30 +1375,9 @@ Function RefreshShipsToSellArraysLVLB()
     _Log(fnName, "begin", LL_DEBUG)
 
     ; fill arrays using datasets
-    If svfShipsToSellListRandomDatasetLocal != None
-        _Log(fnName, "random ships dataset found", LL_DEBUG)
-        svfShipsToSellRandom = svfShipsToSellListRandomDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "svfShipsToSellRandom=" + svfShipsToSellRandom, LL_DEBUG)
-    Else
-        svfShipsToSellRandom.Clear()
-    EndIf
-    If svfShipsToSellListAlwaysDatasetLocal != None
-        _Log(fnName, "priority ships dataset found", LL_DEBUG)
-        svfShipsToSellAlways = svfShipsToSellListAlwaysDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "svfShipsToSellAlways=" + svfShipsToSellAlways, LL_DEBUG)
-    Else
-        svfShipsToSellAlways.Clear()
-    EndIf
-    If svfShipsToSellListUniqueDatasetLocal != None
-        _Log(fnName, "unique ships dataset found", LL_DEBUG)
-        svfShipsToSellUnique = svfShipsToSellListUniqueDatasetLocal.GetArray() as LeveledSpaceshipBase[]
-        _Log(fnName, "svfShipsToSellUnique=" + svfShipsToSellUnique, LL_DEBUG)
-    Else
-        svfShipsToSellUnique.Clear()
-    EndIf
-
-    ; variable to keep track of various list indices
-    int i = 0
+    svfShipsToSellRandom = ShipVendorFramework:SVF_Utility.FillArrayLVLB(svfShipsToSellRandom, svfShipsToSellListRandomDatasetLocal, "random")
+    svfShipsToSellAlways = ShipVendorFramework:SVF_Utility.FillArrayLVLB(svfShipsToSellAlways, svfShipsToSellListAlwaysDatasetLocal, "priority")
+    svfShipsToSellUnique = ShipVendorFramework:SVF_Utility.FillArrayLVLB(svfShipsToSellUnique, svfShipsToSellListUniqueDatasetLocal, "unique")
 
     ; remove any random ships that are already in the always or unique lists
     _Log(fnName, "removing random ships that are already in the 'always' list", LL_INFO)
@@ -1425,30 +1404,11 @@ Function RefreshShipsToSellArraysShipToSell()
     string fnName = "RefreshShipsToSellArraysShipToSell" Const
     _Log(fnName, "begin", LL_DEBUG)
 
-    ; fill arrays using datasets using `(... as var[]) as ...[]` to copy the array to get it done faster
-    If ShipsToSellListRandomDataset != None
-        _Log(fnName, "random ships dataset found", LL_DEBUG)
-        shipsToSellRandom = (ShipsToSellListRandomDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "shipsToSellRandom=" + shipsToSellRandom, LL_DEBUG)
-    Else
-        shipsToSellRandom.Clear()
-    EndIf
-    If ShipsToSellListAlwaysDataset != None
-        _Log(fnName, "priority ships dataset found", LL_DEBUG)
-        shipsToSellAlways = (ShipsToSellListAlwaysDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "shipsToSellAlways=" + shipsToSellAlways, LL_DEBUG)
-    Else
-        shipsToSellAlways.Clear()
-    EndIf
-    If ShipsToSellListUniqueDataset != None
-        _Log(fnName, "unique ships dataset found", LL_DEBUG)
-        shipsToSellUnique = (ShipsToSellListUniqueDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
-        _Log(fnName, "shipsToSellUnique=" + shipsToSellUnique, LL_DEBUG)
-    Else
-        shipsToSellUnique.Clear()
-    EndIf
+    ; fill arrays using datasets
+    shipsToSellRandom = ShipVendorFramework:SVF_Utility.FillArrayShipToSell(shipsToSellRandom, ShipsToSellListRandomDataset, "random")
+    shipsToSellAlways = ShipVendorFramework:SVF_Utility.FillArrayShipToSell(shipsToSellAlways, ShipsToSellListAlwaysDataset, "priority")
+    shipsToSellUnique = ShipVendorFramework:SVF_Utility.FillArrayShipToSell(shipsToSellUnique, ShipsToSellListUniqueDataset, "unique")
 
-    int i = 0
     int playerLevel = playerRef.GetLevel()
 
     ; remove any random ships that are already in the always or unique lists, or that the player isn't a high enough

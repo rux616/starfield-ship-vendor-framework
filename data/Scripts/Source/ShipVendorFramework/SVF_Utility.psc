@@ -469,6 +469,50 @@ Function ArraySubtractShipToSell(ShipVendorListScript:ShipToSell[] akArray1, var
 EndFunction
 
 
+; fills a LVLB array from a form list
+LeveledSpaceshipBase[] Function FillArrayLVLB(LeveledSpaceshipBase[] akToFill, FormList akDataset, String asDatasetName) Global
+    string fnName = "FillArrayLVLB" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akDataset != None
+        _Log(fnName, asDatasetName + " ships dataset found", LL_DEBUG)
+        akToFill = akDataset.GetArray() as LeveledSpaceshipBase[]
+        _Log(fnName, "akToFill=" + akToFill, LL_DEBUG)
+    Else
+        akToFill.Clear()
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return akToFill
+EndFunction
+
+
+; fills a ShipToSell array from a dataset
+ShipVendorListScript:ShipToSell[] Function FillArrayShipToSell(ShipVendorListScript:ShipToSell[] akToFill, ShipVendorListScript akDataset, String asDatasetName) Global
+    string fnName = "FillShipsToSellArrayShipToSell" Const
+    int LL_DEBUG = -1 Const
+    int LL_INFO = 0 Const
+    int LL_WARNING = 1 Const
+    int LL_ERROR = 2 Const
+    _Log(fnName, "begin", LL_DEBUG)
+
+    If akDataset != None
+        _Log(fnName, asDatasetName + " ships dataset found", LL_DEBUG)
+        akToFill = (akDataset.ShipList as var[]) as ShipVendorListScript:ShipToSell[]
+        _Log(fnName, "akToFill=" + akToFill, LL_DEBUG)
+    Else
+        akToFill.Clear()
+    EndIf
+
+    _Log(fnName, "end", LL_DEBUG)
+    Return akToFill
+EndFunction
+
+
 ; MUTATIVE - remove ships from the given array where the player level requirements are not met
 ; this function is only needed for ShipToSell datasets, because the game handles the LVLB datasets automatically
 Function RemoveLevelUnmetShipToSell(ShipVendorListScript:ShipToSell[] akShipList, int aiPlayerLevel) Global
