@@ -771,7 +771,7 @@ Function InitializeSVFEnhancementsVersion3()
     While svfControl.SVFControlInitialized() == false && controlInitTimeout > 0
         _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
         Utility.WaitMenuPause(1.0)
-        controlInitTimeout -= 1
+        controlInitTimeout += -1
     EndWhile
 
     ; spit out a log message if control script initialization timed out
@@ -783,7 +783,7 @@ Function InitializeSVFEnhancementsVersion3()
     int i = uniquesSoldListLocal.Length - 1
     While i >= 0
         svfControl.UniqueShipsSold.AddForm(uniquesSoldListLocal[i])
-        i -= 1
+        i += -1
     EndWhile
     uniquesSoldListLocal.Clear()
     uniquesSoldListLocal = None

@@ -535,7 +535,7 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
     While SVFControlInitialized() == false && controlInitTimeout > 0
         _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
         Utility.WaitMenuPause(1.0)
-        controlInitTimeout -= 1
+        controlInitTimeout += -1
     EndWhile
 
     If controlInitTimeout <= 0 && SVFControlInitialized() == false
@@ -592,7 +592,7 @@ AdditionalKeywordLists Function GetAdditionalKeywordLists(Form akShipVendorBase,
     While SVFControlInitialized() == false && controlInitTimeout > 0
         _Log(fnName, "Waiting for SVF Control to initialize... (" + controlInitTimeout + " seconds left before timeout)", LL_WARNING)
         Utility.WaitMenuPause(1.0)
-        controlInitTimeout -= 1
+        controlInitTimeout += -1
     EndWhile
 
     If controlInitTimeout <= 0 && SVFControlInitialized() == false
