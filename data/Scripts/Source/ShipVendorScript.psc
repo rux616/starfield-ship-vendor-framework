@@ -1085,8 +1085,8 @@ Function AddNewKeywords(Keyword[] akNewKeywords, string asListName)
     string fnName = "AddNewKeywords" Const
     _Log(fnName, "begin", LL_DEBUG)
 
+    _Log(fnName, "adding new " + asListName + " keywords: " + akNewKeywords, LL_INFO)
     If akNewKeywords.Length > 0
-        _Log(fnName, "adding new " + asListName + " keywords: " + akNewKeywords, LL_INFO)
         int i = 0
         While i < akNewKeywords.Length
             Self.AddKeyword(akNewKeywords[i])
