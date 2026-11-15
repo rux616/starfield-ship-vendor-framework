@@ -1599,9 +1599,6 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         EndWhile
 
         ; combine ship ref to leveled ship mappings
-        ; create a temporary array because when using `as var[]` on an empty array (which `shipsForSaleMapping` would be
-        ; at this point), it returns None, which causes an error when attempting to pass it to `AppendToArray`
-        ShipRefToSpaceshipLeveledListMapping[] ShipsForSaleMappingTemp
         _Log(fnName, "combining ship ref to leveled ship mappings", LL_INFO)
         _Log(fnName, "shipsForSaleMapping=" + shipsForSaleMapping, LL_DEBUG)
         _Log(fnName, "shipsForSaleMappingAlways=" + shipsForSaleMappingAlways, LL_DEBUG)
@@ -1610,11 +1607,6 @@ Function RefreshInventoryList(ObjectReference akCreateMarker, SpaceshipReference
         shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingAlways as var[]) as ShipRefToSpaceshipLeveledListMapping[]
         shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingRandom as var[]) as ShipRefToSpaceshipLeveledListMapping[]
         shipsForSaleMapping = ShipVendorFramework:SVF_Utility.AppendToArray(shipsForSaleMapping as var[], shipsForSaleMappingUnique as var[]) as ShipRefToSpaceshipLeveledListMapping[]
-        i = 0
-        While i < ShipsForSaleMappingTemp.Length
-            shipsForSaleMapping.Add(ShipsForSaleMappingTemp[i])
-            i += 1
-        EndWhile
 
         ; update the timestamp
         lastInventoryRefreshTimestamp = Utility.GetCurrentGameTime()
