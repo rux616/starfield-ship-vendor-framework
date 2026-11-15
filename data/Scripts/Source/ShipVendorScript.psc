@@ -775,7 +775,7 @@ Function InitializeSVFEnhancementsVersion3()
     EndWhile
 
     ; spit out a log message if control script initialization timed out
-    If controlInitTimeout == 0 && svfControl.SVFControlInitialized() == false
+    If controlInitTimeout <= 0 && svfControl.SVFControlInitialized() == false
         _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
     EndIf
 

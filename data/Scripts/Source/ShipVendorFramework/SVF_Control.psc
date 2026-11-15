@@ -538,7 +538,7 @@ ShipVendorDataMap Function GetShipVendorDataMap(Form akShipVendorBase, Form akSh
         controlInitTimeout -= 1
     EndWhile
 
-    If controlInitTimeout <= 0
+    If controlInitTimeout <= 0 && SVFControlInitialized() == false
         _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
         Return None
     EndIf
@@ -595,7 +595,7 @@ AdditionalKeywordLists Function GetAdditionalKeywordLists(Form akShipVendorBase,
         controlInitTimeout -= 1
     EndWhile
 
-    If controlInitTimeout <= 0
+    If controlInitTimeout <= 0 && SVFControlInitialized() == false
         _Log(fnName, "SVF Control initialization timed out", LL_ERROR)
         Return None
     EndIf
