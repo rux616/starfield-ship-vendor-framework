@@ -10,15 +10,18 @@ ModHeader:
   FormVersion: 582
   Author: rux616
   Description: >-
-    Patch for "Ship Vendor Framework" by rux616 and "Starvival" v12.1 by lKocMoHaBTl.
+    Patch for "Ship Vendor Framework" by rux616 and "Starvival" v13+ by lKocMoHaBTl.
 
 
-    Version: 1.5.0
+    Version: 1.7.0
   MasterReferences:
   - Master: Starfield.esm
-  - Master: ShatteredSpace.esm
   - Master: sfbgs00d.esm
+  - Master: SFBGS050.esm
+  - Master: ShatteredSpace.esm
   - Master: Starvival - Immersive Survival Addon.esm
   - Master: ShipVendorFramework.esm
+  - Master: SFBGS006.esm
+  - Master: sfbgs003.esm
   Branch: Main
   InteriorCellCount: 0
